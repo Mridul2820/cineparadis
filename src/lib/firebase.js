@@ -13,6 +13,7 @@ const config = {
 }
 
 const firebase = Firebase.initializeApp(config);
+const provider = new Firebase.auth.GoogleAuthProvider();
 const { FieldValue } = Firebase.firestore;
 
-export { firebase, FieldValue };
+export { firebase, provider, FieldValue };
