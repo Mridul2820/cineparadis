@@ -32,7 +32,7 @@ const Login = () => {
                 <Button onClick={handleLogin}>Login With Google</Button>
             </Text>
             <Banner>
-                <img src={banner} alt={banner} />
+                <img src={banner} alt="banner" />
             </Banner>
         </Container>
     )
