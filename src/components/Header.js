@@ -20,7 +20,7 @@ const Header = () => {
 
     return (
         <Container>
-            <Logo>
+            <Logo to={ROUTES.DASHBOARD}>
                 <img src={logo} alt="logo" />
                 <h2>MovieBuff</h2>
             </Logo>
@@ -62,7 +62,7 @@ const Container = styled.div`
     left: 0;
 `
 
-const Logo = styled.div`
+const Logo = styled(Link)`
     display: flex;
     align-items: center;
 
