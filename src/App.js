@@ -11,6 +11,7 @@ import IsUserLoggedIn from './helpers/IsUserLoggedIn'
 
 const Login = lazy(() => import ('./pages/Login'))
 const Dashboard = lazy(() => import ('./pages/Dashboard'))
+const NotFound = lazy(() => import ('./pages/NotFound'))
 
 const App = () => {
     const { user } = useAuthListner()
@@ -24,9 +25,12 @@ const App = () => {
                         <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.LOGIN}>
                             <Login />
                         </IsUserLoggedIn>
+
                         <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
                             <Dashboard />
                         </ProtectedRoute>
+
+                        <Route component={NotFound} />
                     </Switch>
                 </Suspense>
             </Router>

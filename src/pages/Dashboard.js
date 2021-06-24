@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../components/Header'
 
 const Dashboard = () => {
+    useEffect(() => {
+        document.title = 'Dashboard - MovieBuff'
+    }, [])
+
     return (
         <div>
             <Header />
