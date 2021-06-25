@@ -43,7 +43,10 @@ const Search = () => {
 
     useEffect(() => {
         window.scroll(0, 0)
-        fetchSearch()
+        if(searchText){
+            fetchSearch()
+        }
+        
         // eslint-disable-next-line
     }, [page, type])
 
@@ -102,12 +105,8 @@ const Search = () => {
                         description={content.overview}
                     />
                 ))}
-                {searchText &&
-                    !contents &&
-                    (type ? 
-                        <h2>No Series Found</h2> : 
-                        <h2>No Movies Found</h2>
-                    )
+                {searchText && !contents && 
+                    <h2>Try searching something else</h2>
                 }
             </ContentList>
             {numOfPages > 1 && 

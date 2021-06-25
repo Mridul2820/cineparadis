@@ -13,6 +13,9 @@ const SingleContent = ({ id, poster, title, date, media_type, vote_average, desc
         else if(voteAvg < 7 && voteAvg > 4){
             return "#303f9f"
         }
+        else if(voteAvg === 0){
+            return "#666"
+        }
         else {
             return "#d32f2f"
         }
@@ -37,10 +40,8 @@ const SingleContent = ({ id, poster, title, date, media_type, vote_average, desc
                     <p>{vote_average}</p>
                 </Rating>
                 <span>
-                    {media_type === "movie" ? "Movie" : "TV Series"}
+                    {media_type === "movie" ? "Movie" : "TV Series"} • {new Date(date).getFullYear()}
                 </span>
-                <span>{date}</span>
-
                 <Expand>
                     <p>{truncate(description, 50)}</p>
 
@@ -103,11 +104,11 @@ const Details = styled.div`
 
     b {
         font-size: 17px;
-        padding: 5px 0;
+        margin-bottom: 2px;
     }
 
     span {
-        font-size: 14px;
+        font-size: 13px;
     }
 `
 
@@ -119,10 +120,11 @@ const Watch = styled.p`
 `
 
 const Rating = styled.div`
-    padding: 3px 5px;
+    padding: 1px 5px;
+    margin: 5px 0;
     font-size: 12px;
     border-radius: 50px;
-    width: 55px;
+    width: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
