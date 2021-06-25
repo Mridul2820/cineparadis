@@ -43,6 +43,10 @@ const NavItem = styled(NavLink)`
     display: flex;
     align-items: center;
 
+    &:hover {
+        box-shadow: 2px 4px 10px rgba(0, 0, 0, .2);
+    }
+
     &.active {
         box-shadow: 2px 4px 10px rgba(0, 0, 0, .3);
     }

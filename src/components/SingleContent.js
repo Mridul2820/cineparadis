@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { img300, unavailable } from "../helpers/config";
+import { img300, unavailableLandscape } from "../helpers/config";
 import Badge from '@material-ui/core/Badge';
 import { BiListPlus } from 'react-icons/bi'
 
@@ -29,13 +29,13 @@ const SingleContent = ({ id, poster, title, date, media_type, vote_average, desc
                 color={voteColor(vote_average)}>
             </Badge>
             <img 
-                src={ poster ? `${img300}${poster}` : unavailable} 
+                src={ poster ? `${img300}${poster}` : unavailableLandscape} 
                 alt={title} 
                 className="poster"
             />
 
             <Details>
-                <b className="title">{truncate(title, 40)}</b>
+                <b className="title">{truncate(title, 35)}</b>
                 <span>
                     {media_type === "movie" ? "Movie" : "TV Series"}
                 </span>
@@ -81,6 +81,7 @@ const Content = styled.div`
     }
 
     img {
+        width: 100%;
         border-radius: 5px;
         object-fit: cover;
         vertical-align: bottom;
