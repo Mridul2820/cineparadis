@@ -16,11 +16,13 @@ const Dashboard = lazy(() => import ('./pages/Dashboard'))
 const Trending = lazy(() => import ('./pages/topic/Trending'))
 const Movies = lazy(() => import ('./pages/topic/Movies'))
 const Series = lazy(() => import ('./pages/topic/Series'))
+const Genres = lazy(() => import ('./pages/topic/Genres'))
 const NotFound = lazy(() => import ('./pages/NotFound'))
 
 const App = () => {
     const { user } = useAuthListner()
-    console.log('user', user);
+    // console.log('user', user);
+
     return (
         <UserContext.Provider value={{ user }}>
             <GlobalStyles />
@@ -41,6 +43,7 @@ const App = () => {
                                 <Route path={ROUTES.Trending} component={Trending} />
                                 <Route path={ROUTES.Movies} component={Movies} />
                                 <Route path={ROUTES.Series} component={Series} />
+                                <Route path={ROUTES.Genres} component={Genres} />
                             </Switch>
                             </>
                         ) : <Redirect to={{ pathname: ROUTES.LOGIN }}/>

@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import SingleContent from '../../components/SingleContent'
 import CustomPagination from '../../components/CustomPagination'
-import Genres from '../../components/Genres'
+import GenresChip from '../../components/GenresChip'
 import useGenre from '../../hooks/useGenre'
 
 import { PageTitle, Container, ContentList } from '../../GlobalStyles'
@@ -22,7 +22,6 @@ const Movies = () => {
 
     const genreForURL = useGenre(selectedGenres)
 
-
     const fetchMovies = async () => {
         const {data} = await axios.get(`${movieURL}${apiKey}&page=${page}&with_genres=${genreForURL}`)
 
@@ -37,10 +36,15 @@ const Movies = () => {
         // eslint-disable-next-line
     }, [page, genreForURL])
 
+    useEffect(() => {
+        document.title = 'Movies - MovieBuff'
+    }, [])
+
+
     return (
         <Container>
             <PageTitle>Movies</PageTitle>
-            <Genres 
+            <GenresChip 
                 type="movie"
                 genres={genres} 
                 setGenres={setGenres}

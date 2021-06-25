@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const genresURL = 'https://api.themoviedb.org/3/genre/'
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
 
-const Genres = ({ 
+const GenresChip = ({ 
     type,
     genres, 
     setGenres, 
@@ -84,4 +84,4 @@ const GenreList = styled.div`
     }
 `
 
-export default Genres
+export default GenresChip

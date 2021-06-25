@@ -32,12 +32,13 @@ const Navbar = () => {
 }
 
 const Navmain = styled.nav`
-    padding: 20px;
+    padding: 10px 20px;
     display: flex;
+    flex-wrap: wrap;
 `
 
 const NavItem = styled(NavLink)`
-    margin: 0 10px;
+    margin: 10px;
     padding: 10px;
     border-radius: 5px;
     display: flex;

@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import SingleContent from '../../components/SingleContent'
 import CustomPagination from '../../components/CustomPagination'
-import Genres from '../../components/Genres'
+import GenresChip from '../../components/GenresChip'
 import useGenre from '../../hooks/useGenre'
 
 import { PageTitle, Container, ContentList } from '../../GlobalStyles'
@@ -36,10 +36,14 @@ const Series = () => {
         // eslint-disable-next-line
     }, [page, genreForURL])
 
+    useEffect(() => {
+        document.title = 'Movies - MovieBuff'
+    }, [])
+
     return (
         <Container>
             <PageTitle>TV Series</PageTitle>
-            <Genres 
+            <GenresChip 
                 type="tv"
                 genres={genres} 
                 setGenres={setGenres}

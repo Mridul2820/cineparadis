@@ -15,7 +15,8 @@ const Trending = () => {
 
     const fetchTrending = async () => {
         const {data} = await axios.get(`${trendURL}${apiKey}&page=${page}`)
-        console.log('data', data)
+
+        // console.log('data', data)
         setTrends(data.results)
     }
 
@@ -23,6 +24,10 @@ const Trending = () => {
         fetchTrending()
         // eslint-disable-next-line
     }, [page])
+
+    useEffect(() => {
+        document.title = 'Movies - MovieBuff'
+    }, [])
 
     return (
         <Container>
