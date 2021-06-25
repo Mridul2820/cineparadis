@@ -1,16 +1,20 @@
 import React, { lazy, Suspense } from 'react'
 import GlobalStyles from './GlobalStyles'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import * as ROUTES from './constants/routes'
+
 import UserContext from './context/user'
 import useAuthListner from './hooks/useAuthListner'
-
-import ProtectedRoute from './helpers/ProtectedRoute'
 import IsUserLoggedIn from './helpers/IsUserLoggedIn'
+
+import Header from './components/Header'
+import Navbar from './components/Navbar'
 
 const Login = lazy(() => import ('./pages/Login'))
 const Dashboard = lazy(() => import ('./pages/Dashboard'))
+const Trending = lazy(() => import ('./pages/topic/Trending'))
+const Movies = lazy(() => import ('./pages/topic/Movies'))
 const NotFound = lazy(() => import ('./pages/NotFound'))
 
 const App = () => {
@@ -26,9 +30,19 @@ const App = () => {
                             <Login />
                         </IsUserLoggedIn>
 
-                        <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
-                            <Dashboard />
-                        </ProtectedRoute>
+                        {user ? (
+                            <>
+                            <Header />
+                            <Navbar />
+                
+                            <Switch>
+                                <Route path={ROUTES.DASHBOARD} component={Dashboard} exact />
+                                <Route path={ROUTES.Trending} component={Trending} />
+                                <Route path={ROUTES.Movies} component={Movies} />
+                            </Switch>
+                            </>
+                        ) : <Redirect to={{ pathname: ROUTES.LOGIN }}/>
+                        }
 
                         <Route component={NotFound} />
                     </Switch>

@@ -6,7 +6,7 @@ import * as ROUTES from '../constants/routes'
 const Navbar = () => {
     return (
         <Navmain>
-            <NavLink to={ROUTES.DASHBOARD}>
+            <NavLink to={ROUTES.Trending}>
                 Trending
             </NavLink>
             <NavLink to={ROUTES.Movies}>
