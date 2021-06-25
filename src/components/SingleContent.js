@@ -33,6 +33,7 @@ const SingleContent = ({ id, poster, title, date, media_type, vote_average, desc
             <Details>
                 <b className="title">{truncate(title, 35)}</b>
                 <Rating vote_average={vote_average} voteColor={voteColor}>
+                    <AiFillStar/>
                     <p>{vote_average}</p>
                 </Rating>
                 <span>
@@ -118,14 +119,17 @@ const Watch = styled.p`
 `
 
 const Rating = styled.div`
-    padding: 3px 8px;
-    font-size: 14px;
+    padding: 3px 5px;
+    font-size: 12px;
     border-radius: 50px;
-    width: 50px;
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: ${({ vote_average, voteColor }) => voteColor(vote_average)};
 
     p {
-        /* width: 100%; */
+        margin-left: 5px;
     }
 `
 

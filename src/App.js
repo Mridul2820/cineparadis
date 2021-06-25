@@ -17,6 +17,7 @@ const Trending = lazy(() => import ('./pages/topic/Trending'))
 const Movies = lazy(() => import ('./pages/topic/Movies'))
 const Series = lazy(() => import ('./pages/topic/Series'))
 const Genres = lazy(() => import ('./pages/topic/Genres'))
+const Search = lazy(() => import ('./pages/topic/Search'))
 const NotFound = lazy(() => import ('./pages/NotFound'))
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
                                 <Route path={ROUTES.Movies} component={Movies} />
                                 <Route path={ROUTES.Series} component={Series} />
                                 <Route path={ROUTES.Genres} component={Genres} />
+                                <Route path={ROUTES.Search} component={Search} />
                             </Switch>
                             </>
                         ) : <Redirect to={{ pathname: ROUTES.LOGIN }}/>
