@@ -45,6 +45,8 @@ const GenresChip = ({
     }, [])
 
     return (
+        <Wrap>
+        <p>Select genres for filter</p>
         <GenreList>
             {selectedGenres && selectedGenres?.map(genre => (
                 <Chip
@@ -70,8 +72,15 @@ const GenresChip = ({
                 />
             ))}
         </GenreList>
+        </Wrap>
     )
 }
+
+const Wrap = styled.div`
+    p {
+        text-align: center;
+    }
+`
 
 const GenreList = styled.div`
     padding: 6px 0;

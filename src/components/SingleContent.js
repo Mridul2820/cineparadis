@@ -1,20 +1,20 @@
 import React from 'react'
 import styled from 'styled-components';
 import { img300, unavailableLandscape } from "../helpers/config";
-import Badge from '@material-ui/core/Badge';
 import { BiListPlus } from 'react-icons/bi'
+import { AiFillStar } from 'react-icons/ai'
 
 const SingleContent = ({ id, poster, title, date, media_type, vote_average, description }) => {
 
     const voteColor = (voteAvg) => {
         if(voteAvg > 7){
-            return "primary"
+            return "#388e3c"
         }
         else if(voteAvg < 7 && voteAvg > 4){
-            return "secondary"
+            return "#303f9f"
         }
         else {
-            return "error"
+            return "#d32f2f"
         }
     }
 
@@ -24,10 +24,6 @@ const SingleContent = ({ id, poster, title, date, media_type, vote_average, desc
 
     return (
         <Content id={id} media_type={media_type} >
-            <Badge 
-                badgeContent={vote_average}
-                color={voteColor(vote_average)}>
-            </Badge>
             <img 
                 src={ poster ? `${img300}${poster}` : unavailableLandscape} 
                 alt={title} 
@@ -36,6 +32,9 @@ const SingleContent = ({ id, poster, title, date, media_type, vote_average, desc
 
             <Details>
                 <b className="title">{truncate(title, 35)}</b>
+                <Rating vote_average={vote_average} voteColor={voteColor}>
+                    <p>{vote_average}</p>
+                </Rating>
                 <span>
                     {media_type === "movie" ? "Movie" : "TV Series"}
                 </span>
@@ -118,6 +117,16 @@ const Watch = styled.p`
     align-items: center;
 `
 
+const Rating = styled.div`
+    padding: 3px 8px;
+    font-size: 14px;
+    border-radius: 50px;
+    width: 50px;
+    background-color: ${({ vote_average, voteColor }) => voteColor(vote_average)};
 
+    p {
+        /* width: 100%; */
+    }
+`
 
 export default SingleContent
