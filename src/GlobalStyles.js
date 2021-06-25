@@ -41,7 +41,7 @@ export const PageTitle = styled.h1`
     margin-bottom: 20px;
     color: #222;
 
-    @media only screen and (max-width: $bp-large-3){
+    @media only screen and (max-width: 62em){
         font-size: 6.4vw;
     }
 `
@@ -49,6 +49,12 @@ export const PageTitle = styled.h1`
 export const Container = styled.div`
     padding: 20px 40px;
     margin: 0 auto;
+`
+
+export const ContentList = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 `
 
 export default GlobalStyle

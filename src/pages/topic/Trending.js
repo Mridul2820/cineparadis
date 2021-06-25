@@ -4,8 +4,7 @@ import axios from "axios"
 import SingleContent from '../../components/SingleContent'
 import CustomPagination from '../../components/CustomPagination'
 
-import { PageTitle, Container } from '../../GlobalStyles'
-import styled from "styled-components"
+import { PageTitle, Container, ContentList } from '../../GlobalStyles'
 
 const trendURL = 'https://api.themoviedb.org/3/trending/all/day?'
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
@@ -46,11 +45,5 @@ const Trending = () => {
         </Container>
     )
 }
-
-const ContentList = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-`
 
 export default Trending

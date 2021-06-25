@@ -6,8 +6,7 @@ import CustomPagination from '../../components/CustomPagination'
 import Genres from '../../components/Genres'
 import useGenre from '../../hooks/useGenre'
 
-import styled from 'styled-components'
-import { PageTitle, Container } from '../../GlobalStyles'
+import { PageTitle, Container, ContentList } from '../../GlobalStyles'
 
 const movieURL = 'https://api.themoviedb.org/3/discover/movie?'
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
@@ -71,11 +70,5 @@ const Movies = () => {
         </Container>
     )
 }
-
-const ContentList = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-`
 
 export default Movies
