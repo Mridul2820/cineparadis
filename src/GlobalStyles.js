@@ -33,4 +33,22 @@ export const Button = styled.button`
     }
 `
 
+export const PageTitle = styled.h1`
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    font-size: 2vw;
+    margin-bottom: 20px;
+    color: #222;
+
+    @media only screen and (max-width: $bp-large-3){
+        font-size: 6.4vw;
+    }
+`
+
+export const Container = styled.div`
+    padding: 20px 40px;
+    margin: 0 auto;
+`
+
 export default GlobalStyle
