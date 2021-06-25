@@ -16,7 +16,7 @@ const Trending = () => {
     const fetchTrending = async () => {
         const {data} = await axios.get(`${trendURL}${apiKey}&page=${page}`)
 
-        // console.log('data', data)
+        console.log('data', data)
         setTrends(data.results)
     }
 

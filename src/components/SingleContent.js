@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { img300, unavailableLandscape } from "../helpers/config";
 import { BiListPlus } from 'react-icons/bi'
 import { AiFillStar } from 'react-icons/ai'
@@ -26,7 +27,7 @@ const SingleContent = ({ id, poster, title, date, media_type, vote_average, desc
     }
 
     return (
-        <Content id={id} media_type={media_type} >
+        <Content to={`/${media_type}/${id}`} id={id} media_type={media_type} >
             <img 
                 src={ poster ? `${img300}${poster}` : unavailableLandscape} 
                 alt={title} 
@@ -64,7 +65,7 @@ const Expand = styled.div`
     }
 `
 
-const Content = styled.div`
+const Content = styled(Link)`
     width: 300px;
     margin: 20px;
     transition: all.5s;
