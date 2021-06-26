@@ -39,10 +39,6 @@ const Wrap = styled.div`
     max-width: 300px;
     display: flex;
     flex-direction: column;
-
-    > a > div{
-        margin: 0 0 20px 0;
-    }
 `
 
 export default Recomamded

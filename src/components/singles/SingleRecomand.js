@@ -1,10 +1,11 @@
 import React from 'react'
+import styled from 'styled-components';
 import SingleItem from './SingleItem';
 
 const SingleRecomand = ({ id, poster, title, date, media_type, vote_average, description }) => {
 
     return (
-        <a href={`/${media_type}/${id}`}>
+        <Link href={`/${media_type}/${id}`}>
             <SingleItem
                 poster={poster}
                 title={title} 
@@ -13,8 +14,20 @@ const SingleRecomand = ({ id, poster, title, date, media_type, vote_average, des
                 description={description}
                 media_type={media_type}
             />
-        </a>
+        </Link>
     )
 }
+
+const Link = styled.a`
+    > div {
+        margin: 0 0 20px 0;
+
+        &:hover {
+            transform: scale(1);
+            box-shadow: 3px 6px 10px rgba(0, 0, 0, .5);
+        }
+    }
+`
+
 
 export default SingleRecomand

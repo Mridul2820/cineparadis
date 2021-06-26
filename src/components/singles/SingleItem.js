@@ -69,6 +69,7 @@ const Content = styled.div`
     transition: all.5s;
     position: relative;
     border-radius: 5px;
+    box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.2);
 
     &:hover {
         transform: scale(1.25);
