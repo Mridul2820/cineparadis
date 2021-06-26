@@ -7,7 +7,7 @@ import * as ROUTES from '../constants/routes'
 import FirebaseContext from '../context/firebase'
 import UserContext from '../context/user'
 
-import logo from '../assets/logo.png'
+import logo from '../assets/logo-black.PNG'
 import styled from 'styled-components'
 
 
@@ -24,7 +24,6 @@ const Header = () => {
                 <img src={logo} alt="logo" />
                 <h2>CineParadis</h2>
             </Logo>
-
 
             <HeaderRight>
                 <User>
@@ -68,7 +67,7 @@ const Logo = styled(Link)`
     align-items: center;
 
     img {
-        height: 35px;
+        height: 45px;
         margin-right: 5px;
     }
 `
