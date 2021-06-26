@@ -25,8 +25,6 @@ const Movies = () => {
     const fetchMovies = async () => {
         const {data} = await axios.get(`${movieURL}${apiKey}&page=${page}&with_genres=${genreForURL}`)
 
-        // console.log(data)
-
         setMovies(data.results)
         setNumOfPages(data.total_pages)
     }

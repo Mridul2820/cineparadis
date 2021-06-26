@@ -7,7 +7,7 @@ import styled from 'styled-components';
 const castnCrewURl = 'https://api.themoviedb.org/3/'
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
 
-const CastnCrew = ({ id, type }) => {
+const CastnCrew = ({ id, type, title }) => {
     const [credits, setCredits] = useState()
 
     const fetchCastnCrew = async () => {
@@ -25,6 +25,8 @@ const CastnCrew = ({ id, type }) => {
     }, []);
 
     return (
+        <>
+        <h3 style={{textAlign: 'center'}}>Cast of {title}</h3>
         <CastWrap>
             {credits && credits.map(credit => (
                 <Cast key={credit.id}>
@@ -43,12 +45,14 @@ const CastnCrew = ({ id, type }) => {
                 </Cast>
             ))}
         </CastWrap>
+        </>
     )
 }
 
 const CastWrap = styled.div`
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 `
 
 const Cast = styled.div`

@@ -2,10 +2,12 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Container } from '../../GlobalStyles'
+import styled from 'styled-components'
 
 import MainInfo from '../../components/details/MainInfo'
 import CastnCrew from '../../components/details/CastnCrew'
 import Trailers from '../../components/details/Trailers'
+import FactBox from '../../components/details/FactBox'
 
 const detailURL = 'https://api.themoviedb.org/3/'
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
@@ -43,11 +45,38 @@ const DetailsPage = () => {
 
     return (
         <Container>
-            <MainInfo content={content} />
-            <CastnCrew id={id} type={type} />
-            <Trailers videos={videos} />
+            <MainInfo content={content}  />
+            <DetailInfo>
+                <DetailLeft>
+                    <CastnCrew id={id} type={type} title={content?.name} />
+                    <Trailers videos={videos} />
+                </DetailLeft>
+                <DetailRight>
+                    {content && 
+                        <FactBox 
+                            status={content.status}
+                            release={content.release_date}
+                            lang={content.original_language}
+                            budget={content.budget}
+                            revenue={content.revenue}
+                            runtime={content.runtime}
+                            networks={content.networks}
+                        />
+                    }
+                </DetailRight>
+                
+            </DetailInfo>
+
         </Container>
     )
 }
+
+const DetailInfo = styled.div`
+    display: flex;
+    margin-top: 20px;
+
+`
+const DetailLeft = styled.div``
+const DetailRight = styled.div``
 
 export default DetailsPage
