@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 const Dashboard = () => {
     useEffect(() => {
-        document.title = 'Dashboard - MovieBuff'
+        document.title = 'Dashboard - CineParadis'
     }, [])
 
     return (

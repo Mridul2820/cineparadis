@@ -26,7 +26,7 @@ const Trending = () => {
     }, [page])
 
     useEffect(() => {
-        document.title = 'Movies - MovieBuff'
+        document.title = 'Movies - CineParadis'
     }, [])
 
     return (

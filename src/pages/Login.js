@@ -23,7 +23,7 @@ const Login = () => {
     }
 
     useEffect(() => {
-        document.title = 'Login - MovieBuff'
+        document.title = 'Login - CineParadis'
     }, [])
 
     return (
@@ -32,7 +32,7 @@ const Login = () => {
                 <img src='./assets/movie_night_fldd.svg' alt="banner" />
             </Banner>
             <Text>
-                <h1>MovieBuff</h1>
+                <h1>CineParadis</h1>
                 <Button onClick={handleLogin}>
                     <span>Login With Google</span>
                     <FcGoogle size="25px" />

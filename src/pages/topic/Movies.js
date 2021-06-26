@@ -35,7 +35,7 @@ const Movies = () => {
     }, [page, genreForURL])
 
     useEffect(() => {
-        document.title = 'Movies - MovieBuff'
+        document.title = 'Movies - CineParadis'
     }, [])
 
 

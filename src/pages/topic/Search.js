@@ -51,7 +51,7 @@ const Search = () => {
     }, [page, type])
 
     useEffect(() => {
-        document.title = 'Search - MovieBuff'
+        document.title = 'Search - CineParadis'
     }, [])
 
     return (

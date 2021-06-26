@@ -26,7 +26,7 @@ const GenrePage = () => {
     useEffect(() => {
         fetchDataGen();
 
-        document.title = `${name} - MovieBuff`
+        document.title = `${name} - CineParadis`
         // eslint-disable-next-line
     }, []);
 

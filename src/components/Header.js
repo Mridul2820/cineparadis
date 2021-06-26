@@ -22,7 +22,7 @@ const Header = () => {
         <Container>
             <Logo to={ROUTES.DASHBOARD}>
                 <img src={logo} alt="logo" />
-                <h2>MovieBuff</h2>
+                <h2>CineParadis</h2>
             </Logo>
 
 
