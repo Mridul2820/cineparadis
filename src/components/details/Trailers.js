@@ -35,12 +35,8 @@ const TrailerTitle = styled.h3`
 `
 
 const Iframe = styled.iframe`
-    width: 560px;
+    width: 530px;
     height: 315px;
-
-    @media only screen and (max-width: 75em){
-        width: 100%;
-    }
 
     @media only screen and (max-width: 62em){
         height: 250px;

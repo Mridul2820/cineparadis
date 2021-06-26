@@ -64,9 +64,7 @@ const DetailsPage = () => {
                         />
                     }
                 </DetailRight>
-                
             </DetailInfo>
-
         </Container>
     )
 }

@@ -6,7 +6,7 @@ import formatTime from '../../helpers/formatTime'
 const FactBox = ({ status, release , lang, budget, revenue, runtime, networks }) => {
     return (
         <FactWrap>
-            <h3>Facts</h3>
+            <h2>Facts</h2>
             {status && 
             <FactItem>
                 <b>Status : </b>
@@ -44,18 +44,14 @@ const FactBox = ({ status, release , lang, budget, revenue, runtime, networks })
                 <span>{lang}</span>
             </FactItem>
             }
+
             {runtime && 
             <FactItem>
                 <b>Runtime : </b>
                 <span>{formatTime(runtime)}</span>
             </FactItem>
             }
-            {budget && 
-            <FactItem>
-                <b>Budget : </b>
-                <span>{budget === 0 ? '-' : `$${budget.toLocaleString()}`}</span>
-            </FactItem>
-            }
+            
             {revenue && 
             <FactItem>
                 <b>Revenue : </b>
