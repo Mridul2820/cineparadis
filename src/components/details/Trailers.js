@@ -31,7 +31,7 @@ const TrailerWrap = styled.div`
 
 const TrailerTitle = styled.h3`
     padding: 5px 0;
-    color: #fff ;
+    color: #000 ;
 `
 
 const Iframe = styled.iframe`

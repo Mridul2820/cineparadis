@@ -40,11 +40,11 @@ const Cast = styled.div`
     align-items: center;
     border-left: 5px solid #f99185;
     padding-left: 2px;
-    max-width: 350px;
+    width: 350px;
+    min-width: 280px;
     margin: 15px;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, .3);
     border-radius: 5px;
-    min-width: 280px;
 
     .cast-img {
         width: 50px;

@@ -27,7 +27,7 @@ const SingleContent = ({ id, poster, title, date, media_type, vote_average, desc
     }
 
     return (
-        <Content to={`/${media_type}/${id}`} id={id} media_type={media_type} >
+        <Content to={`/${media_type}/${id}`} >
             <img 
                 src={ poster ? `${img300}${poster}` : unavailableLandscape} 
                 alt={title} 
@@ -38,14 +38,13 @@ const SingleContent = ({ id, poster, title, date, media_type, vote_average, desc
                 <b className="title">{truncate(title, 35)}</b>
                 <Rating vote_average={vote_average} voteColor={voteColor}>
                     <AiFillStar/>
-                    <p>{vote_average}</p>
+                    <p>{Math.round(vote_average * 10) / 10}</p>
                 </Rating>
                 <span>
                     {media_type === "movie" ? "Movie" : "TV Series"} • {new Date(date).getFullYear()}
                 </span>
                 <Expand>
                     <p>{truncate(description, 50)}</p>
-
                     <Watch>
                         <BiListPlus size="16px" /> 
                         Add to watchlist
