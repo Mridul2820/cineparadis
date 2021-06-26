@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { Container } from '../../GlobalStyles'
 
 import MainInfo from '../../components/details/MainInfo'
+import CastnCrew from '../../components/details/CastnCrew'
 import Trailers from '../../components/details/Trailers'
 
 const detailURL = 'https://api.themoviedb.org/3/'
@@ -43,6 +44,7 @@ const DetailsPage = () => {
     return (
         <Container>
             <MainInfo content={content} />
+            <CastnCrew id={id} type={type} />
             <Trailers videos={videos} />
         </Container>
     )
