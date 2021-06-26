@@ -5,6 +5,7 @@ export const PROFILE = '/p/:username';
 export const Trending = '/trending' 
 export const Movies = '/movies' 
 export const Series = '/series' 
+export const TopRated = '/top-rated' 
 export const Genres = '/genres' 
 export const Search = '/Search' 
 

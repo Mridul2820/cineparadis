@@ -20,7 +20,7 @@ const GenrePage = () => {
         );
     
         setContentGens(data.results);
-        console.log("content", data.results);
+        // console.log("content", data.results);
     };
 
     useEffect(() => {

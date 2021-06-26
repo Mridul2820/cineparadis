@@ -31,7 +31,7 @@ const DetailsPage = () => {
         setVideos(data.videos.results);
         setRecomamded(data.recommendations.results);
         setCredits(data.credits.cast)
-        console.log("content", data);
+        // console.log("content", data);
     };
 
     useEffect(() => {
