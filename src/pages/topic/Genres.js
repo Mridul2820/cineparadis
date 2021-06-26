@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import { PageTitle } from '../../GlobalStyles'
@@ -15,8 +16,6 @@ const Genres = () => {
         const { data } = await axios.get(`${genresURL}movie/list?${apiKey}&language=en-US`)
 
         setGenres(data.genres)
-
-        console.log('genres', data)
     }
 
     useEffect(() => {
@@ -31,7 +30,7 @@ const Genres = () => {
             <p>Get Movies and Series by genres</p>
             <GenreList>
             {genres && genres.map(genre => (
-                <GenreItem key={genre.id}>
+                <GenreItem key={genre.id} to={`/genre/${genre.name}/${genre.id}`} >
                     <h3>{genre.name}</h3>
                 </GenreItem>
             ))}
@@ -40,7 +39,7 @@ const Genres = () => {
     )
 }
 
-export const Container = styled.div`
+const Container = styled.div`
     padding: 20px 40px;
     margin: 0 auto;
 
@@ -55,7 +54,7 @@ const GenreList = styled.div`
     flex-wrap: wrap;
 `
 
-const GenreItem = styled.div`
+const GenreItem = styled(Link)`
     margin: 10px 15px;
     padding: 0 10px;
     width: 150px;

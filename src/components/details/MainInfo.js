@@ -38,7 +38,7 @@ const MainInfo = ({ content }) => {
                 </div>
 
                 <div className="chips">
-                    {content.genres.map(genre => (
+                    {content.genres?.map(genre => (
                         <Chip
                             key={genre.id}
                             className="chip"
