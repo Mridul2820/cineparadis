@@ -5,7 +5,7 @@ import { Button, createMuiTheme, Tabs, Tab, TextField, ThemeProvider } from '@ma
 import { AiOutlineSearch } from 'react-icons/ai'
 import { Container, ContentList } from '../../GlobalStyles'
 
-import SingleContent from '../../components/SingleContent';
+import SingleContent from '../../components/singles/SingleContent';
 import CustomPagination from '../../components/CustomPagination';
 
 import styled from 'styled-components'

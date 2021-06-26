@@ -1,11 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { img300, unavailableLandscape } from "../helpers/config";
+import { img300, unavailableLandscape } from "../../helpers/config";
 import { BiListPlus } from 'react-icons/bi'
 import { AiFillStar } from 'react-icons/ai'
 
-const SingleContent = ({ id, poster, title, date, media_type, vote_average, description }) => {
+const SingleItem = ({ poster, title, date, vote_average, description, media_type }) => {
 
     const voteColor = (voteAvg) => {
         if(voteAvg > 7){
@@ -27,7 +26,7 @@ const SingleContent = ({ id, poster, title, date, media_type, vote_average, desc
     }
 
     return (
-        <Content to={`/${media_type}/${id}`} >
+        <Content>
             <img 
                 src={ poster ? `${img300}${poster}` : unavailableLandscape} 
                 alt={title} 
@@ -64,7 +63,7 @@ const Expand = styled.div`
     }
 `
 
-const Content = styled(Link)`
+const Content = styled.div`
     width: 300px;
     margin: 20px;
     transition: all.5s;
@@ -135,4 +134,5 @@ const Rating = styled.div`
     }
 `
 
-export default SingleContent
+export default SingleItem
+

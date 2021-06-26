@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-import SingleContent from '../../components/SingleContent'
+import SingleContent from '../../components/singles/SingleContent'
 import CustomPagination from '../../components/CustomPagination'
 
 import { PageTitle, Container, ContentList } from '../../GlobalStyles'

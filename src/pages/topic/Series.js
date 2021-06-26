@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import SingleContent from '../../components/SingleContent'
+import SingleContent from '../../components/singles/SingleContent'
 import CustomPagination from '../../components/CustomPagination'
 import GenresChip from '../../components/GenresChip'
 import useGenre from '../../hooks/useGenre'

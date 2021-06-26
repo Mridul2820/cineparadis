@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import SingleContent from '../SingleContent'
+import SingleRecomand from '../singles/SingleRecomand'
 import { PageTitle } from '../../GlobalStyles'
 
 const Recomamded = ({ recomamded }) => {
@@ -9,7 +9,7 @@ const Recomamded = ({ recomamded }) => {
             <PageTitle>Recomamded for you</PageTitle>
             <Wrap>
             {recomamded.slice(0,9).map(recom => (
-                <SingleContent
+                <SingleRecomand
                     key={recom.id} 
                     id={recom.id} 
                     poster={recom.backdrop_path} 
@@ -27,6 +27,12 @@ const Recomamded = ({ recomamded }) => {
 
 const Container = styled.div`
     border-top: 1px solid #000;
+
+    ${PageTitle} {
+        font-size: 20px;
+        padding-top: 10px;
+        margin-bottom: 10px;
+    }
 `
 
 const Wrap = styled.div`
@@ -34,7 +40,7 @@ const Wrap = styled.div`
     display: flex;
     flex-direction: column;
 
-    > a {
+    > a > div{
         margin: 0 0 20px 0;
     }
 `

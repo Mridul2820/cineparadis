@@ -41,7 +41,7 @@ const DetailsPage = () => {
 
     return (
         <Container>
-            <MainInfo content={content}  />
+            <MainInfo content={content} />
             <DetailInfo>
                 <DetailLeft>
                     <CastnCrew 
