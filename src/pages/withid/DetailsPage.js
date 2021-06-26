@@ -8,6 +8,7 @@ import MainInfo from '../../components/details/MainInfo'
 import CastnCrew from '../../components/details/CastnCrew'
 import Trailers from '../../components/details/Trailers'
 import FactBox from '../../components/details/FactBox'
+import Recomamded from '../../components/details/Recomamded'
 
 const detailURL = 'https://api.themoviedb.org/3/'
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
@@ -18,28 +19,23 @@ const DetailsPage = () => {
 
     const [content, setContent] = useState()
     const [videos, setVideos] = useState()
+    const [recomamded, setRecomamded] = useState()
+    const [credits, setCredits] = useState()
 
     const fetchData = async () => {
         const { data } = await axios.get(
-          `${detailURL}${type}/${id}?${apiKey}&language=en-US`
+            `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids%2Cvideos%2Crecommendations%2Ccredits`
         );
     
         setContent(data);
+        setVideos(data.videos.results);
+        setRecomamded(data.recommendations.results);
+        setCredits(data.credits.cast)
         console.log("content", data);
-    };
-
-    const fetchVideo = async () => {
-        const { data } = await axios.get(
-          `${detailURL}${type}/${id}/videos?${apiKey}&language=en-US`
-        );
-
-        // console.log(data)
-        setVideos(data.results);
     };
 
     useEffect(() => {
         fetchData();
-        fetchVideo();
         // eslint-disable-next-line
     }, []);
 
@@ -48,7 +44,10 @@ const DetailsPage = () => {
             <MainInfo content={content}  />
             <DetailInfo>
                 <DetailLeft>
-                    <CastnCrew id={id} type={type} title={content?.name} />
+                    <CastnCrew 
+                        credits={credits}
+                        title={content?.name} 
+                    />
                     <Trailers videos={videos} />
                 </DetailLeft>
                 <DetailRight>
@@ -63,6 +62,8 @@ const DetailsPage = () => {
                             networks={content.networks}
                         />
                     }
+
+                    {recomamded && <Recomamded recomamded={recomamded} />}
                 </DetailRight>
             </DetailInfo>
         </Container>

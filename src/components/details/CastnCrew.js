@@ -1,28 +1,8 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
 
 import { img300, noPicture } from "../../helpers/config";
 import styled from 'styled-components';
 
-const castnCrewURl = 'https://api.themoviedb.org/3/'
-const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
-
-const CastnCrew = ({ id, type, title }) => {
-    const [credits, setCredits] = useState()
-
-    const fetchCastnCrew = async () => {
-        const {data} = await axios.get(`${castnCrewURl}${type}/${id}/credits?${apiKey}&language=en-US`)
-
-        setCredits(data.cast)
-
-        // console.log(data.cast)
-    }
-
-
-    useEffect(() => {
-        fetchCastnCrew();
-        // eslint-disable-next-line
-    }, []);
+const CastnCrew = ({ credits, title }) => {
 
     return (
         <>
