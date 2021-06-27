@@ -4,7 +4,15 @@ import { img300, unavailableLandscape } from "../../helpers/config";
 import { BiListPlus } from 'react-icons/bi'
 import { AiFillStar } from 'react-icons/ai'
 
-const SingleItem = ({ poster, title, date, vote_average, description, media_type }) => {
+const SingleItem = ({ 
+    id,
+    poster, 
+    title, 
+    date, 
+    vote_average, 
+    description, 
+    media_type 
+}) => {
 
     const voteColor = (voteAvg) => {
         if(voteAvg > 7){
@@ -23,6 +31,10 @@ const SingleItem = ({ poster, title, date, vote_average, description, media_type
 
     const truncate = (string, n) => {
         return string?.length > n ? string.substr(0, n - 1) + '...' : string
+    }
+
+    const handleWatchlist = (id) => {
+        console.log('watchid', id);
     }
 
     return (
@@ -44,7 +56,7 @@ const SingleItem = ({ poster, title, date, vote_average, description, media_type
                 </span>
                 <Expand>
                     <p>{truncate(description, 50)}</p>
-                    <Watch>
+                    <Watch onClick={handleWatchlist(id)}>
                         <BiListPlus size="16px" /> 
                         Add to watchlist
                     </Watch>

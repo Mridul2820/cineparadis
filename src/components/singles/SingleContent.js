@@ -2,11 +2,20 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import SingleItem from './SingleItem';
 
-const SingleContent = ({ id, poster, title, date, media_type, vote_average, description }) => {
+const SingleContent = ({ 
+    id, 
+    poster, 
+    title, 
+    date, 
+    media_type, 
+    vote_average, 
+    description 
+}) => {
 
     return (
         <Link to={`/${media_type}/${id}`}>
             <SingleItem
+                id={id}
                 poster={poster}
                 title={title} 
                 date={date} 

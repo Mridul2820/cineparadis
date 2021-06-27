@@ -31,7 +31,7 @@ const GenresChip = ({
         const { data } = await axios.get(`${genresURL}${type}/list?${apiKey}&language=en-US`)
 
         setGenres(data.genres)
-        console.log(data)
+        // console.log(data)
     }
 
 

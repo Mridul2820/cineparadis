@@ -2,11 +2,20 @@ import React from 'react'
 import styled from 'styled-components';
 import SingleItem from './SingleItem';
 
-const SingleRecomand = ({ id, poster, title, date, media_type, vote_average, description }) => {
+const SingleRecomand = ({ 
+    id, 
+    poster, 
+    title, 
+    date, 
+    media_type, 
+    vote_average, 
+    description 
+}) => {
 
     return (
         <Link href={`/${media_type}/${id}`}>
             <SingleItem
+                id={id}
                 poster={poster}
                 title={title} 
                 date={date} 
