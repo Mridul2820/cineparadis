@@ -31,7 +31,8 @@ const Login = () => {
                     gmail: createdUser.user.email,
                     fullName: createdUser.user.displayName,
                     userImg: createdUser.user.photoURL,
-                    dateCreated: Date.now()
+                    dateCreated: Date.now(),
+                    watchlist: []
                 });
             }
 
