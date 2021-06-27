@@ -31,13 +31,17 @@ const DetailsPage = () => {
         setVideos(data.videos.results);
         setRecomamded(data.recommendations.results);
         setCredits(data.credits.cast)
-        // console.log("content", data);
     };
 
     useEffect(() => {
         fetchData();
+
         // eslint-disable-next-line
     }, []);
+
+    useEffect(() => {
+        document.title = content ? `${content.name || content.title} - CineParadis` : 'CineParadis'
+    }, [content]);
 
     return (
         <Container>
@@ -46,7 +50,7 @@ const DetailsPage = () => {
                 <DetailLeft>
                     <CastnCrew 
                         credits={credits}
-                        title={content?.name} 
+                        title={content?.name || content?.title} 
                     />
                     <Trailers videos={videos} />
                 </DetailLeft>
@@ -63,7 +67,7 @@ const DetailsPage = () => {
                         />
                     }
 
-                    {recomamded && <Recomamded recomamded={recomamded} />}
+                    {recomamded?.length > 0 && <Recomamded recomamded={recomamded} />}
                 </DetailRight>
             </DetailInfo>
         </Container>

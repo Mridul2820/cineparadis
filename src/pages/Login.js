@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import { FcGoogle } from 'react-icons/fc'
 
 import FirebaseContext from '../context/firebase'
+import { doesGmailExist } from '../services/firebase'
 
 const Login = () => {
     const history = useHistory()
@@ -15,8 +16,27 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            await firebase.auth().signInWithRedirect(provider);
+            const createdUser = await firebase.auth().signInWithPopup(provider);
+            console.log('createdUser', createdUser.user);
+
+            const gmailExists = await doesGmailExist(createdUser.user.email)
+
+
+            if(!gmailExists){
+                await firebase
+                .firestore()
+                .collection('users')
+                .add({
+                    userId: createdUser.user.uid,
+                    gmail: createdUser.user.email,
+                    fullName: createdUser.user.displayName,
+                    userImg: createdUser.user.photoURL,
+                    dateCreated: Date.now()
+                });
+            }
+
             history.push(ROUTES.DASHBOARD)
+
         } catch (error) {
             console.log(error.message)
         }

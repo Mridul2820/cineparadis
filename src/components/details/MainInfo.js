@@ -67,6 +67,11 @@ const Wrap = styled.div`
 
 const Poster = styled.div`
     margin-right: 20px;
+
+    img {
+        object-fit: cover;
+        vertical-align: middle;
+    }
 `
 
 const Details = styled.div`

@@ -4,6 +4,9 @@ import { img300, unavailableLandscape } from "../../helpers/config";
 import { BiListPlus } from 'react-icons/bi'
 import { AiFillStar } from 'react-icons/ai'
 
+import voteColor from '../../helpers/voteColor'
+import truncate from '../../helpers/truncate'
+
 const SingleItem = ({ 
     id,
     poster, 
@@ -13,25 +16,6 @@ const SingleItem = ({
     description, 
     media_type 
 }) => {
-
-    const voteColor = (voteAvg) => {
-        if(voteAvg > 7){
-            return "#388e3c"
-        }
-        else if(voteAvg < 7 && voteAvg > 4){
-            return "#303f9f"
-        }
-        else if(voteAvg === 0){
-            return "#666"
-        }
-        else {
-            return "#d32f2f"
-        }
-    }
-
-    const truncate = (string, n) => {
-        return string?.length > n ? string.substr(0, n - 1) + '...' : string
-    }
 
     const handleWatchlist = (id) => {
         console.log('watchid', id);
@@ -56,7 +40,7 @@ const SingleItem = ({
                 </span>
                 <Expand>
                     <p>{truncate(description, 50)}</p>
-                    <Watch onClick={handleWatchlist(id)}>
+                    <Watch onClick={() => handleWatchlist(id)}>
                         <BiListPlus size="16px" /> 
                         Add to watchlist
                     </Watch>
