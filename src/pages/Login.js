@@ -69,6 +69,10 @@ const Container = styled.div`
     justify-content: space-evenly;
     min-height: 100vh;
     background-color: #212121;
+
+    @media only screen and (max-width: 712px){
+        flex-direction: column-reverse;
+    }
 `
 
 const Text = styled.div`
@@ -80,9 +84,22 @@ const Text = styled.div`
     align-items: center;
     color: #fff;
 
+    @media only screen and (max-width: 956px){
+        width: 50%;
+    }
+
+    @media only screen and (max-width: 712px){
+        width: 90%;
+        padding-right: 0;
+    }
+
     h1 {
         font-size: 60px;
         margin-bottom: 20px;
+
+        @media only screen and (max-width: 450px){
+            font-size: 50px;
+        }
     }
 
     ${Button} {
@@ -92,6 +109,12 @@ const Text = styled.div`
         border: 1px solid #ff6584;
         display: flex;
         align-items: center;
+        white-space: nowrap;
+        transition: all.5s;
+
+        &:hover {
+            transform: scale(1.05);
+        }
 
         span {
             margin-right: 5px;
@@ -103,6 +126,14 @@ const Text = styled.div`
 const Banner = styled.div`
     width: 60%;
     padding: 0 30px;
+
+    @media only screen and (max-width: 956px){
+        width: 50%;
+    }
+
+    @media only screen and (max-width: 712px){
+        width: 90%;
+    }
 
     img {
         width: 100%;

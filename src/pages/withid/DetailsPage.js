@@ -26,6 +26,8 @@ const DetailsPage = () => {
         const { data } = await axios.get(
             `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids%2Cvideos%2Crecommendations%2Ccredits`
         );
+
+        console.log('detaildata', data);
     
         setContent(data);
         setVideos(data.videos.results);
