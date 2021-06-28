@@ -8,7 +8,7 @@ import MainInfo from '../../components/details/MainInfo'
 import CastnCrew from '../../components/details/CastnCrew'
 import Trailers from '../../components/details/Trailers'
 import FactBox from '../../components/details/FactBox'
-import Recomamded from '../../components/details/Recomamded'
+import Recommended from '../../components/details/Recomamded'
 
 const detailURL = 'https://api.themoviedb.org/3/'
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
@@ -19,7 +19,7 @@ const DetailsPage = () => {
 
     const [content, setContent] = useState()
     const [videos, setVideos] = useState()
-    const [recomamded, setRecomamded] = useState()
+    const [recommended, setRecommended] = useState()
     const [credits, setCredits] = useState()
 
     const fetchData = async () => {
@@ -29,7 +29,7 @@ const DetailsPage = () => {
     
         setContent(data);
         setVideos(data.videos.results);
-        setRecomamded(data.recommendations.results);
+        setRecommended(data.recommendations.results);
         setCredits(data.credits.cast)
     };
 
@@ -67,7 +67,7 @@ const DetailsPage = () => {
                         />
                     }
 
-                    {recomamded?.length > 0 && <Recomamded recomamded={recomamded} />}
+                    {recommended?.length > 0 && <Recommended recommended={recommended} />}
                 </DetailRight>
             </DetailInfo>
         </Container>

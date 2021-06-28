@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import SingleRecomand from '../singles/SingleRecomand'
 import { PageTitle } from '../../GlobalStyles'
 
-const Recomamded = ({ recomamded }) => {
+const Recommended = ({ recommended }) => {
     return (
         <Container>
-            <PageTitle>Recomamded for you</PageTitle>
+            <PageTitle>Recommended for you</PageTitle>
             <Wrap>
-            {recomamded.slice(0,9).map(recom => (
+            {recommended.slice(0,9).map(recom => (
                 <SingleRecomand
                     key={recom.id} 
                     id={recom.id} 
@@ -41,4 +41,4 @@ const Wrap = styled.div`
     flex-direction: column;
 `
 
-export default Recomamded
+export default Recommended

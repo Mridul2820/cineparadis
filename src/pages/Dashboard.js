@@ -39,9 +39,9 @@ const Dashboard = () => {
                     ))}
                 </ContentList>
             ) : (
-                <p>You don't have any movie of series in your watch list. Go to any of section above and add something to your list</p>
+                <p>Empty Much? Start adding movies/series to your watchlist and they will appear here.</p>
             ) : (
-                <p>Getting Your list</p>
+                <p>Fetching Your list</p>
             )
             }
         </Container>
