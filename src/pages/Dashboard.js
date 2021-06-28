@@ -14,8 +14,6 @@ const Dashboard = () => {
             const response = await getUserWatchlist(userId)
 
             setListWatch(response[0].watchlist)
-
-            // console.log('response', response[0].watchlist);
         }
 
         getWatchlist()

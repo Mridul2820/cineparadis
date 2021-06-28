@@ -27,6 +27,8 @@ const SingleContent = ({
         const userId = user.uid
 
         await updateProfileWatchlist( userId, id, media_type )
+
+        alert('Added to You Watchlist. Go to Your dashboard')
     }
 
     return (
