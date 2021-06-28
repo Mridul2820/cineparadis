@@ -34,6 +34,7 @@ const WatchItem = ({ id, type }) => {
                     date={content.release_date || content.first_air_date} 
                     vote_average={content.vote_average}
                     description={content.overview}
+                    showDeleteIcon={true}
                 />
             }
         </div>

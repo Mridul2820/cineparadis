@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { img300, unavailableLandscape } from "../../helpers/config";
 import { BiListPlus } from 'react-icons/bi'
 import { AiFillStar } from 'react-icons/ai'
+import { BsFillTrashFill } from 'react-icons/bs'
 
 import voteColor from '../../helpers/voteColor'
 import truncate from '../../helpers/truncate'
@@ -19,7 +20,9 @@ const SingleContent = ({
     date, 
     media_type, 
     vote_average, 
-    description 
+    description,
+    showDeleteIcon,
+    showWatch
 }) => {
     const { user }  = useContext(UserContext)
 
@@ -31,6 +34,10 @@ const SingleContent = ({
         alert('Added to You Watchlist. Go to Your dashboard')
     }
 
+    const handleDelete = async(id, media_type) => {
+        console.log('delete', id, media_type);
+    }
+
     return (
         <Content>
             <img 
@@ -38,6 +45,12 @@ const SingleContent = ({
                 alt={title} 
                 className="poster"
             />
+
+            {showDeleteIcon && 
+                <DeleteIcon onClick={() => handleDelete(id, media_type)}>
+                    <BsFillTrashFill />
+                </DeleteIcon>
+            }
 
             <Details>
                 <Link to={`/${media_type}/${id}`}>
@@ -53,10 +66,12 @@ const SingleContent = ({
                 
                 <Expand>
                     <p>{truncate(description, 50)}</p>
+                    {showWatch && 
                     <Watch onClick={() => handleWatchlist(id, media_type)}>
                         <BiListPlus size="16px" /> 
                         Add to watchlist
                     </Watch>
+                    }
                 </Expand>
             </Details>
         </Content>
@@ -70,6 +85,23 @@ const Expand = styled.div`
     p {
         font-size: 10px;
     }
+`
+
+const DeleteIcon = styled.button`
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: #fff;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
 `
 
 const Content = styled.div`

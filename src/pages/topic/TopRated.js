@@ -43,6 +43,7 @@ const TopRated = () => {
                         media_type="movie"
                         vote_average={trend.vote_average}
                         description={trend.overview}
+                        showWatch={true}
                     />
                 ))}
             </ContentList>

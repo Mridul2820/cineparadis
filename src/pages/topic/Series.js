@@ -62,6 +62,7 @@ const Series = () => {
                         media_type="tv"
                         vote_average={tv.vote_average}
                         description={tv.overview}
+                        showWatch={true}
                     />
                 ))}
             </ContentList>

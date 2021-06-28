@@ -44,6 +44,7 @@ const GenrePage = () => {
                         media_type="movie"
                         vote_average={content.vote_average}
                         description={content.overview}
+                        showWatch={true}
                     />
                 ))}
             </ContentList>

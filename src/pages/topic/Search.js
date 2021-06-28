@@ -103,6 +103,7 @@ const Search = () => {
                         media_type={type ? "tv" : "movie"}
                         vote_average={content.vote_average}
                         description={content.overview}
+                        showWatch={true}
                     />
                 ))}
                 {searchText && !contents && 

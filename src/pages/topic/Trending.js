@@ -43,6 +43,7 @@ const Trending = () => {
                         media_type={trend.media_type}
                         vote_average={trend.vote_average}
                         description={trend.overview}
+                        showWatch={true}
                     />
                 ))}
             </ContentList>

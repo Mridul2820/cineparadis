@@ -77,7 +77,6 @@ const Content = styled.div`
     box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.2);
 
     &:hover {
-        transform: scale(1.25);
         z-index: 50;
         box-shadow: 3px 6px 10px rgba(0, 0, 0, .5);
 
