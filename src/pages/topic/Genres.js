@@ -43,6 +43,10 @@ const Container = styled.div`
     padding: 20px 40px;
     margin: 0 auto;
 
+    @media only screen and (max-width: 480px){
+        padding: 10px ;
+    }
+
     p {
         text-align: center;
         margin-bottom: 10px;
@@ -52,6 +56,7 @@ const Container = styled.div`
 const GenreList = styled.div`
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 `
 
 const GenreItem = styled(Link)`
@@ -68,6 +73,11 @@ const GenreItem = styled(Link)`
     color: #fff;
     cursor: pointer;
     transition: all .5s;
+    white-space: nowrap;
+
+    @media only screen and (max-width: 480px){
+        margin: 10px 8px;
+    }
 
     &:hover {
         box-shadow: 3px 6px 10px rgba(0,0,0,.4);

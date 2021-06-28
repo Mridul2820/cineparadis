@@ -70,7 +70,7 @@ const Expand = styled.div`
 
 const Content = styled.div`
     width: 300px;
-    margin: 20px;
+    margin: 20px 0;
     transition: all.5s;
     position: relative;
     border-radius: 5px;

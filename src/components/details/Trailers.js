@@ -38,12 +38,13 @@ const Iframe = styled.iframe`
     width: 530px;
     height: 315px;
 
-    @media only screen and (max-width: 62em){
-        height: 250px;
+    @media only screen and (max-width: 956em){
+        width: 100%;
     }
 
-    @media only screen and (max-width: 50em){
+    @media only screen and (max-width: 768px){
         width: 100%;
+        height: 250px;
     }
 `
 

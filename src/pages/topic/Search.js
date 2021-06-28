@@ -125,10 +125,22 @@ const SearchBox = styled.div`
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+
+    @media only screen and (max-width: 768px){
+        flex-direction: column;
+    }
+
+    .MuiTab-wrapper {
+        white-space: nowrap;
+    }
 `
 
 const SearchMain = styled.div`
     margin-right: 50px;
+
+    @media only screen and (max-width: 768px){
+        margin-right: 0;
+    }
 
     .search-btn {
         padding: 17px 12px;
