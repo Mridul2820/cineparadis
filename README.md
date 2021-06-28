@@ -1,6 +1,6 @@
 #  CineParadis
 
-## [Demo](https://cineparadis.vercel.app/login)
+## [Project Demo](https://cineparadis.vercel.app/login)
 
 ### Objective : 
 - **Our goal is to come up with a website that will provide trivial information about movies and web shows.**
