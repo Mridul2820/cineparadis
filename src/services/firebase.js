@@ -42,3 +42,25 @@ export async function updateProfileWatchlist( userId, watchId, watchType ) {
             watchlist: FieldValue.arrayUnion({ id: watchId, type: watchType })
         });
 }
+
+export async function deleteItemFromWatchlist( userId, watchId, watchType ) {
+
+    const result = await firebase
+        .firestore()
+        .collection('users')
+        .where('userId', '==', userId)
+        .where('watchlist', 'array-contains', watchId)
+        .get();
+
+    const getDocId =  result.docs.map((list) => ({
+        docId: list.id
+    }));
+
+    return firebase
+        .firestore()
+        .collection('users')
+        .doc(getDocId[0].docId)
+        .update({
+            watchlist: FieldValue.arrayRemove({ id: watchId, type: watchType })
+        });
+}

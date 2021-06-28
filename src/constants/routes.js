@@ -9,6 +9,8 @@ export const TopRated = '/top-rated'
 export const Genres = '/genres' 
 export const Search = '/Search' 
 
+export const Chats = '/chats' 
+
 export const Details = '/:type/:id'
 export const GenreID = '/genre/:name/:gid'
 

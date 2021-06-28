@@ -20,6 +20,8 @@ const TopRated = lazy(() => import ('./pages/topic/TopRated'))
 const Genres = lazy(() => import ('./pages/topic/Genres'))
 const Search = lazy(() => import ('./pages/topic/Search'))
 
+const ChatPage = lazy(() => import ('./pages/ChatPage'))
+
 const DetailsPage = lazy(() => import ('./pages/withid/DetailsPage'))
 const GenrePage = lazy(() => import ('./pages/withid/GenrePage'))
 
@@ -52,6 +54,8 @@ const App = () => {
                             <Route path={ROUTES.TopRated} component={TopRated} exact/>
                             <Route path={ROUTES.Genres} component={Genres} exact/>
                             <Route path={ROUTES.Search} component={Search} />
+
+                            <Route path={ROUTES.Chats} component={ChatPage} />
                             
                             <Route path={ROUTES.GenreID} component={GenrePage} />
 

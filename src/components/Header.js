@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, NavLink, useHistory } from 'react-router-dom'
 import { Button } from '../GlobalStyles'
 
 import * as ROUTES from '../constants/routes'
@@ -9,6 +9,8 @@ import UserContext from '../context/user'
 
 import logo from '../assets/logo-black.PNG'
 import styled from 'styled-components'
+
+import { IoChatbubblesOutline } from 'react-icons/io5'
 
 
 const Header = () => {
@@ -26,6 +28,11 @@ const Header = () => {
             </Logo>
 
             <HeaderRight>
+                <Chat to={ROUTES.Chats}>
+                    <IoChatbubblesOutline />
+                    <span>Chats</span>
+                </Chat>
+
                 <User>
                     <img src={user.photoURL} alt="user" />
                 </User>
@@ -86,6 +93,25 @@ const User = styled.div`
 
     img {
         width: 100%;
+    }
+`
+
+const Chat = styled(NavLink)`
+    margin-right: 30px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, .2);
+    padding: 5px 7px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.active,
+    &:hover {
+        box-shadow: 2px 4px 10px rgba(0, 0, 0, .3);
+    }
+
+    span {
+        margin-left: 5px;
     }
 `
 

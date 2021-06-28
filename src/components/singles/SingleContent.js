@@ -35,6 +35,10 @@ const SingleContent = ({
     }
 
     const handleDelete = async(id, media_type) => {
+        // const userId = user.uid
+
+        // await deleteItemFromWatchlist( userId, id, media_type )
+
         console.log('delete', id, media_type);
     }
 

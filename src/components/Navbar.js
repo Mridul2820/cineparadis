@@ -5,7 +5,7 @@ import * as ROUTES from '../constants/routes'
 
 
 // Icons
-import { AiOutlineFire, AiOutlineSearch, AiFillStar } from 'react-icons/ai'
+import { AiOutlineFire, AiOutlineSearch, AiOutlineStar } from 'react-icons/ai'
 import { RiMovie2Line, RiFileListLine } from 'react-icons/ri'
 import { FaTv } from 'react-icons/fa'
 
@@ -22,7 +22,7 @@ const Navbar = () => {
                 <FaTv /> <span>Series</span>
             </NavItem>
             <NavItem to={ROUTES.TopRated} activeClassName="active">
-                <AiFillStar /> <span>Top Rated</span>
+                <AiOutlineStar /> <span>Top Rated</span>
             </NavItem>
             <NavItem to={ROUTES.Genres} activeClassName="active">
                 <RiFileListLine /> <span>Genres</span>
