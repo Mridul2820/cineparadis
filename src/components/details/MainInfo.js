@@ -86,10 +86,21 @@ const Wrap = styled.div`
     background-size: cover;
     background-position: center center;
     display: flex;
+
+    @media only screen and (max-width: 640px){
+        flex-direction: column;
+    }
 `
 
 const Poster = styled.div`
     margin-right: 20px;
+
+    @media only screen and (max-width: 640px){
+        margin-right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
     img {
         object-fit: cover;
