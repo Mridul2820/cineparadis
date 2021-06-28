@@ -38,6 +38,14 @@ const Navmain = styled.nav`
     padding: 10px 20px;
     display: flex;
     flex-wrap: wrap;
+
+    @media only screen and (max-width: 956px){
+        justify-content: center;
+    }
+
+    @media only screen and (max-width: 480px){
+        padding: 10px 0;
+    }
 `
 
 const NavItem = styled(NavLink)`
@@ -46,6 +54,10 @@ const NavItem = styled(NavLink)`
     border-radius: 5px;
     display: flex;
     align-items: center;
+
+    @media only screen and (max-width: 480px){
+        margin: 5px;
+    }
 
     &:hover {
         box-shadow: 2px 4px 10px rgba(0, 0, 0, .2);

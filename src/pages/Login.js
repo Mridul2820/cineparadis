@@ -97,7 +97,7 @@ const Text = styled.div`
         font-size: 60px;
         margin-bottom: 20px;
 
-        @media only screen and (max-width: 450px){
+        @media only screen and (max-width: 480px){
             font-size: 50px;
         }
     }

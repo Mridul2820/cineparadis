@@ -77,6 +77,12 @@ const Logo = styled(Link)`
         height: 45px;
         margin-right: 5px;
     }
+
+    h2 {
+        @media only screen and (max-width: 480px){
+            display: none;
+        }
+    }
 `
 
 const HeaderRight = styled.div`
@@ -105,6 +111,10 @@ const Chat = styled(NavLink)`
     justify-content: center;
     align-items: center;
 
+    @media only screen and (max-width: 375px){
+        margin-right: 15px;
+    }
+
     &.active,
     &:hover {
         box-shadow: 2px 4px 10px rgba(0, 0, 0, .3);
@@ -112,6 +122,10 @@ const Chat = styled(NavLink)`
 
     span {
         margin-left: 5px;
+
+        @media only screen and (max-width: 375px){
+            display: none;
+        }
     }
 `
 

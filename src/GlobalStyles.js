@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export const Button = styled.button`
-    margin: 8px 40px;
+    margin: 8px;
     border: 1px solid transparent;
     background-color: #0095f6;
     color: #fff;
@@ -46,14 +46,22 @@ export const PageTitle = styled.h1`
     margin-bottom: 20px;
     color: #222;
 
-    @media only screen and (max-width: 62em){
-        font-size: 6.4vw;
+    @media only screen and (max-width: 956px){
+        font-size: 4vw;
+    }
+
+    @media only screen and (max-width: 480px){
+        font-size: 25px;
     }
 `
 
 export const Container = styled.div`
     padding: 20px 40px;
     margin: 0 auto;
+
+    @media only screen and (max-width: 480px){
+        padding: 20px 10px;
+    }
 `
 
 export const ContentList = styled.div`

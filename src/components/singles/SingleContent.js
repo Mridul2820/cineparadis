@@ -86,6 +86,10 @@ const Expand = styled.div`
     visibility: hidden;
     margin-top: 5px;
 
+    @media only screen and (max-width: 480px){
+        visibility: visible;
+    }
+
     p {
         font-size: 10px;
     }
@@ -116,10 +120,18 @@ const Content = styled.div`
     border-radius: 5px;
     box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.2);
 
+    @media only screen and (max-width: 480px){
+        margin: 10px 5px;
+    }
+
     &:hover {
         transform: scale(1.25);
         z-index: 50;
         box-shadow: 3px 6px 10px rgba(0, 0, 0, .5);
+
+        @media only screen and (max-width: 480px){
+            transform: scale(1);
+        }
 
         ${Expand} {
             visibility: visible;
