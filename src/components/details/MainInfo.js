@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { img300, img500, unavailable } from "../../helpers/config";
 import { Chip } from '@material-ui/core'
 
+import { GrFacebook, GrInstagram, GrTwitter } from 'react-icons/gr'
+
 const MainInfo = ({ content }) => {
     return (
         <>
@@ -52,6 +54,27 @@ const MainInfo = ({ content }) => {
                 <p className="description">
                     {content.overview}
                 </p>
+                
+                <Social>
+                    {content?.external_ids?.facebook_id && 
+                    <a target="_blank" rel="noreferrer" href={`https://www.facebook.com/${content.external_ids.facebook_id}`}>
+                        <GrFacebook size="22px" />
+                    </a>
+                    }
+
+                    {content?.external_ids?.instagram_id && 
+
+                    <a target="_blank" rel="noreferrer" href={`https://www.instagram.com/${content.external_ids.instagram_id}`}>
+                        <GrInstagram size="22px"/>
+                    </a>
+                    }
+
+                    {content?.external_ids?.twitter_id && 
+                    <a target="_blank" rel="noreferrer" href={`https://www.twitter.com/${content.external_ids.twitter_id}`}>
+                        <GrTwitter size="22px"/>
+                    </a>
+                    }
+                </Social>
             </Details>
         </Wrap>
         }
@@ -103,6 +126,15 @@ const Details = styled.div`
 
     .chip{
         margin: 10px 5px;
+    }
+`
+
+const Social = styled.div`
+    display: flex;
+    margin-top: 20px;
+
+    a {
+        margin-right: 15px;
     }
 `
 

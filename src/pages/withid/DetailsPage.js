@@ -10,6 +10,10 @@ import Trailers from '../../components/details/Trailers'
 import FactBox from '../../components/details/FactBox'
 import Recommended from '../../components/details/Recomamded'
 
+// import { AiFillYoutube, AiFillHeart } from 'react-icons/ai'
+// import { BsFillPeopleFill } from 'react-icons/bs'
+// import { SiCodefactor } from 'react-icons/si'
+
 const detailURL = 'https://api.themoviedb.org/3/'
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
 
@@ -48,6 +52,9 @@ const DetailsPage = () => {
     return (
         <Container>
             <MainInfo content={content} />
+            <TopTabs >
+
+            </TopTabs>
             <DetailInfo>
                 <DetailLeft>
                     <CastnCrew 
@@ -79,6 +86,20 @@ const DetailsPage = () => {
 const DetailInfo = styled.div`
     display: flex;
     margin-top: 20px;
+
+    @media only screen and (max-width: 768px){
+        display: none;
+    }
+
+`
+const TopTabs = styled.div`
+    display: none;
+
+    @media only screen and (max-width: 768px){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 
 `
 const DetailLeft = styled.div``

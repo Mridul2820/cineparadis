@@ -66,7 +66,7 @@ const Container = styled.div`
     position: sticky;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 10000;
 `
 
 const Logo = styled(Link)`
