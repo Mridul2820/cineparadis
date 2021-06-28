@@ -22,14 +22,23 @@ export async function getUserWatchlist(userId) {
     }));
 }
 
-export async function updateProfileWatchlist( userID, isAddToList, watchId, watchType ) {
+export async function updateProfileWatchlist( userId, watchId, watchType ) {
+
+    const result = await firebase
+        .firestore()
+        .collection('users')
+        .where('userId', '==', userId)
+        .get();
+
+    const getDocId =  result.docs.map((list) => ({
+        docId: list.id
+    }));
+
     return firebase
         .firestore()
         .collection('users')
-        .doc(userID)
+        .doc(getDocId[0].docId)
         .update({
-            watchlist: isAddToList
-            ? FieldValue.arrayRemove({ watchId: watchId, watchType: watchType })
-            : FieldValue.arrayUnion({ watchId: watchId, watchType: watchType })
+            watchlist: FieldValue.arrayUnion({ id: watchId, type: watchType })
         });
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -9,6 +9,9 @@ import { AiFillStar } from 'react-icons/ai'
 import voteColor from '../../helpers/voteColor'
 import truncate from '../../helpers/truncate'
 
+import UserContext from '../../context/user'
+import { updateProfileWatchlist } from '../../services/firebase';
+
 const SingleContent = ({ 
     id, 
     poster, 
@@ -18,9 +21,12 @@ const SingleContent = ({
     vote_average, 
     description 
 }) => {
+    const { user }  = useContext(UserContext)
 
-    const handleWatchlist = (id) => {
-        console.log('watchid', id);
+    const handleWatchlist = async( id, media_type) => {
+        const userId = user.uid
+
+        await updateProfileWatchlist( userId, id, media_type )
     }
 
     return (
@@ -45,7 +51,7 @@ const SingleContent = ({
                 
                 <Expand>
                     <p>{truncate(description, 50)}</p>
-                    <Watch onClick={() => handleWatchlist(id)}>
+                    <Watch onClick={() => handleWatchlist(id, media_type)}>
                         <BiListPlus size="16px" /> 
                         Add to watchlist
                     </Watch>

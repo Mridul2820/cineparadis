@@ -30,7 +30,7 @@ const Dashboard = () => {
     return (
         <Container>
             <PageTitle>Watchlist</PageTitle>
-            {listWatch?.length > 0 ? (
+            {listWatch? listWatch.length > 0 ? (
                 <ContentList>
                     {listWatch.map(listwt => (
                         <WatchItem 
@@ -42,6 +42,8 @@ const Dashboard = () => {
                 </ContentList>
             ) : (
                 <p>You don't have any movie of series in your watch list. Go to any of section above and add something to your list</p>
+            ) : (
+                <p>Getting Your list</p>
             )
             }
         </Container>

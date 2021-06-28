@@ -13,8 +13,6 @@ const WatchItem = ({ id, type }) => {
             `${movieURL}${type}/${id}?${apiKey}&language=en`
         );
 
-        console.log('data' , `${movieURL}${type}/${id}?${apiKey}&language=en`);
-    
         setContent(data)
     };
 
