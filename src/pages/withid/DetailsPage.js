@@ -9,9 +9,9 @@ import Trailers from '../../components/details/Trailers'
 import FactBox from '../../components/details/FactBox'
 import Recommended from '../../components/details/Recomamded'
 
-// import { AiFillYoutube, AiFillHeart } from 'react-icons/ai'
-// import { BsFillPeopleFill } from 'react-icons/bs'
-// import { SiCodefactor } from 'react-icons/si'
+import { AiFillYoutube, AiFillHeart } from 'react-icons/ai'
+import { BsFillPeopleFill } from 'react-icons/bs'
+import { SiCodefactor } from 'react-icons/si'
 
 const detailURL = 'https://api.themoviedb.org/3/'
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
@@ -38,8 +38,12 @@ const DetailsPage = () => {
         setCredits(data.credits.cast)
     };
 
+    const [width, setWidth] = React.useState(window.innerWidth);
+    const breakpoint = 768;
+
     useEffect(() => {
         fetchData();
+        window.addEventListener("resize", () => setWidth(window.innerWidth));
 
         // eslint-disable-next-line
     }, []);
@@ -48,12 +52,81 @@ const DetailsPage = () => {
         document.title = content ? `${content.name || content.title} - CineParadis` : 'CineParadis'
     }, [content]);
 
+    // Tabs
+    const [active, setActive] = useState(0);
+
+    const handleClick = e => {
+        const index = parseInt(e.target.id, 0);
+        if (index !== active) {
+            setActive(index);
+        }
+    };
+
     return (
         <Container>
             <MainInfo content={content} />
+            {width < breakpoint ?
             <TopTabs >
+                <Tabs>
+                    <Tab 
+                        onClick={handleClick} 
+                        active={active === 0} 
+                        id={0}
+                    >
+                        <BsFillPeopleFill size="25px" />
+                    </Tab>
 
+                    <Tab 
+                        onClick={handleClick} 
+                        active={active === 1} 
+                        id={1}
+                    >
+                        <SiCodefactor />
+                    </Tab>
+                    <Tab 
+                        onClick={handleClick} 
+                        active={active === 2} 
+                        id={2}
+                    >
+                        <AiFillYoutube/>  
+                    </Tab>
+                    <Tab 
+                        onClick={handleClick} 
+                        active={active === 3} 
+                        id={3}
+                    >
+                        <AiFillHeart />
+                    </Tab>
+                </Tabs>
+                <>
+                    <Content active={active === 0}>
+                        <CastnCrew 
+                            credits={credits}
+                            title={content?.name || content?.title} 
+                        />
+                    </Content>
+                    <Content active={active === 1}>
+                        {content && 
+                            <FactBox 
+                                status={content.status}
+                                release={content.release_date}
+                                lang={content.original_language}
+                                budget={content.budget}
+                                revenue={content.revenue}
+                                runtime={content.runtime}
+                                networks={content.networks}
+                            />
+                        }
+                    </Content>
+                    <Content active={active === 2}>
+                        <Trailers videos={videos} />
+                    </Content>
+                    <Content active={active === 3}>
+                        {recommended?.length > 0 && <Recommended recommended={recommended} />}
+                    </Content>
+                </>
             </TopTabs>
+            :
             <DetailInfo>
                 <DetailLeft>
                     <CastnCrew 
@@ -78,6 +151,7 @@ const DetailsPage = () => {
                     {recommended?.length > 0 && <Recommended recommended={recommended} />}
                 </DetailRight>
             </DetailInfo>
+            }
         </Container>
     )
 }
@@ -109,6 +183,35 @@ const TopTabs = styled.div`
     }
 
 `
+
+const Tabs = styled.div`
+    overflow: hidden;
+    background: #fff;
+    height: 2.2em;
+    display: flex;
+    justify-content: center;
+`;
+
+const Tab = styled.button`
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 20%;
+    position: relative;
+
+    margin-right: 0.1em;
+    font-size: 1em;
+    border: ${props => (props.active ? "1px solid #ccc" : "")};
+    border-bottom: ${props => (props.active ? "none" : "")};
+    background-color: ${props => (props.active ? "white" : "lightgray")};
+    transition: background-color 0.5s ease-in-out;
+`
+
+const Content = styled.div`
+    ${props => (props.active ? "" : "display: none")}
+`
+
+
 const DetailLeft = styled.div``
 const DetailRight = styled.div``
 

@@ -39,6 +39,12 @@ const Wrap = styled.div`
     max-width: 300px;
     display: flex;
     flex-direction: column;
+
+    @media only screen and (max-width: 768px){
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
 `
 
 export default Recommended
