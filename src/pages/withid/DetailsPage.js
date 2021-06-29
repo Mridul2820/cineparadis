@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Container } from '../../GlobalStyles'
 import styled from 'styled-components'
 
 import MainInfo from '../../components/details/MainInfo'
@@ -83,6 +82,15 @@ const DetailsPage = () => {
     )
 }
 
+const Container = styled.div`
+    padding: 20px 40px;
+    margin: 0 auto;
+
+    @media only screen and (max-width: 480px){
+        padding: 10px 0;
+    }
+`
+
 const DetailInfo = styled.div`
     display: flex;
     margin-top: 20px;
@@ -90,7 +98,6 @@ const DetailInfo = styled.div`
     @media only screen and (max-width: 768px){
         display: none;
     }
-
 `
 const TopTabs = styled.div`
     display: none;

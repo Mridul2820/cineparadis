@@ -112,21 +112,32 @@ const Details = styled.div`
     color: #fff;
     padding: 20px 10px;
 
+    @media only screen and (max-width: 640px){
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px 25px;
+    }
+
     .title {
         font-size: 3.5vw;
         text-align: center;
         margin-bottom: 15px;
         color: #fff ;
 
-        @media only screen and (min-width: $bp-medium-1){
+        @media only screen and (min-width: 956px){
             font-size: 3.5vw;
+        }
+
+        @media only screen and (min-width: 480px){
+            font-size: 24px;
         }
     }
 
     .description {
         font-size: 17px;
 
-        @media only screen and (min-width: $bp-medium-1){
+        @media only screen and (min-width: 956px){
             font-size: 22px;
         }
     }
