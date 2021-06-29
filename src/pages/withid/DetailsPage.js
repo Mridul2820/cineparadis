@@ -98,7 +98,7 @@ const DetailsPage = () => {
                         active={active === 3} 
                         id={3}
                     >
-                        Recomanded
+                        More
                         {/* <AiFillHeart size="24px" /> */}
                     </Tab>
                 </Tabs>
