@@ -38,10 +38,10 @@ const Navmain = styled.nav`
     padding: 10px 20px;
     display: flex;
     /* flex-wrap: wrap; */
-    overflow-x: scroll;
 
     @media only screen and (max-width: 956px){
         /* justify-content: center; */
+        overflow-x: scroll;
     }
 
     @media only screen and (max-width: 480px){

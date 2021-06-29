@@ -9,9 +9,9 @@ import Trailers from '../../components/details/Trailers'
 import FactBox from '../../components/details/FactBox'
 import Recommended from '../../components/details/Recomamded'
 
-import { AiFillYoutube, AiFillHeart } from 'react-icons/ai'
-import { BsFillPeopleFill } from 'react-icons/bs'
-import { SiCodefactor } from 'react-icons/si'
+// import { AiFillYoutube, AiFillHeart } from 'react-icons/ai'
+// import { BsFillPeopleFill } from 'react-icons/bs'
+// import { SiCodefactor } from 'react-icons/si'
 
 const detailURL = 'https://api.themoviedb.org/3/'
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
@@ -73,7 +73,8 @@ const DetailsPage = () => {
                         active={active === 0} 
                         id={0}
                     >
-                        <BsFillPeopleFill size="25px" />
+                        Cast
+                        {/* <BsFillPeopleFill size="24px" /> */}
                     </Tab>
 
                     <Tab 
@@ -81,21 +82,24 @@ const DetailsPage = () => {
                         active={active === 1} 
                         id={1}
                     >
-                        <SiCodefactor />
+                        Facts
+                        {/* <SiCodefactor size="20px" /> */}
                     </Tab>
                     <Tab 
                         onClick={handleClick} 
                         active={active === 2} 
                         id={2}
                     >
-                        <AiFillYoutube/>  
+                        Trailers
+                        {/* <AiFillYoutube size="24px"/>   */}
                     </Tab>
                     <Tab 
                         onClick={handleClick} 
                         active={active === 3} 
                         id={3}
                     >
-                        <AiFillHeart />
+                        Recomanded
+                        {/* <AiFillHeart size="24px" /> */}
                     </Tab>
                 </Tabs>
                 <>
@@ -187,10 +191,10 @@ const TopTabs = styled.div`
 const Tabs = styled.div`
     overflow: hidden;
     background: #fff;
-    height: 2.2em;
     display: flex;
     justify-content: center;
-`;
+    margin-bottom: 30px;
+`
 
 const Tab = styled.button`
     border: none;
@@ -198,6 +202,7 @@ const Tab = styled.button`
     cursor: pointer;
     width: 20%;
     position: relative;
+    padding: 10px 5px;
 
     margin-right: 0.1em;
     font-size: 1em;
