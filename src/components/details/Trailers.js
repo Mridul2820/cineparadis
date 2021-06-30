@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Trailers = ({ videos }) => {
     return (
-        <>
+        <Wrap>
         {videos && videos.map(video => (
             <TrailerWrap key={video.id}>
                 <br/>
@@ -19,9 +19,15 @@ const Trailers = ({ videos }) => {
                 </Iframe>
             </TrailerWrap>
         ))}
-        </>
+        </Wrap>
     )
 }
+
+const Wrap = styled.div`
+    @media only screen and (max-width: 480px){
+        padding: 0 10px;
+    }
+`
 
 const TrailerWrap = styled.div`
     display: flex;
@@ -38,13 +44,18 @@ const Iframe = styled.iframe`
     width: 530px;
     height: 315px;
 
-    @media only screen and (max-width: 956em){
+    @media only screen and (max-width: 956px){
         width: 100%;
     }
 
     @media only screen and (max-width: 768px){
         width: 100%;
         height: 250px;
+    }
+
+    @media only screen and (max-width: 480px){
+        width: 100%;
+        height: 200px;
     }
 `
 

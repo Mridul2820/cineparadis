@@ -26,7 +26,7 @@ const TopRated = () => {
     }, [page])
 
     useEffect(() => {
-        document.title = 'Top rated - CineParadis'
+        document.title = 'Top Rated - CineParadis'
     }, [])
 
     return (

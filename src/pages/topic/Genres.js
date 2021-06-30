@@ -19,7 +19,7 @@ const Genres = () => {
     }
 
     useEffect(() => {
-        document.title = 'Genre - CineParadis'
+        document.title = 'Genres - CineParadis'
 
         fetchGenres()
     }, [])
