@@ -19,7 +19,7 @@ const Dashboard = () => {
         getWatchlist()
 
         // eslint-disable-next-line
-    }, [])
+    }, [user.uid])
 
     useEffect(() => {
         document.title = 'Dashboard - CineParadis'
@@ -30,7 +30,7 @@ const Dashboard = () => {
             <PageTitle>Watchlist</PageTitle>
             {listWatch? listWatch.length > 0 ? (
                 <ContentList>
-                    {listWatch.map(listwt => (
+                    {listWatch.map((listwt) => (
                         <WatchItem 
                             key={listwt.id}
                             id={listwt.id} 
@@ -41,7 +41,7 @@ const Dashboard = () => {
             ) : (
                 <p>Empty Much? Start adding movies/series to your watchlist and they will appear here.</p>
             ) : (
-                <p>Fetching Your list</p>
+                <p>Fetching Your list...</p>
             )
             }
         </Container>

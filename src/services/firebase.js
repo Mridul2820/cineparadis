@@ -49,7 +49,6 @@ export async function deleteItemFromWatchlist( userId, watchId, watchType ) {
         .firestore()
         .collection('users')
         .where('userId', '==', userId)
-        .where('watchlist', 'array-contains', watchId)
         .get();
 
     const getDocId =  result.docs.map((list) => ({
@@ -59,8 +58,8 @@ export async function deleteItemFromWatchlist( userId, watchId, watchType ) {
     return firebase
         .firestore()
         .collection('users')
-        .doc(getDocId[0].docId)
+        .doc(getDocId[0]?.docId)
         .update({
-            watchlist: FieldValue.arrayRemove({ id: watchId, type: watchType })
+            watchlist: FieldValue.arrayRemove({'id': watchId, 'type': watchType})
         });
 }

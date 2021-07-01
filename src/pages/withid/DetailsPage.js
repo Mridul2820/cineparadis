@@ -64,7 +64,7 @@ const DetailsPage = () => {
 
     return (
         <Container>
-            <MainInfo content={content} />
+            {content && <MainInfo content={content} type={type}/> }
             {width < breakpoint ?
             <TopTabs >
                 <Tabs>
@@ -74,7 +74,6 @@ const DetailsPage = () => {
                         id={0}
                     >
                         Cast
-                        {/* <BsFillPeopleFill size="24px" /> */}
                     </Tab>
 
                     <Tab 
@@ -83,7 +82,6 @@ const DetailsPage = () => {
                         id={1}
                     >
                         Facts
-                        {/* <SiCodefactor size="20px" /> */}
                     </Tab>
                     <Tab 
                         onClick={handleClick} 
@@ -91,7 +89,6 @@ const DetailsPage = () => {
                         id={2}
                     >
                         Trailers
-                        {/* <AiFillYoutube size="24px"/>   */}
                     </Tab>
                     <Tab 
                         onClick={handleClick} 
@@ -99,7 +96,6 @@ const DetailsPage = () => {
                         id={3}
                     >
                         More
-                        {/* <AiFillHeart size="24px" /> */}
                     </Tab>
                 </Tabs>
                 <>

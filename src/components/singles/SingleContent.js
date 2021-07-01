@@ -11,7 +11,7 @@ import voteColor from '../../helpers/voteColor'
 import truncate from '../../helpers/truncate'
 
 import UserContext from '../../context/user'
-import { updateProfileWatchlist } from '../../services/firebase';
+import { deleteItemFromWatchlist, updateProfileWatchlist } from '../../services/firebase';
 
 const SingleContent = ({ 
     id, 
@@ -22,7 +22,7 @@ const SingleContent = ({
     vote_average, 
     description,
     showDeleteIcon,
-    showWatch
+    showWatch,
 }) => {
     const { user }  = useContext(UserContext)
 
@@ -31,15 +31,16 @@ const SingleContent = ({
 
         await updateProfileWatchlist( userId, id, media_type )
 
-        alert('Added to You Watchlist. Go to Your dashboard')
+        alert('Added to Your Watchlist. Go to Your dashboard')
     }
 
     const handleDelete = async(id, media_type) => {
-        // const userId = user.uid
+        const userId = user.uid
 
-        // await deleteItemFromWatchlist( userId, id, media_type )
+        await deleteItemFromWatchlist( userId, id, media_type)
 
-        console.log('delete', id, media_type);
+        window.location.reload();
+        // alert('Removed from Your Watchlist')
     }
 
     return (

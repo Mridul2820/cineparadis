@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { img300, img500, unavailable } from "../../helpers/config";
 import { Chip } from '@material-ui/core'
 
 import { GrFacebook, GrInstagram, GrTwitter } from 'react-icons/gr'
+import UserContext from '../../context/user';
+import { updateProfileWatchlist } from '../../services/firebase';
+import { BiListPlus } from 'react-icons/bi'
 
-const MainInfo = ({ content }) => {
+const MainInfo = ({ content, type }) => {
+    const { user }  = useContext(UserContext)
+
+    const id = content.id
+
+    const handleWatchlist = async( id, type) => {
+        const userId = user.uid
+
+        await updateProfileWatchlist( userId, id, type )
+
+        alert('Added to You Watchlist. Go to Your dashboard')
+    }
+
     return (
         <>
         {content && 
@@ -75,6 +90,11 @@ const MainInfo = ({ content }) => {
                     </a>
                     }
                 </Social>
+
+                <Watch onClick={() => handleWatchlist(id, type)}>
+                    <BiListPlus size="24px" /> 
+                    <p>Add to watchlist</p>
+                </Watch>
             </Details>
         </Wrap>
         }
@@ -157,6 +177,24 @@ const Social = styled.div`
 
     a {
         margin-right: 15px;
+    }
+`
+
+const Watch = styled.div`
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 10px;
+    color: #fff;
+    margin-top: 5px;
+
+    p {
+        font-size: 17px;
+        margin-left: 8px;
     }
 `
 
