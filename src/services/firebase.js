@@ -18,12 +18,12 @@ export async function getUserWatchlist(userId) {
         .get();
   
     return result.docs.map((list) => ({
-      ...list.data()
+        ...list.data(),
+        docId: list.id
     }));
 }
 
 export async function updateProfileWatchlist( userId, watchId, watchType ) {
-
     const result = await firebase
         .firestore()
         .collection('users')
@@ -62,4 +62,15 @@ export async function deleteItemFromWatchlist( userId, watchId, watchType ) {
         .update({
             watchlist: FieldValue.arrayRemove({'id': watchId, 'type': watchType})
         });
+}
+
+export async function checkIfInWatchlist( userId, watchId, watchType ) {
+    const result = await firebase
+        .firestore()
+        .collection('users')
+        .where('userId', '==', userId)
+        .where('watchlist', 'array-contains', {id: watchId, type: watchType})
+        .get();
+
+    return result.docs.length > 0;
 }

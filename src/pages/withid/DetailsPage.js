@@ -30,7 +30,7 @@ const DetailsPage = () => {
             `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids%2Cvideos%2Crecommendations%2Ccredits`
         );
 
-        console.log('detaildata', data);
+        // console.log('detaildata', data);
     
         setContent(data);
         setVideos(data.videos.results);

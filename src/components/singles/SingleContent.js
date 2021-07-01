@@ -25,18 +25,15 @@ const SingleContent = ({
     showWatch,
 }) => {
     const { user }  = useContext(UserContext)
+    const userId = user.uid
 
     const handleWatchlist = async( id, media_type) => {
-        const userId = user.uid
-
         await updateProfileWatchlist( userId, id, media_type )
 
         alert('Added to Your Watchlist. Go to Your dashboard')
     }
 
     const handleDelete = async(id, media_type) => {
-        const userId = user.uid
-
         await deleteItemFromWatchlist( userId, id, media_type)
 
         window.location.reload();
@@ -72,7 +69,7 @@ const SingleContent = ({
                 <Expand>
                     <p>{truncate(description, 50)}</p>
                     {showWatch && 
-                    <Watch onClick={() => handleWatchlist(id, media_type)}>
+                    <Watch onClick={() => handleWatchlist(id, media_type)} id="watchAdd">
                         <BiListPlus size="16px" /> 
                         Add to watchlist
                     </Watch>
