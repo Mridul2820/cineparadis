@@ -36,7 +36,7 @@ const Login = () => {
                 });
             }
 
-            history.push(ROUTES.DASHBOARD)
+            history.push(ROUTES.Trending)
 
         } catch (error) {
             console.log(error.message)
