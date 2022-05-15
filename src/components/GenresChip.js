@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import axios from 'axios'
-import Chip from '@material-ui/core/Chip';
+import { Chip } from '@mui/material';
 import styled from 'styled-components';
 
 const genresURL = 'https://api.themoviedb.org/3/genre/'

@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
-import { Button, createMuiTheme, Tabs, Tab, TextField, ThemeProvider } from '@material-ui/core'
+import { Button, Tabs, Tab, TextField } from '@mui/material'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { Container, ContentList } from '../../GlobalStyles'
 
@@ -20,14 +20,6 @@ const Search = () => {
     const [contents, setContents] = useState([])
     const [numOfPages, setNumOfPages] = useState()
 
-    const darkTheme = createMuiTheme({
-        palette: {
-            type: "light",
-            primary: {
-                main: "#000",
-            },
-        },
-    });
 
     const handleChange = (event, newValue) => {
         setType(newValue);
@@ -56,42 +48,40 @@ const Search = () => {
 
     return (
         <Container>
-            <ThemeProvider theme={darkTheme}>
-                <SearchBox>
-                    <SearchMain>
-                        <TextField
-                            className="searchbox"
-                            label="Search"
-                            variant="filled"
-                            onChange={e => setSearchText(e.target.value)}
-                            onKeyDown={(event) => {
-                                if (event.key === 'Enter') {
-                                    fetchSearch();
-                                }
-                            }}
-                        />
-                        <Button 
-                            className="search-btn"
-                            variant='contained'
-                            onClick={fetchSearch}
-                        >
-                            <AiOutlineSearch size="20px" />
-                        </Button>
-                    </SearchMain>
-
-                    <Tabs 
-                        value={type} 
-                        indicatorColor="primary"
-                        textColor="primary"
-                        onChange={handleChange} 
-                        className="tabs"
-                        aria-label="disabled tabs example"
+            <SearchBox>
+                <SearchMain>
+                    <TextField
+                        className="searchbox"
+                        label="Search"
+                        variant="filled"
+                        onChange={e => setSearchText(e.target.value)}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter') {
+                                fetchSearch();
+                            }
+                        }}
+                    />
+                    <Button 
+                        className="search-btn"
+                        variant='contained'
+                        onClick={fetchSearch}
                     >
-                        <Tab style={{ width: "50%" }} label="Search Movies" />
-                        <Tab style={{ width: "50%" }} label="Search TV Series" />
-                    </Tabs>
-                </SearchBox>
-            </ThemeProvider>
+                        <AiOutlineSearch size="20px" />
+                    </Button>
+                </SearchMain>
+
+                <Tabs 
+                    value={type} 
+                    indicatorColor="primary"
+                    textColor="primary"
+                    onChange={handleChange} 
+                    className="tabs"
+                    aria-label="disabled tabs example"
+                >
+                    <Tab style={{ width: "50%" }} label="Search Movies" />
+                    <Tab style={{ width: "50%" }} label="Search TV Series" />
+                </Tabs>
+            </SearchBox>
             <ContentList>
                 {contents && contents.map(content => (
                     <SingleContent 

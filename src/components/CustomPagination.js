@@ -1,4 +1,5 @@
-import Pagination from '@material-ui/lab/Pagination';
+import React from 'react';
+import { Pagination } from '@mui/material';
 import styled from 'styled-components';
 
 const CustomPagination = ({ setPage, numOfPages = 10}) => {

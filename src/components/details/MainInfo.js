@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { img300, img500, unavailable } from "../../helpers/config";
-import { Chip } from '@material-ui/core'
+import { Chip } from '@mui/material'
 
 import { GrFacebook, GrInstagram, GrTwitter } from 'react-icons/gr'
 import UserContext from '../../context/user';
