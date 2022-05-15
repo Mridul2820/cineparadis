@@ -10,7 +10,7 @@ import UserContext from '../context/user'
 import logo from '../assets/logo-black.PNG'
 import styled from 'styled-components'
 
-import { IoChatbubblesOutline } from 'react-icons/io5'
+// import { IoChatbubblesOutline } from 'react-icons/io5'
 
 
 const Header = () => {
@@ -28,10 +28,10 @@ const Header = () => {
             </Logo>
 
             <HeaderRight>
-                <Chat to={ROUTES.Chats}>
+                {/* <Chat to={ROUTES.Chats}>
                     <IoChatbubblesOutline />
                     <span>Chats</span>
-                </Chat>
+                </Chat> */}
 
                 <User>
                     <img src={user.photoURL} alt="user" />
@@ -102,32 +102,32 @@ const User = styled.div`
     }
 `
 
-const Chat = styled(NavLink)`
-    margin-right: 30px;
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, .2);
-    padding: 5px 7px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+// const Chat = styled(NavLink)`
+//     margin-right: 30px;
+//     box-shadow: 2px 4px 10px rgba(0, 0, 0, .2);
+//     padding: 5px 7px;
+//     border-radius: 5px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
 
-    @media only screen and (max-width: 375px){
-        margin-right: 15px;
-    }
+//     @media only screen and (max-width: 375px){
+//         margin-right: 15px;
+//     }
 
-    &.active,
-    &:hover {
-        box-shadow: 2px 4px 10px rgba(0, 0, 0, .3);
-    }
+//     &.active,
+//     &:hover {
+//         box-shadow: 2px 4px 10px rgba(0, 0, 0, .3);
+//     }
 
-    span {
-        margin-left: 5px;
+//     span {
+//         margin-left: 5px;
 
-        @media only screen and (max-width: 375px){
-            display: none;
-        }
-    }
-`
+//         @media only screen and (max-width: 375px){
+//             display: none;
+//         }
+//     }
+// `
 
 const Logout = styled.div`
     ${Button} {

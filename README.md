@@ -14,6 +14,7 @@
 - **Styled Components**
 - **Firestore** 
 - **Firebase Authentication**
+- **Meterial UI**
 
 ### About : 
 - **An interactive website which provides trivial information for movies and web shows**
