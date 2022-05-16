@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import { PageTitle } from '../../GlobalStyles'
 import styled from 'styled-components'
+import { baseUrl } from '../../constants/constant'
 
 const genresURL = `${baseUrl}/genre/`
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`

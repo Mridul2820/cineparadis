@@ -5,7 +5,7 @@ import SingleContent from '../../components/singles/SingleContent'
 import CustomPagination from '../../components/CustomPagination'
 
 import { PageTitle, Container, ContentList } from '../../GlobalStyles'
-import { baseUrl } from "../../../constant"
+import { baseUrl } from "../../constants/constant"
 
 const trendURL = `${baseUrl}/movie/top_rated?`
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`

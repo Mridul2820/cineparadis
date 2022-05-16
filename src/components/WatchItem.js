@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { baseUrl } from '../../constant'
+import { baseUrl } from '../constants/constant'
 import SingleContent from './singles/SingleContent'
 
 const movieURL = `${baseUrl}/`

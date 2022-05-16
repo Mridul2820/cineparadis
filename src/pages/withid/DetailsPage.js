@@ -8,7 +8,7 @@ import CastnCrew from '../../components/details/CastnCrew'
 import Trailers from '../../components/details/Trailers'
 import FactBox from '../../components/details/FactBox'
 import Recommended from '../../components/details/Recomamded'
-import { baseUrl } from '../../../constant'
+import { baseUrl } from '../../constants/constant'
 
 // import { AiFillYoutube, AiFillHeart } from 'react-icons/ai'
 // import { BsFillPeopleFill } from 'react-icons/bs'
