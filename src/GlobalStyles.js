@@ -43,7 +43,7 @@ export const PageTitle = styled.h1`
   display: flex;
   justify-content: center;
   font-size: 2vw;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 0;
   color: #222;
 
