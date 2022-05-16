@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Footer = () => {
   return (
-    <StyledFooter className='p-3 flex justify-center items-center gap-1 flex-col sm:flex-row bg-white'>
+    <footer className='p-3 flex justify-center items-center gap-1 flex-col sm:flex-row bg-white'>
         <span>
             &copy; {new Date().getFullYear()} by
             <a 
@@ -26,16 +26,9 @@ const Footer = () => {
                 {'<Code/>'}
             </a>
         </span>
-    </StyledFooter>
+    </footer>
 )
 }
 
-const StyledFooter = styled.footer`
-  padding: 3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-`
 
 export default Footer
