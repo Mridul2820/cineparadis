@@ -9,8 +9,9 @@ import SingleContent from '../../components/singles/SingleContent';
 import CustomPagination from '../../components/CustomPagination';
 
 import styled from 'styled-components'
+import { baseUrl } from '../../../constant';
 
-const searchURL = 'https://api.themoviedb.org/3/search/'
+const searchURL = `${baseUrl}/search/`
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
 
 const Search = () => {

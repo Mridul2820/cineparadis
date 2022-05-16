@@ -5,8 +5,9 @@ import SingleContent from '../../components/singles/SingleContent'
 import CustomPagination from '../../components/CustomPagination'
 
 import { PageTitle, Container, ContentList } from '../../GlobalStyles'
+import { baseUrl } from "../../../constant"
 
-const trendURL = 'https://api.themoviedb.org/3/trending/all/day?'
+const trendURL = `${baseUrl}/trending/all/day?`
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
 
 const Trending = () => {

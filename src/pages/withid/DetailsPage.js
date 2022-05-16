@@ -8,12 +8,13 @@ import CastnCrew from '../../components/details/CastnCrew'
 import Trailers from '../../components/details/Trailers'
 import FactBox from '../../components/details/FactBox'
 import Recommended from '../../components/details/Recomamded'
+import { baseUrl } from '../../../constant'
 
 // import { AiFillYoutube, AiFillHeart } from 'react-icons/ai'
 // import { BsFillPeopleFill } from 'react-icons/bs'
 // import { SiCodefactor } from 'react-icons/si'
 
-const detailURL = 'https://api.themoviedb.org/3/'
+const detailURL = `${baseUrl}/`
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
 
 const DetailsPage = () => {

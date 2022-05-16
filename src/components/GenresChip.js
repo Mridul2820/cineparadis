@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { Chip } from '@mui/material';
 import styled from 'styled-components';
+import { baseUrl } from '../../constant';
 
-const genresURL = 'https://api.themoviedb.org/3/genre/'
+const genresURL = `${baseUrl}/genre/`
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
 
 const GenresChip = ({ 

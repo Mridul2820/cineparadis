@@ -5,7 +5,7 @@ import axios from 'axios'
 import { PageTitle } from '../../GlobalStyles'
 import styled from 'styled-components'
 
-const genresURL = 'https://api.themoviedb.org/3/genre/'
+const genresURL = `${baseUrl}/genre/`
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
 
 const Genres = () => {
