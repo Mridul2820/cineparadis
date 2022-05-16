@@ -1,106 +1,107 @@
-import React, { useContext } from 'react'
-import { Link, NavLink, useHistory } from 'react-router-dom'
-import { Button } from '../../GlobalStyles'
+import React, { useContext } from 'react';
+import { Link, NavLink, useHistory } from 'react-router-dom';
+import { Button } from '../../GlobalStyles';
 
-import * as ROUTES from '../../constants/routes'
+import * as ROUTES from '../../constants/routes';
 
-import FirebaseContext from '../../context/firebase'
-import UserContext from '../../context/user'
+import FirebaseContext from '../../context/firebase';
+import UserContext from '../../context/user';
 
-import logo from '../../assets/logo-black.PNG'
-import styled from 'styled-components'
+import logo from '../../assets/logo-black.PNG';
+import styled from 'styled-components';
 
 // import { IoChatbubblesOutline } from 'react-icons/io5'
 
-
 const Header = () => {
-    const history = useHistory()
-    const { firebase } = useContext(FirebaseContext)
-    const { user } = useContext(UserContext)
+  const history = useHistory();
+  const { firebase } = useContext(FirebaseContext);
+  const { user } = useContext(UserContext);
 
-    // console.log('user', user);
+  // console.log('user', user);
 
-    return (
-        <Container>
-            <Logo to={ROUTES.DASHBOARD}>
-                <img src={logo} alt="logo" />
-                <h2>CineParadis</h2>
-            </Logo>
+  return (
+    <Container>
+      <Logo to={ROUTES.DASHBOARD}>
+        <img src={logo} alt="logo" />
+        <h2>CineParadis</h2>
+      </Logo>
 
-            <HeaderRight>
-                {/* <Chat to={ROUTES.Chats}>
+      <HeaderRight>
+        {/* <Chat to={ROUTES.Chats}>
                     <IoChatbubblesOutline />
                     <span>Chats</span>
                 </Chat> */}
 
-                <User>
-                    <img src={user.photoURL} alt="user" />
-                </User>
+        <User>
+          <img src={user.photoURL} alt="user" />
+        </User>
 
-                <Logout>
-                    {user ? (
-                        <Button
-                            onClick={() => {
-                                firebase.auth().signOut()
-                                history.push(ROUTES.LOGIN)
-                            }}
-                        >Logout</Button>
-                    ) : (
-                        <Link to={ROUTES.LOGIN}>
-                            <Button type="button">Log In</Button>
-                        </Link>
-                    )}
-                </Logout>
-            </HeaderRight>
-        </Container>
-    )
-}
+        <Logout>
+          {user ? (
+            <Button
+              onClick={() => {
+                firebase.auth().signOut();
+                history.push(ROUTES.LOGIN);
+              }}
+            >
+              Logout
+            </Button>
+          ) : (
+            <Link to={ROUTES.LOGIN}>
+              <Button type="button">Log In</Button>
+            </Link>
+          )}
+        </Logout>
+      </HeaderRight>
+    </Container>
+  );
+};
 
 const Container = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #fff;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, .1);
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 10000;
-`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+`;
 
 const Logo = styled(Link)`
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    img {
-        height: 36px;
-        margin-right: 5px;
-    }
+  img {
+    height: 36px;
+    margin-right: 5px;
+  }
 
-    h2 {
-        @media only screen and (max-width: 480px){
-            display: none;
-        }
+  h2 {
+    @media only screen and (max-width: 480px) {
+      display: none;
     }
-`
+  }
+`;
 
 const HeaderRight = styled.div`
-    display: flex;
-    align-items: center;
-`
+  display: flex;
+  align-items: center;
+`;
 
 const User = styled.div`
-    margin-right: 10px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    overflow: hidden;
+  margin-right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
 
-    img {
-        width: 100%;
-    }
-`
+  img {
+    width: 100%;
+  }
+`;
 
 // const Chat = styled(NavLink)`
 //     margin-right: 30px;
@@ -130,9 +131,9 @@ const User = styled.div`
 // `
 
 const Logout = styled.div`
-    ${Button} {
-        margin: 0;
-    }
-`
+  ${Button} {
+    margin: 0;
+  }
+`;
 
-export default Header
+export default Header;

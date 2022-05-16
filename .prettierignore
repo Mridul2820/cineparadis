@@ -1,5 +1,4 @@
-.next
-next-env.d.ts
+build
 node_modules
 yarn.lock
 package-lock.json

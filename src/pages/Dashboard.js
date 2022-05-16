@@ -1,51 +1,51 @@
-import React, { useState, useContext, useEffect } from 'react'
-import UserContext from '../context/user'
-import { getUserWatchlist } from '../services/firebase'
-import { PageTitle, Container, ContentList } from '../GlobalStyles'
-import WatchItem from '../components/WatchItem'
+import React, { useState, useContext, useEffect } from 'react';
+import UserContext from '../context/user';
+import { getUserWatchlist } from '../services/firebase';
+import { PageTitle, Container, ContentList } from '../GlobalStyles';
+import WatchItem from '../components/WatchItem';
 
 const Dashboard = () => {
-    const { user }  = useContext(UserContext)
-    const [listWatch, setListWatch] = useState()
+  const { user } = useContext(UserContext);
+  const [listWatch, setListWatch] = useState();
 
-    useEffect(() => {
-        async function getWatchlist(){
-            const userId = user.uid
-            const response = await getUserWatchlist(userId)
+  useEffect(() => {
+    async function getWatchlist() {
+      const userId = user.uid;
+      const response = await getUserWatchlist(userId);
 
-            setListWatch(response[0].watchlist)
-        }
+      setListWatch(response[0].watchlist);
+    }
 
-        getWatchlist()
+    getWatchlist();
 
-        // eslint-disable-next-line
-    }, [user.uid])
+    // eslint-disable-next-line
+  }, [user.uid]);
 
-    useEffect(() => {
-        document.title = 'Dashboard - CineParadis'
-    }, [])
+  useEffect(() => {
+    document.title = 'Dashboard - CineParadis';
+  }, []);
 
-    return (
-        <Container>
-            <PageTitle>Watchlist</PageTitle>
-            {listWatch? listWatch.length > 0 ? (
-                <ContentList>
-                    {listWatch.map((listwt) => (
-                        <WatchItem 
-                            key={listwt.id}
-                            id={listwt.id} 
-                            type={listwt.type} 
-                        />
-                    ))}
-                </ContentList>
-            ) : (
-                <p>Empty Much? Start adding movies/series to your watchlist and they will appear here.</p>
-            ) : (
-                <p>Fetching Your list...</p>
-            )
-            }
-        </Container>
-    )
-}
+  return (
+    <Container>
+      <PageTitle>Watchlist</PageTitle>
+      {listWatch ? (
+        listWatch.length > 0 ? (
+          <ContentList>
+            {listWatch.map((listwt) => (
+              <WatchItem key={listwt.id} id={listwt.id} type={listwt.type} />
+            ))}
+          </ContentList>
+        ) : (
+          <p>
+            Empty Much? Start adding movies/series to your watchlist and they
+            will appear here.
+          </p>
+        )
+      ) : (
+        <p>Fetching Your list...</p>
+      )}
+    </Container>
+  );
+};
 
-export default Dashboard
+export default Dashboard;
