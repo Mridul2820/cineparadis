@@ -8,8 +8,9 @@ import UserContext from './context/user'
 import useAuthListner from './hooks/useAuthListner'
 import IsUserLoggedIn from './helpers/IsUserLoggedIn'
 
-import Header from './components/Header'
-import Navbar from './components/Navbar'
+import Header from './components/layout/Header'
+import Navbar from './components/layout/Navbar'
+import Footer from './components/layout/Footer'
 
 const Login = lazy(() => import ('./pages/Login'))
 const Dashboard = lazy(() => import ('./pages/Dashboard'))
@@ -61,6 +62,7 @@ const App = () => {
 
                             <Route path={ROUTES.Details} component={DetailsPage}  />
                         </Switch>
+                        <Footer />
                         </>
                     ) : <Redirect to={{ pathname: ROUTES.LOGIN }}/>
                     }
