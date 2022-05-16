@@ -74,7 +74,7 @@ const Logo = styled(Link)`
     align-items: center;
 
     img {
-        height: 45px;
+        height: 36px;
         margin-right: 5px;
     }
 
@@ -92,8 +92,8 @@ const HeaderRight = styled.div`
 
 const User = styled.div`
     margin-right: 10px;
-    width: 35px;
-    height: 35px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     overflow: hidden;
 

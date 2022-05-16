@@ -43,7 +43,7 @@ export const PageTitle = styled.h1`
     display: flex;
     justify-content: center;
     font-size: 2vw;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     color: #222;
 
     @media only screen and (max-width: 956px){

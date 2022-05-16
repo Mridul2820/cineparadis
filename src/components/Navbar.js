@@ -37,10 +37,10 @@ const Navbar = () => {
 const Navmain = styled.nav`
     padding: 10px 20px;
     display: flex;
-    /* flex-wrap: wrap; */
+    justify-content: center;
 
     @media only screen and (max-width: 956px){
-        /* justify-content: center; */
+        justify-content: start;
         overflow-x: scroll;
     }
 

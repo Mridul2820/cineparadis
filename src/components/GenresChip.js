@@ -88,6 +88,7 @@ const GenreList = styled.div`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 16px;
 
     .chip {
         margin: 2px;

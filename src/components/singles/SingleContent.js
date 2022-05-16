@@ -112,8 +112,9 @@ const DeleteIcon = styled.button`
 
 const Content = styled.div`
     width: 300px;
+    height: 169px;
     margin: 20px;
-    transition: all.5s;
+    transition: all .5s;
     position: relative;
     border-radius: 5px;
     box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.2);
