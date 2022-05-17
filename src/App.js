@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import GlobalStyles from './GlobalStyles';
+import Loader from 'react-loader-spinner';
 
 import {
   BrowserRouter as Router,
@@ -41,7 +42,17 @@ const App = () => {
     <UserContext.Provider value={{ user }}>
       <GlobalStyles />
       <Router>
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={
+                <div className="flex flex-col justify-center items-center w-full min-h-screen">
+                <Loader 
+                    type='Circles'
+                    color="#00BFFF"
+                    height={50}
+                    width={200}
+                    className="m-5"
+                />
+            </div>
+        }>
           <Switch>
             <IsUserLoggedIn
               user={user}

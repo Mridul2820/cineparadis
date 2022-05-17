@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import Loader from 'react-loader-spinner';
 
 import MainInfo from '../../components/details/MainInfo';
 import CastnCrew from '../../components/details/CastnCrew';
@@ -25,18 +26,19 @@ const DetailsPage = () => {
   const [videos, setVideos] = useState();
   const [recommended, setRecommended] = useState();
   const [credits, setCredits] = useState();
+  const [loading, setLoading] = useState(false)
 
   const fetchData = async () => {
+    setLoading(true)
     const { data } = await axios.get(
       `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids%2Cvideos%2Crecommendations%2Ccredits`
     );
-
-    // console.log('detaildata', data);
 
     setContent(data);
     setVideos(data.videos.results);
     setRecommended(data.recommendations.results);
     setCredits(data.credits.cast);
+    setLoading(false)
   };
 
   const [width, setWidth] = React.useState(window.innerWidth);
@@ -64,6 +66,21 @@ const DetailsPage = () => {
       setActive(index);
     }
   };
+
+
+  if (loading) {
+    return (
+      <Container className="flex flex-col justify-center items-center w-full">
+      <Loader 
+          type='Circles'
+          color="#00BFFF"
+          height={50}
+          width={200}
+          className="m-5"
+      />
+  </Container>
+    );
+  }
 
   return (
     <Container>
@@ -150,6 +167,7 @@ const DetailsPage = () => {
 const Container = styled.div`
   padding: 20px 40px;
   margin: 0 auto;
+  min-height: calc(100vh - 190px);
 
   @media only screen and (max-width: 480px) {
     padding: 10px 0;
