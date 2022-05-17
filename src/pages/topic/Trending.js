@@ -49,7 +49,7 @@ const Trending = () => {
             />
           ))}
       </ContentList>
-      <CustomPagination setPage={setPage} />
+      {trends && <CustomPagination setPage={setPage} />}
     </Container>
   );
 };

@@ -49,7 +49,7 @@ const TopRated = () => {
             />
           ))}
       </ContentList>
-      <CustomPagination setPage={setPage} />
+      {top && <CustomPagination setPage={setPage} />}
     </Container>
   );
 };

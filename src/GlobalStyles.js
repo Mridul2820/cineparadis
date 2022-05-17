@@ -1,27 +1,27 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  }
 
-    html {
-        scroll-behavior: smooth;
-    }
+  html {
+      scroll-behavior: smooth;
+  }
 
-    body {
-        background-color: #fafafa;
-    }
-    
-    a {
-        text-decoration: none;
-        color: unset;
-    }
+  body {
+      background-color: #fafafa;
+  }
+  
+  a {
+      text-decoration: none;
+      color: unset;
+  }
 `;
 
 export const Button = styled.button`
@@ -59,6 +59,7 @@ export const PageTitle = styled.h1`
 export const Container = styled.div`
   padding: 20px 40px;
   margin: 0 auto;
+  min-height: calc(100vh - 190px);
 
   @media only screen and (max-width: 480px) {
     padding: 20px 10px;

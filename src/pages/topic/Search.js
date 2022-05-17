@@ -103,7 +103,7 @@ const Search = () => {
           ))}
         {searchText && !contents && <h2>Try searching something else</h2>}
       </ContentList>
-      {numOfPages > 1 && (
+      {numOfPages > 1 && contents && (
         <CustomPagination setPage={setPage} numOfPages={numOfPages} />
       )}
     </Container>

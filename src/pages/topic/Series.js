@@ -69,7 +69,7 @@ const Series = () => {
             />
           ))}
       </ContentList>
-      {numOfPages > 1 && (
+      {numOfPages > 1 && series && (
         <CustomPagination setPage={setPage} numOfPages={numOfPages} />
       )}
     </Container>
