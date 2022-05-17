@@ -67,7 +67,7 @@ const Movies = () => {
             />
           ))}
       </ContentList>
-      {numOfPages > 1 && movies && (
+      {numOfPages > 1 && movies.length > 0 && (
         <CustomPagination setPage={setPage} numOfPages={numOfPages} />
       )}
     </Container>

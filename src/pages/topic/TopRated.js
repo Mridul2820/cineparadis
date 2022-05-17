@@ -49,7 +49,7 @@ const TopRated = () => {
             />
           ))}
       </ContentList>
-      {top && <CustomPagination setPage={setPage} />}
+      {top.length > 0 && <CustomPagination setPage={setPage} />}
     </Container>
   );
 };

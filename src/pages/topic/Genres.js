@@ -31,10 +31,10 @@ const Genres = () => {
       <PageTitle>genres</PageTitle>
       <p>Get Movies and Series by genres</p>
       <GenreList>
-        {genres &&
+        {genres.length > 0 &&
           genres.map((genre) => (
             <GenreItem key={genre.id} to={`/genre/${genre.name}/${genre.id}`}>
-              <h3>{genre.name}</h3>
+              <span className='font-bold drop-shadow-md'>{genre.name}</span>
             </GenreItem>
           ))}
       </GenreList>
@@ -65,9 +65,8 @@ const GenreList = styled.div`
 
 const GenreItem = styled(Link)`
   margin: 10px 15px;
-  padding: 0 10px;
+  padding: 10px;
   width: 150px;
-  height: 50px;
   background-image: radial-gradient(
     circle 248px at center,
     #16d9e3 0%,

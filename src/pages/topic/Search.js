@@ -57,7 +57,7 @@ const Search = () => {
           <TextField
             className="searchbox"
             label="Search"
-            variant="filled"
+            variant="outlined"
             onChange={(e) => setSearchText(e.target.value)}
             onKeyDown={(event) => {
               if (event.key === 'Enter') {
@@ -82,8 +82,8 @@ const Search = () => {
           className="tabs"
           aria-label="disabled tabs example"
         >
-          <Tab style={{ width: '50%' }} label="Search Movies" />
-          <Tab style={{ width: '50%' }} label="Search TV Series" />
+          <Tab  label="Search Movies" />
+          <Tab label="Search TV Series" />
         </Tabs>
       </SearchBox>
       <ContentList>
@@ -103,7 +103,7 @@ const Search = () => {
           ))}
         {searchText && !contents && <h2>Try searching something else</h2>}
       </ContentList>
-      {numOfPages > 1 && contents && (
+      {numOfPages > 1 && contents.length > 0 && (
         <CustomPagination setPage={setPage} numOfPages={numOfPages} />
       )}
     </Container>
