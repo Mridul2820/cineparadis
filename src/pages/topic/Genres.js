@@ -34,7 +34,7 @@ const Genres = () => {
         {genres.length > 0 &&
           genres.map((genre) => (
             <GenreItem key={genre.id} to={`/genre/${genre.name}/${genre.id}`}>
-              <span className='font-bold drop-shadow-md'>{genre.name}</span>
+              <span className="font-bold drop-shadow-md">{genre.name}</span>
             </GenreItem>
           ))}
       </GenreList>

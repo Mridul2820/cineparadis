@@ -26,10 +26,10 @@ const DetailsPage = () => {
   const [videos, setVideos] = useState();
   const [recommended, setRecommended] = useState();
   const [credits, setCredits] = useState();
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
-    setLoading(true)
+    setLoading(true);
     const { data } = await axios.get(
       `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids%2Cvideos%2Crecommendations%2Ccredits`
     );
@@ -38,7 +38,7 @@ const DetailsPage = () => {
     setVideos(data.videos.results);
     setRecommended(data.recommendations.results);
     setCredits(data.credits.cast);
-    setLoading(false)
+    setLoading(false);
   };
 
   const [width, setWidth] = React.useState(window.innerWidth);
@@ -67,18 +67,17 @@ const DetailsPage = () => {
     }
   };
 
-
   if (loading) {
     return (
       <Container className="flex flex-col justify-center items-center w-full">
-      <Loader 
-          type='Circles'
+        <Loader
+          type="Circles"
           color="#00BFFF"
           height={50}
           width={200}
           className="m-5"
-      />
-  </Container>
+        />
+      </Container>
     );
   }
 

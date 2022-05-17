@@ -42,17 +42,19 @@ const App = () => {
     <UserContext.Provider value={{ user }}>
       <GlobalStyles />
       <Router>
-        <Suspense fallback={
-                <div className="flex flex-col justify-center items-center w-full min-h-screen">
-                <Loader 
-                    type='Circles'
-                    color="#00BFFF"
-                    height={50}
-                    width={200}
-                    className="m-5"
-                />
+        <Suspense
+          fallback={
+            <div className="flex flex-col justify-center items-center w-full min-h-screen">
+              <Loader
+                type="Circles"
+                color="#00BFFF"
+                height={50}
+                width={200}
+                className="m-5"
+              />
             </div>
-        }>
+          }
+        >
           <Switch>
             <IsUserLoggedIn
               user={user}

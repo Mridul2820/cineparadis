@@ -82,7 +82,7 @@ const Search = () => {
           className="tabs"
           aria-label="disabled tabs example"
         >
-          <Tab  label="Search Movies" />
+          <Tab label="Search Movies" />
           <Tab label="Search TV Series" />
         </Tabs>
       </SearchBox>
