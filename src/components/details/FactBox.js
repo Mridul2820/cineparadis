@@ -7,88 +7,81 @@ const FactBox = ({
   status,
   release,
   lang,
-  // budget,
+  budget,
   revenue,
   runtime,
   networks,
+  title,
 }) => {
   return (
-    <FactWrap>
-      <h2>Facts</h2>
-      {status && (
-        <FactItem>
-          <b>Status : </b>
-          <span>{status}</span>
-        </FactItem>
-      )}
-      {release && (
-        <FactItem>
-          <b>Release Date : </b>
-          <span>{release}</span>
-        </FactItem>
-      )}
+    <section className="px-3 py-5">
+      <h2 className="text-center font-bold text-2xl mt-2">
+        Facts About {title}
+      </h2>
 
-      {networks && (
-        <FactItem>
-          <b>Networks : </b>
-          <Networks>
-            {networks.map((network) => (
-              <img
-                key={network.id}
-                src={
-                  network.logo_path
-                    ? `${img200}/${network.logo_path}`
-                    : noPicture
-                }
-                alt={network.name}
-              />
-            ))}
-          </Networks>
-        </FactItem>
-      )}
+      <div className="max-w-2xl mx-auto mt-4 space-y-3">
+        {budget && (
+          <div>
+            <b>budget : </b>
+            <span>{budget}</span>
+          </div>
+        )}
+        {status && (
+          <div>
+            <b>Status : </b>
+            <span>{status}</span>
+          </div>
+        )}
+        {release && (
+          <div>
+            <b>Release Date : </b>
+            <span>{release}</span>
+          </div>
+        )}
 
-      {lang && (
-        <FactItem>
-          <b>Original Language : </b>
-          <span>{lang}</span>
-        </FactItem>
-      )}
+        {networks && (
+          <div className="flex flex-wrap items-center gap-2">
+            <b>Networks : </b>
+            <div>
+              {networks.map((network) => (
+                <img
+                  className="w-14"
+                  key={network.id}
+                  src={
+                    network.logo_path
+                      ? `${img200}/${network.logo_path}`
+                      : noPicture
+                  }
+                  alt={network.name}
+                />
+              ))}
+            </div>
+          </div>
+        )}
 
-      {runtime && (
-        <FactItem>
-          <b>Runtime : </b>
-          <span>{formatTime(runtime)}</span>
-        </FactItem>
-      )}
+        {lang && (
+          <div>
+            <b>Original Language : </b>
+            <span>{lang}</span>
+          </div>
+        )}
 
-      {revenue && (
-        <FactItem>
-          <b>Revenue : </b>
-          <span>{revenue === 0 ? '-' : `$${revenue.toLocaleString()}`}</span>
-        </FactItem>
-      )}
-    </FactWrap>
+        {runtime && (
+          <div>
+            <b>Runtime : </b>
+            <span>{formatTime(runtime)}</span>
+          </div>
+        )}
+
+        {revenue && (
+          <div>
+            <b>Revenue : </b>
+            <span>{revenue === 0 ? '-' : `$${revenue.toLocaleString()}`}</span>
+          </div>
+        )}
+      </div>
+    </section>
   );
 };
-
-const FactWrap = styled.div`
-  width: 250px;
-  padding: 10px;
-`;
-
-const FactItem = styled.div`
-  margin: 10px 0;
-`;
-
-const Networks = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 10px;
-
-  img {
-    width: 50px;
-    margin-right: 10px;
-  }
-`;
 
 export default FactBox;

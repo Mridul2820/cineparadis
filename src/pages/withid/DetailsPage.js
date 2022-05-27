@@ -81,7 +81,7 @@ const DetailsPage = () => {
   return (
     <Container>
       {content && <MainInfo content={content} type={type} />}
-      <div className="flex flex-col justify-center mt-5">
+      <div className="flex flex-col justify-center mt-6 md:mt-8">
         <div className="mb-8 flex justify-center gap-3 md:px-2">
           <Tab
             className="tab-item"
@@ -126,6 +126,7 @@ const DetailsPage = () => {
           {active === 1 && content && (
             <FactBox
               status={content.status}
+              title={content?.name || content?.title}
               release={content.release_date}
               lang={content.original_language}
               budget={content.budget}
