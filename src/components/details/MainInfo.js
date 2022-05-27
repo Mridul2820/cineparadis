@@ -24,13 +24,15 @@ const MainInfo = ({ content, type }) => {
   return (
     <>
       {content && (
-        <Wrap
+        <section
           style={{
             backgroundImage: `radial-gradient(circle at 20% 50%, rgba(30, 39, 44, 0.9) 0%, rgba(30, 39, 44, 0.8) 100%), url(${img500}${content.backdrop_path})`,
           }}
+          className="flex flex-col justify-start items-start sm:flex-row gap-4 bg-cover bg-center"
         >
-          <Poster>
+          <div className="w-full xs:max-w-[280px] flex justify-center sm:justify-start">
             <img
+              className="max-w-[250px] xs:max-w-[280px] w-full object-cover align-middle"
               src={
                 content.poster_path
                   ? `${img300}${content.poster_path}`
@@ -38,23 +40,21 @@ const MainInfo = ({ content, type }) => {
               }
               alt={content.title}
             />
-          </Poster>
-          <Details>
-            <span className="title">
+          </div>
+          <Details className="space-y-4">
+            <span className="mb-4 text-white text-xl md:text-2xl lg:text-3xl font-bold">
               {content.name || content.title} (
               {(
                 content.first_air_date ||
                 content.release_date ||
-                '-----'
+                ' '
               ).substring(0, 4)}
               )
             </span>
 
-            <div>
-              {content.tagline && <i className="tagline">{content.tagline}</i>}
-            </div>
+            {content.tagline && <i className="block">{content.tagline}</i>}
 
-            <div className="chips">
+            <div className="flex items-center flex-wrap gap-3">
               {content.genres?.map((genre) => (
                 <Chip
                   key={genre.id}
@@ -66,7 +66,7 @@ const MainInfo = ({ content, type }) => {
               ))}
             </div>
 
-            <p className="description">{content.overview}</p>
+            <p className="text-base">{content.overview}</p>
 
             <Social>
               {content?.external_ids?.facebook_id && (
@@ -105,37 +105,11 @@ const MainInfo = ({ content, type }) => {
               <p>Add to watchlist</p>
             </Watch>
           </Details>
-        </Wrap>
+        </section>
       )}
     </>
   );
 };
-
-const Wrap = styled.div`
-  background-size: cover;
-  background-position: center center;
-  display: flex;
-
-  @media only screen and (max-width: 640px) {
-    flex-direction: column;
-  }
-`;
-
-const Poster = styled.div`
-  margin-right: 20px;
-
-  @media only screen and (max-width: 640px) {
-    margin-right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  img {
-    object-fit: cover;
-    vertical-align: middle;
-  }
-`;
 
 const Details = styled.div`
   color: #fff;
@@ -146,37 +120,6 @@ const Details = styled.div`
     align-items: center;
     flex-direction: column;
     padding: 20px 25px;
-  }
-
-  .title {
-    font-size: 3.5vw;
-    text-align: center;
-    margin-bottom: 15px;
-    color: #fff;
-
-    @media only screen and (min-width: 956px) {
-      font-size: 3.5vw;
-    }
-
-    @media only screen and (min-width: 480px) {
-      font-size: 24px;
-    }
-  }
-
-  .description {
-    font-size: 17px;
-
-    @media only screen and (min-width: 956px) {
-      font-size: 22px;
-    }
-  }
-
-  .tagline {
-    margin: 10px 0;
-  }
-
-  .chip {
-    margin: 10px 5px;
   }
 `;
 
