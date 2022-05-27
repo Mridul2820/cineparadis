@@ -1,5 +1,4 @@
 import React, { lazy, Suspense } from 'react';
-import GlobalStyles from './GlobalStyles';
 import Loader from 'react-loader-spinner';
 
 import {
@@ -36,11 +35,9 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 
 const App = () => {
   const { user } = useAuthListner();
-  // console.log('user', user);
 
   return (
     <UserContext.Provider value={{ user }}>
-      <GlobalStyles />
       <Router>
         <Suspense
           fallback={

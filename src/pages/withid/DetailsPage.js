@@ -41,13 +41,8 @@ const DetailsPage = () => {
     setLoading(false);
   };
 
-  const [width, setWidth] = React.useState(window.innerWidth);
-  const breakpoint = 768;
-
   useEffect(() => {
     fetchData();
-    window.addEventListener('resize', () => setWidth(window.innerWidth));
-
     // eslint-disable-next-line
   }, []);
 
@@ -84,13 +79,11 @@ const DetailsPage = () => {
   return (
     <Container>
       {content && <MainInfo content={content} type={type} />}
-      {width < breakpoint ? (
-        <TopTabs>
-          <Tabs>
+        <div className='flex flex-col justify-center mt-5'>
+          <div className='mb-8 flex justify-center'>
             <Tab onClick={handleClick} active={active === 0} id={0}>
-              Cast
+              Cast 
             </Tab>
-
             <Tab onClick={handleClick} active={active === 1} id={1}>
               Facts
             </Tab>
@@ -98,9 +91,9 @@ const DetailsPage = () => {
               Trailers
             </Tab>
             <Tab onClick={handleClick} active={active === 3} id={3}>
-              More
+              Recomanded
             </Tab>
-          </Tabs>
+          </div>
           <>
             <Content active={active === 0}>
               <CastnCrew
@@ -130,35 +123,7 @@ const DetailsPage = () => {
               )}
             </Content>
           </>
-        </TopTabs>
-      ) : (
-        <DetailInfo>
-          <DetailLeft>
-            <CastnCrew
-              credits={credits}
-              title={content?.name || content?.title}
-            />
-            <Trailers videos={videos} />
-          </DetailLeft>
-          <DetailRight>
-            {content && (
-              <FactBox
-                status={content.status}
-                release={content.release_date}
-                lang={content.original_language}
-                budget={content.budget}
-                revenue={content.revenue}
-                runtime={content.runtime}
-                networks={content.networks}
-              />
-            )}
-
-            {recommended?.length > 0 && (
-              <Recommended recommended={recommended} />
-            )}
-          </DetailRight>
-        </DetailInfo>
-      )}
+        </div>
     </Container>
   );
 };
@@ -173,33 +138,7 @@ const Container = styled.div`
   }
 `;
 
-const DetailInfo = styled.div`
-  display: flex;
-  margin-top: 20px;
-
-  @media only screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-const TopTabs = styled.div`
-  display: none;
-
-  @media only screen and (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-`;
-
-const Tabs = styled.div`
-  overflow: hidden;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-`;
-
-const Tab = styled.button`
+const Tab = styled.div`
   border: none;
   outline: none;
   cursor: pointer;
@@ -218,8 +157,5 @@ const Tab = styled.button`
 const Content = styled.div`
   ${(props) => (props.active ? '' : 'display: none')}
 `;
-
-const DetailLeft = styled.div``;
-const DetailRight = styled.div``;
 
 export default DetailsPage;
