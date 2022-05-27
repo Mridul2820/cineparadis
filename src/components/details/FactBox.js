@@ -7,7 +7,7 @@ const FactBox = ({
   status,
   release,
   lang,
-  budget,
+  // budget,
   revenue,
   runtime,
   networks,

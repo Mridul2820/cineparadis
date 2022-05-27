@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, NavLink, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Button } from '../../GlobalStyles';
 
 import * as ROUTES from '../../constants/routes';
