@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 const CastnCrew = ({ credits, title }) => {
   return (
-    <>
-      <h3 style={{ textAlign: 'center' }}>Cast of {title}</h3>
-      <CastWrap>
+    <section>
+      <h2 className="text-center font-bold text-2xl">Cast of {title}</h2>
+      <div className="flex justify-center items-center gap-4">
         {credits &&
           credits.map((credit) => (
             <Cast key={credit.id}>
@@ -26,16 +26,10 @@ const CastnCrew = ({ credits, title }) => {
               </div>
             </Cast>
           ))}
-      </CastWrap>
-    </>
+      </div>
+    </section>
   );
 };
-
-const CastWrap = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
 
 const Cast = styled.div`
   display: flex;
@@ -44,7 +38,6 @@ const Cast = styled.div`
   padding-left: 2px;
   width: 350px;
   min-width: 280px;
-  margin: 15px;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
 `;

@@ -117,33 +117,27 @@ const DetailsPage = () => {
           </Tab>
         </div>
         <>
-          <Content active={active === 0}>
+          {active === 0 && content && (
             <CastnCrew
               credits={credits}
               title={content?.name || content?.title}
             />
-          </Content>
-          <Content active={active === 1}>
-            {content && (
-              <FactBox
-                status={content.status}
-                release={content.release_date}
-                lang={content.original_language}
-                budget={content.budget}
-                revenue={content.revenue}
-                runtime={content.runtime}
-                networks={content.networks}
-              />
-            )}
-          </Content>
-          <Content active={active === 2}>
-            <Trailers videos={videos} />
-          </Content>
-          <Content active={active === 3}>
-            {recommended?.length > 0 && (
-              <Recommended recommended={recommended} />
-            )}
-          </Content>
+          )}
+          {active === 1 && content && (
+            <FactBox
+              status={content.status}
+              release={content.release_date}
+              lang={content.original_language}
+              budget={content.budget}
+              revenue={content.revenue}
+              runtime={content.runtime}
+              networks={content.networks}
+            />
+          )}
+          {active === 2 && content && <Trailers videos={videos} />}
+          {active === 3 && content && recommended?.length > 0 && (
+            <Recommended recommended={recommended} />
+          )}
         </>
       </div>
     </Container>
@@ -165,10 +159,6 @@ const Tab = styled.div`
   border: ${(props) => (props.active ? '1px solid #ccc' : '')};
   background-color: ${(props) => (props.active ? 'white' : 'lightgray')};
   transition: background-color 0.5s ease-in-out;
-`;
-
-const Content = styled.div`
-  ${(props) => (props.active ? '' : 'display: none')}
 `;
 
 export default DetailsPage;
