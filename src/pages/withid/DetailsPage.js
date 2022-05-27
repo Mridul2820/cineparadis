@@ -82,18 +82,38 @@ const DetailsPage = () => {
     <Container>
       {content && <MainInfo content={content} type={type} />}
       <div className="flex flex-col justify-center mt-5">
-        <div className="mb-8 flex justify-center">
-          <Tab onClick={handleClick} active={active === 0} id={0}>
+        <div className="mb-8 flex justify-center gap-3 md:px-2">
+          <Tab
+            className="tab-item"
+            onClick={handleClick}
+            active={active === 0}
+            id={0}
+          >
             Top Cast
           </Tab>
-          <Tab onClick={handleClick} active={active === 1} id={1}>
+          <Tab
+            className="tab-item"
+            onClick={handleClick}
+            active={active === 1}
+            id={1}
+          >
             Facts
           </Tab>
-          <Tab onClick={handleClick} active={active === 2} id={2}>
+          <Tab
+            className="tab-item"
+            onClick={handleClick}
+            active={active === 2}
+            id={2}
+          >
             Videos
           </Tab>
-          <Tab onClick={handleClick} active={active === 3} id={3}>
-            Recomanded
+          <Tab
+            className="tab-item"
+            onClick={handleClick}
+            active={active === 3}
+            id={3}
+          >
+            More Like This
           </Tab>
         </div>
         <>
@@ -131,7 +151,7 @@ const DetailsPage = () => {
 };
 
 const Container = styled.div`
-  padding: 20px 40px;
+  padding: 0px 40px 20px 40px;
   margin: 0 auto;
   min-height: calc(100vh - 190px);
 
@@ -141,17 +161,8 @@ const Container = styled.div`
 `;
 
 const Tab = styled.div`
-  border: none;
-  outline: none;
-  cursor: pointer;
-  width: 20%;
-  position: relative;
   padding: 10px 5px;
-
-  margin-right: 0.1em;
-  font-size: 1em;
   border: ${(props) => (props.active ? '1px solid #ccc' : '')};
-  border-bottom: ${(props) => (props.active ? 'none' : '')};
   background-color: ${(props) => (props.active ? 'white' : 'lightgray')};
   transition: background-color 0.5s ease-in-out;
 `;

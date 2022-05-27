@@ -6,7 +6,7 @@
 
 @layer components {
   .tab-item {
-    @apply flex gap-2 items-center justify-center py-2 px-4 md:px-5 text-sm md:text-base font-semibold;
+    @apply flex justify-center items-center text-sm md:text-base font-semibold cursor-pointer text-center shadow-bs3 w-1/5;
   }
 }
 

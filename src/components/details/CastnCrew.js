@@ -16,11 +16,13 @@ const CastnCrew = ({ credits, title }) => {
                     : noPicture
                 }
                 alt={credit?.name}
-                className="cast-img"
+                className="w-12 p-1"
               />
-              <div className="cast-name">
-                <h4>{credit.character}</h4>
-                <h4>By : {credit.name}</h4>
+              <div className="flex flex-col justify-center px-3 py-1">
+                <h4 className="text-black font-bold">{credit.name}</h4>
+                <p className="text-slate-500">
+                  as <span className="font-medium">{credit.character}</span>
+                </p>
               </div>
             </Cast>
           ))}
@@ -45,20 +47,6 @@ const Cast = styled.div`
   margin: 15px;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
-
-  .cast-img {
-    width: 50px;
-    padding: 5px;
-  }
-
-  .cast-name {
-    display: flex;
-    flex-direction: column;
-    color: #fff;
-    justify-content: center;
-    color: #000;
-    padding: 5px 15px;
-  }
 `;
 
 export default CastnCrew;
