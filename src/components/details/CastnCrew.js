@@ -1,5 +1,6 @@
-import { img300, noPicture } from '../../helpers/config';
+import React from 'react';
 import styled from 'styled-components';
+import { img300, noPicture } from '../../helpers/config';
 
 const CastnCrew = ({ credits, title }) => {
   return (

@@ -1,15 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
-import SingleRecomand from '../singles/SingleRecomand';
-import { PageTitle } from '../../GlobalStyles';
+import { ContentList } from '../../GlobalStyles';
+import SingleContent from '../singles/SingleContent';
 
 const Recommended = ({ recommended }) => {
   return (
-    <Container>
-      <PageTitle>Recommended for you</PageTitle>
-      <Wrap>
+    <section>
+      <h2 className="text-center font-bold text-2xl mt-3">More Like This</h2>
+
+      <ContentList>
         {recommended.slice(0, 9).map((recom) => (
-          <SingleRecomand
+          <SingleContent
             key={recom.id}
             id={recom.id}
             poster={recom.backdrop_path}
@@ -20,31 +20,9 @@ const Recommended = ({ recommended }) => {
             description={recom.overview}
           />
         ))}
-      </Wrap>
-    </Container>
+      </ContentList>
+    </section>
   );
 };
-
-const Container = styled.div`
-  border-top: 1px solid #000;
-
-  ${PageTitle} {
-    font-size: 20px;
-    padding-top: 10px;
-    margin-bottom: 10px;
-  }
-`;
-
-const Wrap = styled.div`
-  max-width: 300px;
-  display: flex;
-  flex-direction: column;
-
-  @media only screen and (max-width: 768px) {
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-  }
-`;
 
 export default Recommended;
