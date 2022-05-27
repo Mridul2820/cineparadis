@@ -134,7 +134,9 @@ const DetailsPage = () => {
               networks={content.networks}
             />
           )}
-          {active === 2 && content && <Trailers videos={videos} />}
+          {active === 2 && content && (
+            <Trailers videos={videos} title={content?.name || content?.title} />
+          )}
           {active === 3 && content && recommended?.length > 0 && (
             <Recommended recommended={recommended} />
           )}

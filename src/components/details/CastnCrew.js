@@ -4,8 +4,8 @@ import styled from 'styled-components';
 const CastnCrew = ({ credits, title }) => {
   return (
     <section>
-      <h2 className="text-center font-bold text-2xl">Cast of {title}</h2>
-      <div className="flex justify-center items-center gap-4">
+      <h2 className="text-center font-bold text-2xl mt-2">Cast of {title}</h2>
+      <div className="flex justify-center items-center flex-wrap my-8 gap-4">
         {credits &&
           credits.map((credit) => (
             <Cast key={credit.id}>

@@ -1,14 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Trailers = ({ videos }) => {
+const Trailers = ({ videos, title }) => {
   return (
-    <Wrap>
+    <section className="px-3">
+      <h2 className="text-center font-bold text-2xl mt-2">Videos of {title}</h2>
       {videos &&
         videos.map((video) => (
-          <TrailerWrap key={video.id}>
+          <div
+            className="flex flex-col items-center justify-center mb-2"
+            key={video.id}
+          >
             <br />
-            <TrailerTitle>{video.name}</TrailerTitle>
+            <p className="text-center text-slate-800 text-base md:text-normal font-semibold mb-3">
+              {video.name}
+            </p>
             <Iframe
               className="trailer-video"
               src={`https://www.youtube.com/embed/${video.key}`}
@@ -16,29 +22,12 @@ const Trailers = ({ videos }) => {
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-            ></Iframe>
-          </TrailerWrap>
+            />
+          </div>
         ))}
-    </Wrap>
+    </section>
   );
 };
-
-const Wrap = styled.div`
-  @media only screen and (max-width: 480px) {
-    padding: 0 10px;
-  }
-`;
-
-const TrailerWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const TrailerTitle = styled.h3`
-  padding: 5px 0;
-  color: #000;
-`;
 
 const Iframe = styled.iframe`
   width: 530px;
