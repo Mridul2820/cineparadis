@@ -31,7 +31,7 @@ const DetailsPage = () => {
   const fetchData = async () => {
     setLoading(true);
     const { data } = await axios.get(
-      `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids%2Cvideos%2Crecommendations%2Ccredits`
+      `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids%2Cvideos%2Cimages%2Crecommendations%2Ccredits`
     );
 
     setContent(data);
@@ -40,6 +40,8 @@ const DetailsPage = () => {
     setCredits(data.credits.cast);
     setLoading(false);
   };
+
+  console.log(content);
 
   useEffect(() => {
     fetchData();
@@ -79,51 +81,51 @@ const DetailsPage = () => {
   return (
     <Container>
       {content && <MainInfo content={content} type={type} />}
-        <div className='flex flex-col justify-center mt-5'>
-          <div className='mb-8 flex justify-center'>
-            <Tab onClick={handleClick} active={active === 0} id={0}>
-              Cast 
-            </Tab>
-            <Tab onClick={handleClick} active={active === 1} id={1}>
-              Facts
-            </Tab>
-            <Tab onClick={handleClick} active={active === 2} id={2}>
-              Trailers
-            </Tab>
-            <Tab onClick={handleClick} active={active === 3} id={3}>
-              Recomanded
-            </Tab>
-          </div>
-          <>
-            <Content active={active === 0}>
-              <CastnCrew
-                credits={credits}
-                title={content?.name || content?.title}
-              />
-            </Content>
-            <Content active={active === 1}>
-              {content && (
-                <FactBox
-                  status={content.status}
-                  release={content.release_date}
-                  lang={content.original_language}
-                  budget={content.budget}
-                  revenue={content.revenue}
-                  runtime={content.runtime}
-                  networks={content.networks}
-                />
-              )}
-            </Content>
-            <Content active={active === 2}>
-              <Trailers videos={videos} />
-            </Content>
-            <Content active={active === 3}>
-              {recommended?.length > 0 && (
-                <Recommended recommended={recommended} />
-              )}
-            </Content>
-          </>
+      <div className="flex flex-col justify-center mt-5">
+        <div className="mb-8 flex justify-center">
+          <Tab onClick={handleClick} active={active === 0} id={0}>
+            Top Cast
+          </Tab>
+          <Tab onClick={handleClick} active={active === 1} id={1}>
+            Facts
+          </Tab>
+          <Tab onClick={handleClick} active={active === 2} id={2}>
+            Videos
+          </Tab>
+          <Tab onClick={handleClick} active={active === 3} id={3}>
+            Recomanded
+          </Tab>
         </div>
+        <>
+          <Content active={active === 0}>
+            <CastnCrew
+              credits={credits}
+              title={content?.name || content?.title}
+            />
+          </Content>
+          <Content active={active === 1}>
+            {content && (
+              <FactBox
+                status={content.status}
+                release={content.release_date}
+                lang={content.original_language}
+                budget={content.budget}
+                revenue={content.revenue}
+                runtime={content.runtime}
+                networks={content.networks}
+              />
+            )}
+          </Content>
+          <Content active={active === 2}>
+            <Trailers videos={videos} />
+          </Content>
+          <Content active={active === 3}>
+            {recommended?.length > 0 && (
+              <Recommended recommended={recommended} />
+            )}
+          </Content>
+        </>
+      </div>
     </Container>
   );
 };
