@@ -30,7 +30,7 @@ const MainInfo = ({ content, type }) => {
           }}
           className="flex flex-col justify-start items-start sm:flex-row gap-4 bg-cover bg-center"
         >
-          <div className="w-full xs:max-w-[280px] flex justify-center sm:justify-start">
+          <div className="w-full xs:max-w-[280px] mx-auto flex justify-center sm:justify-start">
             <img
               className="max-w-[250px] xs:max-w-[280px] w-full object-cover align-middle"
               src={

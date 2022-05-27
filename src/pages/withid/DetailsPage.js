@@ -9,11 +9,9 @@ import CastnCrew from '../../components/details/CastnCrew';
 import Trailers from '../../components/details/Trailers';
 import FactBox from '../../components/details/FactBox';
 import Recommended from '../../components/details/Recomamded';
-import { baseUrl } from '../../constants/constant';
+import Gallery from '../../components/details/Gallery';
 
-// import { AiFillYoutube, AiFillHeart } from 'react-icons/ai'
-// import { BsFillPeopleFill } from 'react-icons/bs'
-// import { SiCodefactor } from 'react-icons/si'
+import { baseUrl } from '../../constants/constant';
 
 const detailURL = `${baseUrl}/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
@@ -24,6 +22,7 @@ const DetailsPage = () => {
 
   const [content, setContent] = useState();
   const [videos, setVideos] = useState();
+  const [photos, setPhotos] = useState();
   const [recommended, setRecommended] = useState();
   const [credits, setCredits] = useState();
   const [loading, setLoading] = useState(false);
@@ -36,12 +35,13 @@ const DetailsPage = () => {
 
     setContent(data);
     setVideos(data.videos.results);
+    setPhotos(data.images);
     setRecommended(data.recommendations.results);
     setCredits(data.credits.cast);
     setLoading(false);
   };
 
-  console.log(content);
+  // console.log(content);
 
   useEffect(() => {
     fetchData();
@@ -82,7 +82,7 @@ const DetailsPage = () => {
     <Container>
       {content && <MainInfo content={content} type={type} />}
       <div className="flex flex-col justify-center mt-6 md:mt-8">
-        <div className="mb-8 flex justify-center gap-3 md:px-2">
+        <div className="mb-8 flex justify-center gap-3 px-2 md:px-4">
           <Tab
             className="tab-item"
             onClick={handleClick}
@@ -105,13 +105,22 @@ const DetailsPage = () => {
             active={active === 2}
             id={2}
           >
-            Videos
+            Photos
           </Tab>
+
           <Tab
             className="tab-item"
             onClick={handleClick}
             active={active === 3}
             id={3}
+          >
+            Videos
+          </Tab>
+          <Tab
+            className="tab-item"
+            onClick={handleClick}
+            active={active === 4}
+            id={4}
           >
             More Like This
           </Tab>
@@ -136,9 +145,12 @@ const DetailsPage = () => {
             />
           )}
           {active === 2 && content && (
+            <Gallery photos={photos} title={content?.name || content?.title} />
+          )}
+          {active === 3 && content && (
             <Trailers videos={videos} title={content?.name || content?.title} />
           )}
-          {active === 3 && content && recommended?.length > 0 && (
+          {active === 4 && content && recommended?.length > 0 && (
             <Recommended recommended={recommended} />
           )}
         </>

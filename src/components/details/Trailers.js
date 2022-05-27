@@ -4,8 +4,9 @@ import styled from 'styled-components';
 const Trailers = ({ videos, title }) => {
   return (
     <section className="px-3">
-      <h2 className="text-center font-bold text-2xl mt-2">Videos of {title}</h2>
-      {videos &&
+      <h2 className="text-center font-bold text-2xl my-2">Videos of {title}</h2>
+
+      {videos.length ? (
         videos.map((video) => (
           <div
             className="flex flex-col items-center justify-center mb-2"
@@ -24,7 +25,10 @@ const Trailers = ({ videos, title }) => {
               allowFullScreen
             />
           </div>
-        ))}
+        ))
+      ) : (
+        <p className="text-center">No Video Found</p>
+      )}
     </section>
   );
 };
