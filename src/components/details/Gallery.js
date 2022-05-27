@@ -58,9 +58,9 @@ const Gallery = ({ title, photos }) => {
             {active === 0 &&
               photos.backdrops &&
               photos.backdrops.length > 0 &&
-              photos.backdrops.map((photo) => (
+              photos.backdrops.map((photo, index) => (
                 <img
-                  key={photo.id}
+                  key={index}
                   src={`${img500}/${photo.file_path}`}
                   alt={photo.title}
                   loading="lazy"
@@ -71,9 +71,9 @@ const Gallery = ({ title, photos }) => {
             {active === 1 &&
               photos.logos &&
               photos.logos.length > 0 &&
-              photos.logos.map((photo) => (
+              photos.logos.map((photo, index) => (
                 <img
-                  key={photo.id}
+                  key={index}
                   src={`${img500}/${photo.file_path}`}
                   loading="lazy"
                   alt={photo.title}
@@ -83,9 +83,9 @@ const Gallery = ({ title, photos }) => {
             {active === 2 &&
               photos.posters &&
               photos.posters.length > 0 &&
-              photos.posters.map((photo) => (
+              photos.posters.map((photo, index) => (
                 <img
-                  key={photo.id}
+                  key={index}
                   src={`${img500}/${photo.file_path}`}
                   alt={photo.title}
                   loading="lazy"

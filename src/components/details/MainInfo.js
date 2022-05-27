@@ -1,14 +1,17 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { img300, img500, unavailable } from '../../helpers/config';
 import { Chip } from '@mui/material';
+import { Link } from 'react-router-dom';
 
+import { BiListPlus } from 'react-icons/bi';
 import { GrFacebook, GrInstagram, GrTwitter } from 'react-icons/gr';
+
 import UserContext from '../../context/user';
 import { updateProfileWatchlist } from '../../services/firebase';
-import { BiListPlus } from 'react-icons/bi';
+import { img300, img500, unavailable } from '../../helpers/config';
+import formatTime from '../../helpers/formatTime';
 
-const MainInfo = ({ content, type }) => {
+const MainInfo = ({ content, type, runtime }) => {
   const { user } = useContext(UserContext);
 
   const id = content.id;
@@ -41,7 +44,7 @@ const MainInfo = ({ content, type }) => {
               alt={content.title}
             />
           </div>
-          <Details className="space-y-4">
+          <Details className="space-y-3">
             <span className="mb-4 text-white text-xl md:text-2xl lg:text-3xl font-bold">
               {content.name || content.title} (
               {(
@@ -52,17 +55,22 @@ const MainInfo = ({ content, type }) => {
               )
             </span>
 
+            {runtime && <p className="block">{formatTime(runtime)}</p>}
+
             {content.tagline && <i className="block">{content.tagline}</i>}
 
             <div className="flex items-center flex-wrap gap-3">
               {content.genres?.map((genre) => (
-                <Chip
-                  key={genre.id}
-                  className="chip"
-                  label={genre.name}
-                  color="primary"
-                  size="small"
-                />
+                <Link key={genre.id} to={`/genre/${genre.name}/${genre.id}`}>
+                  <div className="cursor-pointer">
+                    <Chip
+                      className="chip"
+                      label={genre.name}
+                      color="primary"
+                      size="small"
+                    />
+                  </div>
+                </Link>
               ))}
             </div>
 

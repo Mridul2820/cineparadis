@@ -41,7 +41,7 @@ const DetailsPage = () => {
     setLoading(false);
   };
 
-  // console.log(content);
+  console.log(content);
 
   useEffect(() => {
     fetchData();
@@ -80,7 +80,9 @@ const DetailsPage = () => {
 
   return (
     <Container>
-      {content && <MainInfo content={content} type={type} />}
+      {content && (
+        <MainInfo content={content} type={type} runtime={content.runtime} />
+      )}
       <div className="flex flex-col justify-center mt-6 md:mt-8">
         <div className="mb-8 flex justify-center gap-3 px-2 md:px-4">
           <Tab

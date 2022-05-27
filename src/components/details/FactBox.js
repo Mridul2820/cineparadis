@@ -20,11 +20,21 @@ const FactBox = ({
       </h2>
 
       <div className="max-w-2xl mx-auto mt-4 space-y-3">
-        {budget && (
+        {budget && budget > 0 ? (
           <div>
             <b>budget : </b>
             <span>{budget}</span>
           </div>
+        ) : (
+          ''
+        )}
+        {revenue && revenue > 0 ? (
+          <div>
+            <b>Revenue : </b>
+            <span>{revenue === 0 ? '-' : `$${revenue.toLocaleString()}`}</span>
+          </div>
+        ) : (
+          ''
         )}
         {status && (
           <div>
@@ -70,13 +80,6 @@ const FactBox = ({
           <div>
             <b>Runtime : </b>
             <span>{formatTime(runtime)}</span>
-          </div>
-        )}
-
-        {revenue && (
-          <div>
-            <b>Revenue : </b>
-            <span>{revenue === 0 ? '-' : `$${revenue.toLocaleString()}`}</span>
           </div>
         )}
       </div>
