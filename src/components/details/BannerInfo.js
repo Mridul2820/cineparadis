@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Chip } from '@mui/material';
 import { Link } from 'react-router-dom';
 
+import { AiFillStar } from 'react-icons/ai';
 import { BiListPlus } from 'react-icons/bi';
 import { GrFacebook, GrInstagram, GrTwitter } from 'react-icons/gr';
 import { FaImdb } from 'react-icons/fa';
@@ -11,8 +12,9 @@ import UserContext from '../../context/user';
 import { updateProfileWatchlist } from '../../services/firebase';
 import { img300, img500, unavailable } from '../../helpers/config';
 import formatTime from '../../helpers/formatTime';
+import voteColor from '../../helpers/voteColor';
 
-const MainInfo = ({ content, type, runtime }) => {
+const BannerInfo = ({ content, type, runtime }) => {
   const { user } = useContext(UserContext);
 
   const id = content.id;
@@ -55,7 +57,13 @@ const MainInfo = ({ content, type, runtime }) => {
                 : ''}
             </span>
 
-            {runtime ? <p className="block">{formatTime(runtime)}</p> : ' '}
+            <div className="flex items-center gap-1">
+              <Rating vote_average={content.vote_average} voteColor={voteColor}>
+                <AiFillStar />
+                <p>{Math.round(content.vote_average * 10) / 10}</p>
+              </Rating>
+              •{runtime ? <span>{formatTime(runtime)}</span> : ' '}
+            </div>
 
             {content.tagline && <i className="block">{content.tagline}</i>}
 
@@ -168,4 +176,15 @@ const Watch = styled.div`
   }
 `;
 
-export default MainInfo;
+const Rating = styled.div`
+  padding: 3px 10px;
+  font-size: 14px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: ${({ vote_average, voteColor }) => voteColor(vote_average)};
+`;
+
+export default BannerInfo;

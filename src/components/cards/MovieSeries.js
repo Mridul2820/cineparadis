@@ -202,10 +202,7 @@ const Rating = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${({ vote_average, voteColor }) => voteColor(vote_average)};
-
-  p {
-    margin-left: 5px;
-  }
+  gap: 5px;
 `;
 
 export default MovieSeries;

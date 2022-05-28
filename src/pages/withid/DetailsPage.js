@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Loader from 'react-loader-spinner';
 
-import MainInfo from '../../components/details/MainInfo';
+import BannerInfo from '../../components/details/BannerInfo';
 import CastnCrew from '../../components/details/CastnCrew';
 import Trailers from '../../components/details/Trailers';
 import FactBox from '../../components/details/FactBox';
@@ -83,7 +83,7 @@ const DetailsPage = () => {
   return (
     <Container>
       {content && (
-        <MainInfo content={content} type={type} runtime={content.runtime} />
+        <BannerInfo content={content} type={type} runtime={content.runtime} />
       )}
       <div className="flex flex-col justify-center mt-6 md:mt-8">
         <div className="mb-8 flex justify-center gap-3 px-2 md:px-4">
