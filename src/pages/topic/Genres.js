@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { PageTitle } from '../../GlobalStyles';
+import { PageTitle, Container } from '../../GlobalStyles';
 import styled from 'styled-components';
 import { baseUrl } from '../../constants/constant';
 
@@ -29,7 +29,7 @@ const Genres = () => {
   return (
     <Container>
       <PageTitle>genres</PageTitle>
-      <p>Get Movies and Series by genres</p>
+      <p className="text-center mb-3">Get Movies and Series by genres</p>
       <GenreList>
         {genres.length > 0 &&
           genres.map((genre) => (
@@ -41,21 +41,6 @@ const Genres = () => {
     </Container>
   );
 };
-
-const Container = styled.div`
-  padding: 20px 40px;
-  margin: 0 auto;
-  min-height: calc(100vh - 190px);
-
-  @media only screen and (max-width: 480px) {
-    padding: 10px;
-  }
-
-  p {
-    text-align: center;
-    margin-bottom: 10px;
-  }
-`;
 
 const GenreList = styled.div`
   display: flex;

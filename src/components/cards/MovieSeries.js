@@ -59,19 +59,21 @@ const MovieSeries = ({
 
       <Details>
         <Link to={`/${media_type}/${id}`}>
-          <b className="title">{truncate(title, 35)}</b>
+          <h3 className="text-base mb-2 font-bold leading-5">
+            {truncate(title, 36)}
+          </h3>
           <Rating vote_average={vote_average} voteColor={voteColor}>
             <AiFillStar />
             <p>{Math.round(vote_average * 10) / 10}</p>
           </Rating>
-          <span>
+          <span className="font-semibold text-sm">
             {media_type === 'movie' ? 'Movie' : 'TV Series'} •{' '}
             {new Date(date).getFullYear()}
           </span>
         </Link>
 
         <Expand>
-          <p>{truncate(description, 50)}</p>
+          <p className="text-[10px]">{truncate(description, 35)}</p>
           {showWatch && (
             <Watch
               onClick={() => handleWatchlist(id, media_type)}
@@ -93,10 +95,6 @@ const Expand = styled.div`
 
   @media only screen and (max-width: 480px) {
     visibility: visible;
-  }
-
-  p {
-    font-size: 10px;
   }
 `;
 
@@ -158,21 +156,12 @@ const Details = styled.div`
   top: 0;
   color: #fff;
   padding-left: 15px;
-  width: 50%;
+  width: 70%;
   height: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   background-image: linear-gradient(to right, #000, transparent);
-
-  b {
-    font-size: 17px;
-    margin-bottom: 2px;
-  }
-
-  span {
-    font-size: 13px;
-  }
 `;
 
 const Watch = styled.button`
@@ -180,6 +169,7 @@ const Watch = styled.button`
   font-size: 18px;
   display: flex;
   align-items: center;
+  gap: 4px;
   cursor: pointer;
   background: transparent;
   border: none;

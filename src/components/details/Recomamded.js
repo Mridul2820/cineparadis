@@ -8,7 +8,7 @@ const Recommended = ({ recommended }) => {
       <h2 className="text-center font-bold text-2xl mt-3">More Like This</h2>
 
       <ContentList>
-        {recommended.slice(0, 9).map((recom) => (
+        {recommended.slice(0, 12).map((recom) => (
           <MovieSeries
             key={recom.id}
             id={recom.id}
