@@ -21,6 +21,10 @@
     @apply text-center font-medium mb-3 border-b-2 border-b-blue-400 mt-4;
   }
 
+  .gallery-image {
+    @apply w-72 xs:w-[320px] lg:w-[350px] shadow-bs3 rounded-sm;
+  }
+
   .fact-wrap {
     @apply mb-3 pb-3 border-b-2 border-b-blue-100;
   }

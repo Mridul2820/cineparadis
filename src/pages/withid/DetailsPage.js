@@ -155,14 +155,17 @@ const DetailsPage = () => {
             />
           )}
           {active === 2 && content && (
-            <Gallery photos={photos} title={content?.name || content?.title} />
+            <Gallery
+              photos={photos}
+              title={content?.name || content?.title}
+              backdrop_path={content.backdrop_path}
+              poster_path={content.poster_path}
+            />
           )}
           {active === 3 && content && (
             <Trailers videos={videos} title={content?.name || content?.title} />
           )}
-          {active === 4 && content && recommended?.length > 0 && (
-            <Recommended recommended={recommended} />
-          )}
+          {active === 4 && content && <Recommended recommended={recommended} />}
         </>
       </div>
     </Container>
