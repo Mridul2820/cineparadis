@@ -6,7 +6,7 @@ import Paginate from '../../components/widget/Paginate';
 import GenresChip from '../../components/widget/GenresChip';
 import useGenre from '../../hooks/useGenre';
 
-import { PageTitle, Container, ContentList } from '../../GlobalStyles';
+import { PageTitle, Container, ContentList } from '../../styles/Styles';
 import { baseUrl } from '../../constants/constant';
 
 const seriesURL = `${baseUrl}/discover/tv?`;

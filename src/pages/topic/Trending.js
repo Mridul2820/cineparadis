@@ -4,7 +4,7 @@ import axios from 'axios';
 import MovieSeries from '../../components/cards/MovieSeries';
 import Paginate from '../../components/widget/Paginate';
 
-import { PageTitle, Container, ContentList } from '../../GlobalStyles';
+import { PageTitle, Container, ContentList } from '../../styles/Styles';
 import { baseUrl } from '../../constants/constant';
 
 const trendURL = `${baseUrl}/trending/all/day?`;

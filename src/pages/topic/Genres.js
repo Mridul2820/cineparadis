@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { PageTitle, Container } from '../../GlobalStyles';
+import { PageTitle, Container } from '../../styles/Styles';
 import styled from 'styled-components';
 import { baseUrl } from '../../constants/constant';
 

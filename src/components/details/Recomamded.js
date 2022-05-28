@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContentList } from '../../GlobalStyles';
+import { ContentList } from '../../styles/Styles';
 import MovieSeries from '../cards/MovieSeries';
 
 const Recommended = ({ recommended }) => {

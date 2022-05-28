@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Button } from '../GlobalStyles';
+import { Button } from '../styles/Styles';
 import { provider } from '../lib/firebase';
 import * as ROUTES from '../constants/routes';
 import { useHistory } from 'react-router-dom';

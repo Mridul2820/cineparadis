@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { baseUrl } from '../../constants/constant';
 import MovieSeries from '../../components/cards/MovieSeries';
 
-import { PageTitle, Container, ContentList } from '../../GlobalStyles';
+import { PageTitle, Container, ContentList } from '../../styles/Styles';
 
 const genresURL = `${baseUrl}/discover/movie?`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;

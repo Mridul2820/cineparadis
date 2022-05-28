@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import UserContext from '../context/user';
 import { getUserWatchlist } from '../services/firebase';
-import { PageTitle, Container, ContentList } from '../GlobalStyles';
+import { PageTitle, Container, ContentList } from '../styles/Styles';
 import WatchItem from '../components/cards/WatchItem';
 
 const Dashboard = () => {

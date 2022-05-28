@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Button } from '../../GlobalStyles';
+import { Button } from '../../styles/Styles';
 
 import * as ROUTES from '../../constants/routes';
 

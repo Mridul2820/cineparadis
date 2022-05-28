@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { Container, ContentList } from '../../GlobalStyles';
+import { Container, ContentList } from '../../styles/Styles';
 
 import MovieSeries from '../../components/cards/MovieSeries';
 import Paginate from '../../components/widget/Paginate';
