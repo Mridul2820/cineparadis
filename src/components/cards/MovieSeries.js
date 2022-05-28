@@ -27,6 +27,7 @@ const MovieSeries = ({
   showDeleteIcon,
   showWatch,
   recommended,
+  nohover,
 }) => {
   const { user } = useContext(UserContext);
   const userId = user.uid;
@@ -61,7 +62,7 @@ const MovieSeries = ({
   );
 
   return (
-    <Content>
+    <Content nohover={nohover}>
       <img
         src={poster ? `${img300}${poster}` : unavailableLandscape}
         alt={title}
@@ -87,7 +88,7 @@ const MovieSeries = ({
 
         <Expand>
           <p className="text-[10px]">{truncate(description, 35)}</p>
-          {showWatch && (
+          {showWatch && !nohover && (
             <Watch
               onClick={() => handleWatchlist(id, media_type)}
               id="watchAdd"
@@ -142,9 +143,9 @@ const Content = styled.div`
   }
 
   &:hover {
-    transform: scale(1.25);
-    z-index: 50;
+    transform: ${(props) => (props.nohover ? 'scale(1)' : 'scale(1.25)')};
     box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.5);
+    z-index: 50;
 
     @media only screen and (max-width: 480px) {
       transform: scale(1);

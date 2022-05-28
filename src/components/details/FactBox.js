@@ -3,6 +3,8 @@ import { img200, noPicture } from '../../helpers/config';
 import { formatUsd } from '../../helpers/formatCurrency';
 import formatTime from '../../helpers/formatTime';
 
+import CollectionData from './CollectionData';
+
 const FactBox = ({
   status,
   release,
@@ -15,6 +17,8 @@ const FactBox = ({
   seasons,
   last_air_date,
   first_air_date,
+  belongs_to_collection,
+  type,
 }) => {
   return (
     <section className="px-3 py-5">
@@ -34,9 +38,7 @@ const FactBox = ({
         {revenue && revenue > 0 ? (
           <p className="fact-item">
             <span className="fact-type">Revenue : </span>
-            <span className="fact-detail">
-              {revenue === 0 ? '-' : `$${revenue.toLocaleString()}`}
-            </span>
+            <span className="fact-detail">{formatUsd.format(revenue)}</span>
           </p>
         ) : (
           ''
@@ -143,6 +145,9 @@ const FactBox = ({
               ))}
             </div>
           </div>
+        )}
+        {belongs_to_collection && (
+          <CollectionData collectionId={belongs_to_collection.id} type={type} />
         )}
       </div>
     </section>

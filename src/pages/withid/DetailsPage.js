@@ -30,7 +30,7 @@ const DetailsPage = () => {
   const fetchData = async () => {
     setLoading(true);
     const { data } = await axios.get(
-      `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids,videos,images,recommendations,credits`
+      `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids,videos,images,recommendations,credits,collection`
     );
 
     setContent(data);
@@ -40,8 +40,6 @@ const DetailsPage = () => {
     setCredits(data.credits.cast);
     setLoading(false);
   };
-
-  console.log(content);
 
   useEffect(() => {
     fetchData();
@@ -53,6 +51,8 @@ const DetailsPage = () => {
       ? `${content.name || content.title} - CineParadis`
       : 'CineParadis';
   }, [content]);
+
+  console.log(content);
 
   // Tabs
   const [active, setActive] = useState(0);
@@ -147,6 +147,8 @@ const DetailsPage = () => {
               seasons={content.seasons}
               last_air_date={content.last_air_date}
               first_air_date={content.first_air_date}
+              belongs_to_collection={content.belongs_to_collection}
+              type={type}
             />
           )}
           {active === 2 && content && (
