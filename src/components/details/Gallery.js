@@ -95,7 +95,7 @@ const Gallery = ({ title, photos }) => {
           </div>
         </>
       ) : (
-        <p className="text-center">No Photo Found</p>
+        <p className="text-center text-slate-500 mt-3">No Photo Found</p>
       )}
     </section>
   );

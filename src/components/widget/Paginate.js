@@ -1,6 +1,5 @@
 import React from 'react';
 import { Pagination } from '@mui/material';
-import styled from 'styled-components';
 
 const Paginate = ({ setPage, numOfPages = 10 }) => {
   const handlePageChange = (page) => {
@@ -9,23 +8,14 @@ const Paginate = ({ setPage, numOfPages = 10 }) => {
   };
 
   return (
-    <PaginationMain>
+    <div className="w-full flex justify-center mt-2.5">
       <Pagination
         onChange={(e) => handlePageChange(e.target.textContent)}
         count={numOfPages}
-        color="secondary"
-        hideNextButton
-        hidePrevButton
+        color="primary"
       />
-    </PaginationMain>
+    </div>
   );
 };
-
-const PaginationMain = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-`;
 
 export default Paginate;

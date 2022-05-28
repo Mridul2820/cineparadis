@@ -146,6 +146,7 @@ const DetailsPage = () => {
               networks={content.networks}
               seasons={content.seasons}
               last_air_date={content.last_air_date}
+              first_air_date={content.first_air_date}
             />
           )}
           {active === 2 && content && (

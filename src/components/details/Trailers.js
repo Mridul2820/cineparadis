@@ -27,7 +27,7 @@ const Trailers = ({ videos, title }) => {
           </div>
         ))
       ) : (
-        <p className="text-center">No Video Found</p>
+        <p className="text-center text-slate-500 mt-3">No Video Found</p>
       )}
     </section>
   );

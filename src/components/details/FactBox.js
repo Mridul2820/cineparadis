@@ -1,5 +1,6 @@
 import React from 'react';
 import { img200, noPicture } from '../../helpers/config';
+import { formatUsd } from '../../helpers/formatCurrency';
 import formatTime from '../../helpers/formatTime';
 
 const FactBox = ({
@@ -13,6 +14,7 @@ const FactBox = ({
   title,
   seasons,
   last_air_date,
+  first_air_date,
 }) => {
   return (
     <section className="px-3 py-5">
@@ -23,8 +25,8 @@ const FactBox = ({
       <div className="max-w-2xl mx-auto mt-4 space-y-3">
         {budget && budget > 0 ? (
           <p className="fact-item">
-            <span className="fact-type">budget : </span>
-            <span className="fact-detail">{budget}</span>
+            <span className="fact-type">Budget : </span>
+            <span className="fact-detail">{formatUsd.format(budget)}</span>
           </p>
         ) : (
           ''
@@ -78,10 +80,19 @@ const FactBox = ({
           </p>
         )}
 
-        {runtime && (
+        {runtime ? (
           <p className="fact-item">
             <span>Runtime : </span>
             <span className="fact-detail">{formatTime(runtime)}</span>
+          </p>
+        ) : (
+          ' '
+        )}
+
+        {first_air_date && (
+          <p className="fact-item">
+            <span className="fact-type">First Air Date : </span>
+            <span className="fact-detail">{first_air_date}</span>
           </p>
         )}
 

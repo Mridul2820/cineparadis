@@ -6,9 +6,9 @@ const CastnCrew = ({ credits, title }) => {
   return (
     <section>
       <h2 className="text-center font-bold text-2xl mt-2">Cast of {title}</h2>
-      <div className="flex justify-center items-center flex-wrap my-8 gap-4">
-        {credits &&
-          credits.map((credit) => (
+      {credits && credits.length > 0 ? (
+        <div className="flex justify-center items-center flex-wrap my-8 gap-4">
+          {credits.map((credit) => (
             <Cast key={credit.id}>
               <img
                 src={
@@ -27,7 +27,10 @@ const CastnCrew = ({ credits, title }) => {
               </div>
             </Cast>
           ))}
-      </div>
+        </div>
+      ) : (
+        <p className="text-center text-slate-500 mt-3">No Cast Found</p>
+      )}
     </section>
   );
 };
