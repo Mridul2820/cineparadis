@@ -124,7 +124,9 @@ const FactBox = ({
                 <span className="fact-detail">{seasons.length}</span>
               </p>
             </div>
-            <p className="mt-5 text-center font-medium">Season Details</p>
+            <div className="flex justify-center">
+              <span className="fact-section-title">Season Details</span>
+            </div>
             <div className="block sm:pl-5 mt-1">
               {seasons.map((season) => (
                 <div

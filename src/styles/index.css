@@ -17,8 +17,12 @@
     @apply text-center font-bold text-normal xs:text-xl sm:text-2xl sm:mt-2 mb-8;
   }
 
+  .fact-section-title {
+    @apply text-center font-medium mb-3 border-b-2 border-b-blue-400 mt-4;
+  }
+
   .fact-wrap {
-    @apply  mb-3 pb-3 border-b-2 border-b-blue-100;
+    @apply mb-3 pb-3 border-b-2 border-b-blue-100;
   }
 
   .fact-item {

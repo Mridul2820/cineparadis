@@ -50,7 +50,9 @@ const CollectionData = ({ collectionId, type }) => {
           <span className="fact-detail">{collectionData.name}</span>
         </p>
       </div>
-      <p className="mt-5 text-center font-medium">Collection Details</p>
+      <div className="flex justify-center">
+        <span className="fact-section-title">Collection Details</span>
+      </div>
       <div className="block mt-2">
         <div className="sm:pl-5">
           <div className="p-3 my-3 rounded-sm border-2 border-blue-400 shadow-bs5">
@@ -86,9 +88,11 @@ const CollectionData = ({ collectionId, type }) => {
               </span>
             </p>
 
-            <p className="text-center font-medium mt-4">
-              All the Parts of {collectionData.name}
-            </p>
+            <div className="flex justify-center">
+              <span className="fact-section-title">
+                All the Parts of <b>{collectionData.name}</b>
+              </span>
+            </div>
             <ContentList>
               {collectionData.parts.map((part) => (
                 <MovieSeries

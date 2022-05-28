@@ -132,7 +132,7 @@ const DeleteIcon = styled.button`
 const Content = styled.div`
   width: 300px;
   height: 169px;
-  margin: 20px;
+  margin: ${(props) => (props.nohover ? '10px' : '20px')};
   transition: all 0.5s;
   position: relative;
   border-radius: 5px;
