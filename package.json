@@ -1,26 +1,30 @@
 {
-  "name": "movie-buff",
+  "name": "cineparadis",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.4",
-    "@material-ui/lab": "^4.0.0-alpha.58",
-    "axios": "^0.21.1",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.7.0",
+    "axios": "^0.27.2",
     "firebase": "^8.6.8",
+    "flowbite": "^1.4.7",
     "react": "^17.0.2",
     "react-chat-engine": "^1.10.4",
     "react-dom": "^17.0.2",
-    "react-icons": "^4.2.0",
+    "react-icons": "^4.3.1",
+    "react-loader-spinner": "^4.0.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
-    "styled-components": "^5.3.0",
-    "web-vitals": "^1.1.2"
+    "react-scripts": "5.0.0",
+    "styled-components": "^5.3.5",
+    "uuid": "^8.3.2",
+    "web-vitals": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "format": "prettier --write ."
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +43,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "postcss": "^8.4.14",
+    "prettier": "^2.6.2",
+    "source-map-loader": "^3.0.1",
+    "tailwindcss": "^3.0.24"
   }
 }

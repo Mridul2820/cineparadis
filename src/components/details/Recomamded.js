@@ -1,50 +1,34 @@
-import React from 'react'
-import styled from 'styled-components'
-import SingleRecomand from '../singles/SingleRecomand'
-import { PageTitle } from '../../GlobalStyles'
+import React from 'react';
+import { ContentList } from '../../styles/Styles';
+import MovieSeries from '../cards/MovieSeries';
 
 const Recommended = ({ recommended }) => {
-    return (
-        <Container>
-            <PageTitle>Recommended for you</PageTitle>
-            <Wrap>
-            {recommended.slice(0,9).map(recom => (
-                <SingleRecomand
-                    key={recom.id} 
-                    id={recom.id} 
-                    poster={recom.backdrop_path} 
-                    title={recom.title || recom.name} 
-                    date={recom.release_date || recom.first_air_date} 
-                    media_type={recom.media_type}
-                    vote_average={recom.vote_average}
-                    description={recom.overview}
-                />
-            ))}
-            </Wrap>
-        </Container>
-    )
-}
+  return (
+    <section className="tab-section">
+      <h2 className="detail-tab-title">More Like This</h2>
+      {recommended.length > 0 ? (
+        <ContentList>
+          {recommended.slice(0, 12).map((recom) => (
+            <MovieSeries
+              key={recom.id}
+              id={recom.id}
+              poster={recom.backdrop_path}
+              title={recom.title || recom.name}
+              date={recom.release_date || recom.first_air_date}
+              media_type={recom.media_type}
+              vote_average={recom.vote_average}
+              description={recom.overview}
+              recommended
+            />
+          ))}
+        </ContentList>
+      ) : (
+        <p className="text-center text-slate-500 mt-3">
+          Oops, no recommendations found
+        </p>
+      )}
+    </section>
+  );
+};
 
-const Container = styled.div`
-    border-top: 1px solid #000;
-
-    ${PageTitle} {
-        font-size: 20px;
-        padding-top: 10px;
-        margin-bottom: 10px;
-    }
-`
-
-const Wrap = styled.div`
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-
-    @media only screen and (max-width: 768px){
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
-    }
-`
-
-export default Recommended
+export default Recommended;

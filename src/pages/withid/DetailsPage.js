@@ -1,219 +1,196 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import styled from 'styled-components'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import Loader from 'react-loader-spinner';
 
-import MainInfo from '../../components/details/MainInfo'
-import CastnCrew from '../../components/details/CastnCrew'
-import Trailers from '../../components/details/Trailers'
-import FactBox from '../../components/details/FactBox'
-import Recommended from '../../components/details/Recomamded'
+import BannerInfo from '../../components/details/BannerInfo';
+import CastnCrew from '../../components/details/CastnCrew';
+import Trailers from '../../components/details/Trailers';
+import FactBox from '../../components/details/FactBox';
+import Recommended from '../../components/details/Recomamded';
+import Gallery from '../../components/details/Gallery';
 
-// import { AiFillYoutube, AiFillHeart } from 'react-icons/ai'
-// import { BsFillPeopleFill } from 'react-icons/bs'
-// import { SiCodefactor } from 'react-icons/si'
+import { baseUrl } from '../../constants/constant';
 
-const detailURL = 'https://api.themoviedb.org/3/'
-const apiKey = `api_key=${process.env.REACT_APP_TMDB}`
+const detailURL = `${baseUrl}/`;
+const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
 const DetailsPage = () => {
-    const { type } = useParams()
-    const { id } = useParams()
+  const { type } = useParams();
+  const { id } = useParams();
 
-    const [content, setContent] = useState()
-    const [videos, setVideos] = useState()
-    const [recommended, setRecommended] = useState()
-    const [credits, setCredits] = useState()
+  const [content, setContent] = useState();
+  const [videos, setVideos] = useState();
+  const [photos, setPhotos] = useState();
+  const [recommended, setRecommended] = useState();
+  const [credits, setCredits] = useState();
+  const [loading, setLoading] = useState(false);
 
-    const fetchData = async () => {
-        const { data } = await axios.get(
-            `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids%2Cvideos%2Crecommendations%2Ccredits`
-        );
+  const fetchData = async () => {
+    setLoading(true);
+    const { data } = await axios.get(
+      `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids,videos,images,recommendations,credits,collection`
+    );
 
-        // console.log('detaildata', data);
-    
-        setContent(data);
-        setVideos(data.videos.results);
-        setRecommended(data.recommendations.results);
-        setCredits(data.credits.cast)
-    };
+    setContent(data);
+    setVideos(data.videos.results);
+    setPhotos(data.images);
+    setRecommended(data.recommendations.results);
+    setCredits(data.credits.cast);
+    setLoading(false);
+  };
 
-    const [width, setWidth] = React.useState(window.innerWidth);
-    const breakpoint = 768;
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line
+  }, []);
 
-    useEffect(() => {
-        fetchData();
-        window.addEventListener("resize", () => setWidth(window.innerWidth));
+  useEffect(() => {
+    document.title = content
+      ? `${content.name || content.title} - CineParadis`
+      : 'CineParadis';
+  }, [content]);
 
-        // eslint-disable-next-line
-    }, []);
+  // console.log(content);
 
-    useEffect(() => {
-        document.title = content ? `${content.name || content.title} - CineParadis` : 'CineParadis'
-    }, [content]);
+  // Tabs
+  const [active, setActive] = useState(0);
 
-    // Tabs
-    const [active, setActive] = useState(0);
+  const handleClick = (e) => {
+    const index = parseInt(e.target.id, 0);
+    if (index !== active) {
+      setActive(index);
+    }
+  };
 
-    const handleClick = e => {
-        const index = parseInt(e.target.id, 0);
-        if (index !== active) {
-            setActive(index);
-        }
-    };
-
+  if (loading) {
     return (
-        <Container>
-            {content && <MainInfo content={content} type={type}/> }
-            {width < breakpoint ?
-            <TopTabs >
-                <Tabs>
-                    <Tab 
-                        onClick={handleClick} 
-                        active={active === 0} 
-                        id={0}
-                    >
-                        Cast
-                    </Tab>
+      <Container className="flex flex-col justify-center items-center w-full">
+        <Loader
+          type="Circles"
+          color="#00BFFF"
+          height={50}
+          width={200}
+          className="m-5"
+        />
+      </Container>
+    );
+  }
 
-                    <Tab 
-                        onClick={handleClick} 
-                        active={active === 1} 
-                        id={1}
-                    >
-                        Facts
-                    </Tab>
-                    <Tab 
-                        onClick={handleClick} 
-                        active={active === 2} 
-                        id={2}
-                    >
-                        Trailers
-                    </Tab>
-                    <Tab 
-                        onClick={handleClick} 
-                        active={active === 3} 
-                        id={3}
-                    >
-                        More
-                    </Tab>
-                </Tabs>
-                <>
-                    <Content active={active === 0}>
-                        <CastnCrew 
-                            credits={credits}
-                            title={content?.name || content?.title} 
-                        />
-                    </Content>
-                    <Content active={active === 1}>
-                        {content && 
-                            <FactBox 
-                                status={content.status}
-                                release={content.release_date}
-                                lang={content.original_language}
-                                budget={content.budget}
-                                revenue={content.revenue}
-                                runtime={content.runtime}
-                                networks={content.networks}
-                            />
-                        }
-                    </Content>
-                    <Content active={active === 2}>
-                        <Trailers videos={videos} />
-                    </Content>
-                    <Content active={active === 3}>
-                        {recommended?.length > 0 && <Recommended recommended={recommended} />}
-                    </Content>
-                </>
-            </TopTabs>
-            :
-            <DetailInfo>
-                <DetailLeft>
-                    <CastnCrew 
-                        credits={credits}
-                        title={content?.name || content?.title} 
-                    />
-                    <Trailers videos={videos} />
-                </DetailLeft>
-                <DetailRight>
-                    {content && 
-                        <FactBox 
-                            status={content.status}
-                            release={content.release_date}
-                            lang={content.original_language}
-                            budget={content.budget}
-                            revenue={content.revenue}
-                            runtime={content.runtime}
-                            networks={content.networks}
-                        />
-                    }
+  console.log(content);
 
-                    {recommended?.length > 0 && <Recommended recommended={recommended} />}
-                </DetailRight>
-            </DetailInfo>
-            }
-        </Container>
-    )
-}
+  return (
+    <Container>
+      {content && (
+        <BannerInfo content={content} type={type} runtime={content.runtime} />
+      )}
+      <div className="flex flex-col justify-center mt-6 md:mt-8">
+        <div className="mb-3 sm:mb-4 flex justify-center gap-3 px-2 md:px-4">
+          <Tab
+            className="tab-item"
+            onClick={handleClick}
+            active={active === 0}
+            id={0}
+          >
+            Top Cast
+          </Tab>
+          <Tab
+            className="tab-item"
+            onClick={handleClick}
+            active={active === 1}
+            id={1}
+          >
+            Details
+          </Tab>
+          <Tab
+            className="tab-item"
+            onClick={handleClick}
+            active={active === 2}
+            id={2}
+          >
+            Photos
+          </Tab>
+
+          <Tab
+            className="tab-item"
+            onClick={handleClick}
+            active={active === 3}
+            id={3}
+          >
+            Videos
+          </Tab>
+          <Tab
+            className="tab-item"
+            onClick={handleClick}
+            active={active === 4}
+            id={4}
+          >
+            More Like This
+          </Tab>
+        </div>
+        <>
+          {active === 0 && content && (
+            <CastnCrew
+              credits={credits}
+              title={content?.name || content?.title}
+            />
+          )}
+          {active === 1 && content && (
+            <FactBox
+              status={content.status}
+              title={content?.name || content?.title}
+              release={content.release_date}
+              lang={content.original_language}
+              budget={content.budget}
+              revenue={content.revenue}
+              runtime={content.runtime}
+              networks={content.networks}
+              seasons={content.seasons}
+              last_air_date={content.last_air_date}
+              first_air_date={content.first_air_date}
+              belongs_to_collection={content.belongs_to_collection}
+              production_companies={content.production_companies}
+              type={type}
+            />
+          )}
+          {active === 2 && content && (
+            <Gallery
+              photos={photos}
+              title={content?.name || content?.title}
+              backdrop_path={content.backdrop_path}
+              poster_path={content.poster_path}
+            />
+          )}
+          {active === 3 && content && (
+            <Trailers videos={videos} title={content?.name || content?.title} />
+          )}
+          {active === 4 && content && <Recommended recommended={recommended} />}
+        </>
+      </div>
+    </Container>
+  );
+};
 
 const Container = styled.div`
-    padding: 20px 40px;
-    margin: 0 auto;
+  padding: 0px 40px 20px 40px;
+  margin: 0 auto;
+  min-height: calc(100vh - 190px);
 
-    @media only screen and (max-width: 480px){
-        padding: 10px 0;
-    }
-`
+  @media only screen and (max-width: 480px) {
+    padding: 10px 0;
+  }
+`;
 
-const DetailInfo = styled.div`
-    display: flex;
-    margin-top: 20px;
+const Tab = styled.div`
+  width: 20%;
+  padding: 10px 5px;
+  border: ${(props) =>
+    props.active ? '2px solid rgb(96, 165, 250)' : '2px solid transparent'};
+  opacity: ${(props) => (props.active ? '1' : '.8')};
+  background-color: ${(props) =>
+    props.active ? 'white' : 'rgb(195, 221, 253)'};
+  transition: background-color 0.5s ease-in-out;
+`;
 
-    @media only screen and (max-width: 768px){
-        display: none;
-    }
-`
-const TopTabs = styled.div`
-    display: none;
-
-    @media only screen and (max-width: 768px){
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-`
-
-const Tabs = styled.div`
-    overflow: hidden;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-`
-
-const Tab = styled.button`
-    border: none;
-    outline: none;
-    cursor: pointer;
-    width: 20%;
-    position: relative;
-    padding: 10px 5px;
-
-    margin-right: 0.1em;
-    font-size: 1em;
-    border: ${props => (props.active ? "1px solid #ccc" : "")};
-    border-bottom: ${props => (props.active ? "none" : "")};
-    background-color: ${props => (props.active ? "white" : "lightgray")};
-    transition: background-color 0.5s ease-in-out;
-`
-
-const Content = styled.div`
-    ${props => (props.active ? "" : "display: none")}
-`
-
-
-const DetailLeft = styled.div``
-const DetailRight = styled.div``
-
-export default DetailsPage
+export default DetailsPage;
