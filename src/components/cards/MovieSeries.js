@@ -56,7 +56,7 @@ const MovieSeries = ({
       </Rating>
       <span className="font-semibold text-sm">
         {media_type === 'movie' ? 'Movie' : 'TV Series'} •{' '}
-        {new Date(date).getFullYear()}
+        {date ? new Date(date).getFullYear() : ' '}
       </span>
     </>
   );

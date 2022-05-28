@@ -47,16 +47,15 @@ const MainInfo = ({ content, type, runtime }) => {
           </div>
           <Details className="space-y-3">
             <span className="mb-4 text-white text-xl md:text-2xl lg:text-3xl font-bold">
-              {content.name || content.title} (
-              {(
-                content.first_air_date ||
-                content.release_date ||
-                ' '
-              ).substring(0, 4)}
-              )
+              {content.name || content.title}
+              {content.first_air_date || content.release_date
+                ? `(${(
+                    content.first_air_date || content.release_date
+                  ).substring(0, 4)})`
+                : ''}
             </span>
 
-            {runtime && <p className="block">{formatTime(runtime)}</p>}
+            {runtime ? <p className="block">{formatTime(runtime)}</p> : ' '}
 
             {content.tagline && <i className="block">{content.tagline}</i>}
 

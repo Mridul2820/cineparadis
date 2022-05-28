@@ -23,8 +23,6 @@ const CollectionData = ({ collectionId, type }) => {
     setLoading(false);
   };
 
-  console.log(collectionData);
-
   useEffect(() => {
     fetchCollection();
     // eslint-disable-next-line
@@ -80,13 +78,15 @@ const CollectionData = ({ collectionId, type }) => {
         {collectionData.parts && collectionData.parts.length > 0 && (
           <>
             <p className="fact-item">
-              <span className="fact-type">Parts : </span>
+              <span className="fact-type">Total Parts : </span>
               <span className="fact-detail">
                 {collectionData?.parts?.length}
               </span>
             </p>
 
-            <p className="text-center font-medium mt-4">Parts</p>
+            <p className="text-center font-medium mt-4">
+              All the Parts of {collectionData.name}
+            </p>
             <ContentList>
               {collectionData.parts.map((part) => (
                 <MovieSeries

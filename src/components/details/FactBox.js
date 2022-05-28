@@ -1,7 +1,7 @@
 import React from 'react';
 import { img200, noPicture } from '../../helpers/config';
-import { formatUsd } from '../../helpers/formatCurrency';
 import formatTime from '../../helpers/formatTime';
+// import { formatUsd } from '../../helpers/formatCurrency';
 
 import CollectionData from './CollectionData';
 
@@ -9,8 +9,8 @@ const FactBox = ({
   status,
   release,
   lang,
-  budget,
-  revenue,
+  // budget,
+  // revenue,
   runtime,
   networks,
   title,
@@ -27,22 +27,24 @@ const FactBox = ({
       </h2>
 
       <div className="max-w-2xl mx-auto mt-4 space-y-3">
-        {budget && budget > 0 ? (
+        {/* {budget && budget > 0 ? (
           <p className="fact-item">
             <span className="fact-type">Budget : </span>
             <span className="fact-detail">{formatUsd.format(budget)}</span>
           </p>
         ) : (
           ''
-        )}
-        {revenue && revenue > 0 ? (
+        )} */}
+
+        {/* {revenue && revenue > 0 ? (
           <p className="fact-item">
             <span className="fact-type">Revenue : </span>
             <span className="fact-detail">{formatUsd.format(revenue)}</span>
           </p>
         ) : (
           ''
-        )}
+        )} */}
+
         {status && (
           <p className="fact-item">
             <span className="fact-type">Status : </span>
