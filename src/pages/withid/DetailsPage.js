@@ -30,7 +30,7 @@ const DetailsPage = () => {
   const fetchData = async () => {
     setLoading(true);
     const { data } = await axios.get(
-      `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids%2Cvideos%2Cimages%2Crecommendations%2Ccredits`
+      `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids,videos,images,recommendations,credits`
     );
 
     setContent(data);
@@ -41,7 +41,7 @@ const DetailsPage = () => {
     setLoading(false);
   };
 
-  // console.log(content);
+  console.log(content);
 
   useEffect(() => {
     fetchData();

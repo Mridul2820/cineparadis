@@ -102,7 +102,7 @@ const Gallery = ({ title, photos }) => {
 };
 
 const Tab = styled.div`
-  width: 20px;
+  width: 20%;
   padding: 10px 5px;
   border: ${(props) =>
     props.active ? '2px solid rgb(96, 165, 250)' : '2px solid transparent'};

@@ -11,7 +11,7 @@ const Footer = () => {
           target="_blank"
           rel="noreferrer"
         >
-          Mridul
+          Mridul{' '}
         </a>
         & Team.
       </span>
