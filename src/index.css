@@ -8,6 +8,18 @@
   .tab-item {
     @apply flex justify-center items-center text-sm md:text-base font-semibold cursor-pointer text-center shadow-bs3;
   }
+
+  .fact-item {
+    @apply border-l-4 border-l-blue-600 pl-4;
+  }
+
+  .fact-type {
+    @apply text-base font-medium;
+  }
+
+  .fact-detail {
+    @apply text-base font-bold;
+  }
 }
 
 * {

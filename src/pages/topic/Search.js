@@ -58,10 +58,6 @@ const Search = () => {
     document.title = 'Search - CineParadis';
   }, []);
 
-  console.log(
-    `${searchURL}${type}?${apiKey}&language=en-US&query=${searchText}&page=${page}`
-  );
-
   return (
     <Container>
       <div className="mx-auto mb-5 flex gap-x-6 gap-y-8 flex-col sm:flex-row justify-center items-center w-full">
@@ -70,7 +66,7 @@ const Search = () => {
             <input
               type="search"
               id="search-dropdown"
-              className="block p-3 w-full z-20 text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 rounded-md shadow-bs5"
+              className="block p-3 w-full z-20 text-sm text-gray-900 bg-gray-50 border border-blue-300 focus:ring-blue-500 focus:border-blue-500 rounded-md shadow-bs5"
               placeholder="Search Movies or TV Shows"
               required=""
               onChange={(e) => setSearchText(e.target.value)}
@@ -125,7 +121,7 @@ const Search = () => {
               poster={content.backdrop_path}
               title={content.title || content.name}
               date={content.release_date || content.first_air_date}
-              media_type={type ? 'tv' : 'movie'}
+              media_type={type}
               vote_average={content.vote_average}
               description={content.overview}
               showWatch={true}
@@ -148,7 +144,8 @@ const Tab = styled.div`
   border: ${(props) =>
     props.active ? '2px solid rgb(96, 165, 250)' : '2px solid transparent'};
   opacity: ${(props) => (props.active ? '1' : '.8')};
-  background-color: ${(props) => (props.active ? 'white' : 'rgb(229 231 235)')};
+  background-color: ${(props) =>
+    props.active ? 'white' : 'rgb(195, 221, 253)'};
   transition: background-color 0.5s ease-in-out;
 `;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { img300, noPicture } from '../../helpers/config';
+import { img200, noPicture } from '../../helpers/config';
 
 const CastnCrew = ({ credits, title }) => {
   return (
@@ -13,7 +13,7 @@ const CastnCrew = ({ credits, title }) => {
               <img
                 src={
                   credit.profile_path
-                    ? `${img300}/${credit.profile_path}`
+                    ? `${img200}/${credit.profile_path}`
                     : noPicture
                 }
                 alt={credit?.name}

@@ -12,6 +12,7 @@ const FactBox = ({
   networks,
   title,
   seasons,
+  last_air_date,
 }) => {
   return (
     <section className="px-3 py-5">
@@ -21,72 +22,83 @@ const FactBox = ({
 
       <div className="max-w-2xl mx-auto mt-4 space-y-3">
         {budget && budget > 0 ? (
-          <div>
-            <b>budget : </b>
-            <span>{budget}</span>
-          </div>
+          <p className="fact-item">
+            <span className="fact-type">budget : </span>
+            <span className="fact-detail">{budget}</span>
+          </p>
         ) : (
           ''
         )}
         {revenue && revenue > 0 ? (
-          <div>
-            <b>Revenue : </b>
-            <span>{revenue === 0 ? '-' : `$${revenue.toLocaleString()}`}</span>
-          </div>
+          <p className="fact-item">
+            <span className="fact-type">Revenue : </span>
+            <span className="fact-detail">
+              {revenue === 0 ? '-' : `$${revenue.toLocaleString()}`}
+            </span>
+          </p>
         ) : (
           ''
         )}
         {status && (
-          <div>
-            <b>Status : </b>
-            <span>{status}</span>
-          </div>
+          <p className="fact-item">
+            <span className="fact-type">Status : </span>
+            <span className="fact-detail">{status}</span>
+          </p>
         )}
         {release && (
-          <div>
-            <b>Release Date : </b>
-            <span>{release}</span>
-          </div>
+          <p className="fact-item">
+            <span className="fact-type">Release Date : </span>
+            <span className="fact-detail">{release}</span>
+          </p>
         )}
 
         {networks && (
-          <div className="flex flex-wrap items-center gap-2">
-            <b>Networks : </b>
-            <div>
-              {networks.map((network) => (
-                <img
-                  className="w-14"
-                  key={network.id}
-                  src={
-                    network.logo_path
-                      ? `${img200}/${network.logo_path}`
-                      : noPicture
-                  }
-                  alt={network.name}
-                />
-              ))}
-            </div>
+          <div className="flex flex-wrap items-center gap-3 fact-item">
+            <span className="fact-type">Networks : </span>
+            {networks.map((network) => (
+              <img
+                title={network.name}
+                className="w-14"
+                key={network.id}
+                src={
+                  network.logo_path
+                    ? `${img200}/${network.logo_path}`
+                    : noPicture
+                }
+                alt={network.name}
+              />
+            ))}
           </div>
         )}
 
         {lang && (
-          <div>
-            <b>Original Language : </b>
-            <span>{lang}</span>
-          </div>
+          <p className="fact-item">
+            <span className="fact-type">Original Language : </span>
+            <span className="fact-detail">{lang}</span>
+          </p>
         )}
 
         {runtime && (
-          <div>
-            <b>Runtime : </b>
-            <span>{formatTime(runtime)}</span>
-          </div>
+          <p className="fact-item">
+            <span>Runtime : </span>
+            <span className="fact-detail">{formatTime(runtime)}</span>
+          </p>
+        )}
+
+        {last_air_date && (
+          <p className="fact-item">
+            <span className="fact-type">Last Air Date : </span>
+            <span className="fact-detail">{last_air_date}</span>
+          </p>
         )}
 
         {seasons && seasons.length > 0 && (
           <div>
-            <b>Seasons : </b>
-            <span>{seasons.length}</span>
+            <p className="fact-item">
+              <span className="fact-type">Seasons : </span>
+              <span className="fact-detail">{seasons.length}</span>
+            </p>
+            <p className="mt-5 text-center font-medium">Season Details</p>
             <div className="block pl-5 mt-1">
               {seasons.map((season) => (
                 <div
@@ -94,15 +106,20 @@ const FactBox = ({
                   className="shadow-bs5 p-3 my-3 rounded-sm border-2 border-blue-400"
                 >
                   <div className="flex flex-col gap-1">
-                    <span>
-                      {season.season_number}. <b>{season.name}</b>
-                    </span>
-                    <span>
-                      Air Date : <b>{season.air_date}</b>
-                    </span>
-                    <span>
-                      <b>{season.episode_count}</b> episodes
-                    </span>
+                    <p>
+                      <span className="fact-type">{season.season_number}.</span>{' '}
+                      <span className="fact-detail">{season.name}</span>
+                    </p>
+                    <p>
+                      <span className="fact-type">Air Date :</span>
+                      <span className="fact-detail">{season.air_date}</span>
+                    </p>
+                    <p>
+                      <span className="fact-type">Number of Episodes : </span>
+                      <span className="fact-detail">
+                        {season.episode_count}
+                      </span>
+                    </p>
                     {season.overview && <p>{season.overview}</p>}
                   </div>
                 </div>
