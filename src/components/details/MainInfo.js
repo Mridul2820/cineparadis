@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { BiListPlus } from 'react-icons/bi';
 import { GrFacebook, GrInstagram, GrTwitter } from 'react-icons/gr';
+import { FaImdb } from 'react-icons/fa';
 
 import UserContext from '../../context/user';
 import { updateProfileWatchlist } from '../../services/firebase';
@@ -33,7 +34,7 @@ const MainInfo = ({ content, type, runtime }) => {
           }}
           className="flex flex-col justify-start items-start sm:flex-row gap-4 bg-cover bg-center"
         >
-          <div className="w-full xs:max-w-[280px] mx-auto flex justify-center sm:justify-start">
+          <div className="w-full xs:max-w-[280px] mx-auto sm:mx-0 flex justify-center sm:justify-start">
             <img
               className="max-w-[250px] xs:max-w-[280px] w-full object-cover align-middle"
               src={
@@ -83,7 +84,7 @@ const MainInfo = ({ content, type, runtime }) => {
                   rel="noreferrer"
                   href={`https://www.facebook.com/${content.external_ids.facebook_id}`}
                 >
-                  <GrFacebook size="22px" />
+                  <GrFacebook size={22} />
                 </a>
               )}
 
@@ -93,7 +94,7 @@ const MainInfo = ({ content, type, runtime }) => {
                   rel="noreferrer"
                   href={`https://www.instagram.com/${content.external_ids.instagram_id}`}
                 >
-                  <GrInstagram size="22px" />
+                  <GrInstagram size={22} />
                 </a>
               )}
 
@@ -103,7 +104,17 @@ const MainInfo = ({ content, type, runtime }) => {
                   rel="noreferrer"
                   href={`https://www.twitter.com/${content.external_ids.twitter_id}`}
                 >
-                  <GrTwitter size="22px" />
+                  <GrTwitter size={22} />
+                </a>
+              )}
+
+              {content?.external_ids?.imdb_id && (
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href={`https://www.imdb.com/title/${content.external_ids.imdb_id}`}
+                >
+                  <FaImdb size={24} />
                 </a>
               )}
             </Social>

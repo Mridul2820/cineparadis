@@ -77,7 +77,7 @@ const Gallery = ({ title, photos }) => {
                   src={`${img500}/${photo.file_path}`}
                   loading="lazy"
                   alt={photo.title}
-                  className="w-72 xs:w-[320px] lg:w-[350px] shadow-bs3 rounded-sm p-4"
+                  className="w-72 xs:w-[320px] lg:w-[350px] shadow-bs3 rounded-sm p-4 bg-gray-200"
                 />
               ))}
             {active === 2 &&

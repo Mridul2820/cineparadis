@@ -144,6 +144,7 @@ const DetailsPage = () => {
               revenue={content.revenue}
               runtime={content.runtime}
               networks={content.networks}
+              seasons={content.seasons}
             />
           )}
           {active === 2 && content && (

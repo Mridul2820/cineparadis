@@ -12,6 +12,7 @@ const FactBox = ({
   runtime,
   networks,
   title,
+  seasons,
 }) => {
   return (
     <section className="px-3 py-5">
@@ -80,6 +81,34 @@ const FactBox = ({
           <div>
             <b>Runtime : </b>
             <span>{formatTime(runtime)}</span>
+          </div>
+        )}
+
+        {seasons && seasons.length > 0 && (
+          <div>
+            <b>Seasons : </b>
+            <span>{seasons.length}</span>
+            <div className="block pl-5 mt-1">
+              {seasons.map((season) => (
+                <div
+                  key={season.id}
+                  className="shadow-bs5 p-3 my-3 rounded-sm border-2 border-blue-400"
+                >
+                  <div className="flex flex-col gap-1">
+                    <span>
+                      {season.season_number}. <b>{season.name}</b>
+                    </span>
+                    <span>
+                      Air Date : <b>{season.air_date}</b>
+                    </span>
+                    <span>
+                      <b>{season.episode_count}</b> episodes
+                    </span>
+                    {season.overview && <p>{season.overview}</p>}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </div>
