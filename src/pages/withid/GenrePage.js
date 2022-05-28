@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { baseUrl } from '../../constants/constant';
-import SingleContent from '../../components/singles/SingleContent';
+import MovieSeries from '../../components/cards/MovieSeries';
 
 import { PageTitle, Container, ContentList } from '../../GlobalStyles';
 
@@ -37,7 +37,7 @@ const GenrePage = () => {
       <ContentList>
         {contentGens &&
           contentGens.map((content) => (
-            <SingleContent
+            <MovieSeries
               key={content.id}
               id={content.id}
               poster={content.backdrop_path}

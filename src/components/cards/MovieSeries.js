@@ -16,7 +16,7 @@ import {
   updateProfileWatchlist,
 } from '../../services/firebase';
 
-const SingleContent = ({
+const MovieSeries = ({
   id,
   poster,
   title,
@@ -204,4 +204,4 @@ const Rating = styled.div`
   }
 `;
 
-export default SingleContent;
+export default MovieSeries;

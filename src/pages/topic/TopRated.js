@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import SingleContent from '../../components/singles/SingleContent';
+import MovieSeries from '../../components/cards/MovieSeries';
 import CustomPagination from '../../components/CustomPagination';
 
 import { PageTitle, Container, ContentList } from '../../GlobalStyles';
@@ -36,7 +36,7 @@ const TopRated = () => {
       <ContentList>
         {top &&
           top.map((trend) => (
-            <SingleContent
+            <MovieSeries
               key={trend.id}
               id={trend.id}
               poster={trend.backdrop_path}

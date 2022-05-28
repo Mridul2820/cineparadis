@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import SingleContent from '../../components/singles/SingleContent';
+import MovieSeries from '../../components/cards/MovieSeries';
 import CustomPagination from '../../components/CustomPagination';
 import GenresChip from '../../components/GenresChip';
 import useGenre from '../../hooks/useGenre';
@@ -54,7 +54,7 @@ const Movies = () => {
       <ContentList>
         {movies &&
           movies.map((movie) => (
-            <SingleContent
+            <MovieSeries
               key={movie.id}
               id={movie.id}
               poster={movie.backdrop_path}

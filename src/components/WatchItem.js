@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { baseUrl } from '../constants/constant';
-import SingleContent from './singles/SingleContent';
+import MovieSeries from './cards/MovieSeries';
 
 const movieURL = `${baseUrl}/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
@@ -26,7 +26,7 @@ const WatchItem = ({ id, type }) => {
   return (
     <div>
       {content && (
-        <SingleContent
+        <MovieSeries
           key={id}
           id={id}
           media_type={type}

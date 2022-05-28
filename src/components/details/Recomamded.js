@@ -1,6 +1,6 @@
 import React from 'react';
 import { ContentList } from '../../GlobalStyles';
-import SingleContent from '../singles/SingleContent';
+import MovieSeries from '../cards/MovieSeries';
 
 const Recommended = ({ recommended }) => {
   return (
@@ -9,7 +9,7 @@ const Recommended = ({ recommended }) => {
 
       <ContentList>
         {recommended.slice(0, 9).map((recom) => (
-          <SingleContent
+          <MovieSeries
             key={recom.id}
             id={recom.id}
             poster={recom.backdrop_path}

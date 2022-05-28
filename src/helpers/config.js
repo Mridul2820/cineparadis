@@ -3,7 +3,7 @@ export const img200 = 'https://image.tmdb.org/t/p/w200';
 export const img300 = 'https://image.tmdb.org/t/p/w300';
 export const img500 = 'https://image.tmdb.org/t/p/w500';
 
-// contentModal and singleContent
+// contentModal and MovieSeries
 export const unavailable =
   'https://www.movienewz.com/img/films/poster-holder.jpg';
 

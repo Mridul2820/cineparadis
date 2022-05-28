@@ -5,7 +5,7 @@ import { Button, Tabs, Tab, TextField } from '@mui/material';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { Container, ContentList } from '../../GlobalStyles';
 
-import SingleContent from '../../components/singles/SingleContent';
+import MovieSeries from '../../components/cards/MovieSeries';
 import CustomPagination from '../../components/CustomPagination';
 
 import styled from 'styled-components';
@@ -89,7 +89,7 @@ const Search = () => {
       <ContentList>
         {contents &&
           contents.map((content) => (
-            <SingleContent
+            <MovieSeries
               key={content.id}
               id={content.id}
               poster={content.backdrop_path}
