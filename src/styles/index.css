@@ -9,6 +9,14 @@
     @apply flex justify-center items-center text-sm md:text-base font-semibold cursor-pointer text-center shadow-bs3;
   }
 
+  .tab-section {
+    @apply px-3 py-5;
+  }
+
+  .detail-tab-title {
+    @apply text-center font-bold text-normal xs:text-xl sm:text-2xl sm:mt-2 mb-8;
+  }
+
   .fact-wrap {
     @apply  mb-3 pb-3 border-b-2 border-b-blue-100;
   }

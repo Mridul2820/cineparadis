@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const Trailers = ({ videos, title }) => {
   return (
-    <section className="px-3">
-      <h2 className="text-center font-bold text-2xl my-2">Videos of {title}</h2>
+    <section className="tab-section">
+      <h2 className="detail-tab-title">Videos of {title}</h2>
 
       {videos.length ? (
         videos.map((video) => (

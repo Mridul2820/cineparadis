@@ -4,9 +4,8 @@ import MovieSeries from '../cards/MovieSeries';
 
 const Recommended = ({ recommended }) => {
   return (
-    <section>
-      <h2 className="text-center font-bold text-2xl mt-3">More Like This</h2>
-
+    <section className="tab-section">
+      <h2 className="detail-tab-title">More Like This</h2>
       <ContentList>
         {recommended.slice(0, 12).map((recom) => (
           <MovieSeries

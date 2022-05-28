@@ -1,16 +1,12 @@
 import React from 'react';
 import { img200, noPicture } from '../../helpers/config';
 import formatTime from '../../helpers/formatTime';
-// import { formatUsd } from '../../helpers/formatCurrency';
-
 import CollectionData from './CollectionData';
 
 const FactBox = ({
   status,
   release,
   lang,
-  // budget,
-  // revenue,
   runtime,
   networks,
   title,
@@ -22,30 +18,10 @@ const FactBox = ({
   type,
 }) => {
   return (
-    <section className="px-3 py-5">
-      <h2 className="text-center font-bold text-2xl mt-2">
-        Facts About {title}
-      </h2>
+    <section className="tab-section">
+      <h2 className="detail-tab-title">Facts About {title}</h2>
 
-      <div className="max-w-2xl mx-auto mt-4">
-        {/* {budget && budget > 0 ? (
-          <p className="fact-item">
-            <span className="fact-type">Budget : </span>
-            <span className="fact-detail">{formatUsd.format(budget)}</span>
-          </p>
-        ) : (
-          ''
-        )} */}
-
-        {/* {revenue && revenue > 0 ? (
-          <p className="fact-item">
-            <span className="fact-type">Revenue : </span>
-            <span className="fact-detail">{formatUsd.format(revenue)}</span>
-          </p>
-        ) : (
-          ''
-        )} */}
-
+      <div className="max-w-2xl mx-auto">
         {status && (
           <div className="fact-wrap">
             <p className="fact-item">

@@ -48,14 +48,14 @@ const BannerInfo = ({ content, type, runtime }) => {
             />
           </div>
           <Details className="space-y-3">
-            <span className="mb-4 text-white text-xl md:text-2xl lg:text-3xl font-bold">
-              {content.name || content.title}
+            <p className="mb-4 text-white text-xl md:text-2xl lg:text-3xl font-bold text-center sm:text-left">
+              {content.name || content.title}{' '}
               {content.first_air_date || content.release_date
                 ? `(${(
                     content.first_air_date || content.release_date
                   ).substring(0, 4)})`
                 : ''}
-            </span>
+            </p>
 
             <div className="flex items-center gap-1">
               <Rating vote_average={content.vote_average} voteColor={voteColor}>
@@ -65,9 +65,13 @@ const BannerInfo = ({ content, type, runtime }) => {
               {runtime ? <span>• {formatTime(runtime)}</span> : ' '}
             </div>
 
-            {content.tagline && <i className="block">{content.tagline}</i>}
+            {content.tagline && (
+              <i className="block text-center sm:text-left">
+                {content.tagline}
+              </i>
+            )}
 
-            <div className="flex items-center flex-wrap gap-3">
+            <div className="flex items-center flex-wrap gap-3 justify-center sm:justify-center">
               {content.genres?.map((genre) => (
                 <Link key={genre.id} to={`/genre/${genre.name}/${genre.id}`}>
                   <div className="cursor-pointer">
@@ -82,9 +86,11 @@ const BannerInfo = ({ content, type, runtime }) => {
               ))}
             </div>
 
-            <p className="text-base">{content.overview}</p>
+            <p className="text-base text-center sm:text-left">
+              {content.overview}
+            </p>
 
-            <Social>
+            <div className="flex gap-4">
               {content?.external_ids?.facebook_id && (
                 <a
                   target="_blank"
@@ -124,7 +130,7 @@ const BannerInfo = ({ content, type, runtime }) => {
                   <FaImdb size={24} />
                 </a>
               )}
-            </Social>
+            </div>
 
             <Watch onClick={() => handleWatchlist(id, type)}>
               <BiListPlus size="24px" />
@@ -146,15 +152,6 @@ const Details = styled.div`
     align-items: center;
     flex-direction: column;
     padding: 20px 25px;
-  }
-`;
-
-const Social = styled.div`
-  display: flex;
-  margin-top: 20px;
-
-  a {
-    margin-right: 15px;
   }
 `;
 

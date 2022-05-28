@@ -4,10 +4,10 @@ import { img200, noPicture } from '../../helpers/config';
 
 const CastnCrew = ({ credits, title }) => {
   return (
-    <section>
-      <h2 className="text-center font-bold text-2xl mt-2">Cast of {title}</h2>
+    <section className="tab-section">
+      <h2 className="detail-tab-title">Cast of {title}</h2>
       {credits && credits.length > 0 ? (
-        <div className="flex justify-center items-center flex-wrap my-8 gap-4">
+        <div className="flex justify-center items-center flex-wrap mb-6 gap-4">
           {credits.map((credit) => (
             <Cast key={credit.id}>
               <img

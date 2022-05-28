@@ -14,10 +14,8 @@ const Gallery = ({ title, photos }) => {
   };
 
   return (
-    <section>
-      <h2 className="text-center font-bold text-2xl my-4">
-        Gallery of {title}
-      </h2>
+    <section className="tab-section">
+      <h2 className="detail-tab-title">Gallery of {title}</h2>
       {photos.posters.length > 0 &&
       photos.logos.length > 0 &&
       photos.backdrops.length > 0 ? (

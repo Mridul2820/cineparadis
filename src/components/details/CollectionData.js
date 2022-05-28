@@ -44,10 +44,12 @@ const CollectionData = ({ collectionId, type }) => {
 
   return (
     <div className="mt-5">
-      <p className="fact-item">
-        <span className="fact-type">Collection : </span>
-        <span className="fact-detail">{collectionData.name}</span>
-      </p>
+      <div className="fact-wrap">
+        <p className="fact-item">
+          <span className="fact-type">Collection : </span>
+          <span className="fact-detail">{collectionData.name}</span>
+        </p>
+      </div>
       <p className="mt-5 text-center font-medium">Collection Details</p>
       <div className="block mt-2">
         <div className="sm:pl-5">
