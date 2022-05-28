@@ -103,8 +103,9 @@ const Gallery = ({ title, photos }) => {
 
 const Tab = styled.div`
   padding: 10px 5px;
-  border: ${(props) => (props.active ? '1px solid #ccc' : '')};
-  background-color: ${(props) => (props.active ? 'white' : 'lightgray')};
+  border: ${(props) => (props.active ? '2px solid rgb(96, 165, 250)' : '')};
+  opacity: ${(props) => (props.active ? '1' : '.8')};
+  background-color: ${(props) => (props.active ? 'white' : 'rgb(229 231 235)')};
   transition: background-color 0.5s ease-in-out;
 `;
 
