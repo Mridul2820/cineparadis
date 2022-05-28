@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { img200, noPicture } from '../../helpers/config';
 import formatTime from '../../helpers/formatTime';
 

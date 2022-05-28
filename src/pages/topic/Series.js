@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import MovieSeries from '../../components/cards/MovieSeries';
-import CustomPagination from '../../components/CustomPagination';
-import GenresChip from '../../components/GenresChip';
+import Paginate from '../../components/widget/Paginate';
+import GenresChip from '../../components/widget/GenresChip';
 import useGenre from '../../hooks/useGenre';
 
 import { PageTitle, Container, ContentList } from '../../GlobalStyles';
@@ -70,7 +70,7 @@ const Series = () => {
           ))}
       </ContentList>
       {numOfPages > 1 && series.length > 0 && (
-        <CustomPagination setPage={setPage} numOfPages={numOfPages} />
+        <Paginate setPage={setPage} numOfPages={numOfPages} />
       )}
     </Container>
   );

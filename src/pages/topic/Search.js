@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { Button, TextField } from '@mui/material';
-import { AiOutlineSearch } from 'react-icons/ai';
 import { Container, ContentList } from '../../GlobalStyles';
 
 import MovieSeries from '../../components/cards/MovieSeries';
-import CustomPagination from '../../components/CustomPagination';
+import Paginate from '../../components/widget/Paginate';
 
 import styled from 'styled-components';
 import { baseUrl } from '../../constants/constant';
@@ -136,7 +134,7 @@ const Search = () => {
         {searchText && !contents && <h2>Try searching something else</h2>}
       </ContentList>
       {numOfPages > 1 && contents.length > 0 && (
-        <CustomPagination setPage={setPage} numOfPages={numOfPages} />
+        <Paginate setPage={setPage} numOfPages={numOfPages} />
       )}
     </Container>
   );

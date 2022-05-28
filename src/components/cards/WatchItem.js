@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { baseUrl } from '../constants/constant';
-import MovieSeries from './cards/MovieSeries';
+import { baseUrl } from '../../constants/constant';
+import MovieSeries from './MovieSeries';
 
 const movieURL = `${baseUrl}/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;

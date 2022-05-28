@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import MovieSeries from '../../components/cards/MovieSeries';
-import CustomPagination from '../../components/CustomPagination';
+import Paginate from '../../components/widget/Paginate';
 
 import { PageTitle, Container, ContentList } from '../../GlobalStyles';
 import { baseUrl } from '../../constants/constant';
@@ -49,7 +49,7 @@ const Trending = () => {
             />
           ))}
       </ContentList>
-      {trends.length > 0 && <CustomPagination setPage={setPage} />}
+      {trends.length > 0 && <Paginate setPage={setPage} />}
     </Container>
   );
 };

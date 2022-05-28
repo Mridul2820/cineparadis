@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import UserContext from '../context/user';
 import { getUserWatchlist } from '../services/firebase';
 import { PageTitle, Container, ContentList } from '../GlobalStyles';
-import WatchItem from '../components/WatchItem';
+import WatchItem from '../components/cards/WatchItem';
 
 const Dashboard = () => {
   const { user } = useContext(UserContext);
