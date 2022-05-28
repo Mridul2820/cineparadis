@@ -121,16 +121,22 @@ const FactBox = ({
                       <span className="fact-type">{season.season_number}.</span>{' '}
                       <span className="fact-detail">{season.name}</span>
                     </p>
-                    <p>
-                      <span className="fact-type">Air Date :</span>
-                      <span className="fact-detail">{season.air_date}</span>
-                    </p>
-                    <p>
-                      <span className="fact-type">Number of Episodes : </span>
-                      <span className="fact-detail">
-                        {season.episode_count}
-                      </span>
-                    </p>
+                    {season.air_date && (
+                      <p>
+                        <span className="fact-type">Air Date : </span>
+                        <span className="fact-detail">{season.air_date}</span>
+                      </p>
+                    )}
+                    {season.episode_count && season.episode_count > 0 ? (
+                      <p>
+                        <span className="fact-type">Number of Episodes : </span>
+                        <span className="fact-detail">
+                          {season.episode_count}
+                        </span>
+                      </p>
+                    ) : (
+                      ' '
+                    )}
                     {season.overview && <p>{season.overview}</p>}
                   </div>
                 </div>

@@ -18,6 +18,7 @@ const Recommended = ({ recommended }) => {
             media_type={recom.media_type}
             vote_average={recom.vote_average}
             description={recom.overview}
+            recommended
           />
         ))}
       </ContentList>

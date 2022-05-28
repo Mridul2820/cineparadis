@@ -26,6 +26,7 @@ const MovieSeries = ({
   description,
   showDeleteIcon,
   showWatch,
+  recommended,
 }) => {
   const { user } = useContext(UserContext);
   const userId = user.uid;
@@ -43,6 +44,22 @@ const MovieSeries = ({
     // alert('Removed from Your Watchlist')
   };
 
+  const LinkContent = () => (
+    <>
+      <h3 className="text-base mb-2 font-bold leading-5">
+        {truncate(title, 36)}
+      </h3>
+      <Rating vote_average={vote_average} voteColor={voteColor}>
+        <AiFillStar />
+        <p>{Math.round(vote_average * 10) / 10}</p>
+      </Rating>
+      <span className="font-semibold text-sm">
+        {media_type === 'movie' ? 'Movie' : 'TV Series'} •{' '}
+        {new Date(date).getFullYear()}
+      </span>
+    </>
+  );
+
   return (
     <Content>
       <img
@@ -58,19 +75,15 @@ const MovieSeries = ({
       )}
 
       <Details>
-        <Link to={`/${media_type}/${id}`}>
-          <h3 className="text-base mb-2 font-bold leading-5">
-            {truncate(title, 36)}
-          </h3>
-          <Rating vote_average={vote_average} voteColor={voteColor}>
-            <AiFillStar />
-            <p>{Math.round(vote_average * 10) / 10}</p>
-          </Rating>
-          <span className="font-semibold text-sm">
-            {media_type === 'movie' ? 'Movie' : 'TV Series'} •{' '}
-            {new Date(date).getFullYear()}
-          </span>
-        </Link>
+        {recommended ? (
+          <a href={`/${media_type}/${id}`}>
+            <LinkContent />
+          </a>
+        ) : (
+          <Link to={`/${media_type}/${id}`}>
+            <LinkContent />
+          </Link>
+        )}
 
         <Expand>
           <p className="text-[10px]">{truncate(description, 35)}</p>
