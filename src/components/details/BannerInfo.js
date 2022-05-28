@@ -71,7 +71,7 @@ const BannerInfo = ({ content, type, runtime }) => {
               </i>
             )}
 
-            <div className="flex items-center flex-wrap gap-3 justify-center sm:justify-center">
+            <div className="flex items-center flex-wrap gap-3 justify-center sm:justify-start">
               {content.genres?.map((genre) => (
                 <Link key={genre.id} to={`/genre/${genre.name}/${genre.id}`}>
                   <div className="cursor-pointer">

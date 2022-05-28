@@ -52,7 +52,7 @@ const DetailsPage = () => {
       : 'CineParadis';
   }, [content]);
 
-  console.log(content);
+  // console.log(content);
 
   // Tabs
   const [active, setActive] = useState(0);
