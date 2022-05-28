@@ -18,6 +18,7 @@ const FactBox = ({
   last_air_date,
   first_air_date,
   belongs_to_collection,
+  production_companies,
   type,
 }) => {
   return (
@@ -26,7 +27,7 @@ const FactBox = ({
         Facts About {title}
       </h2>
 
-      <div className="max-w-2xl mx-auto mt-4 space-y-3">
+      <div className="max-w-2xl mx-auto mt-4">
         {/* {budget && budget > 0 ? (
           <p className="fact-item">
             <span className="fact-type">Budget : </span>
@@ -46,75 +47,109 @@ const FactBox = ({
         )} */}
 
         {status && (
-          <p className="fact-item">
-            <span className="fact-type">Status : </span>
-            <span className="fact-detail">{status}</span>
-          </p>
+          <div className="fact-wrap">
+            <p className="fact-item">
+              <span className="fact-type">Status : </span>
+              <span className="fact-detail">{status}</span>
+            </p>
+          </div>
         )}
         {release && (
-          <p className="fact-item">
-            <span className="fact-type">Release Date : </span>
-            <span className="fact-detail">{release}</span>
-          </p>
+          <div className="fact-wrap">
+            <p className="fact-item">
+              <span className="fact-type">Release Date : </span>
+              <span className="fact-detail">{release}</span>
+            </p>
+          </div>
         )}
 
         {networks && (
-          <div className="flex flex-wrap items-center gap-3 fact-item">
-            <span className="fact-type">Networks : </span>
-            {networks.map((network) => (
-              <img
-                title={network.name}
-                className="w-14"
-                key={network.id}
-                src={
-                  network.logo_path
-                    ? `${img200}/${network.logo_path}`
-                    : noPicture
-                }
-                alt={network.name}
-              />
-            ))}
+          <div className="fact-wrap">
+            <div className="flex flex-wrap items-center gap-3 fact-item">
+              <span className="fact-type">Networks : </span>
+              {networks.map((network) => (
+                <img
+                  title={network.name}
+                  className="w-14"
+                  key={network.id}
+                  src={
+                    network.logo_path
+                      ? `${img200}/${network.logo_path}`
+                      : noPicture
+                  }
+                  alt={network.name}
+                />
+              ))}
+            </div>
           </div>
         )}
 
         {lang && (
-          <p className="fact-item">
-            <span className="fact-type">Original Language : </span>
-            <span className="fact-detail">{lang}</span>
-          </p>
+          <div className="fact-wrap">
+            <p className="fact-item">
+              <span className="fact-type">Original Language : </span>
+              <span className="fact-detail">{lang}</span>
+            </p>
+          </div>
         )}
 
         {runtime ? (
-          <p className="fact-item">
-            <span>Runtime : </span>
-            <span className="fact-detail">{formatTime(runtime)}</span>
-          </p>
+          <div className="fact-wrap">
+            <p className="fact-item">
+              <span>Runtime : </span>
+              <span className="fact-detail">{formatTime(runtime)}</span>
+            </p>
+          </div>
         ) : (
           ' '
         )}
 
         {first_air_date && (
-          <p className="fact-item">
-            <span className="fact-type">First Air Date : </span>
-            <span className="fact-detail">{first_air_date}</span>
-          </p>
+          <div className="fact-wrap">
+            <p className="fact-item">
+              <span className="fact-type">First Air Date : </span>
+              <span className="fact-detail">{first_air_date}</span>
+            </p>
+          </div>
         )}
 
         {last_air_date && (
-          <p className="fact-item">
-            <span className="fact-type">Last Air Date : </span>
-            <span className="fact-detail">{last_air_date}</span>
-          </p>
+          <div className="fact-wrap">
+            <p className="fact-item">
+              <span className="fact-type">Last Air Date : </span>
+              <span className="fact-detail">{last_air_date}</span>
+            </p>
+          </div>
+        )}
+
+        {production_companies && production_companies.length > 0 && (
+          <div className="fact-wrap">
+            <div className="fact-item flex gap-2 items-center flex-wrap">
+              <span className="fact-type whitespace-nowrap">
+                Production companies :{' '}
+              </span>
+              <div className="flex gap-y-2 gap-x-4 items-center flex-wrap">
+                {production_companies.map((company, index) => (
+                  <div className="flex gap-2 items-center" key={company.id}>
+                    <p>{index + 1}. </p>
+                    <span className="fact-detail">{company.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         )}
 
         {seasons && seasons.length > 0 && (
           <div>
-            <p className="fact-item">
-              <span className="fact-type">Seasons : </span>
-              <span className="fact-detail">{seasons.length}</span>
-            </p>
+            <div className="fact-wrap">
+              <p className="fact-item">
+                <span className="fact-type">Seasons : </span>
+                <span className="fact-detail">{seasons.length}</span>
+              </p>
+            </div>
             <p className="mt-5 text-center font-medium">Season Details</p>
-            <div className="block pl-5 mt-1">
+            <div className="block sm:pl-5 mt-1">
               {seasons.map((season) => (
                 <div
                   key={season.id}

@@ -9,6 +9,10 @@
     @apply flex justify-center items-center text-sm md:text-base font-semibold cursor-pointer text-center shadow-bs3;
   }
 
+  .fact-wrap {
+    @apply  mb-3 pb-3 border-b-2 border-b-blue-100;
+  }
+
   .fact-item {
     @apply border-l-4 border-l-blue-600 pl-4;
   }

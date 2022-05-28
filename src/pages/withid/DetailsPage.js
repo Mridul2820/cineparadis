@@ -101,7 +101,7 @@ const DetailsPage = () => {
             active={active === 1}
             id={1}
           >
-            Facts
+            Details
           </Tab>
           <Tab
             className="tab-item"
@@ -150,6 +150,7 @@ const DetailsPage = () => {
               last_air_date={content.last_air_date}
               first_air_date={content.first_air_date}
               belongs_to_collection={content.belongs_to_collection}
+              production_companies={content.production_companies}
               type={type}
             />
           )}

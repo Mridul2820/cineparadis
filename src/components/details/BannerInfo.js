@@ -62,7 +62,7 @@ const BannerInfo = ({ content, type, runtime }) => {
                 <AiFillStar />
                 <p>{Math.round(content.vote_average * 10) / 10}</p>
               </Rating>
-              •{runtime ? <span>{formatTime(runtime)}</span> : ' '}
+              {runtime ? <span>• {formatTime(runtime)}</span> : ' '}
             </div>
 
             {content.tagline && <i className="block">{content.tagline}</i>}
