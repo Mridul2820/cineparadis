@@ -12,7 +12,7 @@ import { API_URL } from '../../constants/constant';
 const movieURL = `${API_URL}/discover/movie?`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
-const Movies = () => {
+const DiscoverMovies = () => {
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState([]);
   const [numOfPages, setNumOfPages] = useState();
@@ -74,4 +74,4 @@ const Movies = () => {
   );
 };
 
-export default Movies;
+export default DiscoverMovies;

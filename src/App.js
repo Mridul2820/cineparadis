@@ -20,8 +20,8 @@ import Footer from './components/layout/Footer';
 const Login = lazy(() => import('./pages/Login'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Trending = lazy(() => import('./pages/topic/Trending'));
-const Movies = lazy(() => import('./pages/topic/Movies'));
-const Series = lazy(() => import('./pages/topic/Series'));
+const DiscoverMovies = lazy(() => import('./pages/movies/DiscoverMovies'));
+const DiscoverSeries = lazy(() => import('./pages/series/DiscoverSeries'));
 // const TopRated = lazy(() => import('./pages/topic/TopRated'));
 const Genres = lazy(() => import('./pages/topic/Genres'));
 const Search = lazy(() => import('./pages/topic/Search'));
@@ -74,14 +74,14 @@ const App = () => {
                   {/* Movies */}
                   <Route
                     path={ROUTES.MoviesDiscover}
-                    component={Movies}
+                    component={DiscoverMovies}
                     exact
                   />
 
                   {/* Series */}
                   <Route
                     path={ROUTES.SeriesDiscover}
-                    component={Series}
+                    component={DiscoverSeries}
                     exact
                   />
 

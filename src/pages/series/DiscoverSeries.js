@@ -12,7 +12,7 @@ import { API_URL } from '../../constants/constant';
 const seriesURL = `${API_URL}/discover/tv?`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
-const Series = () => {
+const DiscoverSeries = () => {
   const [page, setPage] = useState(1);
   const [series, setSeries] = useState([]);
   const [numOfPages, setNumOfPages] = useState();
@@ -76,4 +76,4 @@ const Series = () => {
   );
 };
 
-export default Series;
+export default DiscoverSeries;
