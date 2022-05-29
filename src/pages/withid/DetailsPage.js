@@ -12,6 +12,7 @@ import Recommended from '../../components/details/Recomamded';
 import Gallery from '../../components/details/Gallery';
 
 import { API_URL } from '../../constants/constant';
+import { Container } from '../../styles/Styles';
 
 const detailURL = `${API_URL}/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
@@ -169,16 +170,6 @@ const DetailsPage = () => {
     </Container>
   );
 };
-
-const Container = styled.div`
-  padding: 0px 40px 20px 40px;
-  margin: 0 auto;
-  min-height: calc(100vh - 190px);
-
-  @media only screen and (max-width: 480px) {
-    padding: 10px 0;
-  }
-`;
 
 const Tab = styled.div`
   width: 20%;

@@ -2,13 +2,43 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-const Options = ({ options }) => {
+const Options = ({ options, colored }) => {
   return (
     <Navmain>
       {options.map((option, index) => (
-        <NavItem to={option.route} activeClassName="active" key={index}>
-          {option.icon && option.icon} <span>{option.title}</span>
-        </NavItem>
+        <React.Fragment key={index}>
+          {option.activeIf ? (
+            <NavItem
+              to={option.route}
+              activeClassName="active"
+              colored={colored}
+              isActive={(match, location) => {
+                for (let i = 0; i < option.activeIf?.length; i++) {
+                  if (location.pathname === option.activeIf[i]) {
+                    return true;
+                  }
+                }
+                return false;
+              }}
+            >
+              {option.icon && option.icon}{' '}
+              <span className="whitespace-nowrap font-semibold">
+                {option.title}
+              </span>
+            </NavItem>
+          ) : (
+            <NavItem
+              to={option.route}
+              activeClassName="active"
+              colored={colored}
+            >
+              {option.icon && option.icon}{' '}
+              <span className="whitespace-nowrap font-semibold">
+                {option.title}
+              </span>
+            </NavItem>
+          )}
+        </React.Fragment>
       ))}
     </Navmain>
   );
@@ -35,6 +65,7 @@ const NavItem = styled(NavLink)`
   border-radius: 5px;
   display: flex;
   align-items: center;
+  gap: 5px;
 
   @media only screen and (max-width: 480px) {
     margin: 5px;
@@ -46,11 +77,10 @@ const NavItem = styled(NavLink)`
 
   &.active {
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
-  }
-
-  span {
-    margin-left: 5px;
-    white-space: nowrap;
+    border: ${(props) =>
+      props.colored === 'yes'
+        ? '2px solid rgb(118 169 250)'
+        : '2px solid transparent'};
   }
 `;
 

@@ -18,11 +18,24 @@ const NavOptions = () => {
       title: 'Movies',
       route: ROUTES.Movies_Discover,
       icon: <RiMovie2Line />,
+      activeIf: [
+        ROUTES.Movies_Discover,
+        ROUTES.Movies_In_Theatre,
+        ROUTES.Movies_Popular,
+        ROUTES.Movies_Top_Rated,
+        ROUTES.Movies_Upcoming,
+      ],
     },
     {
       title: 'Series',
       route: ROUTES.Series_Discover,
       icon: <FaTv />,
+      activeIf: [
+        ROUTES.Series_Discover,
+        ROUTES.Series_Popular,
+        ROUTES.Series_Top_Rated,
+        ROUTES.Series_Upcoming,
+      ],
     },
     {
       title: 'Genres',

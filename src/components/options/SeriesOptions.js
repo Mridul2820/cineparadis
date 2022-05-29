@@ -22,7 +22,7 @@ const SeriesOptions = () => {
     },
   ];
 
-  return <Options options={options} />;
+  return <Options options={options} colored="yes" />;
 };
 
 export default SeriesOptions;
