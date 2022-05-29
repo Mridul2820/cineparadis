@@ -20,7 +20,7 @@ const WatchData = ({ type, id }) => {
     // eslint-disable-next-line
   }, []);
 
-  console.log(watchData);
+  // console.log(watchData);
 
   return <div></div>;
 };

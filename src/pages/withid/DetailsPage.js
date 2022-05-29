@@ -42,8 +42,6 @@ const DetailsPage = () => {
     setLoading(false);
   };
 
-  console.log(content);
-
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line
@@ -144,8 +142,6 @@ const DetailsPage = () => {
               title={content?.name || content?.title}
               release={content.release_date}
               lang={content.original_language}
-              budget={content.budget}
-              revenue={content.revenue}
               runtime={content.runtime}
               networks={content.networks}
               seasons={content.seasons}
@@ -154,6 +150,8 @@ const DetailsPage = () => {
               belongs_to_collection={content.belongs_to_collection}
               production_companies={content.production_companies}
               keywords={content.keywords?.results}
+              crew={content.credits?.crew}
+              original_title={content.original_title}
               type={type}
             />
           )}
