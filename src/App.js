@@ -22,7 +22,7 @@ const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Trending = lazy(() => import('./pages/topic/Trending'));
 const Movies = lazy(() => import('./pages/topic/Movies'));
 const Series = lazy(() => import('./pages/topic/Series'));
-const TopRated = lazy(() => import('./pages/topic/TopRated'));
+// const TopRated = lazy(() => import('./pages/topic/TopRated'));
 const Genres = lazy(() => import('./pages/topic/Genres'));
 const Search = lazy(() => import('./pages/topic/Search'));
 
@@ -69,10 +69,22 @@ const App = () => {
                 <Switch>
                   <Route path={ROUTES.DASHBOARD} component={Dashboard} exact />
                   <Route path={ROUTES.Trending} component={Trending} />
-                  <Route path={ROUTES.Movies} component={Movies} exact />
-                  <Route path={ROUTES.Series} component={Series} exact />
-                  <Route path={ROUTES.TopRated} component={TopRated} exact />
                   <Route path={ROUTES.Genres} component={Genres} exact />
+
+                  {/* Movies */}
+                  <Route
+                    path={ROUTES.MoviesDiscover}
+                    component={Movies}
+                    exact
+                  />
+
+                  {/* Series */}
+                  <Route
+                    path={ROUTES.SeriesDiscover}
+                    component={Series}
+                    exact
+                  />
+
                   <Route path={ROUTES.Search} component={Search} />
 
                   <Route path={ROUTES.Chats} component={ChatPage} />

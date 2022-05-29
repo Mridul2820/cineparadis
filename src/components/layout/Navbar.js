@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
 // Icons
-import { AiOutlineFire, AiOutlineSearch, AiOutlineStar } from 'react-icons/ai';
+import { AiOutlineFire, AiOutlineSearch } from 'react-icons/ai';
 import { RiMovie2Line, RiFileListLine } from 'react-icons/ri';
 import { FaTv } from 'react-icons/fa';
 
@@ -14,14 +14,11 @@ const Navbar = () => {
       <NavItem to={ROUTES.Trending} activeClassName="active">
         <AiOutlineFire /> <span>Trending</span>
       </NavItem>
-      <NavItem to={ROUTES.Movies} activeClassName="active">
+      <NavItem to={ROUTES.MoviesDiscover} activeClassName="active">
         <RiMovie2Line /> <span>Movies</span>
       </NavItem>
-      <NavItem to={ROUTES.Series} activeClassName="active">
+      <NavItem to={ROUTES.SeriesDiscover} activeClassName="active">
         <FaTv /> <span>Series</span>
-      </NavItem>
-      <NavItem to={ROUTES.TopRated} activeClassName="active">
-        <AiOutlineStar /> <span>Top Rated</span>
       </NavItem>
       <NavItem to={ROUTES.Genres} activeClassName="active">
         <RiFileListLine /> <span>Genres</span>
