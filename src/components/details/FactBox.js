@@ -1,6 +1,7 @@
 import React from 'react';
 import { img200, noPicture } from '../../helpers/config';
 import formatTime from '../../helpers/formatTime';
+import { getLangDetail } from '../../helpers/getLangDetail';
 import CollectionData from './CollectionData';
 import WatchData from './WatchData';
 
@@ -69,7 +70,12 @@ const FactBox = ({
           <div className="fact-wrap">
             <p className="fact-item">
               <span className="fact-type">Original Language : </span>
-              <span className="fact-detail">{lang}</span>
+              <span className="fact-detail">
+                {getLangDetail(lang).name}
+                {getLangDetail(lang).nativeName &&
+                  getLangDetail(lang).nativeName != ' ' &&
+                  ` (${getLangDetail(lang).nativeName})`}
+              </span>
             </p>
           </div>
         )}
