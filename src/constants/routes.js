@@ -23,6 +23,6 @@ export const Series_Upcoming = '/upcoming-series';
 export const Chats = '/chats';
 
 export const Details = '/:type/:id';
-export const GenreID = '/genre/:name/:gid';
+export const Genre_Detail = '/genre/:type/:name/:gid';
 
 export const NOT_FOUND = '/not-found';

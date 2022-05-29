@@ -1,57 +1,98 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import DocumentMeta from 'react-document-meta';
 
 import { PageTitle, Container } from '../../styles/Styles';
 import styled from 'styled-components';
-import { API_URL } from '../../constants/constant';
+import {
+  API_URL,
+  BASE_URL,
+  ogDefault,
+  ogImage,
+  twitterData,
+} from '../../constants/constant';
+import { Genres } from '../../constants/routes';
 
 const genresURL = `${API_URL}/genre/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
-const Genres = () => {
-  const [genres, setGenres] = useState([]);
+const GenresPage = () => {
+  const [movieGenres, setMovieGenres] = useState([]);
+  const [tvGenres, setTvGenres] = useState([]);
 
   const fetchGenres = async () => {
-    const { data } = await axios.get(
+    const dataMovies = await axios(
       `${genresURL}movie/list?${apiKey}&language=en-US`
     );
+    setMovieGenres(dataMovies.data.genres);
 
-    setGenres(data.genres);
+    const dataTv = await axios(`${genresURL}tv/list?${apiKey}&language=en-US`);
+    setTvGenres(dataTv.data.genres);
   };
 
   useEffect(() => {
-    document.title = 'Genres - CineParadis';
-
     fetchGenres();
+    // eslint-disable-next-line
   }, []);
 
-  return (
-    <Container>
-      <PageTitle>genres</PageTitle>
-      <p className="text-center mb-3">Get Movies and Series by genres</p>
-      <GenreList>
+  const meta = {
+    title:
+      'Get the list of official genres for Movies and TV Series - CineParadis',
+    description:
+      'Get the list of official genres for Movies and TV Series - CineParadis',
+    canonical: `${BASE_URL}/${Genres}`,
+    meta: {
+      name: {
+        ...twitterData,
+      },
+      property: {
+        ...ogDefault,
+        'og:image': ogImage,
+        'og:title':
+          'Get the list of official genres for Movies and TV Series - CineParadis',
+        'og:description':
+          'Get the list of official genres for Movies and TV Series - CineParadis',
+        'og:url': `${BASE_URL}/${Genres}`,
+      },
+    },
+  };
+
+  const GenreGrid = ({ title, genres, type }) => (
+    <>
+      <PageTitle>{title}</PageTitle>
+      <div className="flex flex-wrap justify-center mb-2">
         {genres.length > 0 &&
           genres.map((genre) => (
-            <GenreItem key={genre.id} to={`/genre/${genre.name}/${genre.id}`}>
+            <GenreItem
+              key={genre.id}
+              to={`/genre/${type}/${genre.name}/${genre.id}`}
+            >
               <span className="font-bold drop-shadow-md">{genre.name}</span>
             </GenreItem>
           ))}
-      </GenreList>
+      </div>
+    </>
+  );
+
+  return (
+    <Container>
+      <DocumentMeta {...meta} />
+      {movieGenres && (
+        <GenreGrid title="Movies Genres" genres={movieGenres} type="movie" />
+      )}
+      <br />
+      {tvGenres && (
+        <GenreGrid title="TV Series Genres" genres={tvGenres} type="tv" />
+      )}
     </Container>
   );
 };
 
-const GenreList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
-
 const GenreItem = styled(Link)`
   margin: 10px 15px;
   padding: 10px;
-  width: 150px;
+  width: 175px;
   background-image: radial-gradient(
     circle 248px at center,
     #16d9e3 0%,
@@ -77,4 +118,4 @@ const GenreItem = styled(Link)`
   }
 `;
 
-export default Genres;
+export default GenresPage;

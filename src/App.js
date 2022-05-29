@@ -39,7 +39,7 @@ const SeriesUpcoming = lazy(() => import('./pages/series/SeriesUpcoming'));
 const ChatPage = lazy(() => import('./pages/ChatPage'));
 
 const DetailsPage = lazy(() => import('./pages/withid/DetailsPage'));
-const GenrePage = lazy(() => import('./pages/withid/GenrePage'));
+const GenreDetail = lazy(() => import('./pages/withid/GenreDetail'));
 
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -130,13 +130,13 @@ const App = () => {
                     exact
                   />
 
+                  <Route path={ROUTES.Genre_Detail} component={GenreDetail} />
+
+                  <Route path={ROUTES.Details} component={DetailsPage} />
+
                   <Route path={ROUTES.Search} component={Search} />
 
                   <Route path={ROUTES.Chats} component={ChatPage} />
-
-                  <Route path={ROUTES.GenreID} component={GenrePage} />
-
-                  <Route path={ROUTES.Details} component={DetailsPage} />
                 </Switch>
                 <Footer />
               </>
