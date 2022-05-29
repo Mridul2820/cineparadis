@@ -62,7 +62,7 @@ const DiscoverSeries = () => {
           'Discover TV shows by different types of data - CineParadis',
         'og:description':
           'Discover TV shows by different types of data like average rating, number of votes and genres',
-        'og:url': `${BASE_URL}/${Series_Discover}`,
+        'og:url': `${BASE_URL}${Series_Discover}`,
       },
     },
   };

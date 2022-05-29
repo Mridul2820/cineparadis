@@ -3,7 +3,6 @@ export const LOGIN = '/login';
 export const PROFILE = '/p/:username';
 
 export const Trending = '/trending';
-export const Series = '/series';
 export const Genres = '/genres';
 export const Search = '/search';
 

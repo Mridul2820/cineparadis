@@ -43,7 +43,7 @@ const GenreDetail = () => {
   const meta = {
     title: `Discover ${getType}s in ${name} Genre - CineParadis`,
     description: `Discover ${getType}s in ${name} Genre - CineParadis`,
-    canonical: `${BASE_URL}/${getSlug}`,
+    canonical: `${BASE_URL}${getSlug}`,
     meta: {
       name: {
         ...twitterData,
@@ -53,7 +53,7 @@ const GenreDetail = () => {
         'og:image': ogImage,
         'og:title': `Discover ${getType}s in ${name} Genre - CineParadis`,
         'og:description': `Discover ${getType}s in ${name} Genre - CineParadis`,
-        'og:url': `${BASE_URL}/${getSlug}`,
+        'og:url': `${BASE_URL}${getSlug}`,
       },
     },
   };

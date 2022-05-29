@@ -54,7 +54,7 @@ const PageContent = ({
         'og:image': ogImage,
         'og:title': seoTitle,
         'og:description': seoDescription,
-        'og:url': `${BASE_URL}/${route}`,
+        'og:url': `${BASE_URL}${route}`,
       },
     },
   };

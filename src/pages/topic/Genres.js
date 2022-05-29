@@ -53,7 +53,7 @@ const GenresPage = () => {
           'Get the list of official genres for Movies and TV Series - CineParadis',
         'og:description':
           'Get the list of official genres for Movies and TV Series - CineParadis',
-        'og:url': `${BASE_URL}/${Genres}`,
+        'og:url': `${BASE_URL}${Genres}`,
       },
     },
   };
