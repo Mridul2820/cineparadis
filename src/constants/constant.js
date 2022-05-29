@@ -14,7 +14,5 @@ export const ogDefault = {
   'og:locale': 'en_US',
 };
 
-export const ogImage = {
-  'og:image':
-    'https://res.cloudinary.com/dbxcernxw/image/upload/v1653805696/CineParadis/cineparadis-of_lbiam4.jpg',
-};
+export const ogImage =
+  'https://res.cloudinary.com/dbxcernxw/image/upload/v1653805696/CineParadis/cineparadis-of_lbiam4.jpg';

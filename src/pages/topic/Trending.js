@@ -41,10 +41,10 @@ const Trending = () => {
       },
       property: {
         ...ogDefault,
+        'og:image': ogImage,
         'og:title': 'Trending Movies and TV Series - CineParadis',
         'og:description': 'Trending Movies and TV Series - CineParadis',
         'og:url': `${BASE_URL}/trending`,
-        'og:image': ogImage,
       },
     },
   };
