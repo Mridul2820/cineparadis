@@ -10,6 +10,7 @@ import {
   ogImage,
   twitterData,
 } from '../../constants/constant';
+
 import MovieSeries from '../../components/cards/MovieSeries';
 
 import { PageTitle, Container, ContentList } from '../../styles/Styles';
@@ -37,7 +38,7 @@ const GenreDetail = () => {
   }, []);
 
   const getType = type === 'movie' ? 'Movies' : 'TV Series';
-  const getSlug = ` /genre/${type}/${name}/${gid}`;
+  const getSlug = `/genre/${type}/${name}/${gid}`;
 
   const meta = {
     title: `Discover ${getType}s in ${name} Genre - CineParadis`,

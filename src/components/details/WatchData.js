@@ -5,6 +5,7 @@ import { API_URL } from '../../constants/constant';
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
 const WatchData = ({ type, id }) => {
+  // eslint-disable-next-line
   const [watchData, setCatchData] = useState([]);
 
   const fetchWatchData = async () => {

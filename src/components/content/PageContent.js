@@ -44,7 +44,7 @@ const PageContent = ({
   const meta = {
     title: seoTitle,
     description: seoDescription,
-    canonical: `${BASE_URL}/${route}`,
+    canonical: `${BASE_URL}${route}`,
     meta: {
       name: {
         ...twitterData,

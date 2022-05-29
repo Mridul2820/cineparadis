@@ -50,7 +50,7 @@ const DiscoverSeries = () => {
     title: 'Discover TV shows by different types of data like - CineParadis',
     description:
       'Discover TV shows by different types of data like average rating, number of votes and genres',
-    canonical: `${BASE_URL}/${Series_Discover}`,
+    canonical: `${BASE_URL}${Series_Discover}`,
     meta: {
       name: {
         ...twitterData,

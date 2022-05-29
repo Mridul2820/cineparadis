@@ -129,7 +129,7 @@ const FactBox = ({
               <span className="fact-detail">
                 {getLangDetail(lang).name}
                 {getLangDetail(lang).nativeName &&
-                  getLangDetail(lang).nativeName != ' ' &&
+                  getLangDetail(lang).nativeName !== ' ' &&
                   ` (${getLangDetail(lang).nativeName})`}
               </span>
             </p>

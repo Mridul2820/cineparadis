@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import DocumentMeta from 'react-document-meta';
+import { Trending } from '../../constants/routes';
 
 import MovieSeries from '../../components/cards/MovieSeries';
 import Paginate from '../../components/widget/Paginate';
@@ -17,7 +18,7 @@ import {
 const trendURL = `${API_URL}/trending/all/day?`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
-const Trending = () => {
+const TrendingPage = () => {
   const [trends, setTrends] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -34,7 +35,7 @@ const Trending = () => {
   const meta = {
     title: 'Trending Movies and TV Series - CineParadis',
     description: 'Trending Movies and TV Series - CineParadis',
-    canonical: `${BASE_URL}/trending`,
+    canonical: `${BASE_URL}${Trending}`,
     meta: {
       name: {
         ...twitterData,
@@ -75,4 +76,4 @@ const Trending = () => {
   );
 };
 
-export default Trending;
+export default TrendingPage;

@@ -41,7 +41,7 @@ const GenresPage = () => {
       'Get the list of official genres for Movies and TV Series - CineParadis',
     description:
       'Get the list of official genres for Movies and TV Series - CineParadis',
-    canonical: `${BASE_URL}/${Genres}`,
+    canonical: `${BASE_URL}${Genres}`,
     meta: {
       name: {
         ...twitterData,

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import DocumentMeta from 'react-document-meta';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Loader from 'react-loader-spinner';
@@ -11,7 +12,14 @@ import FactBox from '../../components/details/FactBox';
 import Recommended from '../../components/details/Recomamded';
 import Gallery from '../../components/details/Gallery';
 
-import { API_URL } from '../../constants/constant';
+import {
+  API_URL,
+  BASE_URL,
+  ogDefault,
+  twitterData,
+} from '../../constants/constant';
+import { img500 } from '../../helpers/config';
+
 import { Container } from '../../styles/Styles';
 
 const detailURL = `${API_URL}/`;
@@ -53,7 +61,36 @@ const DetailsPage = () => {
       : 'CineParadis';
   }, [content]);
 
-  // console.log(content);
+  const getSlug = `${type}/${id}`;
+  const getBackdrop = content?.backdrop_path
+    ? `${img500}${content.backdrop_path}`
+    : '';
+
+  const meta = {
+    title: `Discover all detils of ${
+      content?.name || content?.title
+    } - CineParadis`,
+    description: `Get Cast, Crew, Facts, Trivia Info, Photos, Posters, Trailars, Recomandation, Season and Collection info of ${
+      content?.name || content?.title
+    } - CineParadis`,
+    canonical: `${BASE_URL}${getSlug}`,
+    meta: {
+      name: {
+        ...twitterData,
+      },
+      property: {
+        ...ogDefault,
+        'og:image': getBackdrop,
+        'og:title': `Discover all detils of ${
+          content?.name || content?.title
+        } - CineParadis`,
+        'og:description': `Get Cast, Crew, Facts, Trivia Info, Photos, Posters, Trailars, Recomandation, Season and Collection info of ${
+          content?.name || content?.title
+        } - CineParadis`,
+        'og:url': `${BASE_URL}/${getSlug}`,
+      },
+    },
+  };
 
   // Tabs
   const [active, setActive] = useState(0);
@@ -81,6 +118,8 @@ const DetailsPage = () => {
 
   return (
     <Container>
+      <DocumentMeta {...meta} />
+
       {content && (
         <BannerInfo content={content} type={type} runtime={content.runtime} />
       )}
