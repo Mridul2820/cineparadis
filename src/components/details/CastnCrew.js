@@ -21,9 +21,11 @@ const CastnCrew = ({ credits, title }) => {
               />
               <div className="flex flex-col justify-center px-3 py-1">
                 <h4 className="text-black font-bold">{credit.name}</h4>
-                <p className="text-slate-500">
-                  as <span className="font-medium">{credit.character}</span>
-                </p>
+                {credit.character && (
+                  <p className="text-slate-500">
+                    as <span className="font-medium">{credit.character}</span>
+                  </p>
+                )}
               </div>
             </Cast>
           ))}

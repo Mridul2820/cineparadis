@@ -33,9 +33,9 @@ export const PageTitle = styled.h1`
 `;
 
 export const Container = styled.div`
-  padding: 5px 40px 20px 40px;
+  padding: 32px 40px 20px 40px;
   margin: 0 auto;
-  min-height: calc(100vh - 190px);
+  min-height: calc(100vh - 110px);
 
   @media only screen and (max-width: 480px) {
     padding: 20px 10px;

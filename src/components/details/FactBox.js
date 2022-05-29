@@ -1,9 +1,15 @@
 import React from 'react';
 import { img200, noPicture } from '../../helpers/config';
 import formatTime from '../../helpers/formatTime';
+import { getDirector, getProducer } from '../../helpers/getCrew';
+import { getLangDetail } from '../../helpers/getLangDetail';
 import CollectionData from './CollectionData';
+// import WatchData from './WatchData';
 
 const FactBox = ({
+  // id,
+  crew,
+  original_title,
   status,
   release,
   lang,
@@ -15,6 +21,7 @@ const FactBox = ({
   first_air_date,
   belongs_to_collection,
   production_companies,
+  keywords,
   type,
 }) => {
   return (
@@ -22,6 +29,71 @@ const FactBox = ({
       <h2 className="detail-tab-title">Facts About {title}</h2>
 
       <div className="max-w-2xl mx-auto">
+        {/* <WatchData type={type} id={id} /> */}
+
+        {original_title && (
+          <div className="fact-wrap">
+            <p className="fact-item">
+              <span className="fact-type">Original Title : </span>
+              <span className="fact-detail">{original_title}</span>
+            </p>
+          </div>
+        )}
+
+        {crew && getDirector(crew).length > 0 && (
+          <div className="fact-wrap">
+            <div className="flex flex-wrap items-center gap-3 fact-item">
+              <span className="fact-type">Director : </span>
+
+              {getDirector(crew).map((producer) => (
+                <div className="flex items-center gap-2" key={producer.id}>
+                  <img
+                    title={producer.name}
+                    className="w-9 h-9 object-cover rounded-full"
+                    src={
+                      producer.profile_path
+                        ? `${img200}/${producer.profile_path}`
+                        : noPicture
+                    }
+                    alt={producer.name}
+                  />
+                  <span className="text-base font-semibold">
+                    {producer.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {console.log(getDirector(crew))}
+
+        {crew && getProducer(crew).length > 0 && (
+          <div className="fact-wrap">
+            <div className="flex flex-wrap items-center gap-3 fact-item">
+              <span className="fact-type">Producer : </span>
+              {getProducer(crew).map((producer) => (
+                <div className="flex items-center gap-2" key={producer.id}>
+                  <img
+                    title={producer.name}
+                    className="w-9 h-9 object-cover rounded-full"
+                    key={producer.id}
+                    src={
+                      producer.profile_path
+                        ? `${img200}/${producer.profile_path}`
+                        : noPicture
+                    }
+                    alt={producer.name}
+                  />{' '}
+                  <span className="text-base font-semibold">
+                    {producer.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {status && (
           <div className="fact-wrap">
             <p className="fact-item">
@@ -35,6 +107,49 @@ const FactBox = ({
             <p className="fact-item">
               <span className="fact-type">Release Date : </span>
               <span className="fact-detail">{release}</span>
+            </p>
+          </div>
+        )}
+
+        {runtime ? (
+          <div className="fact-wrap">
+            <p className="fact-item">
+              <span>Runtime : </span>
+              <span className="fact-detail">{formatTime(runtime)}</span>
+            </p>
+          </div>
+        ) : (
+          ' '
+        )}
+
+        {lang && (
+          <div className="fact-wrap">
+            <p className="fact-item">
+              <span className="fact-type">Original Language : </span>
+              <span className="fact-detail">
+                {getLangDetail(lang).name}
+                {getLangDetail(lang).nativeName &&
+                  getLangDetail(lang).nativeName !== ' ' &&
+                  ` (${getLangDetail(lang).nativeName})`}
+              </span>
+            </p>
+          </div>
+        )}
+
+        {first_air_date && (
+          <div className="fact-wrap">
+            <p className="fact-item">
+              <span className="fact-type">First Air Date : </span>
+              <span className="fact-detail">{first_air_date}</span>
+            </p>
+          </div>
+        )}
+
+        {last_air_date && (
+          <div className="fact-wrap">
+            <p className="fact-item">
+              <span className="fact-type">Last Air Date : </span>
+              <span className="fact-detail">{last_air_date}</span>
             </p>
           </div>
         )}
@@ -57,44 +172,6 @@ const FactBox = ({
                 />
               ))}
             </div>
-          </div>
-        )}
-
-        {lang && (
-          <div className="fact-wrap">
-            <p className="fact-item">
-              <span className="fact-type">Original Language : </span>
-              <span className="fact-detail">{lang}</span>
-            </p>
-          </div>
-        )}
-
-        {runtime ? (
-          <div className="fact-wrap">
-            <p className="fact-item">
-              <span>Runtime : </span>
-              <span className="fact-detail">{formatTime(runtime)}</span>
-            </p>
-          </div>
-        ) : (
-          ' '
-        )}
-
-        {first_air_date && (
-          <div className="fact-wrap">
-            <p className="fact-item">
-              <span className="fact-type">First Air Date : </span>
-              <span className="fact-detail">{first_air_date}</span>
-            </p>
-          </div>
-        )}
-
-        {last_air_date && (
-          <div className="fact-wrap">
-            <p className="fact-item">
-              <span className="fact-type">Last Air Date : </span>
-              <span className="fact-detail">{last_air_date}</span>
-            </p>
           </div>
         )}
 
@@ -163,6 +240,24 @@ const FactBox = ({
         )}
         {belongs_to_collection && (
           <CollectionData collectionId={belongs_to_collection.id} type={type} />
+        )}
+
+        {keywords && keywords.length > 0 && (
+          <div className="fact-item flex gap-2 items-center flex-wrap">
+            <span className="fact-type whitespace-nowrap">
+              Keywords{` (${keywords.length})`} :{' '}
+            </span>
+            <div className="flex gap-y-2 gap-x-4 items-center flex-wrap">
+              {keywords.map((keyword) => (
+                <span
+                  key={keyword.id}
+                  className="font-medium bg-blue-200 rounded-full px-2 text-sm"
+                >
+                  {keyword.name}
+                </span>
+              ))}
+            </div>
+          </div>
         )}
       </div>
     </section>

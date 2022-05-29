@@ -44,10 +44,21 @@
 
 * {
   font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #333333 #1c64f2;
 }
 
-html {
-  scroll-behavior: smooth;
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #c8c8ff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #1c64f2;
 }
 
 body {

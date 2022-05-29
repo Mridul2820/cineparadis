@@ -1,17 +1,27 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import DocumentMeta from 'react-document-meta';
 import { useParams } from 'react-router-dom';
-import { baseUrl } from '../../constants/constant';
+
+import {
+  API_URL,
+  BASE_URL,
+  ogDefault,
+  ogImage,
+  twitterData,
+} from '../../constants/constant';
+
 import MovieSeries from '../../components/cards/MovieSeries';
 
 import { PageTitle, Container, ContentList } from '../../styles/Styles';
 
-const genresURL = `${baseUrl}/discover/movie?`;
-const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
-
-const GenrePage = () => {
+const GenreDetail = () => {
   const { gid } = useParams();
   const { name } = useParams();
+  const { type } = useParams();
+
+  const genresURL = `${API_URL}/discover/${type}?`;
+  const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
   const [contentGens, setContentGens] = useState();
 
@@ -19,21 +29,42 @@ const GenrePage = () => {
     const { data } = await axios.get(
       `${genresURL}${apiKey}&with_genres=${gid}`
     );
-
     setContentGens(data.results);
-    // console.log("content", data.results);
   };
 
   useEffect(() => {
     fetchDataGen();
-
-    document.title = `${name} - CineParadis`;
     // eslint-disable-next-line
   }, []);
 
+  const getType = type === 'movie' ? 'Movies' : 'TV Series';
+  const getSlug = `/genre/${type}/${name}/${gid}`;
+
+  const meta = {
+    title: `Discover ${getType}s in ${name} Genre - CineParadis`,
+    description: `Discover ${getType}s in ${name} Genre - CineParadis`,
+    canonical: `${BASE_URL}${getSlug}`,
+    meta: {
+      name: {
+        ...twitterData,
+      },
+      property: {
+        ...ogDefault,
+        'og:image': ogImage,
+        'og:title': `Discover ${getType}s in ${name} Genre - CineParadis`,
+        'og:description': `Discover ${getType}s in ${name} Genre - CineParadis`,
+        'og:url': `${BASE_URL}${getSlug}`,
+      },
+    },
+  };
+
   return (
     <Container>
-      <PageTitle>{name}</PageTitle>
+      <DocumentMeta {...meta} />
+
+      <PageTitle>
+        Discover {getType} in {name}
+      </PageTitle>
       <ContentList>
         {contentGens &&
           contentGens.map((content) => (
@@ -54,4 +85,4 @@ const GenrePage = () => {
   );
 };
 
-export default GenrePage;
+export default GenreDetail;

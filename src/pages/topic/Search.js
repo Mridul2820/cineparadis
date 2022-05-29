@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import DocumentMeta from 'react-document-meta';
 
 import { Container, ContentList } from '../../styles/Styles';
 
@@ -7,12 +8,20 @@ import MovieSeries from '../../components/cards/MovieSeries';
 import Paginate from '../../components/widget/Paginate';
 
 import styled from 'styled-components';
-import { baseUrl } from '../../constants/constant';
+import {
+  API_URL,
+  BASE_URL,
+  ogDefault,
+  ogImage,
+  twitterData,
+} from '../../constants/constant';
 
-const searchURL = `${baseUrl}/search/`;
+import { Search } from '../../constants/routes';
+
+const searchURL = `${API_URL}/search/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
-const Search = () => {
+const SearchPage = () => {
   const [type, setType] = useState('movie');
   const [page, setPage] = useState(1);
   const [searchText, setSearchText] = useState('');
@@ -54,12 +63,28 @@ const Search = () => {
     // eslint-disable-next-line
   }, [page, type]);
 
-  useEffect(() => {
-    document.title = 'Search - CineParadis';
-  }, []);
+  const meta = {
+    title: 'Search for Movies and TV Series - CineParadis',
+    description: 'Search for Movies and TV Series - CineParadis',
+    canonical: `${BASE_URL}${Search}`,
+    meta: {
+      name: {
+        ...twitterData,
+      },
+      property: {
+        ...ogDefault,
+        'og:image': ogImage,
+        'og:title': 'Search for Movies and TV Series - CineParadis',
+        'og:description': 'Search for Movies and TV Series - CineParadis',
+        'og:url': `${BASE_URL}${Search}`,
+      },
+    },
+  };
 
   return (
     <Container>
+      <DocumentMeta {...meta} />
+
       <div className="mx-auto mb-5 flex gap-x-6 gap-y-8 flex-col sm:flex-row justify-center items-center w-full">
         <form onSubmit={searchSubmit} className="min-w-[300px]">
           <div className="relative w-full">
@@ -149,4 +174,4 @@ const Tab = styled.div`
   transition: background-color 0.5s ease-in-out;
 `;
 
-export default Search;
+export default SearchPage;

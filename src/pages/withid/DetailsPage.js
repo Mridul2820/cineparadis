@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import DocumentMeta from 'react-document-meta';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Loader from 'react-loader-spinner';
@@ -11,9 +12,17 @@ import FactBox from '../../components/details/FactBox';
 import Recommended from '../../components/details/Recomamded';
 import Gallery from '../../components/details/Gallery';
 
-import { baseUrl } from '../../constants/constant';
+import {
+  API_URL,
+  BASE_URL,
+  ogDefault,
+  twitterData,
+} from '../../constants/constant';
+import { img500 } from '../../helpers/config';
 
-const detailURL = `${baseUrl}/`;
+import { Container } from '../../styles/Styles';
+
+const detailURL = `${API_URL}/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
 const DetailsPage = () => {
@@ -30,7 +39,7 @@ const DetailsPage = () => {
   const fetchData = async () => {
     setLoading(true);
     const { data } = await axios.get(
-      `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids,videos,images,recommendations,credits,collection`
+      `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids,videos,images,recommendations,credits,collection,keywords`
     );
 
     setContent(data);
@@ -52,7 +61,36 @@ const DetailsPage = () => {
       : 'CineParadis';
   }, [content]);
 
-  // console.log(content);
+  const getSlug = `${type}/${id}`;
+  const getBackdrop = content?.backdrop_path
+    ? `${img500}${content.backdrop_path}`
+    : '';
+
+  const meta = {
+    title: `Discover all detils of ${
+      content?.name || content?.title
+    } - CineParadis`,
+    description: `Get Cast, Crew, Facts, Trivia Info, Photos, Posters, Trailars, Recomandation, Season and Collection info of ${
+      content?.name || content?.title
+    } - CineParadis`,
+    canonical: `${BASE_URL}${getSlug}`,
+    meta: {
+      name: {
+        ...twitterData,
+      },
+      property: {
+        ...ogDefault,
+        'og:image': getBackdrop,
+        'og:title': `Discover all detils of ${
+          content?.name || content?.title
+        } - CineParadis`,
+        'og:description': `Get Cast, Crew, Facts, Trivia Info, Photos, Posters, Trailars, Recomandation, Season and Collection info of ${
+          content?.name || content?.title
+        } - CineParadis`,
+        'og:url': `${BASE_URL}/${getSlug}`,
+      },
+    },
+  };
 
   // Tabs
   const [active, setActive] = useState(0);
@@ -78,10 +116,10 @@ const DetailsPage = () => {
     );
   }
 
-  console.log(content);
-
   return (
     <Container>
+      <DocumentMeta {...meta} />
+
       {content && (
         <BannerInfo content={content} type={type} runtime={content.runtime} />
       )}
@@ -138,12 +176,11 @@ const DetailsPage = () => {
           )}
           {active === 1 && content && (
             <FactBox
+              id={content.id}
               status={content.status}
               title={content?.name || content?.title}
               release={content.release_date}
               lang={content.original_language}
-              budget={content.budget}
-              revenue={content.revenue}
               runtime={content.runtime}
               networks={content.networks}
               seasons={content.seasons}
@@ -151,6 +188,9 @@ const DetailsPage = () => {
               first_air_date={content.first_air_date}
               belongs_to_collection={content.belongs_to_collection}
               production_companies={content.production_companies}
+              keywords={content.keywords?.results}
+              crew={content.credits?.crew}
+              original_title={content.original_title}
               type={type}
             />
           )}
@@ -171,16 +211,6 @@ const DetailsPage = () => {
     </Container>
   );
 };
-
-const Container = styled.div`
-  padding: 0px 40px 20px 40px;
-  margin: 0 auto;
-  min-height: calc(100vh - 190px);
-
-  @media only screen and (max-width: 480px) {
-    padding: 10px 0;
-  }
-`;
 
 const Tab = styled.div`
   width: 20%;
