@@ -1,15 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import DocumentMeta from 'react-document-meta';
 
 import Paginate from '../widget/Paginate';
 
 import { PageTitle, Container } from '../../styles/Styles';
-import { API_URL } from '../../constants/constant';
+import {
+  API_URL,
+  BASE_URL,
+  ogDefault,
+  ogImage,
+  twitterData,
+} from '../../constants/constant';
 
 import ContentGrid from '../widget/ContentGrid';
 import MovieOptions from '../options/MovieOptions';
 
-const PageContent = ({ title, media_type, uri }) => {
+const PageContent = ({
+  title,
+  media_type,
+  uri,
+  seoTitle,
+  seoDescription,
+  route,
+}) => {
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -26,12 +40,27 @@ const PageContent = ({ title, media_type, uri }) => {
     // eslint-disable-next-line
   }, [page]);
 
-  useEffect(() => {
-    document.title = 'Top Rated - CineParadis';
-  }, []);
+  const meta = {
+    title: seoTitle,
+    description: seoDescription,
+    canonical: `${BASE_URL}/${route}`,
+    meta: {
+      name: {
+        ...twitterData,
+      },
+      property: {
+        ...ogDefault,
+        'og:image': ogImage,
+        'og:title': seoTitle,
+        'og:description': seoDescription,
+        'og:url': `${BASE_URL}/${route}`,
+      },
+    },
+  };
 
   return (
     <Container>
+      <DocumentMeta {...meta} />
       <MovieOptions />
       <PageTitle className="mt-4">{title}</PageTitle>
       <ContentGrid items={items} media_type={media_type} />

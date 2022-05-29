@@ -16,12 +16,12 @@ const NavOptions = () => {
     },
     {
       title: 'Movies',
-      route: ROUTES.MoviesDiscover,
+      route: ROUTES.Movies_Discover,
       icon: <RiMovie2Line />,
     },
     {
       title: 'Series',
-      route: ROUTES.SeriesDiscover,
+      route: ROUTES.Series_Discover,
       icon: <FaTv />,
     },
     {

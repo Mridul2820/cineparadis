@@ -84,54 +84,54 @@ const App = () => {
 
                   {/* Movies */}
                   <Route
-                    path={ROUTES.MoviesDiscover}
+                    path={ROUTES.Movies_Discover}
                     component={DiscoverMovies}
                     exact
                   />
                   <Route
-                    path={ROUTES.MoviesInTheatre}
+                    path={ROUTES.Movies_In_Theatre}
                     component={MoviesInTheatre}
                     exact
                   />
                   <Route
-                    path={ROUTES.MoviesPopular}
+                    path={ROUTES.Movies_Popular}
                     component={MoviesPopular}
                     exact
                   />
                   <Route
-                    path={ROUTES.MoviesTopRated}
+                    path={ROUTES.Movies_Top_Rated}
                     component={MoviesTopRated}
                     exact
                   />
                   <Route
-                    path={ROUTES.MoviesUpcoming}
+                    path={ROUTES.Movies_Upcoming}
                     component={MoviesUpcoming}
                     exact
                   />
 
                   {/* Series */}
                   <Route
-                    path={ROUTES.SeriesDiscover}
+                    path={ROUTES.Series_Discover}
                     component={DiscoverSeries}
                     exact
                   />
                   <Route
-                    path={ROUTES.SeriesLatest}
+                    path={ROUTES.Series_Latest}
                     component={SeriesLatest}
                     exact
                   />
                   <Route
-                    path={ROUTES.SeriesPopular}
+                    path={ROUTES.Series_Popular}
                     component={SeriesPopular}
                     exact
                   />
                   <Route
-                    path={ROUTES.SeriesTopRated}
+                    path={ROUTES.Series_Top_Rated}
                     component={SeriesTopRated}
                     exact
                   />
                   <Route
-                    path={ROUTES.SeriesUpcoming}
+                    path={ROUTES.Series_Upcoming}
                     component={SeriesUpcoming}
                     exact
                   />

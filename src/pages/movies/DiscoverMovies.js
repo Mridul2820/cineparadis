@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import DocumentMeta from 'react-document-meta';
 
 import useGenre from '../../hooks/useGenre';
 
@@ -9,7 +10,14 @@ import ContentGrid from '../../components/widget/ContentGrid';
 import Paginate from '../../components/widget/Paginate';
 import GenresChip from '../../components/widget/GenresChip';
 
-import { API_URL } from '../../constants/constant';
+import {
+  API_URL,
+  BASE_URL,
+  ogDefault,
+  ogImage,
+  twitterData,
+} from '../../constants/constant';
+import { Movies_Discover } from '../../constants/routes';
 const movieURL = `${API_URL}/discover/movie?`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
@@ -37,12 +45,29 @@ const DiscoverMovies = () => {
     // eslint-disable-next-line
   }, [page, genreForURL]);
 
-  useEffect(() => {
-    document.title = 'Movies - CineParadis';
-  }, []);
+  const meta = {
+    title: 'Discover movies by different types of data like - CineParadis',
+    description:
+      'Discover movies by different types of data like average rating, number of votes and genres',
+    canonical: `${BASE_URL}/${Movies_Discover}`,
+    meta: {
+      name: {
+        ...twitterData,
+      },
+      property: {
+        ...ogDefault,
+        'og:image': ogImage,
+        'og:title': 'Discover movies by different types of data - CineParadis',
+        'og:description':
+          'Discover movies by different types of data like average rating, number of votes and genres',
+        'og:url': `${BASE_URL}/${Movies_Discover}`,
+      },
+    },
+  };
 
   return (
     <Container>
+      <DocumentMeta {...meta} />
       <MovieOptions />
       <PageTitle className="mt-4">Discover Movies</PageTitle>
       <GenresChip

@@ -6,23 +6,23 @@ const MovieOptions = () => {
   const options = [
     {
       title: 'Discover',
-      route: ROUTES.MoviesDiscover,
+      route: ROUTES.Movies_Discover,
     },
     {
       title: 'In Theatre',
-      route: ROUTES.MoviesInTheatre,
+      route: ROUTES.Movies_In_Theatre,
     },
     {
       title: 'Popular',
-      route: ROUTES.MoviesPopular,
+      route: ROUTES.Movies_Popular,
     },
     {
       title: 'Top Rated',
-      route: ROUTES.MoviesTopRated,
+      route: ROUTES.Movies_Top_Rated,
     },
     {
       title: 'Upcoming',
-      route: ROUTES.MoviesUpcoming,
+      route: ROUTES.Movies_Upcoming,
     },
   ];
 

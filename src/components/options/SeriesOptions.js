@@ -6,23 +6,23 @@ const SeriesOptions = () => {
   const options = [
     {
       title: 'Discover',
-      route: ROUTES.SeriesDiscover,
+      route: ROUTES.Series_Discover,
     },
     {
       title: 'Latest',
-      route: ROUTES.SeriesLatest,
+      route: ROUTES.Series_Latest,
     },
     {
       title: 'Popular',
-      route: ROUTES.SeriesPopular,
+      route: ROUTES.Series_Popular,
     },
     {
       title: 'Top Rated',
-      route: ROUTES.SeriesTopRated,
+      route: ROUTES.Series_Top_Rated,
     },
     {
       title: 'Upcoming',
-      route: ROUTES.SeriesUpcoming,
+      route: ROUTES.Series_Upcoming,
     },
   ];
 
