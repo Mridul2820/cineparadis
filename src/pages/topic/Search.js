@@ -7,9 +7,9 @@ import MovieSeries from '../../components/cards/MovieSeries';
 import Paginate from '../../components/widget/Paginate';
 
 import styled from 'styled-components';
-import { baseUrl } from '../../constants/constant';
+import { API_URL } from '../../constants/constant';
 
-const searchURL = `${baseUrl}/search/`;
+const searchURL = `${API_URL}/search/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
 const Search = () => {

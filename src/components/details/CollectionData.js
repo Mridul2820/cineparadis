@@ -4,7 +4,7 @@ import Loader from 'react-loader-spinner';
 
 import { img300 } from '../../helpers/config';
 import { Container, ContentList } from '../../styles/Styles';
-import { baseUrl } from '../../constants/constant';
+import { API_URL } from '../../constants/constant';
 import MovieSeries from '../cards/MovieSeries';
 
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
@@ -16,7 +16,7 @@ const CollectionData = ({ collectionId, type }) => {
   const fetchCollection = async () => {
     setLoading(true);
     const { data } = await axios(
-      `${baseUrl}/collection/${collectionId}?${apiKey}`
+      `${API_URL}/collection/${collectionId}?${apiKey}`
     );
 
     setCollectionData(data);

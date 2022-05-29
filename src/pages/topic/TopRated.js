@@ -5,9 +5,9 @@ import MovieSeries from '../../components/cards/MovieSeries';
 import Paginate from '../../components/widget/Paginate';
 
 import { PageTitle, Container, ContentList } from '../../styles/Styles';
-import { baseUrl } from '../../constants/constant';
+import { API_URL } from '../../constants/constant';
 
-const trendURL = `${baseUrl}/movie/top_rated?`;
+const trendURL = `${API_URL}/movie/top_rated?`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
 const TopRated = () => {

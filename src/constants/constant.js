@@ -1,6 +1,6 @@
-export const baseUrl = 'https://api.themoviedb.org/3';
+export const API_URL = 'https://api.themoviedb.org/3';
 
-export const appUrl = 'https://cineparadis.mridul.tech';
+export const BASE_URL = 'https://cineparadis.mridul.tech';
 
 export const twitterData = {
   'twitter:card': 'summary_large_image',

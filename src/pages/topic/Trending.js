@@ -7,14 +7,14 @@ import Paginate from '../../components/widget/Paginate';
 
 import { PageTitle, Container, ContentList } from '../../styles/Styles';
 import {
-  appUrl,
-  baseUrl,
+  BASE_URL,
+  API_URL,
   ogDefault,
   ogImage,
   twitterData,
 } from '../../constants/constant';
 
-const trendURL = `${baseUrl}/trending/all/day?`;
+const trendURL = `${API_URL}/trending/all/day?`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
 const Trending = () => {
@@ -34,7 +34,7 @@ const Trending = () => {
   const meta = {
     title: 'Trending Movies and TV Series - CineParadis',
     description: 'Trending Movies and TV Series - CineParadis',
-    canonical: `${appUrl}/trending`,
+    canonical: `${BASE_URL}/trending`,
     meta: {
       name: {
         ...twitterData,
@@ -43,7 +43,7 @@ const Trending = () => {
         ...ogDefault,
         'og:title': 'Trending Movies and TV Series - CineParadis',
         'og:description': 'Trending Movies and TV Series - CineParadis',
-        'og:url': `${appUrl}/trending`,
+        'og:url': `${BASE_URL}/trending`,
         'og:image': ogImage,
       },
     },

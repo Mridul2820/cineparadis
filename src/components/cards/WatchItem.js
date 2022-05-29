@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { baseUrl } from '../../constants/constant';
+import { API_URL } from '../../constants/constant';
 import MovieSeries from './MovieSeries';
 
-const movieURL = `${baseUrl}/`;
+const movieURL = `${API_URL}/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
 const WatchItem = ({ id, type }) => {

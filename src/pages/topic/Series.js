@@ -7,9 +7,9 @@ import GenresChip from '../../components/widget/GenresChip';
 import useGenre from '../../hooks/useGenre';
 
 import { PageTitle, Container, ContentList } from '../../styles/Styles';
-import { baseUrl } from '../../constants/constant';
+import { API_URL } from '../../constants/constant';
 
-const seriesURL = `${baseUrl}/discover/tv?`;
+const seriesURL = `${API_URL}/discover/tv?`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
 const Series = () => {

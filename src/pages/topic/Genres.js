@@ -4,9 +4,9 @@ import axios from 'axios';
 
 import { PageTitle, Container } from '../../styles/Styles';
 import styled from 'styled-components';
-import { baseUrl } from '../../constants/constant';
+import { API_URL } from '../../constants/constant';
 
-const genresURL = `${baseUrl}/genre/`;
+const genresURL = `${API_URL}/genre/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
 const Genres = () => {

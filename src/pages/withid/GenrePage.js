@@ -1,12 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { baseUrl } from '../../constants/constant';
+import { API_URL } from '../../constants/constant';
 import MovieSeries from '../../components/cards/MovieSeries';
 
 import { PageTitle, Container, ContentList } from '../../styles/Styles';
 
-const genresURL = `${baseUrl}/discover/movie?`;
+const genresURL = `${API_URL}/discover/movie?`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
 const GenrePage = () => {

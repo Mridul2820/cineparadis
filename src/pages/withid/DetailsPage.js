@@ -11,9 +11,9 @@ import FactBox from '../../components/details/FactBox';
 import Recommended from '../../components/details/Recomamded';
 import Gallery from '../../components/details/Gallery';
 
-import { baseUrl } from '../../constants/constant';
+import { API_URL } from '../../constants/constant';
 
-const detailURL = `${baseUrl}/`;
+const detailURL = `${API_URL}/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
 const DetailsPage = () => {
