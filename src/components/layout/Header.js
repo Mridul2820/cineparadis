@@ -1,16 +1,14 @@
 import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Button } from '../../styles/Styles';
+import styled from 'styled-components';
 
+import { Button } from '../../styles/Styles';
 import * as ROUTES from '../../constants/routes';
 
 import FirebaseContext from '../../context/firebase';
 import UserContext from '../../context/user';
 
 import logo from '../../assets/logo-black.PNG';
-import styled from 'styled-components';
-
-// import { IoChatbubblesOutline } from 'react-icons/io5'
 
 const Header = () => {
   const history = useHistory();
@@ -28,9 +26,9 @@ const Header = () => {
 
       <HeaderRight>
         {/* <Chat to={ROUTES.Chats}>
-                    <IoChatbubblesOutline />
-                    <span>Chats</span>
-                </Chat> */}
+          <IoChatbubblesOutline />
+          <span>Chats</span>
+        </Chat> */}
 
         <User>
           <img src={user.photoURL} alt="user" />

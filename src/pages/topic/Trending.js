@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import DocumentMeta from 'react-document-meta';
 
 import MovieSeries from '../../components/cards/MovieSeries';
 import Paginate from '../../components/widget/Paginate';
 
 import { PageTitle, Container, ContentList } from '../../styles/Styles';
-import { baseUrl } from '../../constants/constant';
+import {
+  appUrl,
+  baseUrl,
+  ogDefault,
+  ogImage,
+  twitterData,
+} from '../../constants/constant';
 
 const trendURL = `${baseUrl}/trending/all/day?`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
@@ -16,8 +23,6 @@ const Trending = () => {
 
   const fetchTrending = async () => {
     const { data } = await axios.get(`${trendURL}${apiKey}&page=${page}`);
-
-    // console.log('data', data)
     setTrends(data.results);
   };
 
@@ -26,12 +31,28 @@ const Trending = () => {
     // eslint-disable-next-line
   }, [page]);
 
-  useEffect(() => {
-    document.title = 'Trending - CineParadis';
-  }, []);
+  const meta = {
+    title: 'Trending Movies and TV Series - CineParadis',
+    description: 'Trending Movies and TV Series - CineParadis',
+    canonical: `${appUrl}/trending`,
+    meta: {
+      name: {
+        ...twitterData,
+      },
+      property: {
+        ...ogDefault,
+        'og:title': 'Trending Movies and TV Series - CineParadis',
+        'og:description': 'Trending Movies and TV Series - CineParadis',
+        'og:url': `${appUrl}/trending`,
+        'og:image': ogImage,
+      },
+    },
+  };
 
   return (
     <Container>
+      <DocumentMeta {...meta} />
+
       <PageTitle>Trending</PageTitle>
       <ContentList>
         {trends &&
