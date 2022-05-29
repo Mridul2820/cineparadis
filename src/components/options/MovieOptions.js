@@ -9,10 +9,6 @@ const MovieOptions = () => {
       route: ROUTES.MoviesDiscover,
     },
     {
-      title: 'Latest',
-      route: ROUTES.MoviesLatest,
-    },
-    {
       title: 'In Theatre',
       route: ROUTES.MoviesInTheatre,
     },

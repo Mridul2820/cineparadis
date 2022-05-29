@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import MovieSeries from '../../components/cards/MovieSeries';
-import Paginate from '../../components/widget/Paginate';
-import GenresChip from '../../components/widget/GenresChip';
 import useGenre from '../../hooks/useGenre';
 
-import { PageTitle, Container, ContentList } from '../../styles/Styles';
-import { API_URL } from '../../constants/constant';
+import { PageTitle, Container } from '../../styles/Styles';
+import MovieOptions from '../../components/options/MovieOptions';
+import ContentGrid from '../../components/widget/ContentGrid';
+import Paginate from '../../components/widget/Paginate';
+import GenresChip from '../../components/widget/GenresChip';
 
+import { API_URL } from '../../constants/constant';
 const movieURL = `${API_URL}/discover/movie?`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
@@ -42,7 +43,8 @@ const DiscoverMovies = () => {
 
   return (
     <Container>
-      <PageTitle>Movies</PageTitle>
+      <MovieOptions />
+      <PageTitle className="mt-4">Discover Movies</PageTitle>
       <GenresChip
         type="movie"
         genres={genres}
@@ -51,22 +53,9 @@ const DiscoverMovies = () => {
         setSelectedGenres={setSelectedGenres}
         setPage={setPage}
       />
-      <ContentList>
-        {movies &&
-          movies.map((movie) => (
-            <MovieSeries
-              key={movie.id}
-              id={movie.id}
-              poster={movie.backdrop_path}
-              title={movie.title || movie.name}
-              date={movie.release_date || movie.first_air_date}
-              media_type="movie"
-              vote_average={movie.vote_average}
-              description={movie.overview}
-              showWatch={true}
-            />
-          ))}
-      </ContentList>
+
+      <ContentGrid items={movies} media_type="movie" />
+
       {numOfPages > 1 && movies.length > 0 && (
         <Paginate setPage={setPage} numOfPages={numOfPages} />
       )}

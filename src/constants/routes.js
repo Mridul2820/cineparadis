@@ -9,7 +9,6 @@ export const Search = '/search';
 
 // Movies
 export const MoviesDiscover = '/discover-movies';
-export const MoviesLatest = '/latest-movies';
 export const MoviesInTheatre = '/in-theatre-movies';
 export const MoviesPopular = '/popular-movies';
 export const MoviesTopRated = '/top-rated-movies';

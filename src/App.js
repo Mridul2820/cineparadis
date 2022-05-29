@@ -26,7 +26,6 @@ const Search = lazy(() => import('./pages/topic/Search'));
 // Movies
 const DiscoverMovies = lazy(() => import('./pages/movies/DiscoverMovies'));
 const MoviesInTheatre = lazy(() => import('./pages/movies/MoviesInTheatre'));
-const MoviesLatest = lazy(() => import('./pages/movies/MoviesLatest'));
 const MoviesPopular = lazy(() => import('./pages/movies/MoviesPopular'));
 const MoviesTopRated = lazy(() => import('./pages/movies/MoviesTopRated'));
 const MoviesUpcoming = lazy(() => import('./pages/movies/MoviesUpcoming'));
@@ -92,11 +91,6 @@ const App = () => {
                   <Route
                     path={ROUTES.MoviesInTheatre}
                     component={MoviesInTheatre}
-                    exact
-                  />
-                  <Route
-                    path={ROUTES.MoviesLatest}
-                    component={MoviesLatest}
                     exact
                   />
                   <Route

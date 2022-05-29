@@ -33,7 +33,7 @@ export const PageTitle = styled.h1`
 `;
 
 export const Container = styled.div`
-  padding: 40px 40px 20px 40px;
+  padding: 32px 40px 20px 40px;
   margin: 0 auto;
   min-height: calc(100vh - 122px);
 
