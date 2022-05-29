@@ -20,11 +20,23 @@ import Footer from './components/layout/Footer';
 const Login = lazy(() => import('./pages/Login'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Trending = lazy(() => import('./pages/topic/Trending'));
-const DiscoverMovies = lazy(() => import('./pages/movies/DiscoverMovies'));
-const DiscoverSeries = lazy(() => import('./pages/series/DiscoverSeries'));
-// const TopRated = lazy(() => import('./pages/topic/TopRated'));
 const Genres = lazy(() => import('./pages/topic/Genres'));
 const Search = lazy(() => import('./pages/topic/Search'));
+
+// Movies
+const DiscoverMovies = lazy(() => import('./pages/movies/DiscoverMovies'));
+const MoviesInTheatre = lazy(() => import('./pages/movies/MoviesInTheatre'));
+const MoviesLatest = lazy(() => import('./pages/movies/MoviesLatest'));
+const MoviesPopular = lazy(() => import('./pages/movies/MoviesPopular'));
+const MoviesTopRated = lazy(() => import('./pages/movies/MoviesTopRated'));
+const MoviesUpcoming = lazy(() => import('./pages/movies/MoviesUpcoming'));
+
+// Series
+const DiscoverSeries = lazy(() => import('./pages/series/DiscoverSeries'));
+const SeriesLatest = lazy(() => import('./pages/series/SeriesLatest'));
+const SeriesPopular = lazy(() => import('./pages/series/SeriesPopular'));
+const SeriesTopRated = lazy(() => import('./pages/series/SeriesTopRated'));
+const SeriesUpcoming = lazy(() => import('./pages/series/SeriesUpcoming'));
 
 const ChatPage = lazy(() => import('./pages/ChatPage'));
 
@@ -77,11 +89,56 @@ const App = () => {
                     component={DiscoverMovies}
                     exact
                   />
+                  <Route
+                    path={ROUTES.MoviesInTheatre}
+                    component={MoviesInTheatre}
+                    exact
+                  />
+                  <Route
+                    path={ROUTES.MoviesLatest}
+                    component={MoviesLatest}
+                    exact
+                  />
+                  <Route
+                    path={ROUTES.MoviesPopular}
+                    component={MoviesPopular}
+                    exact
+                  />
+                  <Route
+                    path={ROUTES.MoviesTopRated}
+                    component={MoviesTopRated}
+                    exact
+                  />
+                  <Route
+                    path={ROUTES.MoviesUpcoming}
+                    component={MoviesUpcoming}
+                    exact
+                  />
 
                   {/* Series */}
                   <Route
                     path={ROUTES.SeriesDiscover}
                     component={DiscoverSeries}
+                    exact
+                  />
+                  <Route
+                    path={ROUTES.SeriesLatest}
+                    component={SeriesLatest}
+                    exact
+                  />
+                  <Route
+                    path={ROUTES.SeriesPopular}
+                    component={SeriesPopular}
+                    exact
+                  />
+                  <Route
+                    path={ROUTES.SeriesTopRated}
+                    component={SeriesTopRated}
+                    exact
+                  />
+                  <Route
+                    path={ROUTES.SeriesUpcoming}
+                    component={SeriesUpcoming}
                     exact
                   />
 
