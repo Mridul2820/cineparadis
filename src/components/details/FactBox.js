@@ -2,8 +2,10 @@ import React from 'react';
 import { img200, noPicture } from '../../helpers/config';
 import formatTime from '../../helpers/formatTime';
 import CollectionData from './CollectionData';
+import WatchData from './WatchData';
 
 const FactBox = ({
+  id,
   status,
   release,
   lang,
@@ -15,6 +17,7 @@ const FactBox = ({
   first_air_date,
   belongs_to_collection,
   production_companies,
+  keywords,
   type,
 }) => {
   return (
@@ -22,6 +25,8 @@ const FactBox = ({
       <h2 className="detail-tab-title">Facts About {title}</h2>
 
       <div className="max-w-2xl mx-auto">
+        {/* <WatchData type={type} id={id} /> */}
+
         {status && (
           <div className="fact-wrap">
             <p className="fact-item">
@@ -163,6 +168,24 @@ const FactBox = ({
         )}
         {belongs_to_collection && (
           <CollectionData collectionId={belongs_to_collection.id} type={type} />
+        )}
+
+        {keywords && keywords.length > 0 && (
+          <div className="fact-item flex gap-2 items-center flex-wrap">
+            <span className="fact-type whitespace-nowrap">
+              Keywords{` (${keywords.length})`} :{' '}
+            </span>
+            <div className="flex gap-y-2 gap-x-4 items-center flex-wrap">
+              {keywords.map((keyword) => (
+                <span
+                  key={keyword.id}
+                  className="font-medium bg-blue-200 rounded-full px-2 text-sm"
+                >
+                  {keyword.name}
+                </span>
+              ))}
+            </div>
+          </div>
         )}
       </div>
     </section>

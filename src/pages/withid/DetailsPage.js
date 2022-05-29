@@ -31,7 +31,7 @@ const DetailsPage = () => {
   const fetchData = async () => {
     setLoading(true);
     const { data } = await axios.get(
-      `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids,videos,images,recommendations,credits,collection`
+      `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids,videos,images,recommendations,credits,collection,keywords`
     );
 
     setContent(data);
@@ -41,6 +41,8 @@ const DetailsPage = () => {
     setCredits(data.credits.cast);
     setLoading(false);
   };
+
+  console.log(content);
 
   useEffect(() => {
     fetchData();
@@ -137,6 +139,7 @@ const DetailsPage = () => {
           )}
           {active === 1 && content && (
             <FactBox
+              id={content.id}
               status={content.status}
               title={content?.name || content?.title}
               release={content.release_date}
@@ -150,6 +153,7 @@ const DetailsPage = () => {
               first_air_date={content.first_air_date}
               belongs_to_collection={content.belongs_to_collection}
               production_companies={content.production_companies}
+              keywords={content.keywords?.results}
               type={type}
             />
           )}
