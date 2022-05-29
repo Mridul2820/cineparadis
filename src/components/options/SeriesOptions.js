@@ -2,35 +2,31 @@ import React from 'react';
 import * as ROUTES from '../../constants/routes';
 import Options from './Options';
 
-const MovieOptions = () => {
+const SeriesOptions = () => {
   const options = [
     {
       title: 'Discover',
-      route: ROUTES.MoviesDiscover,
+      route: ROUTES.SeriesDiscover,
     },
     {
       title: 'Latest',
-      route: ROUTES.MoviesLatest,
-    },
-    {
-      title: 'In Theatre',
-      route: ROUTES.MoviesInTheatre,
+      route: ROUTES.SeriesLatest,
     },
     {
       title: 'Popular',
-      route: ROUTES.MoviesPopular,
+      route: ROUTES.SeriesPopular,
     },
     {
       title: 'Top Rated',
-      route: ROUTES.MoviesTopRated,
+      route: ROUTES.SeriesTopRated,
     },
     {
       title: 'Upcoming',
-      route: ROUTES.MoviesUpcoming,
+      route: ROUTES.SeriesUpcoming,
     },
   ];
 
   return <Options options={options} />;
 };
 
-export default MovieOptions;
+export default SeriesOptions;

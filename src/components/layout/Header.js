@@ -9,6 +9,7 @@ import FirebaseContext from '../../context/firebase';
 import UserContext from '../../context/user';
 
 import logo from '../../assets/logo-black.PNG';
+import NavOptions from '../options/NavOptions';
 
 const Header = () => {
   const history = useHistory();
@@ -23,6 +24,10 @@ const Header = () => {
         <img src={logo} alt="logo" />
         <h2>CineParadis</h2>
       </Logo>
+
+      <div className="hidden md:block">
+        <NavOptions />
+      </div>
 
       <HeaderRight>
         {/* <Chat to={ROUTES.Chats}>
