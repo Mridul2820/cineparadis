@@ -78,8 +78,6 @@ const DetailsPage = () => {
     );
   }
 
-  console.log(content);
-
   return (
     <Container>
       {content && (
