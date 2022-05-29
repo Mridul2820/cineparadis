@@ -16,7 +16,6 @@ export const Movies_Upcoming = '/upcoming-movies';
 
 // Movies
 export const Series_Discover = '/discover-series';
-export const Series_Latest = '/latest-series';
 export const Series_Popular = '/popular-series';
 export const Series_Top_Rated = '/top-rated-series';
 export const Series_Upcoming = '/upcoming-series';

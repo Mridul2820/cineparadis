@@ -15,6 +15,7 @@ import {
 
 import ContentGrid from '../widget/ContentGrid';
 import MovieOptions from '../options/MovieOptions';
+import SeriesOptions from '../options/SeriesOptions';
 
 const PageContent = ({
   title,
@@ -61,7 +62,8 @@ const PageContent = ({
   return (
     <Container>
       <DocumentMeta {...meta} />
-      <MovieOptions />
+      {media_type === 'movie' && <MovieOptions />}
+      {media_type === 'tv' && <SeriesOptions />}
       <PageTitle className="mt-4">{title}</PageTitle>
       <ContentGrid items={items} media_type={media_type} />
       {items.length > 0 && <Paginate setPage={setPage} />}

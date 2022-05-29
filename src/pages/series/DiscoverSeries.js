@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import DocumentMeta from 'react-document-meta';
 
-import MovieSeries from '../../components/cards/MovieSeries';
 import Paginate from '../../components/widget/Paginate';
 import GenresChip from '../../components/widget/GenresChip';
 import useGenre from '../../hooks/useGenre';
 
-import { PageTitle, Container, ContentList } from '../../styles/Styles';
-import { API_URL } from '../../constants/constant';
+import ContentGrid from '../../components/widget/ContentGrid';
+
+import { PageTitle, Container } from '../../styles/Styles';
+import {
+  API_URL,
+  BASE_URL,
+  ogDefault,
+  ogImage,
+  twitterData,
+} from '../../constants/constant';
+import { Series_Discover } from '../../constants/routes';
+import SeriesOptions from '../../components/options/SeriesOptions';
 
 const seriesURL = `${API_URL}/discover/tv?`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
@@ -27,8 +37,6 @@ const DiscoverSeries = () => {
       `${seriesURL}${apiKey}&page=${page}&with_genres=${genreForURL}`
     );
 
-    // console.log(data)
-
     setSeries(data.results);
     setNumOfPages(data.total_pages);
   };
@@ -38,13 +46,33 @@ const DiscoverSeries = () => {
     // eslint-disable-next-line
   }, [page, genreForURL]);
 
-  useEffect(() => {
-    document.title = 'TV Series - CineParadis';
-  }, []);
+  const meta = {
+    title: 'Discover TV shows by different types of data like - CineParadis',
+    description:
+      'Discover TV shows by different types of data like average rating, number of votes and genres',
+    canonical: `${BASE_URL}/${Series_Discover}`,
+    meta: {
+      name: {
+        ...twitterData,
+      },
+      property: {
+        ...ogDefault,
+        'og:image': ogImage,
+        'og:title':
+          'Discover TV shows by different types of data - CineParadis',
+        'og:description':
+          'Discover TV shows by different types of data like average rating, number of votes and genres',
+        'og:url': `${BASE_URL}/${Series_Discover}`,
+      },
+    },
+  };
 
   return (
     <Container>
-      <PageTitle>TV Series</PageTitle>
+      <DocumentMeta {...meta} />
+      <SeriesOptions />
+      <PageTitle className="mt-4">Discover TV Series</PageTitle>
+
       <GenresChip
         type="tv"
         genres={genres}
@@ -53,22 +81,9 @@ const DiscoverSeries = () => {
         setSelectedGenres={setSelectedGenres}
         setPage={setPage}
       />
-      <ContentList>
-        {series &&
-          series.map((tv) => (
-            <MovieSeries
-              key={tv.id}
-              id={tv.id}
-              poster={tv.backdrop_path}
-              title={tv.title || tv.name}
-              date={tv.release_date || tv.first_air_date}
-              media_type="tv"
-              vote_average={tv.vote_average}
-              description={tv.overview}
-              showWatch={true}
-            />
-          ))}
-      </ContentList>
+
+      <ContentGrid items={series} media_type="tv" />
+
       {numOfPages > 1 && series.length > 0 && (
         <Paginate setPage={setPage} numOfPages={numOfPages} />
       )}

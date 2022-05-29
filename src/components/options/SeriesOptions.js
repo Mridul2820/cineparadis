@@ -9,10 +9,6 @@ const SeriesOptions = () => {
       route: ROUTES.Series_Discover,
     },
     {
-      title: 'Latest',
-      route: ROUTES.Series_Latest,
-    },
-    {
       title: 'Popular',
       route: ROUTES.Series_Popular,
     },

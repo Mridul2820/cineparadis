@@ -32,7 +32,6 @@ const MoviesUpcoming = lazy(() => import('./pages/movies/MoviesUpcoming'));
 
 // Series
 const DiscoverSeries = lazy(() => import('./pages/series/DiscoverSeries'));
-const SeriesLatest = lazy(() => import('./pages/series/SeriesLatest'));
 const SeriesPopular = lazy(() => import('./pages/series/SeriesPopular'));
 const SeriesTopRated = lazy(() => import('./pages/series/SeriesTopRated'));
 const SeriesUpcoming = lazy(() => import('./pages/series/SeriesUpcoming'));
@@ -113,11 +112,6 @@ const App = () => {
                   <Route
                     path={ROUTES.Series_Discover}
                     component={DiscoverSeries}
-                    exact
-                  />
-                  <Route
-                    path={ROUTES.Series_Latest}
-                    component={SeriesLatest}
                     exact
                   />
                   <Route
