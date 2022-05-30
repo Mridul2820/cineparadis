@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import DocumentMeta from 'react-document-meta';
+// import DocumentMeta from 'react-document-meta';
+import MetaTags from 'react-meta-tags';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Loader from 'react-loader-spinner';
@@ -15,8 +16,8 @@ import Gallery from '../../components/details/Gallery';
 import {
   API_URL,
   BASE_URL,
-  ogDefault,
-  twitterData,
+  // ogDefault,
+  // twitterData,
 } from '../../constants/constant';
 import { img500 } from '../../helpers/config';
 
@@ -66,32 +67,6 @@ const DetailsPage = () => {
     ? `${img500}${content.backdrop_path}`
     : '';
 
-  const meta = {
-    title: `Discover all detils of ${
-      content?.name || content?.title
-    } - CineParadis`,
-    description: `Get Cast, Crew, Facts, Trivia Info, Photos, Posters, Trailars, Recomandation, Season and Collection info of ${
-      content?.name || content?.title
-    } - CineParadis`,
-    canonical: `${BASE_URL}${getSlug}`,
-    meta: {
-      name: {
-        ...twitterData,
-      },
-      property: {
-        ...ogDefault,
-        'og:image': getBackdrop,
-        'og:title': `Discover all detils of ${
-          content?.name || content?.title
-        } - CineParadis`,
-        'og:description': `Get Cast, Crew, Facts, Trivia Info, Photos, Posters, Trailars, Recomandation, Season and Collection info of ${
-          content?.name || content?.title
-        } - CineParadis`,
-        'og:url': `${BASE_URL}/${getSlug}`,
-      },
-    },
-  };
-
   // Tabs
   const [active, setActive] = useState(0);
 
@@ -116,8 +91,66 @@ const DetailsPage = () => {
     );
   }
 
+  // const meta = {
+  //   title: `Discover all detils of ${
+  //     content?.name || content?.title
+  //   } - CineParadis`,
+  //   description: `Get Cast, Crew, Facts, Trivia Info, Photos, Posters, Trailars, Recomandation, Season and Collection info of ${
+  //     content?.name || content?.title
+  //   } - CineParadis`,
+  //   canonical: `${BASE_URL}${getSlug}`,
+  //   meta: {
+  //     name: {
+  //       ...twitterData,
+  //     },
+  //     property: {
+  //       ...ogDefault,
+  //       'og:image': getBackdrop,
+  //       'og:title': `Discover all detils of ${
+  //         content?.name || content?.title
+  //       } - CineParadis`,
+  //       'og:description': `Get Cast, Crew, Facts, Trivia Info, Photos, Posters, Trailars, Recomandation, Season and Collection info of ${
+  //         content?.name || content?.title
+  //       } - CineParadis`,
+  //       'og:url': `${BASE_URL}/${getSlug}`,
+  //     },
+  //   },
+  // };
+
   return (
-    <DocumentMeta {...meta}>
+    <>
+      <MetaTags>
+        <title>{`Discover all detils of ${
+          content?.name || content?.title
+        } - CineParadis`}</title>
+        <meta
+          name="description"
+          content={`Get Cast, Crew, Facts, Trivia Info, Photos, Posters, Trailars, Recomandation, Season and Collection info of ${
+            content?.name || content?.title
+          } - CineParadis`}
+        />
+        <meta
+          property="og:title"
+          content={`Discover all detils of ${
+            content?.name || content?.title
+          } - CineParadis`}
+        />
+        <meta
+          property="og:description"
+          content={`Get Cast, Crew, Facts, Trivia Info, Photos, Posters, Trailars, Recomandation, Season and Collection info of ${
+            content?.name || content?.title
+          } - CineParadis`}
+        />
+        <meta property="og:image" content={getBackdrop} />
+        <meta property="og:url" content={`${BASE_URL}/${getSlug}`} />
+        <meta property="og:site_name" content="CineParadis" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@i_mridul" />
+        <meta name="twitter:creator" content="@i_mridul" />
+      </MetaTags>
+
       <Container>
         {content && (
           <BannerInfo content={content} type={type} runtime={content.runtime} />
@@ -213,7 +246,7 @@ const DetailsPage = () => {
           </>
         </div>
       </Container>
-    </DocumentMeta>
+    </>
   );
 };
 
