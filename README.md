@@ -16,9 +16,9 @@
     <a href="https://github.com/Mridul2820/cineparadis/pulls">Pull Requests</a> •
     <a href="LICENSE">LICENSE</a>
     <br />
-    <a href="#tech-stack--">Tech Stack</a> •
+    <a href="#contents-">Contents</a> •
     <a href="#demo-">Demo</a> •
-    <a href="#screenshot-">Screenshot</a> •
+    <a href="#snapshots-">Screenshot</a> •
     <a href="#run-locally-">Run Locally</a>
 </div>
 
@@ -76,6 +76,7 @@ Required to install and run the software:
 ### Search Page
 <img src="/public/screenshots/search-page.jpg" align="center"/>
 
+<br />
 
 ## Run Locally 🚀
 1. Clone the respository locally
