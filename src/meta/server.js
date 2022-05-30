@@ -1,7 +1,7 @@
 import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import DocumentMeta from './serverlib';
+import DocumentMeta from './lib/server';
 import Root from '../App';
 import * as ROUTES from '../constants/routes';
 
