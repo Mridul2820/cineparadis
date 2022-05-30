@@ -16,6 +16,7 @@ import IsUserLoggedIn from './helpers/IsUserLoggedIn';
 import Header from './components/layout/Header';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import ScrollTop from './components/widget/ScrollTop';
 
 const Login = lazy(() => import('./pages/Login'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
@@ -138,6 +139,7 @@ const App = () => {
 
                   <Route path={ROUTES.Chats} component={ChatPage} />
                 </Switch>
+                <ScrollTop />
                 <Footer />
               </>
             ) : (
