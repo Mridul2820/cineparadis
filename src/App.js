@@ -8,9 +8,9 @@ import UserContext from './context/user';
 import useAuthListner from './hooks/useAuthListner';
 import IsUserLoggedIn from './helpers/IsUserLoggedIn';
 
-import Header from './components/layout/Header';
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
+import Header from './components/nav/Header';
+import Navbar from './components/nav/Navbar';
+import Footer from './components/footer/Footer';
 import ScrollTop from './components/widget/ScrollTop';
 
 const Login = lazy(() => import('./pages/Login'));
@@ -33,7 +33,6 @@ const SeriesTopRated = lazy(() => import('./pages/series/SeriesTopRated'));
 const SeriesUpcoming = lazy(() => import('./pages/series/SeriesUpcoming'));
 
 const ChatPage = lazy(() => import('./pages/ChatPage'));
-
 const DetailsPage = lazy(() => import('./pages/withid/DetailsPage'));
 const GenreDetail = lazy(() => import('./pages/withid/GenreDetail'));
 
