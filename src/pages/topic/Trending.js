@@ -6,13 +6,7 @@ import { Trending } from '../../constants/routes';
 import Paginate from '../../components/widget/Paginate';
 
 import { PageTitle, Container } from '../../styles/Styles';
-import {
-  BASE_URL,
-  API_URL,
-  ogDefault,
-  ogImage,
-  twitterData,
-} from '../../constants/constant';
+import { BASE_URL, API_URL } from '../../constants/constant';
 import ContentGrid from '../../components/widget/ContentGrid';
 
 const trendURL = `${API_URL}/trending/all/day?`;
@@ -37,12 +31,7 @@ const TrendingPage = () => {
     description: 'Trending Movies and TV Series - CineParadis',
     canonical: `${BASE_URL}${Trending}`,
     meta: {
-      name: {
-        ...twitterData,
-      },
       property: {
-        ...ogDefault,
-        'og:image': ogImage,
         'og:title': 'Trending Movies and TV Series - CineParadis',
         'og:description': 'Trending Movies and TV Series - CineParadis',
         'og:url': `${BASE_URL}/trending`,
@@ -51,7 +40,7 @@ const TrendingPage = () => {
   };
 
   return (
-    <DocumentMeta {...meta}>
+    <DocumentMeta {...meta} extend>
       <Container>
         <PageTitle>Trending</PageTitle>
         <ContentGrid items={trends} />

@@ -10,13 +10,7 @@ import ContentGrid from '../../components/widget/ContentGrid';
 import Paginate from '../../components/widget/Paginate';
 import GenresChip from '../../components/widget/GenresChip';
 
-import {
-  API_URL,
-  BASE_URL,
-  ogDefault,
-  ogImage,
-  twitterData,
-} from '../../constants/constant';
+import { API_URL, BASE_URL } from '../../constants/constant';
 import { Movies_Discover } from '../../constants/routes';
 const movieURL = `${API_URL}/discover/movie?`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
@@ -51,12 +45,7 @@ const DiscoverMovies = () => {
       'Discover movies by different types of data like average rating, number of votes and genres',
     canonical: `${BASE_URL}${Movies_Discover}`,
     meta: {
-      name: {
-        ...twitterData,
-      },
       property: {
-        ...ogDefault,
-        'og:image': ogImage,
         'og:title': 'Discover movies by different types of data - CineParadis',
         'og:description':
           'Discover movies by different types of data like average rating, number of votes and genres',
@@ -66,7 +55,7 @@ const DiscoverMovies = () => {
   };
 
   return (
-    <DocumentMeta {...meta}>
+    <DocumentMeta {...meta} extend>
       <Container>
         <MovieOptions />
         <PageTitle className="mt-4">Discover Movies</PageTitle>

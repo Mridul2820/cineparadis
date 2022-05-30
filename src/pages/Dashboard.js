@@ -34,7 +34,7 @@ const Dashboard = () => {
   }
 
   return (
-    <DocumentMeta {...meta}>
+    <DocumentMeta {...meta} extend>
       <Container>
         <PageTitle>Watchlist</PageTitle>
         {listWatch ? (

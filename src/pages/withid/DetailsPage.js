@@ -12,12 +12,7 @@ import FactBox from '../../components/details/FactBox';
 import Recommended from '../../components/details/Recomamded';
 import Gallery from '../../components/details/Gallery';
 
-import {
-  API_URL,
-  BASE_URL,
-  ogDefault,
-  twitterData,
-} from '../../constants/constant';
+import { API_URL, BASE_URL } from '../../constants/constant';
 import { img500 } from '../../helpers/config';
 
 import { Container } from '../../styles/Styles';
@@ -75,11 +70,7 @@ const DetailsPage = () => {
     } - CineParadis`,
     canonical: `${BASE_URL}${getSlug}`,
     meta: {
-      name: {
-        ...twitterData,
-      },
       property: {
-        ...ogDefault,
         'og:image': getBackdrop,
         'og:title': `Discover all detils of ${
           content?.name || content?.title
@@ -117,7 +108,7 @@ const DetailsPage = () => {
   }
 
   return (
-    <DocumentMeta {...meta}>
+    <DocumentMeta {...meta} extend>
       <Container>
         {content && (
           <BannerInfo content={content} type={type} runtime={content.runtime} />

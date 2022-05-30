@@ -7,13 +7,7 @@ import { Container } from '../../styles/Styles';
 import Paginate from '../../components/widget/Paginate';
 
 import styled from 'styled-components';
-import {
-  API_URL,
-  BASE_URL,
-  ogDefault,
-  ogImage,
-  twitterData,
-} from '../../constants/constant';
+import { API_URL, BASE_URL } from '../../constants/constant';
 
 import { Search } from '../../constants/routes';
 import ContentGrid from '../../components/widget/ContentGrid';
@@ -68,12 +62,7 @@ const SearchPage = () => {
     description: 'Search for Movies and TV Series - CineParadis',
     canonical: `${BASE_URL}${Search}`,
     meta: {
-      name: {
-        ...twitterData,
-      },
       property: {
-        ...ogDefault,
-        'og:image': ogImage,
         'og:title': 'Search for Movies and TV Series - CineParadis',
         'og:description': 'Search for Movies and TV Series - CineParadis',
         'og:url': `${BASE_URL}${Search}`,
@@ -82,7 +71,7 @@ const SearchPage = () => {
   };
 
   return (
-    <DocumentMeta {...meta}>
+    <DocumentMeta {...meta} extend>
       <Container>
         <div className="mx-auto mb-5 flex gap-x-6 gap-y-8 flex-col sm:flex-row justify-center items-center w-full">
           <form onSubmit={searchSubmit} className="min-w-[300px]">
