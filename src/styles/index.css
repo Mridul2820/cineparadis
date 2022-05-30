@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap');
 
 @layer components {
+  /* Tab */
   .tab-item {
     @apply flex justify-center items-center text-sm md:text-base font-semibold cursor-pointer text-center shadow-bs3;
   }
@@ -13,6 +14,7 @@
     @apply px-3 py-5;
   }
 
+  /* Detail & fact */
   .detail-tab-title {
     @apply text-center font-bold text-normal xs:text-xl sm:text-2xl sm:mt-2 mb-8;
   }
@@ -39,6 +41,15 @@
 
   .fact-detail {
     @apply text-base font-bold;
+  }
+
+  /* Login Button */
+  .login-button {
+    @apply font-semibold text-base md:text-xl mr-2 border-2 rounded-md shadow-xl hover:shadow-2xl  px-4 py-2;
+  }
+
+  .dropdown-item {
+    @apply py-2 block whitespace-nowrap text-sm font-semibold hover:underline;
   }
 }
 

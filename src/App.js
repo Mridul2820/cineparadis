@@ -1,12 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import Loader from 'react-loader-spinner';
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
 
 import UserContext from './context/user';
@@ -16,6 +11,7 @@ import IsUserLoggedIn from './helpers/IsUserLoggedIn';
 import Header from './components/layout/Header';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import ScrollTop from './components/widget/ScrollTop';
 
 const Login = lazy(() => import('./pages/Login'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
@@ -65,84 +61,82 @@ const App = () => {
           <Switch>
             <IsUserLoggedIn
               user={user}
-              loggedInPath={ROUTES.DASHBOARD}
+              loggedInPath={ROUTES.Trending}
               path={ROUTES.LOGIN}
             >
               <Login />
             </IsUserLoggedIn>
 
-            {user ? (
-              <>
-                <Header />
-                <Navbar />
+            <>
+              <Header />
+              <Navbar />
 
-                <Switch>
-                  <Route path={ROUTES.DASHBOARD} component={Dashboard} exact />
-                  <Route path={ROUTES.Trending} component={Trending} />
-                  <Route path={ROUTES.Genres} component={Genres} exact />
+              <Switch>
+                <Route path={ROUTES.DASHBOARD} component={Dashboard} exact />
+                <Route path={ROUTES.Trending} component={Trending} exact />
+                <Route path={ROUTES.ROOT} component={Trending} exact />
+                <Route path={ROUTES.Genres} component={Genres} exact />
 
-                  {/* Movies */}
-                  <Route
-                    path={ROUTES.Movies_Discover}
-                    component={DiscoverMovies}
-                    exact
-                  />
-                  <Route
-                    path={ROUTES.Movies_In_Theatre}
-                    component={MoviesInTheatre}
-                    exact
-                  />
-                  <Route
-                    path={ROUTES.Movies_Popular}
-                    component={MoviesPopular}
-                    exact
-                  />
-                  <Route
-                    path={ROUTES.Movies_Top_Rated}
-                    component={MoviesTopRated}
-                    exact
-                  />
-                  <Route
-                    path={ROUTES.Movies_Upcoming}
-                    component={MoviesUpcoming}
-                    exact
-                  />
+                {/* Movies */}
+                <Route
+                  path={ROUTES.Movies_Discover}
+                  component={DiscoverMovies}
+                  exact
+                />
+                <Route
+                  path={ROUTES.Movies_In_Theatre}
+                  component={MoviesInTheatre}
+                  exact
+                />
+                <Route
+                  path={ROUTES.Movies_Popular}
+                  component={MoviesPopular}
+                  exact
+                />
+                <Route
+                  path={ROUTES.Movies_Top_Rated}
+                  component={MoviesTopRated}
+                  exact
+                />
+                <Route
+                  path={ROUTES.Movies_Upcoming}
+                  component={MoviesUpcoming}
+                  exact
+                />
 
-                  {/* Series */}
-                  <Route
-                    path={ROUTES.Series_Discover}
-                    component={DiscoverSeries}
-                    exact
-                  />
-                  <Route
-                    path={ROUTES.Series_Popular}
-                    component={SeriesPopular}
-                    exact
-                  />
-                  <Route
-                    path={ROUTES.Series_Top_Rated}
-                    component={SeriesTopRated}
-                    exact
-                  />
-                  <Route
-                    path={ROUTES.Series_Upcoming}
-                    component={SeriesUpcoming}
-                    exact
-                  />
+                {/* Series */}
+                <Route
+                  path={ROUTES.Series_Discover}
+                  component={DiscoverSeries}
+                  exact
+                />
+                <Route
+                  path={ROUTES.Series_Popular}
+                  component={SeriesPopular}
+                  exact
+                />
+                <Route
+                  path={ROUTES.Series_Top_Rated}
+                  component={SeriesTopRated}
+                  exact
+                />
+                <Route
+                  path={ROUTES.Series_Upcoming}
+                  component={SeriesUpcoming}
+                  exact
+                />
 
-                  <Route path={ROUTES.Genre_Detail} component={GenreDetail} />
+                <Route path={ROUTES.Genre_Detail} component={GenreDetail} />
 
-                  <Route path={ROUTES.Details} component={DetailsPage} />
+                <Route path={ROUTES.Details} component={DetailsPage} />
 
-                  <Route path={ROUTES.Search} component={Search} />
+                <Route path={ROUTES.Search} component={Search} />
 
-                  <Route path={ROUTES.Chats} component={ChatPage} />
-                </Switch>
-                <Footer />
-              </>
-            ) : (
-              <Redirect to={{ pathname: ROUTES.LOGIN }} />
-            )}
+                <Route path={ROUTES.Chats} component={ChatPage} />
+              </Switch>
+              <ScrollTop />
+              <Footer />
+            </>
 
             <Route component={NotFound} />
           </Switch>

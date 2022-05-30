@@ -15,10 +15,13 @@ import {
   deleteItemFromWatchlist,
   updateProfileWatchlist,
 } from '../../services/firebase';
+import { useHistory } from 'react-router-dom';
+import { LOGIN } from '../../constants/routes';
 
 const MovieSeries = ({
   id,
   poster,
+  backdrop,
   title,
   date,
   media_type,
@@ -26,11 +29,12 @@ const MovieSeries = ({
   description,
   showDeleteIcon,
   showWatch,
-  recommended,
+  samepage,
   nohover,
 }) => {
   const { user } = useContext(UserContext);
-  const userId = user.uid;
+  const history = useHistory();
+  const userId = user?.uid;
 
   const handleWatchlist = async (id, media_type) => {
     await updateProfileWatchlist(userId, id, media_type);
@@ -47,7 +51,7 @@ const MovieSeries = ({
 
   const LinkContent = () => (
     <>
-      <h3 className="text-base mb-2 font-bold leading-5">
+      <h3 className="text-base mb-2 font-bold leading-5 drop-shadow-xl">
         {truncate(title, 36)}
       </h3>
       <Rating vote_average={vote_average} voteColor={voteColor}>
@@ -64,7 +68,13 @@ const MovieSeries = ({
   return (
     <Content nohover={nohover}>
       <img
-        src={poster ? `${img300}${poster}` : unavailableLandscape}
+        src={
+          backdrop
+            ? `${img300}${backdrop}`
+            : poster
+            ? `${img300}${poster}`
+            : unavailableLandscape
+        }
         alt={title}
         className="poster"
       />
@@ -76,7 +86,7 @@ const MovieSeries = ({
       )}
 
       <Details>
-        {recommended ? (
+        {samepage ? (
           <a href={`/${media_type}/${id}`}>
             <LinkContent />
           </a>
@@ -90,7 +100,13 @@ const MovieSeries = ({
           <p className="text-[10px]">{truncate(description, 35)}</p>
           {showWatch && !nohover && (
             <Watch
-              onClick={() => handleWatchlist(id, media_type)}
+              onClick={() => {
+                if (user) {
+                  handleWatchlist(id, media_type);
+                } else {
+                  history.push(LOGIN);
+                }
+              }}
               id="watchAdd"
             >
               <BiListPlus size="16px" />
@@ -132,6 +148,7 @@ const DeleteIcon = styled.button`
 const Content = styled.div`
   width: 300px;
   height: 169px;
+  overflow: hidden;
   margin: ${(props) => (props.nohover ? '10px' : '20px')};
   transition: all 0.5s;
   position: relative;

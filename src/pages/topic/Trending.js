@@ -3,10 +3,9 @@ import axios from 'axios';
 import DocumentMeta from 'react-document-meta';
 import { Trending } from '../../constants/routes';
 
-import MovieSeries from '../../components/cards/MovieSeries';
 import Paginate from '../../components/widget/Paginate';
 
-import { PageTitle, Container, ContentList } from '../../styles/Styles';
+import { PageTitle, Container } from '../../styles/Styles';
 import {
   BASE_URL,
   API_URL,
@@ -14,6 +13,7 @@ import {
   ogImage,
   twitterData,
 } from '../../constants/constant';
+import ContentGrid from '../../components/widget/ContentGrid';
 
 const trendURL = `${API_URL}/trending/all/day?`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
@@ -55,22 +55,9 @@ const TrendingPage = () => {
       <DocumentMeta {...meta} />
 
       <PageTitle>Trending</PageTitle>
-      <ContentList>
-        {trends &&
-          trends.map((trend) => (
-            <MovieSeries
-              key={trend.id}
-              id={trend.id}
-              poster={trend.backdrop_path}
-              title={trend.title || trend.name}
-              date={trend.release_date || trend.first_air_date}
-              media_type={trend.media_type}
-              vote_average={trend.vote_average}
-              description={trend.overview}
-              showWatch={true}
-            />
-          ))}
-      </ContentList>
+
+      <ContentGrid items={trends} />
+
       {trends.length > 0 && <Paginate setPage={setPage} />}
     </Container>
   );

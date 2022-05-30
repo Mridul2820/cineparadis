@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-import { Button } from '../styles/Styles';
 import { provider } from '../lib/firebase';
 import * as ROUTES from '../constants/routes';
 import { useHistory } from 'react-router-dom';
@@ -9,6 +8,7 @@ import { FcGoogle } from 'react-icons/fc';
 
 import FirebaseContext from '../context/firebase';
 import { doesGmailExist } from '../services/firebase';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const history = useHistory();
@@ -17,7 +17,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const createdUser = await firebase.auth().signInWithPopup(provider);
-      console.log('createdUser', createdUser.user);
+      // console.log('createdUser', createdUser.user);
 
       const gmailExists = await doesGmailExist(createdUser.user.email);
 
@@ -32,7 +32,7 @@ const Login = () => {
         });
       }
 
-      history.push(ROUTES.Trending);
+      history.push(ROUTES.ROOT);
     } catch (error) {
       console.log(error.message);
     }
@@ -45,14 +45,24 @@ const Login = () => {
   return (
     <Container>
       <Banner>
-        <img src="./assets/movie_night_fldd.svg" alt="banner" />
+        <img
+          src="./assets/movie_night_fldd.svg"
+          alt="banner"
+          className="w-full"
+        />
       </Banner>
       <Text>
-        <h1>CineParadis</h1>
-        <Button onClick={handleLogin}>
+        <h1 className="text-5xl md:text-6xl font-semibold">CineParadis</h1>
+        <button
+          onClick={handleLogin}
+          className="login-button flex justify-center items-center gap-2 border-pink-500"
+        >
           <span>Login With Google</span>
           <FcGoogle size="25px" />
-        </Button>
+        </button>
+        <Link to={ROUTES.ROOT} className="login-button border-blue-500">
+          <span>Continue Without Login</span>
+        </Link>
       </Text>
     </Container>
   );
@@ -72,11 +82,12 @@ const Container = styled.div`
 
 const Text = styled.div`
   width: 40%;
-  text-align: center;
   display: flex;
   flex-direction: column;
   padding-right: 40px;
   align-items: center;
+  justify-content: center;
+  gap: 40px;
   color: #fff;
 
   @media only screen and (max-width: 956px) {
@@ -86,35 +97,6 @@ const Text = styled.div`
   @media only screen and (max-width: 712px) {
     width: 90%;
     padding-right: 0;
-  }
-
-  h1 {
-    font-size: 60px;
-    margin-bottom: 20px;
-
-    @media only screen and (max-width: 480px) {
-      font-size: 50px;
-    }
-  }
-
-  ${Button} {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: transparent;
-    border: 1px solid #ff6584;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    transition: all.5s;
-
-    &:hover {
-      transform: scale(1.05);
-    }
-
-    span {
-      margin-right: 5px;
-      font-size: 22px;
-    }
   }
 `;
 
@@ -127,11 +109,8 @@ const Banner = styled.div`
   }
 
   @media only screen and (max-width: 712px) {
-    width: 90%;
-  }
-
-  img {
-    width: 100%;
+    padding: 0 20px;
+    width: 95%;
   }
 `;
 
