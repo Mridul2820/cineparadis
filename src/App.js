@@ -1,12 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import Loader from 'react-loader-spinner';
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
 
 import UserContext from './context/user';
