@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DocumentMeta from 'react-document-meta';
 
-import { Container, ContentList } from '../../styles/Styles';
+import { Container } from '../../styles/Styles';
 
-import MovieSeries from '../../components/cards/MovieSeries';
 import Paginate from '../../components/widget/Paginate';
 
 import styled from 'styled-components';
@@ -17,6 +16,7 @@ import {
 } from '../../constants/constant';
 
 import { Search } from '../../constants/routes';
+import ContentGrid from '../../components/widget/ContentGrid';
 
 const searchURL = `${API_URL}/search/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
@@ -137,23 +137,11 @@ const SearchPage = () => {
           </Tab>
         </div>
       </div>
-      <ContentList>
-        {contents &&
-          contents.map((content) => (
-            <MovieSeries
-              key={content.id}
-              id={content.id}
-              poster={content.backdrop_path}
-              title={content.title || content.name}
-              date={content.release_date || content.first_air_date}
-              media_type={type}
-              vote_average={content.vote_average}
-              description={content.overview}
-              showWatch={true}
-            />
-          ))}
-        {searchText && !contents && <h2>Try searching something else</h2>}
-      </ContentList>
+
+      <ContentGrid items={contents} media_type={type} />
+
+      {searchText && !contents && <h2>Try searching something else</h2>}
+
       {numOfPages > 1 && contents.length > 0 && (
         <Paginate setPage={setPage} numOfPages={numOfPages} />
       )}

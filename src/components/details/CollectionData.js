@@ -3,9 +3,9 @@ import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
 import { img300 } from '../../helpers/config';
-import { Container, ContentList } from '../../styles/Styles';
+import { Container } from '../../styles/Styles';
 import { API_URL } from '../../constants/constant';
-import MovieSeries from '../cards/MovieSeries';
+import ContentGrid from '../widget/ContentGrid';
 
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
@@ -93,22 +93,12 @@ const CollectionData = ({ collectionId, type }) => {
                 All the Parts of <b>{collectionData.name}</b>
               </span>
             </div>
-            <ContentList>
-              {collectionData.parts.map((part) => (
-                <MovieSeries
-                  key={part.id}
-                  id={part.id}
-                  poster={part.backdrop_path}
-                  title={part.title || part.original_title}
-                  date={part.release_date || part.first_air_date}
-                  media_type={type}
-                  vote_average={part.vote_average}
-                  description={part.overview}
-                  recommended
-                  nohover
-                />
-              ))}
-            </ContentList>
+            <ContentGrid
+              items={collectionData.parts}
+              media_type={type}
+              samepage
+              nohover
+            />
           </>
         )}
       </div>

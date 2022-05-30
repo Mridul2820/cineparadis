@@ -11,9 +11,8 @@ import {
   twitterData,
 } from '../../constants/constant';
 
-import MovieSeries from '../../components/cards/MovieSeries';
-
-import { PageTitle, Container, ContentList } from '../../styles/Styles';
+import { PageTitle, Container } from '../../styles/Styles';
+import ContentGrid from '../../components/widget/ContentGrid';
 
 const GenreDetail = () => {
   const { gid } = useParams();
@@ -65,22 +64,8 @@ const GenreDetail = () => {
       <PageTitle>
         Discover {getType} in {name}
       </PageTitle>
-      <ContentList>
-        {contentGens &&
-          contentGens.map((content) => (
-            <MovieSeries
-              key={content.id}
-              id={content.id}
-              poster={content.backdrop_path}
-              title={content.title || content.name}
-              date={content.release_date || content.first_air_date}
-              media_type="movie"
-              vote_average={content.vote_average}
-              description={content.overview}
-              showWatch={true}
-            />
-          ))}
-      </ContentList>
+
+      <ContentGrid items={contentGens} media_type={type} />
     </Container>
   );
 };

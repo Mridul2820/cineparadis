@@ -19,6 +19,7 @@ import {
 const MovieSeries = ({
   id,
   poster,
+  backdrop,
   title,
   date,
   media_type,
@@ -26,7 +27,7 @@ const MovieSeries = ({
   description,
   showDeleteIcon,
   showWatch,
-  recommended,
+  samepage,
   nohover,
 }) => {
   const { user } = useContext(UserContext);
@@ -47,7 +48,7 @@ const MovieSeries = ({
 
   const LinkContent = () => (
     <>
-      <h3 className="text-base mb-2 font-bold leading-5">
+      <h3 className="text-base mb-2 font-bold leading-5 drop-shadow-xl">
         {truncate(title, 36)}
       </h3>
       <Rating vote_average={vote_average} voteColor={voteColor}>
@@ -64,7 +65,13 @@ const MovieSeries = ({
   return (
     <Content nohover={nohover}>
       <img
-        src={poster ? `${img300}${poster}` : unavailableLandscape}
+        src={
+          backdrop
+            ? `${img300}${backdrop}`
+            : poster
+            ? `${img300}${poster}`
+            : unavailableLandscape
+        }
         alt={title}
         className="poster"
       />
@@ -76,7 +83,7 @@ const MovieSeries = ({
       )}
 
       <Details>
-        {recommended ? (
+        {samepage ? (
           <a href={`/${media_type}/${id}`}>
             <LinkContent />
           </a>
@@ -132,6 +139,7 @@ const DeleteIcon = styled.button`
 const Content = styled.div`
   width: 300px;
   height: 169px;
+  overflow: hidden;
   margin: ${(props) => (props.nohover ? '10px' : '20px')};
   transition: all 0.5s;
   position: relative;
