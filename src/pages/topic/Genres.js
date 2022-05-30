@@ -76,16 +76,17 @@ const GenresPage = () => {
   );
 
   return (
-    <Container>
-      <DocumentMeta {...meta} />
-      {movieGenres && (
-        <GenreGrid title="Movies Genres" genres={movieGenres} type="movie" />
-      )}
-      <br />
-      {tvGenres && (
-        <GenreGrid title="TV Series Genres" genres={tvGenres} type="tv" />
-      )}
-    </Container>
+    <DocumentMeta {...meta}>
+      <Container>
+        {movieGenres && (
+          <GenreGrid title="Movies Genres" genres={movieGenres} type="movie" />
+        )}
+        <br />
+        {tvGenres && (
+          <GenreGrid title="TV Series Genres" genres={tvGenres} type="tv" />
+        )}
+      </Container>
+    </DocumentMeta>
   );
 };
 

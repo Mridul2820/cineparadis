@@ -58,15 +58,15 @@ const GenreDetail = () => {
   };
 
   return (
-    <Container>
-      <DocumentMeta {...meta} />
+    <DocumentMeta {...meta}>
+      <Container>
+        <PageTitle>
+          Discover {getType} in {name}
+        </PageTitle>
 
-      <PageTitle>
-        Discover {getType} in {name}
-      </PageTitle>
-
-      <ContentGrid items={contentGens} media_type={type} />
-    </Container>
+        <ContentGrid items={contentGens} media_type={type} />
+      </Container>
+    </DocumentMeta>
   );
 };
 

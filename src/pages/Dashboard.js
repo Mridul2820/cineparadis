@@ -34,27 +34,27 @@ const Dashboard = () => {
   }
 
   return (
-    <Container>
-      <DocumentMeta {...meta} />
-
-      <PageTitle>Watchlist</PageTitle>
-      {listWatch ? (
-        listWatch.length > 0 ? (
-          <ContentList>
-            {listWatch.map((listwt) => (
-              <WatchItem key={listwt.id} id={listwt.id} type={listwt.type} />
-            ))}
-          </ContentList>
+    <DocumentMeta {...meta}>
+      <Container>
+        <PageTitle>Watchlist</PageTitle>
+        {listWatch ? (
+          listWatch.length > 0 ? (
+            <ContentList>
+              {listWatch.map((listwt) => (
+                <WatchItem key={listwt.id} id={listwt.id} type={listwt.type} />
+              ))}
+            </ContentList>
+          ) : (
+            <p className="text-center font-semibold">
+              Empty Much? Start adding movies/series to your watchlist and they
+              will appear here.
+            </p>
+          )
         ) : (
-          <p className="text-center font-semibold">
-            Empty Much? Start adding movies/series to your watchlist and they
-            will appear here.
-          </p>
-        )
-      ) : (
-        <p className="text-center font-semibold">Fetching Your list...</p>
-      )}
-    </Container>
+          <p className="text-center font-semibold">Fetching Your list...</p>
+        )}
+      </Container>
+    </DocumentMeta>
   );
 };
 

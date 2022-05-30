@@ -60,14 +60,15 @@ const PageContent = ({
   };
 
   return (
-    <Container>
-      <DocumentMeta {...meta} />
-      {media_type === 'movie' && <MovieOptions />}
-      {media_type === 'tv' && <SeriesOptions />}
-      <PageTitle className="mt-4">{title}</PageTitle>
-      <ContentGrid items={items} media_type={media_type} />
-      {items.length > 0 && <Paginate setPage={setPage} />}
-    </Container>
+    <DocumentMeta {...meta}>
+      <Container>
+        {media_type === 'movie' && <MovieOptions />}
+        {media_type === 'tv' && <SeriesOptions />}
+        <PageTitle className="mt-4">{title}</PageTitle>
+        <ContentGrid items={items} media_type={media_type} />
+        {items.length > 0 && <Paginate setPage={setPage} />}
+      </Container>
+    </DocumentMeta>
   );
 };
 

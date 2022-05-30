@@ -51,15 +51,14 @@ const TrendingPage = () => {
   };
 
   return (
-    <Container>
-      <DocumentMeta {...meta} />
+    <DocumentMeta {...meta}>
+      <Container>
+        <PageTitle>Trending</PageTitle>
+        <ContentGrid items={trends} />
 
-      <PageTitle>Trending</PageTitle>
-
-      <ContentGrid items={trends} />
-
-      {trends.length > 0 && <Paginate setPage={setPage} />}
-    </Container>
+        {trends.length > 0 && <Paginate setPage={setPage} />}
+      </Container>
+    </DocumentMeta>
   );
 };
 

@@ -68,26 +68,27 @@ const DiscoverSeries = () => {
   };
 
   return (
-    <Container>
-      <DocumentMeta {...meta} />
-      <SeriesOptions />
-      <PageTitle className="mt-4">Discover TV Series</PageTitle>
+    <DocumentMeta {...meta}>
+      <Container>
+        <SeriesOptions />
+        <PageTitle className="mt-4">Discover TV Series</PageTitle>
 
-      <GenresChip
-        type="tv"
-        genres={genres}
-        setGenres={setGenres}
-        selectedGenres={selectedGenres}
-        setSelectedGenres={setSelectedGenres}
-        setPage={setPage}
-      />
+        <GenresChip
+          type="tv"
+          genres={genres}
+          setGenres={setGenres}
+          selectedGenres={selectedGenres}
+          setSelectedGenres={setSelectedGenres}
+          setPage={setPage}
+        />
 
-      <ContentGrid items={series} media_type="tv" />
+        <ContentGrid items={series} media_type="tv" />
 
-      {numOfPages > 1 && series.length > 0 && (
-        <Paginate setPage={setPage} numOfPages={numOfPages} />
-      )}
-    </Container>
+        {numOfPages > 1 && series.length > 0 && (
+          <Paginate setPage={setPage} numOfPages={numOfPages} />
+        )}
+      </Container>
+    </DocumentMeta>
   );
 };
 
