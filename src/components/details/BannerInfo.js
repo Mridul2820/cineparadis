@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Chip } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { AiFillStar } from 'react-icons/ai';
 import { BiListPlus } from 'react-icons/bi';
@@ -13,11 +13,12 @@ import { updateProfileWatchlist } from '../../services/firebase';
 import { img300, img500, unavailable } from '../../helpers/config';
 import formatTime from '../../helpers/formatTime';
 import voteColor from '../../helpers/voteColor';
+import { LOGIN } from '../../constants/routes';
 
 const BannerInfo = ({ content, type, runtime }) => {
   const { user } = useContext(UserContext);
-
-  const id = content.id;
+  const history = useHistory();
+  const id = content?.id;
 
   const handleWatchlist = async (id, type) => {
     const userId = user.uid;
@@ -132,7 +133,15 @@ const BannerInfo = ({ content, type, runtime }) => {
               )}
             </div>
 
-            <Watch onClick={() => handleWatchlist(id, type)}>
+            <Watch
+              onClick={() => {
+                if (user) {
+                  handleWatchlist(id, type);
+                } else {
+                  history.push(LOGIN);
+                }
+              }}
+            >
               <BiListPlus size="24px" />
               <p>Add to watchlist</p>
             </Watch>

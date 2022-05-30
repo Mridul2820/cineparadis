@@ -15,6 +15,8 @@ import {
   deleteItemFromWatchlist,
   updateProfileWatchlist,
 } from '../../services/firebase';
+import { useHistory } from 'react-router-dom';
+import { LOGIN } from '../../constants/routes';
 
 const MovieSeries = ({
   id,
@@ -31,7 +33,8 @@ const MovieSeries = ({
   nohover,
 }) => {
   const { user } = useContext(UserContext);
-  const userId = user.uid;
+  const history = useHistory();
+  const userId = user?.uid;
 
   const handleWatchlist = async (id, media_type) => {
     await updateProfileWatchlist(userId, id, media_type);
@@ -97,7 +100,13 @@ const MovieSeries = ({
           <p className="text-[10px]">{truncate(description, 35)}</p>
           {showWatch && !nohover && (
             <Watch
-              onClick={() => handleWatchlist(id, media_type)}
+              onClick={() => {
+                if (user) {
+                  handleWatchlist(id, media_type);
+                } else {
+                  history.push(LOGIN);
+                }
+              }}
               id="watchAdd"
             >
               <BiListPlus size="16px" />

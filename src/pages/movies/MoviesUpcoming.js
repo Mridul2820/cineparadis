@@ -5,7 +5,7 @@ import { Movies_Upcoming } from '../../constants/routes';
 const MoviesUpcoming = () => {
   return (
     <PageContent
-      title="Popular Movies"
+      title="Upcoming Movies"
       uri="upcoming"
       media_type="movie"
       seoTitle="Get a list of upcoming movies in theatres - CineParadis"

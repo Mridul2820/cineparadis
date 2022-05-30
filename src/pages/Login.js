@@ -17,7 +17,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const createdUser = await firebase.auth().signInWithPopup(provider);
-      console.log('createdUser', createdUser.user);
+      // console.log('createdUser', createdUser.user);
 
       const gmailExists = await doesGmailExist(createdUser.user.email);
 
@@ -45,12 +45,18 @@ const Login = () => {
   return (
     <Container>
       <Banner>
-        <img src="./assets/movie_night_fldd.svg" alt="banner" />
+        <img
+          src="./assets/movie_night_fldd.svg"
+          alt="banner"
+          className="w-full"
+        />
       </Banner>
       <Text>
-        <h1>CineParadis</h1>
+        <h1 className="text-5xl md:text-6xl mb-5 font-semibold">CineParadis</h1>
         <Button onClick={handleLogin}>
-          <span>Login With Google</span>
+          <span className="font-semibold text-xl md:text-2xl mr-2">
+            Login With Google
+          </span>
           <FcGoogle size="25px" />
         </Button>
       </Text>
@@ -88,15 +94,6 @@ const Text = styled.div`
     padding-right: 0;
   }
 
-  h1 {
-    font-size: 60px;
-    margin-bottom: 20px;
-
-    @media only screen and (max-width: 480px) {
-      font-size: 50px;
-    }
-  }
-
   ${Button} {
     padding: 10px 20px;
     font-size: 18px;
@@ -105,15 +102,10 @@ const Text = styled.div`
     display: flex;
     align-items: center;
     white-space: nowrap;
-    transition: all.5s;
+    transition: all 0.5s;
 
     &:hover {
       transform: scale(1.05);
-    }
-
-    span {
-      margin-right: 5px;
-      font-size: 22px;
     }
   }
 `;
@@ -127,11 +119,8 @@ const Banner = styled.div`
   }
 
   @media only screen and (max-width: 712px) {
-    width: 90%;
-  }
-
-  img {
-    width: 100%;
+    padding: 0 20px;
+    width: 95%;
   }
 `;
 

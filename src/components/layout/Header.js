@@ -16,14 +16,19 @@ const Header = () => {
   const { firebase } = useContext(FirebaseContext);
   const { user } = useContext(UserContext);
 
-  console.log('user', user);
-
   return (
     <Container>
-      <Logo to={ROUTES.DASHBOARD}>
-        <img src={logo} alt="logo" />
-        <h2>CineParadis</h2>
-      </Logo>
+      <Link
+        to={user ? ROUTES.DASHBOARD : ROUTES.ROOT}
+        className="flex items-center gap-1"
+      >
+        <img src={logo} alt="logo" className="h-10" />
+        <h2 className="font-bold leading-4 hidden md:block">
+          Cine
+          <br />
+          Paradis
+        </h2>
+      </Link>
 
       <div className="hidden md:block">
         <NavOptions />
@@ -35,9 +40,11 @@ const Header = () => {
           <span>Chats</span>
         </Chat> */}
 
-        <User>
-          <img src={user.photoURL} alt="user" />
-        </User>
+        {user && (
+          <User>
+            <img src={user.photoURL} alt="user" />
+          </User>
+        )}
 
         <Logout>
           {user ? (
@@ -71,22 +78,6 @@ const Container = styled.div`
   top: 0;
   left: 0;
   z-index: 10000;
-`;
-
-const Logo = styled(Link)`
-  display: flex;
-  align-items: center;
-
-  img {
-    height: 36px;
-    margin-right: 5px;
-  }
-
-  h2 {
-    @media only screen and (max-width: 480px) {
-      display: none;
-    }
-  }
 `;
 
 const HeaderRight = styled.div`
