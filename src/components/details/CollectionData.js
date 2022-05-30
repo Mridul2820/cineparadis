@@ -56,7 +56,7 @@ const CollectionData = ({ collectionId, type }) => {
       <div className="block mt-2">
         <div className="sm:pl-5">
           <div className="p-3 my-3 rounded-sm border-2 border-blue-400 shadow-bs5">
-            <div className="flex flex-col justify-start items-center sm:flex-row gap-3">
+            <div className="flex flex-col justify-between items-center sm:flex-row gap-3">
               <div className="">
                 <p>
                   <span className="fact-type">
@@ -67,7 +67,7 @@ const CollectionData = ({ collectionId, type }) => {
                 {collectionData.overview && <p>{collectionData.overview}</p>}
               </div>
               {collectionData.poster_path && (
-                <div className="min-w-[192px] mx-auto">
+                <div className="min-w-[192px] mx-auto sm:mx-0">
                   <img
                     className="w-48 h-48 rounded-full overflow-hidden object-cover shadow-bs5"
                     src={`${img300}/${collectionData.poster_path}`}

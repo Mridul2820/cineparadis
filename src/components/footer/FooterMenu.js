@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+
+import * as ROUTES from '../../constants/routes';
 import { optionsMovie, optionsSeries, optionsAll } from '../../data/menuData';
 import logo from '../../assets/logo-black.PNG';
+import UserContext from '../../context/user';
 
 const MenuRow = ({ title, items }) => {
   return (
@@ -21,12 +24,24 @@ const MenuRow = ({ title, items }) => {
 };
 
 const FooterMenu = () => {
+  const { user } = useContext(UserContext);
+
   return (
     <div className="shadow-2xl w-full border-t-2 border-t-slate-300 bg-blue-50">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 w-full max-w-5xl mx-auto py-6 px-3 xs:px-8">
         <div className="flex flex-col gap-3">
-          <img src={logo} alt="logo" className="w-20" />
-          <p className="font-semibold text-xl">CineParadis</p>
+          <Link
+            to={user ? ROUTES.DASHBOARD : ROUTES.ROOT}
+            className="font-semibold text-xl"
+          >
+            <img src={logo} alt="logo" className="w-20" />
+          </Link>
+          <Link
+            to={user ? ROUTES.DASHBOARD : ROUTES.ROOT}
+            className="font-semibold text-xl"
+          >
+            CineParadis
+          </Link>
         </div>
         <MenuRow items={optionsAll} title="In CineParadis" />
         <MenuRow items={optionsMovie} title="In Movies" />
