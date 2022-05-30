@@ -23,11 +23,7 @@ const Header = () => {
         className="flex items-center gap-1"
       >
         <img src={logo} alt="logo" className="h-10" />
-        <h2 className="font-bold leading-4 hidden md:block">
-          Cine
-          <br />
-          Paradis
-        </h2>
+        <h2 className="font-bold hidden md:block">Cine Paradis</h2>
       </Link>
 
       <div className="hidden md:block">
@@ -42,15 +38,24 @@ const Header = () => {
 
         {user && (
           <User>
-            <img src={user.photoURL} alt="user" />
+            <img
+              src={user.photoURL}
+              alt="user"
+              className="w-8 h-8 rounded-full"
+            />
+            <HoverBox className="absolute px-2 shadow-md bg-white border-2 border-blue-600 rounded-sm">
+              <Link to={ROUTES.DASHBOARD} className="dropdown-item">
+                Dashboard
+              </Link>
+            </HoverBox>
           </User>
         )}
 
         <Logout>
           {user ? (
             <Button
-              onClick={() => {
-                firebase.auth().signOut();
+              onClick={async () => {
+                await firebase.auth().signOut();
                 history.push(ROUTES.LOGIN);
               }}
             >
@@ -85,15 +90,32 @@ const HeaderRight = styled.div`
   align-items: center;
 `;
 
+const HoverBox = styled.div`
+  top: 52px;
+  opacity: 0;
+  visibility: hidden;
+  right: 72px;
+  margin-top: 20px;
+`;
+
 const User = styled.div`
   margin-right: 10px;
   width: 32px;
-  height: 32px;
-  border-radius: 50%;
+  height: 44px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  img {
-    width: 100%;
+  &:focus-within,
+  &:focus,
+  &:hover {
+    ${HoverBox} {
+      opacity: 1;
+      visibility: visible;
+      top: 34px;
+      transition: all 0.5s;
+    }
   }
 `;
 
