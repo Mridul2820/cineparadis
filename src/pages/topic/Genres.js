@@ -5,13 +5,7 @@ import DocumentMeta from 'react-document-meta';
 
 import { PageTitle, Container } from '../../styles/Styles';
 import styled from 'styled-components';
-import {
-  API_URL,
-  BASE_URL,
-  ogDefault,
-  ogImage,
-  twitterData,
-} from '../../constants/constant';
+import { API_URL, BASE_URL } from '../../constants/constant';
 import { Genres } from '../../constants/routes';
 
 const genresURL = `${API_URL}/genre/`;
@@ -43,12 +37,7 @@ const GenresPage = () => {
       'Get the list of official genres for Movies and TV Series - CineParadis',
     canonical: `${BASE_URL}${Genres}`,
     meta: {
-      name: {
-        ...twitterData,
-      },
       property: {
-        ...ogDefault,
-        'og:image': ogImage,
         'og:title':
           'Get the list of official genres for Movies and TV Series - CineParadis',
         'og:description':
@@ -76,16 +65,17 @@ const GenresPage = () => {
   );
 
   return (
-    <Container>
-      <DocumentMeta {...meta} />
-      {movieGenres && (
-        <GenreGrid title="Movies Genres" genres={movieGenres} type="movie" />
-      )}
-      <br />
-      {tvGenres && (
-        <GenreGrid title="TV Series Genres" genres={tvGenres} type="tv" />
-      )}
-    </Container>
+    <DocumentMeta {...meta} extend>
+      <Container>
+        {movieGenres && (
+          <GenreGrid title="Movies Genres" genres={movieGenres} type="movie" />
+        )}
+        <br />
+        {tvGenres && (
+          <GenreGrid title="TV Series Genres" genres={tvGenres} type="tv" />
+        )}
+      </Container>
+    </DocumentMeta>
   );
 };
 

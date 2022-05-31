@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Chip } from '@mui/material';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { AiFillStar } from 'react-icons/ai';
 import { BiListPlus } from 'react-icons/bi';
@@ -74,7 +74,10 @@ const BannerInfo = ({ content, type, runtime }) => {
 
             <div className="flex items-center flex-wrap gap-3 justify-center sm:justify-start">
               {content.genres?.map((genre) => (
-                <Link key={genre.id} to={`/genre/${genre.name}/${genre.id}`}>
+                <a
+                  key={genre.id}
+                  href={`/genre/${type}/${genre.name}/${genre.id}`}
+                >
                   <div className="cursor-pointer">
                     <Chip
                       className="chip"
@@ -83,7 +86,7 @@ const BannerInfo = ({ content, type, runtime }) => {
                       size="small"
                     />
                   </div>
-                </Link>
+                </a>
               ))}
             </div>
 

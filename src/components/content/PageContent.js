@@ -5,13 +5,7 @@ import DocumentMeta from 'react-document-meta';
 import Paginate from '../widget/Paginate';
 
 import { PageTitle, Container } from '../../styles/Styles';
-import {
-  API_URL,
-  BASE_URL,
-  ogDefault,
-  ogImage,
-  twitterData,
-} from '../../constants/constant';
+import { API_URL, BASE_URL } from '../../constants/constant';
 
 import ContentGrid from '../widget/ContentGrid';
 import MovieOptions from '../options/MovieOptions';
@@ -46,12 +40,7 @@ const PageContent = ({
     description: seoDescription,
     canonical: `${BASE_URL}${route}`,
     meta: {
-      name: {
-        ...twitterData,
-      },
       property: {
-        ...ogDefault,
-        'og:image': ogImage,
         'og:title': seoTitle,
         'og:description': seoDescription,
         'og:url': `${BASE_URL}${route}`,
@@ -60,14 +49,15 @@ const PageContent = ({
   };
 
   return (
-    <Container>
-      <DocumentMeta {...meta} />
-      {media_type === 'movie' && <MovieOptions />}
-      {media_type === 'tv' && <SeriesOptions />}
-      <PageTitle className="mt-4">{title}</PageTitle>
-      <ContentGrid items={items} media_type={media_type} />
-      {items.length > 0 && <Paginate setPage={setPage} />}
-    </Container>
+    <DocumentMeta {...meta} extend>
+      <Container>
+        {media_type === 'movie' && <MovieOptions />}
+        {media_type === 'tv' && <SeriesOptions />}
+        <PageTitle className="mt-4">{title}</PageTitle>
+        <ContentGrid items={items} media_type={media_type} />
+        {items.length > 0 && <Paginate setPage={setPage} />}
+      </Container>
+    </DocumentMeta>
   );
 };
 

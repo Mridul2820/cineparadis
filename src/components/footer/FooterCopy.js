@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Footer = () => {
+const FooterCopy = () => {
   return (
-    <footer className="p-3 flex justify-center items-center gap-1 flex-col sm:flex-row bg-white border-t-2 border-slate-300">
+    <div className="p-3 flex justify-center items-center gap-1 flex-col sm:flex-row bg-blue-100 border-t-2 border-slate-300 shadow-2xl">
       <span>
         &copy; {new Date().getFullYear()} by
         <a
@@ -16,7 +16,16 @@ const Footer = () => {
         & Team.
       </span>
       <span>
-        Made with ❤ {'& '}
+        Made with ❤ {', '}
+        <a
+          className="ml-1 font-semibold"
+          href="https://developers.themoviedb.org/3/getting-started/introduction"
+          target="_blank"
+          rel="noreferrer"
+        >
+          TMDB
+        </a>
+        {'  & '}
         <a
           className="ml-1 font-semibold"
           href="https://github.com/Mridul2820/cineparadis"
@@ -26,8 +35,8 @@ const Footer = () => {
           {'<Code/>'}
         </a>
       </span>
-    </footer>
+    </div>
   );
 };
 
-export default Footer;
+export default FooterCopy;

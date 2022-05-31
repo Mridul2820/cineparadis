@@ -7,13 +7,7 @@ import { Container } from '../../styles/Styles';
 import Paginate from '../../components/widget/Paginate';
 
 import styled from 'styled-components';
-import {
-  API_URL,
-  BASE_URL,
-  ogDefault,
-  ogImage,
-  twitterData,
-} from '../../constants/constant';
+import { API_URL, BASE_URL } from '../../constants/constant';
 
 import { Search } from '../../constants/routes';
 import ContentGrid from '../../components/widget/ContentGrid';
@@ -68,12 +62,7 @@ const SearchPage = () => {
     description: 'Search for Movies and TV Series - CineParadis',
     canonical: `${BASE_URL}${Search}`,
     meta: {
-      name: {
-        ...twitterData,
-      },
       property: {
-        ...ogDefault,
-        'og:image': ogImage,
         'og:title': 'Search for Movies and TV Series - CineParadis',
         'og:description': 'Search for Movies and TV Series - CineParadis',
         'og:url': `${BASE_URL}${Search}`,
@@ -82,70 +71,70 @@ const SearchPage = () => {
   };
 
   return (
-    <Container>
-      <DocumentMeta {...meta} />
-
-      <div className="mx-auto mb-5 flex gap-x-6 gap-y-8 flex-col sm:flex-row justify-center items-center w-full">
-        <form onSubmit={searchSubmit} className="min-w-[300px]">
-          <div className="relative w-full">
-            <input
-              type="search"
-              id="search-dropdown"
-              className="block p-3 w-full z-20 text-sm text-gray-900 bg-gray-50 border border-blue-300 focus:ring-blue-500 focus:border-blue-500 rounded-md shadow-bs5"
-              placeholder="Search Movies or TV Shows"
-              required=""
-              onChange={(e) => setSearchText(e.target.value)}
-            />
-            <button
-              type="submit"
-              className="absolute top-0 right-0 p-3 text-sm font-medium text-white bg-blue-700 rounded-r-md border border-blue-700 hover:bg-blue-800"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+    <DocumentMeta {...meta} extend>
+      <Container>
+        <div className="mx-auto mb-5 flex gap-x-6 gap-y-8 flex-col sm:flex-row justify-center items-center w-full">
+          <form onSubmit={searchSubmit} className="min-w-[300px]">
+            <div className="relative w-full">
+              <input
+                type="search"
+                id="search-dropdown"
+                className="block p-3 w-full z-20 text-sm text-gray-900 bg-gray-50 border border-blue-300 focus:ring-blue-500 focus:border-blue-500 rounded-md shadow-bs5"
+                placeholder="Search Movies or TV Shows"
+                required=""
+                onChange={(e) => setSearchText(e.target.value)}
+              />
+              <button
+                type="submit"
+                className="absolute top-0 right-0 p-3 text-sm font-medium text-white bg-blue-700 rounded-r-md border border-blue-700 hover:bg-blue-800"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                ></path>
-              </svg>
-            </button>
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </form>
+
+          <div className="flex justify-center gap-3">
+            <Tab
+              className="tab-item"
+              onClick={handleClick}
+              active={active === 0}
+              id={0}
+            >
+              Search Movies
+            </Tab>
+            <Tab
+              className="tab-item"
+              onClick={handleClick}
+              active={active === 1}
+              id={1}
+            >
+              Search Series
+            </Tab>
           </div>
-        </form>
-
-        <div className="flex justify-center gap-3">
-          <Tab
-            className="tab-item"
-            onClick={handleClick}
-            active={active === 0}
-            id={0}
-          >
-            Search Movies
-          </Tab>
-          <Tab
-            className="tab-item"
-            onClick={handleClick}
-            active={active === 1}
-            id={1}
-          >
-            Search Series
-          </Tab>
         </div>
-      </div>
 
-      <ContentGrid items={contents} media_type={type} />
+        <ContentGrid items={contents} media_type={type} />
 
-      {searchText && !contents && <h2>Try searching something else</h2>}
+        {searchText && !contents && <h2>Try searching something else</h2>}
 
-      {numOfPages > 1 && contents.length > 0 && (
-        <Paginate setPage={setPage} numOfPages={numOfPages} />
-      )}
-    </Container>
+        {numOfPages > 1 && contents.length > 0 && (
+          <Paginate setPage={setPage} numOfPages={numOfPages} />
+        )}
+      </Container>
+    </DocumentMeta>
   );
 };
 

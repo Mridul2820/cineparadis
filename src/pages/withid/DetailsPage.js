@@ -12,12 +12,7 @@ import FactBox from '../../components/details/FactBox';
 import Recommended from '../../components/details/Recomamded';
 import Gallery from '../../components/details/Gallery';
 
-import {
-  API_URL,
-  BASE_URL,
-  ogDefault,
-  twitterData,
-} from '../../constants/constant';
+import { API_URL, BASE_URL } from '../../constants/constant';
 import { img500 } from '../../helpers/config';
 
 import { Container } from '../../styles/Styles';
@@ -75,11 +70,7 @@ const DetailsPage = () => {
     } - CineParadis`,
     canonical: `${BASE_URL}${getSlug}`,
     meta: {
-      name: {
-        ...twitterData,
-      },
       property: {
-        ...ogDefault,
         'og:image': getBackdrop,
         'og:title': `Discover all detils of ${
           content?.name || content?.title
@@ -117,98 +108,103 @@ const DetailsPage = () => {
   }
 
   return (
-    <Container>
-      <DocumentMeta {...meta} />
+    <DocumentMeta {...meta} extend>
+      <Container>
+        {content && (
+          <BannerInfo content={content} type={type} runtime={content.runtime} />
+        )}
+        <div className="flex flex-col justify-center mt-6 md:mt-8">
+          <div className="mb-3 sm:mb-4 flex justify-center gap-3 px-2 md:px-4">
+            <Tab
+              className="tab-item"
+              onClick={handleClick}
+              active={active === 0}
+              id={0}
+            >
+              Top Cast
+            </Tab>
+            <Tab
+              className="tab-item"
+              onClick={handleClick}
+              active={active === 1}
+              id={1}
+            >
+              Details
+            </Tab>
+            <Tab
+              className="tab-item"
+              onClick={handleClick}
+              active={active === 2}
+              id={2}
+            >
+              Photos
+            </Tab>
 
-      {content && (
-        <BannerInfo content={content} type={type} runtime={content.runtime} />
-      )}
-      <div className="flex flex-col justify-center mt-6 md:mt-8">
-        <div className="mb-3 sm:mb-4 flex justify-center gap-3 px-2 md:px-4">
-          <Tab
-            className="tab-item"
-            onClick={handleClick}
-            active={active === 0}
-            id={0}
-          >
-            Top Cast
-          </Tab>
-          <Tab
-            className="tab-item"
-            onClick={handleClick}
-            active={active === 1}
-            id={1}
-          >
-            Details
-          </Tab>
-          <Tab
-            className="tab-item"
-            onClick={handleClick}
-            active={active === 2}
-            id={2}
-          >
-            Photos
-          </Tab>
-
-          <Tab
-            className="tab-item"
-            onClick={handleClick}
-            active={active === 3}
-            id={3}
-          >
-            Videos
-          </Tab>
-          <Tab
-            className="tab-item"
-            onClick={handleClick}
-            active={active === 4}
-            id={4}
-          >
-            More Like This
-          </Tab>
+            <Tab
+              className="tab-item"
+              onClick={handleClick}
+              active={active === 3}
+              id={3}
+            >
+              Videos
+            </Tab>
+            <Tab
+              className="tab-item"
+              onClick={handleClick}
+              active={active === 4}
+              id={4}
+            >
+              More Like This
+            </Tab>
+          </div>
+          <>
+            {active === 0 && content && (
+              <CastnCrew
+                credits={credits}
+                title={content?.name || content?.title}
+              />
+            )}
+            {active === 1 && content && (
+              <FactBox
+                id={content.id}
+                status={content.status}
+                title={content?.name || content?.title}
+                release={content.release_date}
+                lang={content.original_language}
+                runtime={content.runtime}
+                networks={content.networks}
+                seasons={content.seasons}
+                last_air_date={content.last_air_date}
+                first_air_date={content.first_air_date}
+                belongs_to_collection={content.belongs_to_collection}
+                production_companies={content.production_companies}
+                keywords={content.keywords?.results}
+                crew={content.credits?.crew}
+                original_title={content.original_title}
+                type={type}
+              />
+            )}
+            {active === 2 && content && (
+              <Gallery
+                photos={photos}
+                title={content?.name || content?.title}
+                backdrop_path={content.backdrop_path}
+                poster_path={content.poster_path}
+              />
+            )}
+            {active === 3 && content && (
+              <Trailers
+                videos={videos}
+                title={content?.name || content?.title}
+              />
+            )}
+            {active === 4 && content && (
+              <Recommended recommended={recommended} />
+            )}
+          </>
         </div>
-        <>
-          {active === 0 && content && (
-            <CastnCrew
-              credits={credits}
-              title={content?.name || content?.title}
-            />
-          )}
-          {active === 1 && content && (
-            <FactBox
-              id={content.id}
-              status={content.status}
-              title={content?.name || content?.title}
-              release={content.release_date}
-              lang={content.original_language}
-              runtime={content.runtime}
-              networks={content.networks}
-              seasons={content.seasons}
-              last_air_date={content.last_air_date}
-              first_air_date={content.first_air_date}
-              belongs_to_collection={content.belongs_to_collection}
-              production_companies={content.production_companies}
-              keywords={content.keywords?.results}
-              crew={content.credits?.crew}
-              original_title={content.original_title}
-              type={type}
-            />
-          )}
-          {active === 2 && content && (
-            <Gallery
-              photos={photos}
-              title={content?.name || content?.title}
-              backdrop_path={content.backdrop_path}
-              poster_path={content.poster_path}
-            />
-          )}
-          {active === 3 && content && (
-            <Trailers videos={videos} title={content?.name || content?.title} />
-          )}
-          {active === 4 && content && <Recommended recommended={recommended} />}
-        </>
-      </div>
-    </Container>
+      </Container>
+    </DocumentMeta>
   );
 };
 

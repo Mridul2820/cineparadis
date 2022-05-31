@@ -1,12 +1,15 @@
 {
   "name": "cineparadis",
-  "version": "0.1.0",
+  "version": "3.5.0",
+  "description": "An interactive website that provides trivial information for movies and web shows.",
+  "author": "Mridul2820",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.7.0",
     "axios": "^0.27.2",
+    "express": "^4.18.1",
     "firebase": "^8.6.8",
     "flowbite": "^1.4.7",
     "react": "^17.0.2",

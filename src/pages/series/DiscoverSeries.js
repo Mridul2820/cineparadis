@@ -9,13 +9,7 @@ import useGenre from '../../hooks/useGenre';
 import ContentGrid from '../../components/widget/ContentGrid';
 
 import { PageTitle, Container } from '../../styles/Styles';
-import {
-  API_URL,
-  BASE_URL,
-  ogDefault,
-  ogImage,
-  twitterData,
-} from '../../constants/constant';
+import { API_URL, BASE_URL } from '../../constants/constant';
 import { Series_Discover } from '../../constants/routes';
 import SeriesOptions from '../../components/options/SeriesOptions';
 
@@ -52,12 +46,7 @@ const DiscoverSeries = () => {
       'Discover TV shows by different types of data like average rating, number of votes and genres',
     canonical: `${BASE_URL}${Series_Discover}`,
     meta: {
-      name: {
-        ...twitterData,
-      },
       property: {
-        ...ogDefault,
-        'og:image': ogImage,
         'og:title':
           'Discover TV shows by different types of data - CineParadis',
         'og:description':
@@ -68,26 +57,27 @@ const DiscoverSeries = () => {
   };
 
   return (
-    <Container>
-      <DocumentMeta {...meta} />
-      <SeriesOptions />
-      <PageTitle className="mt-4">Discover TV Series</PageTitle>
+    <DocumentMeta {...meta} extend>
+      <Container>
+        <SeriesOptions />
+        <PageTitle className="mt-4">Discover TV Series</PageTitle>
 
-      <GenresChip
-        type="tv"
-        genres={genres}
-        setGenres={setGenres}
-        selectedGenres={selectedGenres}
-        setSelectedGenres={setSelectedGenres}
-        setPage={setPage}
-      />
+        <GenresChip
+          type="tv"
+          genres={genres}
+          setGenres={setGenres}
+          selectedGenres={selectedGenres}
+          setSelectedGenres={setSelectedGenres}
+          setPage={setPage}
+        />
 
-      <ContentGrid items={series} media_type="tv" />
+        <ContentGrid items={series} media_type="tv" />
 
-      {numOfPages > 1 && series.length > 0 && (
-        <Paginate setPage={setPage} numOfPages={numOfPages} />
-      )}
-    </Container>
+        {numOfPages > 1 && series.length > 0 && (
+          <Paginate setPage={setPage} numOfPages={numOfPages} />
+        )}
+      </Container>
+    </DocumentMeta>
   );
 };
 

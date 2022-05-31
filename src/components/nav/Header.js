@@ -23,12 +23,14 @@ const Header = () => {
         className="flex items-center gap-1"
       >
         <img src={logo} alt="logo" className="h-10" />
-        <h2 className="font-bold hidden md:block">Cine Paradis</h2>
+        <h2 className="font-bold hidden md:block">CineParadis</h2>
       </Link>
 
       <div className="hidden md:block">
         <NavOptions />
       </div>
+
+      <h2 className="font-bold block md:hidden">CineParadis</h2>
 
       <HeaderRight>
         {/* <Chat to={ROUTES.Chats}>

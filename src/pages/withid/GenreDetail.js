@@ -3,13 +3,7 @@ import axios from 'axios';
 import DocumentMeta from 'react-document-meta';
 import { useParams } from 'react-router-dom';
 
-import {
-  API_URL,
-  BASE_URL,
-  ogDefault,
-  ogImage,
-  twitterData,
-} from '../../constants/constant';
+import { API_URL, BASE_URL } from '../../constants/constant';
 
 import { PageTitle, Container } from '../../styles/Styles';
 import ContentGrid from '../../components/widget/ContentGrid';
@@ -44,12 +38,7 @@ const GenreDetail = () => {
     description: `Discover ${getType}s in ${name} Genre - CineParadis`,
     canonical: `${BASE_URL}${getSlug}`,
     meta: {
-      name: {
-        ...twitterData,
-      },
       property: {
-        ...ogDefault,
-        'og:image': ogImage,
         'og:title': `Discover ${getType}s in ${name} Genre - CineParadis`,
         'og:description': `Discover ${getType}s in ${name} Genre - CineParadis`,
         'og:url': `${BASE_URL}${getSlug}`,
@@ -58,15 +47,15 @@ const GenreDetail = () => {
   };
 
   return (
-    <Container>
-      <DocumentMeta {...meta} />
+    <DocumentMeta {...meta} extend>
+      <Container>
+        <PageTitle>
+          Discover {getType} in {name}
+        </PageTitle>
 
-      <PageTitle>
-        Discover {getType} in {name}
-      </PageTitle>
-
-      <ContentGrid items={contentGens} media_type={type} />
-    </Container>
+        <ContentGrid items={contentGens} media_type={type} />
+      </Container>
+    </DocumentMeta>
   );
 };
 
