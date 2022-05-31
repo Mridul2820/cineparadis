@@ -20,6 +20,10 @@ export const Series_Popular = '/popular-series';
 export const Series_Top_Rated = '/top-rated-series';
 export const Series_Upcoming = '/upcoming-series';
 
+// Credits
+export const Person_Detail = '/person/:id';
+export const Credit_Search = '/search-credit';
+
 export const Chats = '/chats';
 
 export const Details = '/:type/:id';

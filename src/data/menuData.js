@@ -101,4 +101,8 @@ export const optionsAll = [
     title: 'Search',
     route: ROUTES.Search,
   },
+  {
+    title: 'Credit Search',
+    route: ROUTES.Credit_Search,
+  },
 ];

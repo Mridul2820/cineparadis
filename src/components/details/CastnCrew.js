@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { img200, noPicture } from '../../helpers/config';
+import { img200, noUserImg } from '../../helpers/config';
 
 const CastnCrew = ({ credits, title }) => {
   return (
@@ -9,25 +9,29 @@ const CastnCrew = ({ credits, title }) => {
       {credits && credits.length > 0 ? (
         <div className="flex justify-center items-center flex-wrap mb-6 gap-4">
           {credits.map((credit) => (
-            <Cast key={credit.id}>
-              <img
-                src={
-                  credit.profile_path
-                    ? `${img200}/${credit.profile_path}`
-                    : noPicture
-                }
-                alt={credit?.name}
-                className="w-12 p-1"
-              />
-              <div className="flex flex-col justify-center px-3 py-1">
-                <h4 className="text-black font-bold">{credit.name}</h4>
-                {credit.character && (
-                  <p className="text-slate-500">
-                    as <span className="font-medium">{credit.character}</span>
-                  </p>
-                )}
-              </div>
-            </Cast>
+            <a href={`/person/${credit.id}`} key={credit.id}>
+              <Cast>
+                <div className="p-2">
+                  <img
+                    src={
+                      credit.profile_path
+                        ? `${img200}/${credit.profile_path}`
+                        : noUserImg
+                    }
+                    alt={credit?.name}
+                    className="w-14 h-14 rounded-full object-cover align-top"
+                  />
+                </div>
+                <div className="flex flex-col justify-center px-3 py-1">
+                  <h4 className="text-black font-bold">{credit.name}</h4>
+                  {credit.character && (
+                    <p className="text-slate-500">
+                      as <span className="font-medium">{credit.character}</span>
+                    </p>
+                  )}
+                </div>
+              </Cast>
+            </a>
           ))}
         </div>
       ) : (
