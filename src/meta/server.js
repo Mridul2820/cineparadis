@@ -1,42 +1,33 @@
-import express from 'express';
 import React from 'react';
+import express from 'express';
 import ReactDOMServer from 'react-dom/server';
-import DocumentMeta from './lib/server';
-import Root from '../App';
-import * as ROUTES from '../constants/routes';
+import express from 'express';
+import DocumentMeta from 'react-document-meta';
 
-// Pages
-import TrendingPage from '../pages/topic/Trending';
+import App from '../App';
 
-const server = express();
+const PORT = process.env.PORT || 3006;
+const app = express();
 
-function ssr(res, content) {
+app.get('/*', (req, res) => {
+  const appString = ReactDOMServer.renderToString(<App />);
   const meta = DocumentMeta.renderAsHTML();
 
-  res.send(`<html>
-    <head>
-      ${meta}
-    </head>
-    <body>
-      <div id='root'>${content}</div>
-    </body>
-    <script src="/bundle.js"></script>
-  </html>`);
-}
+  const html = `
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        ${meta}
+      </head>
+      <body>
+      <div id='root'>
+        ${appString}
+      </div>
+      </body>
+    </html>
+  `;
 
-server.get('/', (req, res) => {
-  ssr(res, ReactDOMServer.renderToString(<Root />));
+  res.send(html);
 });
 
-server.get(ROUTES.Trending, (req, res) => {
-  ssr(
-    res,
-    ReactDOMServer.renderToString(
-      <Root>
-        <TrendingPage />
-      </Root>
-    )
-  );
-});
-
-server.listen(9001);
+app.listen(PORT);
