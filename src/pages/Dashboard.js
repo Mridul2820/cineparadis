@@ -19,7 +19,7 @@ const Dashboard = () => {
       setListWatch(response[0].watchlist);
     }
 
-    if (!user) {
+    if (user) {
       getWatchlist();
     }
     // eslint-disable-next-line
