@@ -1,7 +1,6 @@
 import React from 'react';
 import express from 'express';
 import ReactDOMServer from 'react-dom/server';
-import express from 'express';
 import DocumentMeta from 'react-document-meta';
 
 import App from '../App';
