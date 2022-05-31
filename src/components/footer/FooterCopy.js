@@ -16,7 +16,16 @@ const FooterCopy = () => {
         & Team.
       </span>
       <span>
-        Made with ❤ {'& '}
+        Made with ❤ {', '}
+        <a
+          className="ml-1 font-semibold"
+          href="https://developers.themoviedb.org/3/getting-started/introduction"
+          target="_blank"
+          rel="noreferrer"
+        >
+          TMDB
+        </a>
+        {'  & '}
         <a
           className="ml-1 font-semibold"
           href="https://github.com/Mridul2820/cineparadis"
