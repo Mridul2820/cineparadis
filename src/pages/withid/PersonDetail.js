@@ -18,8 +18,6 @@ const PersonDetail = () => {
   const [creditData, setCreditData] = useState();
   const [loading, setLoading] = useState(false);
 
-  console.log(creditData);
-
   const fetchData = async () => {
     setLoading(true);
     const { data } = await axios(

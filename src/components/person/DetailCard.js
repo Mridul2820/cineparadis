@@ -2,15 +2,18 @@ import React from 'react';
 import { getAge } from '../../helpers/getAge';
 import SocialLinks from '../widget/SocialLinks';
 import { v4 as uuidv4 } from 'uuid';
+import { dateData } from '../../helpers/dateData';
 
 const DetailCard = ({ creditData }) => {
   const {
     external_ids,
     birthday,
+    deathday,
     place_of_birth,
     also_known_as,
     known_for_department,
   } = creditData;
+
   return (
     <div className="w-80 rounded-md mx-auto md:mx-0 p-3">
       <SocialLinks
@@ -33,8 +36,20 @@ const DetailCard = ({ creditData }) => {
         {birthday && (
           <div className="fact-wrap">
             <p className="fact-item">
-              <span className="fact-type">Birthday : </span>
-              <span className="fact-detail">{birthday}</span>
+              <span className="fact-type">Born : </span>
+              <span className="fact-detail">
+                {new Date(birthday).toLocaleDateString('en-US', dateData)}
+              </span>
+            </p>
+          </div>
+        )}
+        {deathday && (
+          <div className="fact-wrap">
+            <p className="fact-item">
+              <span className="fact-type">Died : </span>
+              <span className="fact-detail">
+                {new Date(deathday).toLocaleDateString('en-US', dateData)}
+              </span>
             </p>
           </div>
         )}

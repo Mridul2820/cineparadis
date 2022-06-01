@@ -6,25 +6,26 @@ import { getLangDetail } from '../../helpers/getLangDetail';
 import CollectionData from './CollectionData';
 // import WatchData from './WatchData';
 import { v4 as uuidv4 } from 'uuid';
+import { dateData } from '../../helpers/dateData';
 
-const FactBox = ({
-  // id,
-  crew,
-  original_title,
-  status,
-  release,
-  lang,
-  runtime,
-  networks,
-  title,
-  seasons,
-  last_air_date,
-  first_air_date,
-  belongs_to_collection,
-  production_companies,
-  keywords,
-  type,
-}) => {
+const FactBox = ({ content, type }) => {
+  const {
+    crew,
+    original_title,
+    status,
+    release,
+    lang,
+    runtime,
+    networks,
+    title,
+    seasons,
+    last_air_date,
+    first_air_date,
+    belongs_to_collection,
+    production_companies,
+    keywords,
+  } = content;
+
   return (
     <section className="tab-section">
       <h2 className="detail-tab-title">Facts About {title}</h2>
@@ -107,7 +108,9 @@ const FactBox = ({
           <div className="fact-wrap">
             <p className="fact-item">
               <span className="fact-type">Release Date : </span>
-              <span className="fact-detail">{release}</span>
+              <span className="fact-detail">
+                {new Date(release).toLocaleDateString('en-US', dateData)}
+              </span>
             </p>
           </div>
         )}
