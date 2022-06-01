@@ -18,12 +18,20 @@ const PersonGallery = ({ images, defaultImage, alt }) => {
               />
             ))
           ) : (
-            <img
-              src={`${img500}/${defaultImage}`}
-              alt={alt}
-              loading="lazy"
-              className={'gallery-image-profile'}
-            />
+            <>
+              {defaultImage ? (
+                <img
+                  src={`${img500}/${defaultImage}`}
+                  alt={alt}
+                  loading="lazy"
+                  className={'gallery-image-profile'}
+                />
+              ) : (
+                <p className="text-center text-slate-500 mt-3">
+                  No Photo Found
+                </p>
+              )}
+            </>
           )}
         </div>
       ) : (

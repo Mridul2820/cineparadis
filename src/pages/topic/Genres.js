@@ -55,7 +55,7 @@ const GenresPage = () => {
         {genres.length > 0 &&
           genres.map((genre) => (
             <GenreItem
-              key={uuidv4}
+              key={uuidv4()}
               to={`/genre/${type}/${genre.name}/${genre.id}`}
             >
               <span className="font-bold drop-shadow-md">{genre.name}</span>

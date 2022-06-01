@@ -16,7 +16,7 @@ const ContentGrid = ({
       {items &&
         items.map((item) => (
           <MovieSeries
-            key={uuidv4}
+            key={uuidv4()}
             id={item.id}
             poster={item.poster_path}
             backdrop={item.backdrop_path}
