@@ -8,6 +8,7 @@ const ContentGrid = ({
   samepage,
   nohover,
   showWatch = true,
+  showCredit = false,
 }) => {
   return (
     <ContentList>
@@ -26,6 +27,8 @@ const ContentGrid = ({
             showWatch={showWatch}
             samepage={samepage}
             nohover={nohover}
+            showCredit={showCredit}
+            character={item.character}
           />
         ))}
     </ContentList>

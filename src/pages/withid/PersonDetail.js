@@ -4,6 +4,7 @@ import Loader from 'react-loader-spinner';
 import { useParams } from 'react-router-dom';
 import DetailCard from '../../components/person/DetailCard';
 import PersonIntro from '../../components/person/PersonIntro';
+import PresonTabs from '../../components/person/PresonTabs';
 import { API_URL, BASE_URL } from '../../constants/constant';
 
 import { Container } from '../../styles/Styles';
@@ -54,6 +55,7 @@ const PersonDetail = () => {
 
       <div className="flex flex-col md:flex-row gap-4 items-start mt-4">
         {creditData && <DetailCard creditData={creditData} />}
+        {creditData && <PresonTabs creditData={creditData} />}
       </div>
     </Container>
   );

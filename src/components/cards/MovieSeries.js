@@ -31,6 +31,8 @@ const MovieSeries = ({
   showWatch,
   samepage,
   nohover,
+  character,
+  showCredit,
 }) => {
   const { user } = useContext(UserContext);
   const history = useHistory();
@@ -62,6 +64,12 @@ const MovieSeries = ({
         {media_type === 'movie' ? 'Movie' : 'TV Series'} •{' '}
         {date ? new Date(date).getFullYear() : ' '}
       </span>
+      {showCredit && character && (
+        <p className="text-sm">
+          <span>As </span>
+          <span className="font-semibold">{character}</span>{' '}
+        </p>
+      )}
     </>
   );
 
@@ -95,9 +103,10 @@ const MovieSeries = ({
             <LinkContent />
           </Link>
         )}
-
         <Expand>
-          <p className="text-[10px]">{truncate(description, 35)}</p>
+          {!showCredit && (
+            <p className="text-[10px]">{truncate(description, 35)}</p>
+          )}
           {showWatch && !nohover && (
             <Watch
               onClick={() => {
