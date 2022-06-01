@@ -1,4 +1,6 @@
 import React from 'react';
+import rehypeRaw from 'rehype-raw';
+import ReactMarkdown from 'react-markdown';
 import { img500 } from '../../helpers/config';
 
 const PersonIntro = ({ creditData }) => {
@@ -18,10 +20,14 @@ const PersonIntro = ({ creditData }) => {
           {creditData?.name}
         </h1>
         <p className="font-semibold text-xl mb-1">Biography</p>
-        <p
-          className="-sm prose-slate"
-          dangerouslySetInnerHTML={{ __html: creditData?.biography }}
-        />
+
+        <div className="-sm prose-slate">
+          <ReactMarkdown
+            rehypePlugins={[rehypeRaw]}
+            // eslint-disable-next-line
+            children={creditData?.biography}
+          />
+        </div>
       </div>
     </div>
   );

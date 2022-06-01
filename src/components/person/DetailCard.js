@@ -55,7 +55,7 @@ const DetailCard = ({ creditData }) => {
         )}
         {also_known_as && also_known_as.length > 0 && (
           <div className="fact-wrap">
-            <p className="fact-item">
+            <div className="fact-item">
               <span className="fact-type">Also Known As : </span>
               <div className="flex gap-y-2 gap-x-4 items-center flex-wrap">
                 {also_known_as.map((name, index) => (
@@ -65,7 +65,7 @@ const DetailCard = ({ creditData }) => {
                   </div>
                 ))}
               </div>
-            </p>
+            </div>
           </div>
         )}
       </div>

@@ -5,8 +5,6 @@ import { useHistory } from 'react-router-dom';
 
 import { AiFillStar } from 'react-icons/ai';
 import { BiListPlus } from 'react-icons/bi';
-import { GrFacebook, GrInstagram, GrTwitter } from 'react-icons/gr';
-import { FaImdb } from 'react-icons/fa';
 
 import UserContext from '../../context/user';
 import { updateProfileWatchlist } from '../../services/firebase';
@@ -14,6 +12,7 @@ import { img300, img500, unavailable } from '../../helpers/config';
 import formatTime from '../../helpers/formatTime';
 import voteColor from '../../helpers/voteColor';
 import { LOGIN } from '../../constants/routes';
+import SocialLinks from '../widget/SocialLinks';
 
 const BannerInfo = ({ content, type, runtime }) => {
   const { user } = useContext(UserContext);
@@ -94,47 +93,12 @@ const BannerInfo = ({ content, type, runtime }) => {
               {content.overview}
             </p>
 
-            <div className="flex gap-4">
-              {content?.external_ids?.facebook_id && (
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href={`https://www.facebook.com/${content.external_ids.facebook_id}`}
-                >
-                  <GrFacebook size={22} />
-                </a>
-              )}
-
-              {content?.external_ids?.instagram_id && (
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href={`https://www.instagram.com/${content.external_ids.instagram_id}`}
-                >
-                  <GrInstagram size={22} />
-                </a>
-              )}
-
-              {content?.external_ids?.twitter_id && (
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href={`https://www.twitter.com/${content.external_ids.twitter_id}`}
-                >
-                  <GrTwitter size={22} />
-                </a>
-              )}
-
-              {content?.external_ids?.imdb_id && (
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href={`https://www.imdb.com/title/${content.external_ids.imdb_id}`}
-                >
-                  <FaImdb size={24} />
-                </a>
-              )}
-            </div>
+            <SocialLinks
+              facebook={content?.external_ids?.facebook_id}
+              instagram={content?.external_ids?.instagram_id}
+              twitter={content?.external_ids?.twitter_id}
+              imdb={content?.external_ids?.imdb_id}
+            />
 
             <Watch
               onClick={() => {
