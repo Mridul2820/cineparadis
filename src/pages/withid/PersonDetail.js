@@ -2,8 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Loader from 'react-loader-spinner';
 import { useParams } from 'react-router-dom';
+import DetailCard from '../../components/person/DetailCard';
+import PersonIntro from '../../components/person/PersonIntro';
 import { API_URL, BASE_URL } from '../../constants/constant';
-import { img500 } from '../../helpers/config';
 
 import { Container } from '../../styles/Styles';
 
@@ -49,25 +50,10 @@ const PersonDetail = () => {
 
   return (
     <Container>
-      <div className="flex gap-4">
-        <img
-          src={
-            creditData?.profile_path
-              ? `${img500}${creditData?.profile_path}`
-              : 'https://via.placeholder.com/500x750'
-          }
-          alt={creditData?.name}
-          className="w-60 rounded-md"
-        />
-        <div>
-          <h1 className="text-2xl md:text-4xl font-bold mb-3">
-            {creditData?.name}
-          </h1>
-          <p className="font-semibold text-xl mb-1">Biography</p>
-          <p className="prose prose-slate lg:prose-xl">
-            {creditData?.biography}
-          </p>
-        </div>
+      {creditData && <PersonIntro creditData={creditData} />}
+
+      <div className="flex flex-col md:flex-row gap-4 items-start mt-4">
+        {creditData && <DetailCard creditData={creditData} />}
       </div>
     </Container>
   );
