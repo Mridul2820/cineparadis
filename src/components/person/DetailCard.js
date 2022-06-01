@@ -41,7 +41,7 @@ const DetailCard = ({ creditData }) => {
           <div className="fact-wrap">
             <p className="fact-item">
               <span className="fact-type">Age : </span>
-              <span className="fact-detail">{getAge(birthday)}</span>
+              <span className="fact-detail">{getAge(birthday)} Years</span>
             </p>
           </div>
         )}

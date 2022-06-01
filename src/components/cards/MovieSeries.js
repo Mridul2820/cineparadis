@@ -65,7 +65,7 @@ const MovieSeries = ({
         {date ? new Date(date).getFullYear() : ' '}
       </span>
       {showCredit && character && (
-        <p className="text-sm">
+        <p className="text-sm drop-shadow-xl">
           <span>As </span>
           <span className="font-semibold">{character}</span>{' '}
         </p>

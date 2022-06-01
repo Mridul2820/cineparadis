@@ -13,9 +13,9 @@ const ContentGrid = ({
   return (
     <ContentList>
       {items &&
-        items.map((item) => (
+        items.map((item, index) => (
           <MovieSeries
-            key={item.id}
+            key={index}
             id={item.id}
             poster={item.poster_path}
             backdrop={item.backdrop_path}
