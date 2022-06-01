@@ -1,6 +1,7 @@
 import React from 'react';
 import { getAge } from '../../helpers/getAge';
 import SocialLinks from '../widget/SocialLinks';
+import { v4 as uuidv4 } from 'uuid';
 
 const DetailCard = ({ creditData }) => {
   const {
@@ -59,7 +60,7 @@ const DetailCard = ({ creditData }) => {
               <span className="fact-type">Also Known As : </span>
               <div className="flex gap-y-2 gap-x-4 items-center flex-wrap">
                 {also_known_as.map((name, index) => (
-                  <div className="flex gap-2 items-center" key={index}>
+                  <div className="flex gap-2 items-center" key={uuidv4()}>
                     <p>{index + 1}. </p>
                     <span className="fact-detail">{name}</span>
                   </div>

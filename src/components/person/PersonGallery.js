@@ -1,5 +1,6 @@
 import React from 'react';
 import { img500 } from '../../helpers/config';
+import { v4 as uuidv4 } from 'uuid';
 
 const PersonGallery = ({ images, defaultImage, alt }) => {
   return (
@@ -7,9 +8,9 @@ const PersonGallery = ({ images, defaultImage, alt }) => {
       {images.profiles ? (
         <div className="flex flex-wrap justify-center items-center gap-5">
           {images.profiles.length > 0 ? (
-            images.profiles.map((photo, index) => (
+            images.profiles.map((photo) => (
               <img
-                key={index}
+                key={uuidv4()}
                 src={`${img500}/${photo.file_path}`}
                 alt={alt}
                 loading="lazy"

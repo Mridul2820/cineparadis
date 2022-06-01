@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 import { img500 } from '../../helpers/config';
 
 const Gallery = ({ title, photos, backdrop_path, poster_path }) => {
@@ -59,9 +60,9 @@ const Gallery = ({ title, photos, backdrop_path, poster_path }) => {
               (photos?.backdrops?.length > 0 || backdrop_path) && (
                 <>
                   {photos.backdrops.length > 0 ? (
-                    photos.backdrops.map((photo, index) => (
+                    photos.backdrops.map((photo) => (
                       <img
-                        key={index}
+                        key={uuidv4()}
                         src={`${img500}/${photo.file_path}`}
                         alt={photo.title}
                         loading="lazy"
@@ -80,9 +81,9 @@ const Gallery = ({ title, photos, backdrop_path, poster_path }) => {
               )}
             {active === 1 &&
               photos?.logos?.length > 0 &&
-              photos.logos.map((photo, index) => (
+              photos.logos.map((photo) => (
                 <img
-                  key={index}
+                  key={uuidv4()}
                   src={`${img500}/${photo.file_path}`}
                   loading="lazy"
                   alt={photo.title}
@@ -93,9 +94,9 @@ const Gallery = ({ title, photos, backdrop_path, poster_path }) => {
             {active === 2 && (photos?.posters?.length > 0 || poster_path) && (
               <>
                 {photos.posters.length > 0 ? (
-                  photos.posters.map((photo, index) => (
+                  photos.posters.map((photo) => (
                     <img
-                      key={index}
+                      key={uuidv4()}
                       src={`${img500}/${photo.file_path}`}
                       alt={photo.title}
                       loading="lazy"

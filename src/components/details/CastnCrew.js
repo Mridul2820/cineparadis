@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 import { img200, noUserImg } from '../../helpers/config';
 
 const CastnCrew = ({ credits, title }) => {
@@ -9,7 +10,7 @@ const CastnCrew = ({ credits, title }) => {
       {credits && credits.length > 0 ? (
         <div className="flex justify-center items-center flex-wrap mb-6 gap-4">
           {credits.map((credit) => (
-            <a href={`/person/${credit.id}`} key={credit.id}>
+            <a href={`/person/${credit.id}`} key={uuidv4()}>
               <Cast>
                 <div className="p-2">
                   <img

@@ -5,6 +5,7 @@ import { getDirector, getProducer } from '../../helpers/getCrew';
 import { getLangDetail } from '../../helpers/getLangDetail';
 import CollectionData from './CollectionData';
 // import WatchData from './WatchData';
+import { v4 as uuidv4 } from 'uuid';
 
 const FactBox = ({
   // id,
@@ -46,7 +47,7 @@ const FactBox = ({
               <span className="fact-type">Director : </span>
 
               {getDirector(crew).map((producer) => (
-                <div className="flex items-center gap-2" key={producer.id}>
+                <div className="flex items-center gap-2" key={uuidv4()}>
                   <img
                     title={producer.name}
                     className="w-9 h-9 object-cover rounded-full"
@@ -73,11 +74,11 @@ const FactBox = ({
             <div className="flex flex-wrap items-center gap-3 fact-item">
               <span className="fact-type">Producer : </span>
               {getProducer(crew).map((producer) => (
-                <div className="flex items-center gap-2" key={producer.id}>
+                <div className="flex items-center gap-2" key={uuidv4()}>
                   <img
                     title={producer.name}
                     className="w-9 h-9 object-cover rounded-full"
-                    key={producer.id}
+                    key={uuidv4()}
                     src={
                       producer.profile_path
                         ? `${img200}/${producer.profile_path}`
@@ -162,7 +163,7 @@ const FactBox = ({
                 <img
                   title={network.name}
                   className="w-14"
-                  key={network.id}
+                  key={uuidv4()}
                   src={
                     network.logo_path
                       ? `${img200}/${network.logo_path}`
@@ -207,7 +208,7 @@ const FactBox = ({
             <div className="block sm:pl-5 mt-1">
               {seasons.map((season) => (
                 <div
-                  key={season.id}
+                  key={uuidv4()}
                   className="shadow-bs5 p-3 my-3 rounded-sm border-2 border-blue-400"
                 >
                   <div className="flex flex-col gap-1">
@@ -250,7 +251,7 @@ const FactBox = ({
             <div className="flex gap-y-2 gap-x-4 items-center flex-wrap">
               {keywords.map((keyword) => (
                 <span
-                  key={keyword.id}
+                  key={uuidv4()}
                   className="font-medium bg-blue-200 rounded-full px-2 text-sm"
                 >
                   {keyword.name}

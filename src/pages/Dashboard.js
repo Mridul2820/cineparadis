@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import DocumentMeta from 'react-document-meta';
+import { v4 as uuidv4 } from 'uuid';
 import UserContext from '../context/user';
 import { getUserWatchlist } from '../services/firebase';
 import { PageTitle, Container, ContentList } from '../styles/Styles';
@@ -41,7 +42,7 @@ const Dashboard = () => {
           listWatch.length > 0 ? (
             <ContentList>
               {listWatch.map((listwt) => (
-                <WatchItem key={listwt.id} id={listwt.id} type={listwt.type} />
+                <WatchItem key={uuidv4()} id={listwt.id} type={listwt.type} />
               ))}
             </ContentList>
           ) : (

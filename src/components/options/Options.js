@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 const Options = ({ options, colored }) => {
   return (
     <Navmain>
-      {options.map((option, index) => (
-        <React.Fragment key={index}>
+      {options.map((option) => (
+        <React.Fragment key={uuidv4()}>
           {option.activeIf ? (
             <NavItem
               to={option.route}

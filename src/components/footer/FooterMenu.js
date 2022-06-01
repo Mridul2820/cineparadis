@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 import * as ROUTES from '../../constants/routes';
 import { optionsMovie, optionsSeries, optionsAll } from '../../data/menuData';
@@ -10,10 +11,10 @@ const MenuRow = ({ title, items }) => {
   return (
     <div className="flex flex-col gap-3 w-full">
       <p className="font-semibold">{title}</p>
-      {items.map((item, index) => (
+      {items.map((item) => (
         <Link
           to={item.route}
-          key={index}
+          key={uuidv4()}
           className="font-medium hover:text-blue-800 hover:underline hover:underline-offset-2 duration-300"
         >
           {item.title}

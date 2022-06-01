@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 
 const Trailers = ({ videos, title }) => {
   return (
@@ -10,7 +11,7 @@ const Trailers = ({ videos, title }) => {
         videos.map((video) => (
           <div
             className="flex flex-col items-center justify-center mb-2"
-            key={video.id}
+            key={uuidv4()}
           >
             <br />
             <p className="text-center text-slate-800 text-base md:text-normal font-semibold mb-3">

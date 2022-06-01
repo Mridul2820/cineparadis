@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 import { Chip } from '@mui/material';
 import styled from 'styled-components';
 import { API_URL } from '../../constants/constant';
@@ -53,7 +54,7 @@ const GenresChip = ({
           selectedGenres?.map((genre) => (
             <Chip
               className="chip"
-              key={genre.id}
+              key={uuidv4()}
               label={genre.name}
               color="secondary"
               size="small"
@@ -66,7 +67,7 @@ const GenresChip = ({
           genres.map((genre) => (
             <Chip
               className="chip"
-              key={genre.id}
+              key={uuidv4()}
               label={genre.name}
               color="primary"
               size="small"

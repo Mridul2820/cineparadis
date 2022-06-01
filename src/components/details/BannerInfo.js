@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Chip } from '@mui/material';
 import { useHistory } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 import { AiFillStar } from 'react-icons/ai';
 import { BiListPlus } from 'react-icons/bi';
@@ -74,7 +75,7 @@ const BannerInfo = ({ content, type, runtime }) => {
             <div className="flex items-center flex-wrap gap-3 justify-center sm:justify-start">
               {content.genres?.map((genre) => (
                 <a
-                  key={genre.id}
+                  key={uuidv4()}
                   href={`/genre/${type}/${genre.name}/${genre.id}`}
                 >
                   <div className="cursor-pointer">
