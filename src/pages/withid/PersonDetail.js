@@ -64,7 +64,9 @@ const PersonDetail = () => {
             {creditData?.name}
           </h1>
           <p className="font-semibold text-xl mb-1">Biography</p>
-          <p className="prose">{creditData?.biography}</p>
+          <p className="prose prose-slate lg:prose-xl">
+            {creditData?.biography}
+          </p>
         </div>
       </div>
     </Container>
