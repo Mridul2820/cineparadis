@@ -88,9 +88,9 @@ git clone https://github.com/Mridul2820/cineparadis.git
 REACT_APP_TMDB = <YOUR_TMDB_API_KEY>
 REACT_APP_FIREBASE = <YOUR_FIREBASE_TOKEN>
 ```
-- **```TMDB API KEY```: Get your `TMDB_API_KEY` by signing in to [TMDB](https://www.themoviedb.org/documentation/api) account.**
+- **```TMDB API KEY```**: Get your **`TMDB_API_KEY`** by signing in to **[TMDB](https://www.themoviedb.org/documentation/api) account**.
 You can apply for an API key by clicking the **"API"** link from the left hand sidebar within your account settings page. You need to have a legitimate business **name, address, phone number and description** to apply for an API key.
-- ```FIREBASE TOKEN```: Go to **[Firebase](https://firebase.google.com/)** and navigate to **Firebase Console**. You need to **Sign Up with you Gmail.**
+- **```FIREBASE TOKEN```**: Go to **[Firebase](https://firebase.google.com/)** and navigate to **Firebase Console**. You need to **Sign Up with you Gmail.**
 Create an App and get your `Firebase Token`.
 You Also need to **enable Google Sign In** in the **Sign-in methods**.
 Enable **Firestore** in the Firebase Console and Create a Collection called ```users```.
