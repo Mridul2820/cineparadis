@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ContentGrid from '../widget/ContentGrid';
 import Paginate from '../widget/Paginate';
 
-const PersonMovies = ({ credits }) => {
+const PersonCredits = ({ credits }) => {
   const itemPerPage = 12;
   const [items, setItems] = useState();
   const [page, setPage] = useState(1);
@@ -24,4 +24,4 @@ const PersonMovies = ({ credits }) => {
   );
 };
 
-export default PersonMovies;
+export default PersonCredits;

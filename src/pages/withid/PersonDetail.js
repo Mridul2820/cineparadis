@@ -21,12 +21,14 @@ const PersonDetail = () => {
   const fetchData = async () => {
     setLoading(true);
     const { data } = await axios(
-      `${detailURL}person/${id}?${apiKey}&language=en&append_to_response=external_ids,combined_credits,images,tagged_images`
+      `${detailURL}person/${id}?${apiKey}&language=en&append_to_response=external_ids,movie_credits,tv_credits,images`
     );
 
     setCreditData(data);
     setLoading(false);
   };
+
+  console.log(creditData);
 
   useEffect(() => {
     fetchData();

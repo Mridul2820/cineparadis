@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PersonGallery from './PersonGallery';
-import PersonMovies from './PersonMovies';
+import PersonCredits from './PersonCredits';
 import styled from 'styled-components';
 
 const PresonTabs = ({ creditData }) => {
@@ -31,11 +31,20 @@ const PresonTabs = ({ creditData }) => {
           active={active === 1}
           id={1}
         >
+          TV Series
+        </Tab>
+        <Tab
+          className="tab-item"
+          onClick={handleClick}
+          active={active === 2}
+          id={2}
+        >
           Gallery
         </Tab>
       </div>
-      {active === 0 && <PersonMovies credits={creditData.combined_credits} />}
-      {active === 1 && (
+      {active === 0 && <PersonCredits credits={creditData.movie_credits} />}
+      {active === 1 && <PersonCredits credits={creditData.tv_credits} />}
+      {active === 2 && (
         <PersonGallery
           images={creditData.images}
           defaultImage={creditData?.profile_path}
