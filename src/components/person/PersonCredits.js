@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ContentGrid from '../widget/ContentGrid';
 import Paginate from '../widget/Paginate';
 
-const PersonCredits = ({ credits }) => {
+const PersonCredits = ({ credits, media_type }) => {
   const itemPerPage = 12;
   const [items, setItems] = useState();
   const [page, setPage] = useState(1);
@@ -15,7 +15,7 @@ const PersonCredits = ({ credits }) => {
 
   return (
     <div className="mb-2">
-      <ContentGrid items={items} nohover showCredit />
+      <ContentGrid items={items} media_type={media_type} nohover showCredit />
 
       {numOfPages > 1 && credits.cast.length > 0 && (
         <Paginate setPage={setPage} numOfPages={numOfPages} />

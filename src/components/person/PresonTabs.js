@@ -42,8 +42,12 @@ const PresonTabs = ({ creditData }) => {
           Gallery
         </Tab>
       </div>
-      {active === 0 && <PersonCredits credits={creditData.movie_credits} />}
-      {active === 1 && <PersonCredits credits={creditData.tv_credits} />}
+      {active === 0 && (
+        <PersonCredits credits={creditData.movie_credits} media_type="movie" />
+      )}
+      {active === 1 && (
+        <PersonCredits credits={creditData.tv_credits} media_type="tv" />
+      )}
       {active === 2 && (
         <PersonGallery
           images={creditData.images}
