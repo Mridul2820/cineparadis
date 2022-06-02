@@ -19,7 +19,7 @@ const Login = lazy(() => import('./pages/Login'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Trending = lazy(() => import('./pages/topic/Trending'));
 const Genres = lazy(() => import('./pages/topic/Genres'));
-const Search = lazy(() => import('./pages/topic/Search'));
+const MovieTVSearch = lazy(() => import('./pages/search/MovieTVSearch'));
 
 // Movies
 const DiscoverMovies = lazy(() => import('./pages/movies/DiscoverMovies'));
@@ -38,7 +38,7 @@ const ChatPage = lazy(() => import('./pages/ChatPage'));
 const DetailsPage = lazy(() => import('./pages/withid/DetailsPage'));
 const GenreDetail = lazy(() => import('./pages/withid/GenreDetail'));
 const PersonDetail = lazy(() => import('./pages/withid/PersonDetail'));
-const PopularPersons = lazy(() => import('./pages/topic/PopularPersons'));
+const PopularPersons = lazy(() => import('./pages/topic/Persons'));
 
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -157,7 +157,7 @@ const App = () => {
 
                   <Route path={ROUTES.Details} component={DetailsPage} />
 
-                  <Route path={ROUTES.Search} component={Search} />
+                  <Route path={ROUTES.Search} component={MovieTVSearch} />
 
                   <Route path={ROUTES.Chats} component={ChatPage} />
                 </Switch>

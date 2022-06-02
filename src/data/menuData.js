@@ -107,7 +107,7 @@ export const optionsAll = [
   },
 
   {
-    title: 'Perosn Search',
+    title: 'Person Search',
     route: ROUTES.Perosn_Search,
   },
 ];

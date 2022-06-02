@@ -15,7 +15,7 @@ import ContentGrid from '../../components/widget/ContentGrid';
 const searchURL = `${API_URL}/search/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
-const SearchPage = () => {
+const MovieTVSearch = () => {
   const [type, setType] = useState('movie');
   const [page, setPage] = useState(1);
   const [searchText, setSearchText] = useState('');
@@ -151,4 +151,4 @@ const Tab = styled.div`
   transition: background-color 0.5s ease-in-out;
 `;
 
-export default SearchPage;
+export default MovieTVSearch;
