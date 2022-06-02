@@ -38,6 +38,7 @@ const ChatPage = lazy(() => import('./pages/ChatPage'));
 const DetailsPage = lazy(() => import('./pages/withid/DetailsPage'));
 const GenreDetail = lazy(() => import('./pages/withid/GenreDetail'));
 const PersonDetail = lazy(() => import('./pages/withid/PersonDetail'));
+const PopularPersons = lazy(() => import('./pages/topic/PopularPersons'));
 
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -146,6 +147,11 @@ const App = () => {
                   />
 
                   <Route path={ROUTES.Person_Detail} component={PersonDetail} />
+
+                  <Route
+                    path={ROUTES.Popular_Persons}
+                    component={PopularPersons}
+                  />
 
                   <Route path={ROUTES.Genre_Detail} component={GenreDetail} />
 

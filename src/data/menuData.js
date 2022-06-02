@@ -98,11 +98,16 @@ export const optionsAll = [
     route: ROUTES.Genres,
   },
   {
-    title: 'Search',
-    route: ROUTES.Search,
+    title: 'Popular Persons',
+    route: ROUTES.Popular_Persons,
   },
   {
-    title: 'Credit Search',
-    route: ROUTES.Credit_Search,
+    title: 'Movie & TV Search',
+    route: ROUTES.Search,
+  },
+
+  {
+    title: 'Perosn Search',
+    route: ROUTES.Perosn_Search,
   },
 ];
