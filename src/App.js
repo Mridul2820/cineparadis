@@ -19,7 +19,10 @@ const Login = lazy(() => import('./pages/Login'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Trending = lazy(() => import('./pages/topic/Trending'));
 const Genres = lazy(() => import('./pages/topic/Genres'));
+
+// Search
 const MovieTVSearch = lazy(() => import('./pages/search/MovieTVSearch'));
+const PersonSearch = lazy(() => import('./pages/search/PersonSearch'));
 
 // Movies
 const DiscoverMovies = lazy(() => import('./pages/movies/DiscoverMovies'));
@@ -154,10 +157,10 @@ const App = () => {
                   />
 
                   <Route path={ROUTES.Genre_Detail} component={GenreDetail} />
-
                   <Route path={ROUTES.Details} component={DetailsPage} />
 
                   <Route path={ROUTES.Search} component={MovieTVSearch} />
+                  <Route path={ROUTES.Perosn_Search} component={PersonSearch} />
 
                   <Route path={ROUTES.Chats} component={ChatPage} />
                 </Switch>

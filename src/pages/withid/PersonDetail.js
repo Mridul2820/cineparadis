@@ -28,8 +28,6 @@ const PersonDetail = () => {
     setLoading(false);
   };
 
-  console.log(creditData);
-
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line

@@ -7,7 +7,7 @@ import { API_URL, BASE_URL } from '../../constants/constant';
 import { Popular_Persons } from '../../constants/routes';
 import { Container, PageTitle } from '../../styles/Styles';
 import Paginate from '../../components/widget/Paginate';
-import { img300, noUserImg } from '../../helpers/config';
+import PersonCard from '../../components/cards/PersonCard';
 
 const popularUrl = `${API_URL}/person/popular?`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
@@ -25,8 +25,6 @@ const PopularPersons = () => {
     fetchPopular();
     // eslint-disable-next-line
   }, [page]);
-
-  console.log(persons);
 
   const meta = {
     title: 'Get the list of popular people - CineParadis',
@@ -48,22 +46,7 @@ const PopularPersons = () => {
         {persons && persons.length > 0 && (
           <div className="flex justify-center items-start flex-wrap mb-6 gap-4 mt-5">
             {persons.map((person) => (
-              <a
-                href={`/person/${person.id}`}
-                key={uuidv4()}
-                className="shadow-md rounded-md overflow-hidden w-36 md:w-40 border-2 border-blue-500"
-              >
-                <img
-                  src={
-                    person.profile_path
-                      ? `${img300}/${person.profile_path}`
-                      : noUserImg
-                  }
-                  alt={person?.name}
-                  className="w-36 md:w-40 object-cover align-top"
-                />
-                <p className="font-semibold p-2 text-center">{person.name}</p>
-              </a>
+              <PersonCard key={uuidv4()} person={person} />
             ))}
           </div>
         )}

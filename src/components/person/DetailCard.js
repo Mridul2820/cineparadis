@@ -53,7 +53,7 @@ const DetailCard = ({ creditData }) => {
             </p>
           </div>
         )}
-        {birthday && (
+        {birthday && !deathday && (
           <div className="fact-wrap">
             <p className="fact-item">
               <span className="fact-type">Age : </span>
