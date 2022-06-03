@@ -5,7 +5,7 @@ export const PROFILE = '/p/:username';
 
 export const Trending = '/trending';
 export const Genres = '/genres';
-export const Search = '/search';
+export const Search = '/search-movie-tv';
 
 // Movies
 export const Movies_Discover = '/discover-movies';

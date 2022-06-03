@@ -19,6 +19,7 @@ const FactBox = ({ content, type }) => {
     networks,
     title,
     seasons,
+    release_date,
     last_air_date,
     first_air_date,
     belongs_to_collection,
@@ -102,12 +103,46 @@ const FactBox = ({ content, type }) => {
             </p>
           </div>
         )}
+
+        {release_date && (
+          <div className="fact-wrap">
+            <p className="fact-item">
+              <span className="fact-type">Release Date : </span>
+              <span className="fact-detail">
+                {new Date(release_date).toLocaleDateString('en-US', dateData)}
+              </span>
+            </p>
+          </div>
+        )}
+
         {release && (
           <div className="fact-wrap">
             <p className="fact-item">
               <span className="fact-type">Release Date : </span>
               <span className="fact-detail">
                 {new Date(release).toLocaleDateString('en-US', dateData)}
+              </span>
+            </p>
+          </div>
+        )}
+
+        {first_air_date && (
+          <div className="fact-wrap">
+            <p className="fact-item">
+              <span className="fact-type">First Air Date : </span>
+              <span className="fact-detail">
+                {new Date(first_air_date).toLocaleDateString('en-US', dateData)}
+              </span>
+            </p>
+          </div>
+        )}
+
+        {last_air_date && (
+          <div className="fact-wrap">
+            <p className="fact-item">
+              <span className="fact-type">Last Air Date : </span>
+              <span className="fact-detail">
+                {new Date(last_air_date).toLocaleDateString('en-US', dateData)}
               </span>
             </p>
           </div>
@@ -134,24 +169,6 @@ const FactBox = ({ content, type }) => {
                   getLangDetail(lang).nativeName !== ' ' &&
                   ` (${getLangDetail(lang).nativeName})`}
               </span>
-            </p>
-          </div>
-        )}
-
-        {first_air_date && (
-          <div className="fact-wrap">
-            <p className="fact-item">
-              <span className="fact-type">First Air Date : </span>
-              <span className="fact-detail">{first_air_date}</span>
-            </p>
-          </div>
-        )}
-
-        {last_air_date && (
-          <div className="fact-wrap">
-            <p className="fact-item">
-              <span className="fact-type">Last Air Date : </span>
-              <span className="fact-detail">{last_air_date}</span>
             </p>
           </div>
         )}

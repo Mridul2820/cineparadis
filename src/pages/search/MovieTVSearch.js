@@ -37,7 +37,7 @@ const MovieTVSearch = () => {
 
   const fetchSearch = async () => {
     const { data } = await axios.get(
-      `${searchURL}${type}?${apiKey}&language=en-US&query=${searchText}&page=${page}$`
+      `${searchURL}${type}?${apiKey}&language=en-US&query=${searchText}&page=${page}`
     );
 
     setContents(data.results);
