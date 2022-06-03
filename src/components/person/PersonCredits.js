@@ -15,9 +15,13 @@ const PersonCredits = ({ credits, media_type }) => {
 
   return (
     <div className="mb-2">
-      <ContentGrid items={items} media_type={media_type} nohover showCredit />
+      {items && items.length > 0 ? (
+        <ContentGrid items={items} media_type={media_type} nohover showCredit />
+      ) : (
+        <p className="text-center text-slate-500 mt-3">No {media_type} Found</p>
+      )}
 
-      {numOfPages > 1 && credits.cast.length > 0 && (
+      {numOfPages > 1 && items && items.length > 0 && (
         <Paginate setPage={setPage} numOfPages={numOfPages} />
       )}
     </div>

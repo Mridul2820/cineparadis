@@ -19,15 +19,18 @@ const PersonIntro = ({ creditData }) => {
         <h1 className="text-2xl md:text-4xl font-bold mb-3">
           {creditData?.name}
         </h1>
-        <p className="font-semibold text-xl mb-1">Biography</p>
-
-        <div className="-sm prose-slate">
-          <ReactMarkdown
-            rehypePlugins={[rehypeRaw]}
-            // eslint-disable-next-line
-            children={creditData?.biography}
-          />
-        </div>
+        {creditData?.biography && (
+          <>
+            <p className="font-semibold text-xl mb-1">Biography</p>
+            <div className="-sm prose-slate">
+              <ReactMarkdown
+                rehypePlugins={[rehypeRaw]}
+                // eslint-disable-next-line
+                children={creditData?.biography}
+              />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
