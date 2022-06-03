@@ -19,6 +19,8 @@ const LightBoxPop = ({ imageArray, photoIndex, setPhotoIndex, setIsOpen }) => {
         setPhotoIndex((photoIndex + imageArray.length - 1) % imageArray.length)
       }
       loader={<LoaderCustom />}
+      imagePadding={50}
+      closeLabel="Close Modal"
     />
   );
 };
