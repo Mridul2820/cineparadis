@@ -1,6 +1,7 @@
 import React from 'react';
 import { ContentList } from '../../styles/Styles';
 import MovieSeries from '../cards/MovieSeries';
+import { v4 as uuidv4 } from 'uuid';
 
 const ContentGrid = ({
   items,
@@ -8,13 +9,14 @@ const ContentGrid = ({
   samepage,
   nohover,
   showWatch = true,
+  showCredit = false,
 }) => {
   return (
     <ContentList>
       {items &&
         items.map((item) => (
           <MovieSeries
-            key={item.id}
+            key={uuidv4()}
             id={item.id}
             poster={item.poster_path}
             backdrop={item.backdrop_path}
@@ -26,6 +28,8 @@ const ContentGrid = ({
             showWatch={showWatch}
             samepage={samepage}
             nohover={nohover}
+            showCredit={showCredit}
+            character={item.character}
           />
         ))}
     </ContentList>

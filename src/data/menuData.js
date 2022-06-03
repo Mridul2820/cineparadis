@@ -98,7 +98,16 @@ export const optionsAll = [
     route: ROUTES.Genres,
   },
   {
-    title: 'Search',
+    title: 'Popular Persons',
+    route: ROUTES.Popular_Persons,
+  },
+  {
+    title: 'Movie & TV Search',
     route: ROUTES.Search,
+  },
+
+  {
+    title: 'Person Search',
+    route: ROUTES.Perosn_Search,
   },
 ];

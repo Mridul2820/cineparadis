@@ -165,24 +165,7 @@ const DetailsPage = () => {
               />
             )}
             {active === 1 && content && (
-              <FactBox
-                id={content.id}
-                status={content.status}
-                title={content?.name || content?.title}
-                release={content.release_date}
-                lang={content.original_language}
-                runtime={content.runtime}
-                networks={content.networks}
-                seasons={content.seasons}
-                last_air_date={content.last_air_date}
-                first_air_date={content.first_air_date}
-                belongs_to_collection={content.belongs_to_collection}
-                production_companies={content.production_companies}
-                keywords={content.keywords?.results}
-                crew={content.credits?.crew}
-                original_title={content.original_title}
-                type={type}
-              />
+              <FactBox content={content} type={type} />
             )}
             {active === 2 && content && (
               <Gallery

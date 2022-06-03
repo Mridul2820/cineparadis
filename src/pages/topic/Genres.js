@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import DocumentMeta from 'react-document-meta';
+import { v4 as uuidv4 } from 'uuid';
 
 import { PageTitle, Container } from '../../styles/Styles';
 import styled from 'styled-components';
@@ -54,7 +55,7 @@ const GenresPage = () => {
         {genres.length > 0 &&
           genres.map((genre) => (
             <GenreItem
-              key={genre.id}
+              key={uuidv4()}
               to={`/genre/${type}/${genre.name}/${genre.id}`}
             >
               <span className="font-bold drop-shadow-md">{genre.name}</span>

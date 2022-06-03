@@ -34,7 +34,7 @@ const TrendingPage = () => {
       property: {
         'og:title': 'Trending Movies and TV Series - CineParadis',
         'og:description': 'Trending Movies and TV Series - CineParadis',
-        'og:url': `${BASE_URL}/trending`,
+        'og:url': `${BASE_URL}${Trending}`,
       },
     },
   };

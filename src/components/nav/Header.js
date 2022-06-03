@@ -84,7 +84,7 @@ const Container = styled.div`
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 10000;
+  z-index: 100;
 `;
 
 const HeaderRight = styled.div`

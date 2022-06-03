@@ -27,7 +27,6 @@ const WatchItem = ({ id, type }) => {
     <div>
       {content && (
         <MovieSeries
-          key={id}
           id={id}
           media_type={type}
           poster={content.backdrop_path}

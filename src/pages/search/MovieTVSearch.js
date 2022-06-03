@@ -11,11 +11,12 @@ import { API_URL, BASE_URL } from '../../constants/constant';
 
 import { Search } from '../../constants/routes';
 import ContentGrid from '../../components/widget/ContentGrid';
+import SearchBarIcon from '../../components/search/SearchBarIcon';
 
 const searchURL = `${API_URL}/search/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
-const SearchPage = () => {
+const MovieTVSearch = () => {
   const [type, setType] = useState('movie');
   const [page, setPage] = useState(1);
   const [searchText, setSearchText] = useState('');
@@ -48,6 +49,10 @@ const SearchPage = () => {
     fetchSearch();
   };
 
+  const onChange = (e) => {
+    setSearchText(e.target.value);
+  };
+
   useEffect(() => {
     window.scroll(0, 0);
     if (searchText) {
@@ -74,37 +79,12 @@ const SearchPage = () => {
     <DocumentMeta {...meta} extend>
       <Container>
         <div className="mx-auto mb-5 flex gap-x-6 gap-y-8 flex-col sm:flex-row justify-center items-center w-full">
-          <form onSubmit={searchSubmit} className="min-w-[300px]">
-            <div className="relative w-full">
-              <input
-                type="search"
-                id="search-dropdown"
-                className="block p-3 w-full z-20 text-sm text-gray-900 bg-gray-50 border border-blue-300 focus:ring-blue-500 focus:border-blue-500 rounded-md shadow-bs5"
-                placeholder="Search Movies or TV Shows"
-                required=""
-                onChange={(e) => setSearchText(e.target.value)}
-              />
-              <button
-                type="submit"
-                className="absolute top-0 right-0 p-3 text-sm font-medium text-white bg-blue-700 rounded-r-md border border-blue-700 hover:bg-blue-800"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-          </form>
+          <SearchBarIcon
+            onChange={onChange}
+            onSubmit={searchSubmit}
+            placeHolder="Search for Movies and TV Series"
+            searchId="search-movie-tv"
+          />
 
           <div className="flex justify-center gap-3">
             <Tab
@@ -151,4 +131,4 @@ const Tab = styled.div`
   transition: background-color 0.5s ease-in-out;
 `;
 
-export default SearchPage;
+export default MovieTVSearch;

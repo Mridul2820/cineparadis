@@ -19,7 +19,10 @@ const Login = lazy(() => import('./pages/Login'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Trending = lazy(() => import('./pages/topic/Trending'));
 const Genres = lazy(() => import('./pages/topic/Genres'));
-const Search = lazy(() => import('./pages/topic/Search'));
+
+// Search
+const MovieTVSearch = lazy(() => import('./pages/search/MovieTVSearch'));
+const PersonSearch = lazy(() => import('./pages/search/PersonSearch'));
 
 // Movies
 const DiscoverMovies = lazy(() => import('./pages/movies/DiscoverMovies'));
@@ -37,6 +40,8 @@ const SeriesUpcoming = lazy(() => import('./pages/series/SeriesUpcoming'));
 const ChatPage = lazy(() => import('./pages/ChatPage'));
 const DetailsPage = lazy(() => import('./pages/withid/DetailsPage'));
 const GenreDetail = lazy(() => import('./pages/withid/GenreDetail'));
+const PersonDetail = lazy(() => import('./pages/withid/PersonDetail'));
+const PopularPersons = lazy(() => import('./pages/topic/Persons'));
 
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -144,11 +149,18 @@ const App = () => {
                     exact
                   />
 
-                  <Route path={ROUTES.Genre_Detail} component={GenreDetail} />
+                  <Route path={ROUTES.Person_Detail} component={PersonDetail} />
 
+                  <Route
+                    path={ROUTES.Popular_Persons}
+                    component={PopularPersons}
+                  />
+
+                  <Route path={ROUTES.Genre_Detail} component={GenreDetail} />
                   <Route path={ROUTES.Details} component={DetailsPage} />
 
-                  <Route path={ROUTES.Search} component={Search} />
+                  <Route path={ROUTES.Search} component={MovieTVSearch} />
+                  <Route path={ROUTES.Perosn_Search} component={PersonSearch} />
 
                   <Route path={ROUTES.Chats} component={ChatPage} />
                 </Switch>
