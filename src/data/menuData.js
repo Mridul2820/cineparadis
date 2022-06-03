@@ -90,11 +90,11 @@ export const optionsNav = [
 
 export const optionsAll = [
   {
-    title: 'Trending',
+    title: 'Trending List',
     route: ROUTES.Trending,
   },
   {
-    title: 'Genres',
+    title: 'Genres List',
     route: ROUTES.Genres,
   },
   {
