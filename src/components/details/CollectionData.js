@@ -70,7 +70,7 @@ const CollectionData = ({ collectionId, type }) => {
                 <div className="min-w-[192px] mx-auto sm:mx-0">
                   <img
                     className="w-48 h-48 rounded-full overflow-hidden object-cover shadow-bs5"
-                    src={`${img300}/${collectionData.poster_path}`}
+                    src={`${img300}${collectionData.poster_path}`}
                     alt={collectionData.name}
                   />
                 </div>

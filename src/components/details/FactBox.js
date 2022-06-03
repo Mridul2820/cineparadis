@@ -54,7 +54,7 @@ const FactBox = ({ content, type }) => {
                     className="w-9 h-9 object-cover rounded-full"
                     src={
                       producer.profile_path
-                        ? `${img200}/${producer.profile_path}`
+                        ? `${img200}${producer.profile_path}`
                         : noPicture
                     }
                     alt={producer.name}
@@ -82,7 +82,7 @@ const FactBox = ({ content, type }) => {
                     key={uuidv4()}
                     src={
                       producer.profile_path
-                        ? `${img200}/${producer.profile_path}`
+                        ? `${img200}${producer.profile_path}`
                         : noPicture
                     }
                     alt={producer.name}
@@ -169,7 +169,7 @@ const FactBox = ({ content, type }) => {
                   key={uuidv4()}
                   src={
                     network.logo_path
-                      ? `${img200}/${network.logo_path}`
+                      ? `${img200}${network.logo_path}`
                       : noPicture
                   }
                   alt={network.name}

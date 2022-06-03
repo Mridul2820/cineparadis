@@ -9,7 +9,7 @@ const PersonCard = ({ person }) => {
     >
       <img
         src={
-          person.profile_path ? `${img300}/${person.profile_path}` : noUserImg
+          person.profile_path ? `${img300}${person.profile_path}` : noUserImg
         }
         alt={person?.name}
         className="w-36 md:w-40 object-cover align-top"

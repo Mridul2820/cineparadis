@@ -16,7 +16,7 @@ const CastnCrew = ({ credits, title }) => {
                   <img
                     src={
                       credit.profile_path
-                        ? `${img200}/${credit.profile_path}`
+                        ? `${img200}${credit.profile_path}`
                         : noUserImg
                     }
                     alt={credit?.name}
