@@ -1,6 +1,7 @@
 import React from 'react';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
+import LoaderCustom from './LoaderCustom';
 
 const LightBoxPop = ({ imageArray, photoIndex, setPhotoIndex, setIsOpen }) => {
   return (
@@ -17,6 +18,7 @@ const LightBoxPop = ({ imageArray, photoIndex, setPhotoIndex, setIsOpen }) => {
       onMovePrevRequest={() =>
         setPhotoIndex((photoIndex + imageArray.length - 1) % imageArray.length)
       }
+      loader={<LoaderCustom />}
     />
   );
 };

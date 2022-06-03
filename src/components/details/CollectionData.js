@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Loader from 'react-loader-spinner';
 
 import { img300 } from '../../helpers/config';
-import { Container } from '../../styles/Styles';
 import { API_URL } from '../../constants/constant';
 import ContentGrid from '../widget/ContentGrid';
+import LoaderCustom from '../widget/LoaderCustom';
 
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
@@ -29,17 +28,7 @@ const CollectionData = ({ collectionId, type }) => {
   }, []);
 
   if (loading) {
-    return (
-      <Container className="flex flex-col justify-center items-center w-full">
-        <Loader
-          type="Circles"
-          color="#00BFFF"
-          height={50}
-          width={200}
-          className="m-5"
-        />
-      </Container>
-    );
+    return <LoaderCustom />;
   }
 
   return (

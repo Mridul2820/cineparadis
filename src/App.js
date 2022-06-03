@@ -1,5 +1,4 @@
 import React, { lazy, Suspense } from 'react';
-import Loader from 'react-loader-spinner';
 import DocumentMeta from 'react-document-meta';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -9,11 +8,13 @@ import UserContext from './context/user';
 import useAuthListner from './hooks/useAuthListner';
 import IsUserLoggedIn from './helpers/IsUserLoggedIn';
 
+import { ogDefault, ogImage, twitterData } from './constants/constant';
+import LoaderCustom from './components/widget/LoaderCustom';
+
 import Header from './components/nav/Header';
 import Navbar from './components/nav/Navbar';
 import Footer from './components/footer/Footer';
 import ScrollTop from './components/widget/ScrollTop';
-import { ogDefault, ogImage, twitterData } from './constants/constant';
 
 const Login = lazy(() => import('./pages/Login'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
@@ -68,19 +69,7 @@ const App = () => {
     <UserContext.Provider value={{ user }}>
       <DocumentMeta {...meta}>
         <Router>
-          <Suspense
-            fallback={
-              <div className="flex flex-col justify-center items-center w-full min-h-screen">
-                <Loader
-                  type="Circles"
-                  color="#00BFFF"
-                  height={50}
-                  width={200}
-                  className="m-5"
-                />
-              </div>
-            }
-          >
+          <Suspense fallback={<LoaderCustom />}>
             <Switch>
               <IsUserLoggedIn
                 user={user}
