@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { img500, imgOriginal } from '../../helpers/config';
 import { v4 as uuidv4 } from 'uuid';
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
+import LightBoxPop from '../widget/LightBoxPop';
 
 const PersonGallery = ({ images, defaultImage, alt }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +18,8 @@ const PersonGallery = ({ images, defaultImage, alt }) => {
       ? images.profiles?.map(function (image) {
           return `${imgOriginal}${image.file_path}`;
         })
-      : [`${imgOriginal}/${defaultImage}`];
+      : [`${imgOriginal}${defaultImage}`];
+
   return (
     <div className="my-10">
       {images.profiles ? (
@@ -28,7 +28,7 @@ const PersonGallery = ({ images, defaultImage, alt }) => {
             images.profiles.map((photo, index) => (
               <img
                 key={uuidv4()}
-                src={`${img500}/${photo.file_path}`}
+                src={`${img500}${photo.file_path}`}
                 alt={alt}
                 loading="lazy"
                 className={'gallery-image-profile cursor-pointer'}
@@ -42,7 +42,7 @@ const PersonGallery = ({ images, defaultImage, alt }) => {
             <>
               {defaultImage ? (
                 <img
-                  src={`${img500}/${defaultImage}`}
+                  src={`${img500}${defaultImage}`}
                   alt={alt}
                   loading="lazy"
                   className={'gallery-image-profile cursor-pointer'}
@@ -64,20 +64,11 @@ const PersonGallery = ({ images, defaultImage, alt }) => {
       )}
 
       {isOpen && (
-        <Lightbox
-          mainSrc={imageArray[photoIndex]}
-          nextSrc={imageArray[(photoIndex + 1) % imageArray.length]}
-          prevSrc={
-            imageArray[(photoIndex + imageArray.length - 1) % imageArray.length]
-          }
-          onCloseRequest={() => setIsOpen(false)}
-          onMovePrevRequest={() =>
-            setPhotoIndex(photoIndex + imageArray.length - 1) %
-            imageArray.length
-          }
-          onMoveNextRequest={() =>
-            setPhotoIndex((photoIndex + 1) % imageArray.length)
-          }
+        <LightBoxPop
+          imageArray={imageArray}
+          photoIndex={photoIndex}
+          setPhotoIndex={setPhotoIndex}
+          setIsOpen={setIsOpen}
         />
       )}
     </div>
