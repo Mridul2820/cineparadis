@@ -16,13 +16,15 @@ const PersonIntro = ({ creditData }) => {
         className="w-60 rounded-md mx-auto md:mx-0"
       />
       <div>
-        <h1 className="text-2xl md:text-4xl font-bold mb-3">
+        <h1 className="text-center md:text-left text-2xl md:text-4xl font-bold mb-3">
           {creditData?.name}
         </h1>
         {creditData?.biography && (
           <>
-            <p className="font-semibold text-xl mb-1">Biography</p>
-            <div className="-sm prose-slate">
+            <p className="text-center md:text-left font-semibold text-base md:text-xl mb-1">
+              Biography
+            </p>
+            <div className="prose prose-zinc max-w-none">
               <ReactMarkdown
                 rehypePlugins={[rehypeRaw]}
                 // eslint-disable-next-line

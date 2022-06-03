@@ -68,6 +68,10 @@ const Tab = styled.div`
   background-color: ${(props) =>
     props.active ? 'white' : 'rgb(195, 221, 253)'};
   transition: background-color 0.5s ease-in-out;
+
+  @media only screen and (max-width: 640px) {
+    width: 33%;
+  }
 `;
 
 export default PresonTabs;

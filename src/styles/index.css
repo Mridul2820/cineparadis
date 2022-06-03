@@ -24,7 +24,7 @@
   }
 
   .gallery-image {
-    @apply w-72 xs:w-[320px] lg:w-[350px] shadow-bs3 rounded-sm;
+    @apply w-60 us:w-72 xs:w-[320px] lg:w-[350px] shadow-bs3 rounded-sm;
   }
 
   .gallery-image-profile {
