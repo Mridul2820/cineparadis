@@ -74,19 +74,17 @@ const BannerInfo = ({ content, type, runtime }) => {
 
             <div className="flex items-center flex-wrap gap-3 justify-center sm:justify-start">
               {content.genres?.map((genre) => (
-                <a
+                <ChipLink
                   key={uuidv4()}
                   href={`/genre/${type}/${genre.name}/${genre.id}`}
                 >
-                  <div className="cursor-pointer">
-                    <Chip
-                      className="chip"
-                      label={genre.name}
-                      color="primary"
-                      size="small"
-                    />
-                  </div>
-                </a>
+                  <Chip
+                    className="chip"
+                    label={genre.name}
+                    color="primary"
+                    size="small"
+                  />
+                </ChipLink>
               ))}
             </div>
 
@@ -110,8 +108,8 @@ const BannerInfo = ({ content, type, runtime }) => {
                 }
               }}
             >
-              <BiListPlus size="24px" />
-              <p>Add to watchlist</p>
+              <BiListPlus size={24} />
+              <p className="text-base ml-2 leading-4">Add to watchlist</p>
             </Watch>
           </Details>
         </section>
@@ -143,11 +141,6 @@ const Watch = styled.div`
   font-size: 10px;
   color: #fff;
   margin-top: 5px;
-
-  p {
-    font-size: 17px;
-    margin-left: 8px;
-  }
 `;
 
 const Rating = styled.div`
@@ -159,6 +152,12 @@ const Rating = styled.div`
   align-items: center;
   gap: 5px;
   background-color: ${({ vote_average, voteColor }) => voteColor(vote_average)};
+`;
+
+const ChipLink = styled.a`
+  .MuiChip-root {
+    cursor: pointer !important;
+  }
 `;
 
 export default BannerInfo;
