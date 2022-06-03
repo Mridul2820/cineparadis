@@ -1,15 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import { img200, noUserImg } from '../../helpers/config';
+import SearchBar from '../search/SearchBar';
 
 const CastnCrew = ({ credits, title }) => {
+  const [search, setSearch] = useState('');
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const filtered = credits.filter((person) => {
+    return (
+      person?.name?.toLowerCase().includes(search.toLowerCase()) ||
+      person?.character?.toLowerCase().includes(search.toLowerCase())
+    );
+  });
+
   return (
     <section className="tab-section">
       <h2 className="detail-tab-title">Cast of {title}</h2>
-      {credits && credits.length > 0 ? (
+
+      <SearchBar
+        search={search}
+        handleChange={handleChange}
+        placeHolder="Search in Cast"
+        searchId="cast-search"
+      />
+
+      {credits && credits.length > 0 && filtered && filtered.length > 0 ? (
         <div className="flex justify-center items-center flex-wrap mb-6 gap-4">
-          {credits.map((credit) => (
+          {filtered.map((credit) => (
             <a href={`/person/${credit.id}`} key={uuidv4()}>
               <Cast>
                 <div className="p-2">

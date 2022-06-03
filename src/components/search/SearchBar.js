@@ -1,21 +1,19 @@
 import React from 'react';
 
-const SearchBarIcon = ({ onSubmit, onChange, placeHolder, searchId }) => {
+const SearchBar = ({ search, handleChange, placeHolder, searchId }) => {
   return (
-    <form onSubmit={onSubmit} className="min-w-[300px]">
+    <form className="max-w-[300px] mx-auto mb-5">
       <div className="relative w-full">
         <input
           type="search"
           id={searchId}
           className="block p-3 w-full z-20 text-sm text-gray-900 bg-gray-50 border border-blue-300 focus:ring-blue-500 focus:border-blue-500 rounded-md shadow-bs5"
           placeholder={placeHolder}
-          required=""
-          onChange={onChange}
+          value={search}
+          onChange={handleChange}
         />
-        <button
-          type="submit"
-          className="absolute top-0 right-0 p-3 text-sm font-medium text-white bg-blue-700 rounded-r-md border border-blue-700 hover:bg-blue-800"
-        >
+
+        <div className="absolute right-0 top-0 mt-3 mr-3">
           <svg
             className="w-5 h-5"
             fill="none"
@@ -30,10 +28,10 @@ const SearchBarIcon = ({ onSubmit, onChange, placeHolder, searchId }) => {
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             ></path>
           </svg>
-        </button>
+        </div>
       </div>
     </form>
   );
 };
 
-export default SearchBarIcon;
+export default SearchBar;

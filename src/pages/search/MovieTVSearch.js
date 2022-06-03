@@ -79,7 +79,12 @@ const MovieTVSearch = () => {
     <DocumentMeta {...meta} extend>
       <Container>
         <div className="mx-auto mb-5 flex gap-x-6 gap-y-8 flex-col sm:flex-row justify-center items-center w-full">
-          <SearchBarIcon onChange={onChange} onSubmit={searchSubmit} />
+          <SearchBarIcon
+            onChange={onChange}
+            onSubmit={searchSubmit}
+            placeHolder="Search for Movies and TV Series"
+            searchId="search-movie-tv"
+          />
 
           <div className="flex justify-center gap-3">
             <Tab

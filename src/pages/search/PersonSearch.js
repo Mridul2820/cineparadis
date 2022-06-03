@@ -65,7 +65,12 @@ const PersonSearch = () => {
         <PageTitle>Search People</PageTitle>
 
         <div className="mx-auto my-5 flex gap-x-6 gap-y-8 flex-col sm:flex-row justify-center items-center w-full">
-          <SearchBarIcon onChange={onChange} onSubmit={searchSubmit} />
+          <SearchBarIcon
+            onChange={onChange}
+            onSubmit={searchSubmit}
+            placeHolder="Search for People"
+            searchId="search-person"
+          />
         </div>
 
         <div className="flex justify-center items-start flex-wrap mb-6 gap-4 mt-5">
