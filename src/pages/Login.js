@@ -17,7 +17,6 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const createdUser = await firebase.auth().signInWithPopup(provider);
-      // console.log('createdUser', createdUser.user);
 
       const gmailExists = await doesGmailExist(createdUser.user.email);
 

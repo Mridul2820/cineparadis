@@ -34,7 +34,6 @@ const GenresChip = ({
     );
 
     setGenres(data.genres);
-    // console.log(data)
   };
 
   useEffect(() => {

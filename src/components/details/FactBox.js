@@ -68,8 +68,6 @@ const FactBox = ({ content, type }) => {
           </div>
         )}
 
-        {console.log(getDirector(crew))}
-
         {crew && getProducer(crew).length > 0 && (
           <div className="fact-wrap">
             <div className="flex flex-wrap items-center gap-3 fact-item">
