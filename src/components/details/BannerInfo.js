@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Chip } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { toast } from 'react-toastify';
 
 import { AiFillStar } from 'react-icons/ai';
 import { BiListPlus } from 'react-icons/bi';
@@ -20,12 +21,20 @@ const BannerInfo = ({ content, type, runtime }) => {
   const history = useHistory();
   const id = content?.id;
 
-  const handleWatchlist = async (id, type) => {
+  const handleWatchlist = async (id, type, title) => {
     const userId = user.uid;
 
     await updateProfileWatchlist(userId, id, type);
 
-    alert('Added to You Watchlist. Go to Your dashboard');
+    toast.success(`${title} Added to Your Watchlist`, {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   return (
@@ -102,7 +111,7 @@ const BannerInfo = ({ content, type, runtime }) => {
             <Watch
               onClick={() => {
                 if (user) {
-                  handleWatchlist(id, type);
+                  handleWatchlist(id, type, content.name || content.title);
                 } else {
                   history.push(LOGIN);
                 }

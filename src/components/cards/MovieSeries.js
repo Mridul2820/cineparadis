@@ -2,6 +2,9 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { img300, unavailableLandscape } from '../../helpers/config';
 import { BiListPlus } from 'react-icons/bi';
 import { AiFillStar } from 'react-icons/ai';
@@ -38,10 +41,18 @@ const MovieSeries = ({
   const history = useHistory();
   const userId = user?.uid;
 
-  const handleWatchlist = async (id, media_type) => {
+  const handleWatchlist = async (id, media_type, title) => {
     await updateProfileWatchlist(userId, id, media_type);
 
-    alert('Added to Your Watchlist. Go to Your dashboard');
+    toast.success(`${title} Added to Your Watchlist`, {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   const handleDelete = async (id, media_type) => {
@@ -111,7 +122,7 @@ const MovieSeries = ({
             <Watch
               onClick={() => {
                 if (user) {
-                  handleWatchlist(id, media_type);
+                  handleWatchlist(id, media_type, title);
                 } else {
                   history.push(LOGIN);
                 }
