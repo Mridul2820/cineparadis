@@ -12,6 +12,12 @@ export const Button = styled.button`
   &:disabled {
     background-color: rgba(0, 149, 246, 0.3);
   }
+
+  @media only screen and (max-width: 768px) {
+    border-radius: 999px;
+    padding: 6px;
+    margin: 0;
+  }
 `;
 
 export const PageTitle = styled.h1`

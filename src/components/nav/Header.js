@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { AiOutlineLogout } from 'react-icons/ai';
 
 import { Button } from '../../styles/Styles';
 import * as ROUTES from '../../constants/routes';
@@ -60,8 +61,12 @@ const Header = () => {
                 await firebase.auth().signOut();
                 history.push(ROUTES.LOGIN);
               }}
+              title="Logout"
             >
-              Logout
+              <span className="hidden md:block">Logout</span>
+              <span className="block md:hidden">
+                <AiOutlineLogout size={20} />
+              </span>
             </Button>
           ) : (
             <Link to={ROUTES.LOGIN}>

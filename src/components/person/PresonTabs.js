@@ -23,7 +23,7 @@ const PresonTabs = ({ creditData }) => {
           active={active === 0}
           id={0}
         >
-          Movies & TV Series
+          Movies
         </Tab>
         <Tab
           className="tab-item"
