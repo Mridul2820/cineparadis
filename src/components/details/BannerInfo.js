@@ -1,31 +1,82 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Chip } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { toast } from 'react-toastify';
 
 import { AiFillStar } from 'react-icons/ai';
 import { BiListPlus } from 'react-icons/bi';
+import { BsFillTrashFill } from 'react-icons/bs';
 
 import UserContext from '../../context/user';
-import { updateProfileWatchlist } from '../../services/firebase';
+import {
+  checkIfInWatchlist,
+  deleteItemFromWatchlist,
+  updateProfileWatchlist,
+} from '../../services/firebase';
+
 import { img300, img500, unavailable } from '../../helpers/config';
 import formatTime from '../../helpers/formatTime';
 import voteColor from '../../helpers/voteColor';
 import { LOGIN } from '../../constants/routes';
 import SocialLinks from '../widget/SocialLinks';
+import { settings } from '../../helpers/notification';
+import ButtonLoading from '../loaders/ButtonLoading';
 
 const BannerInfo = ({ content, type, runtime }) => {
+  const [loading, setLoading] = useState(false);
+  const [inWatchlist, setInWatchlist] = useState();
+
   const { user } = useContext(UserContext);
   const history = useHistory();
   const id = content?.id;
 
-  const handleWatchlist = async (id, type) => {
-    const userId = user.uid;
+  useEffect(() => {
+    const checkIfThisInWatchlist = async () => {
+      const userId = user?.uid;
+      const watchlist = await checkIfInWatchlist(userId, id, type);
+      setInWatchlist(watchlist);
+    };
 
-    await updateProfileWatchlist(userId, id, type);
+    checkIfThisInWatchlist();
+  }, [inWatchlist]);
 
-    alert('Added to You Watchlist. Go to Your dashboard');
+  const handleDelete = async (id, media_type, title) => {
+    setLoading(true);
+    try {
+      const userId = user?.uid;
+      await deleteItemFromWatchlist(userId, id, media_type);
+      setInWatchlist(false);
+      toast.warn(`${title} removed from Your Watchlist`, {
+        ...settings,
+      });
+      setLoading(false);
+    } catch (error) {
+      toast.error('Something Went Wrong', {
+        ...settings,
+      });
+      setLoading(false);
+    }
+  };
+
+  const handleWatchlist = async (id, type, title) => {
+    setLoading(true);
+    try {
+      const userId = user.uid;
+      await updateProfileWatchlist(userId, id, type);
+      setInWatchlist(true);
+
+      toast.success(`${title} Added to Your Watchlist`, {
+        ...settings,
+      });
+      setLoading(false);
+    } catch (error) {
+      toast.error('Something Went Wrong', {
+        ...settings,
+      });
+      setLoading(false);
+    }
   };
 
   return (
@@ -99,18 +150,39 @@ const BannerInfo = ({ content, type, runtime }) => {
               imdb={content?.external_ids?.imdb_id}
             />
 
-            <Watch
-              onClick={() => {
-                if (user) {
-                  handleWatchlist(id, type);
-                } else {
-                  history.push(LOGIN);
+            {inWatchlist === undefined ? (
+              ''
+            ) : inWatchlist ? (
+              <button
+                className="flex justify-center items-center disabled:cursor-not-allowed"
+                onClick={() =>
+                  handleDelete(id, type, content.name || content.title)
                 }
-              }}
-            >
-              <BiListPlus size={24} />
-              <p className="text-base ml-2 leading-4">Add to watchlist</p>
-            </Watch>
+                disabled={loading}
+              >
+                {loading && <ButtonLoading />}
+                <BsFillTrashFill size={18} />
+                <p className="text-base ml-2 leading-4">
+                  Remove from watchlist
+                </p>
+              </button>
+            ) : (
+              <button
+                className="flex justify-center items-center disabled:cursor-not-allowed"
+                onClick={() => {
+                  if (user) {
+                    handleWatchlist(id, type, content.name || content.title);
+                  } else {
+                    history.push(LOGIN);
+                  }
+                }}
+                disabled={loading}
+              >
+                {loading && <ButtonLoading />}
+                <BiListPlus size={24} />
+                <p className="text-base ml-2 leading-4">Add to watchlist</p>
+              </button>
+            )}
           </Details>
         </section>
       )}
@@ -128,19 +200,6 @@ const Details = styled.div`
     flex-direction: column;
     padding: 20px 25px;
   }
-`;
-
-const Watch = styled.div`
-  margin-top: 5px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  outline: none;
-  font-size: 10px;
-  color: #fff;
-  margin-top: 5px;
 `;
 
 const Rating = styled.div`

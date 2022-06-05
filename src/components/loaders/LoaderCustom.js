@@ -1,11 +1,11 @@
 import React from 'react';
-import Loader from 'react-loader-spinner';
+import { Circles } from 'react-loader-spinner';
 import { Container } from '../../styles/Styles';
 
 const LoaderCustom = () => {
   return (
     <Container className="flex flex-col justify-center items-center w-full">
-      <Loader
+      <Circles
         type="Circles"
         color="#00BFFF"
         height={50}

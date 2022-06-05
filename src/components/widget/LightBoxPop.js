@@ -1,7 +1,7 @@
 import React from 'react';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
-import LoaderCustom from './LoaderCustom';
+import LoaderCustom from '../loaders/LoaderCustom';
 
 const LightBoxPop = ({ imageArray, photoIndex, setPhotoIndex, setIsOpen }) => {
   return (

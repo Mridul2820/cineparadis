@@ -9,12 +9,13 @@ import useAuthListner from './hooks/useAuthListner';
 import IsUserLoggedIn from './helpers/IsUserLoggedIn';
 
 import { ogDefault, ogImage, twitterData } from './constants/constant';
-import LoaderCustom from './components/widget/LoaderCustom';
+import LoaderCustom from './components/loaders/LoaderCustom';
 
 import Header from './components/nav/Header';
 import Navbar from './components/nav/Navbar';
 import Footer from './components/footer/Footer';
 import ScrollTop from './components/widget/ScrollTop';
+import { ToastContainer } from 'react-toastify';
 
 const Login = lazy(() => import('./pages/Login'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
@@ -68,6 +69,7 @@ const App = () => {
   return (
     <UserContext.Provider value={{ user }}>
       <DocumentMeta {...meta}>
+        <ToastContainer />
         <Router>
           <Suspense fallback={<LoaderCustom />}>
             <Switch>

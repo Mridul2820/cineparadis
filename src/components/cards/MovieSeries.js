@@ -1,6 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { img300, unavailableLandscape } from '../../helpers/config';
 import { BiListPlus } from 'react-icons/bi';
@@ -12,11 +16,14 @@ import truncate from '../../helpers/truncate';
 
 import UserContext from '../../context/user';
 import {
+  checkIfInWatchlist,
   deleteItemFromWatchlist,
   updateProfileWatchlist,
 } from '../../services/firebase';
-import { useHistory } from 'react-router-dom';
+
 import { LOGIN } from '../../constants/routes';
+import { settings } from '../../helpers/notification';
+import ButtonLoading from '../loaders/ButtonLoading';
 
 const MovieSeries = ({
   id,
@@ -27,28 +34,63 @@ const MovieSeries = ({
   media_type,
   vote_average,
   description,
-  showDeleteIcon,
   showWatch,
   samepage,
   nohover,
   character,
   showCredit,
 }) => {
+  const [loading, setLoading] = useState(false);
+  const [inWatchlist, setInWatchlist] = useState();
+
   const { user } = useContext(UserContext);
   const history = useHistory();
   const userId = user?.uid;
 
-  const handleWatchlist = async (id, media_type) => {
-    await updateProfileWatchlist(userId, id, media_type);
+  useEffect(() => {
+    const checkIfThisInWatchlist = async () => {
+      const userId = user?.uid;
+      const watchlist = await checkIfInWatchlist(userId, id, media_type);
+      setInWatchlist(watchlist);
+    };
 
-    alert('Added to Your Watchlist. Go to Your dashboard');
+    checkIfThisInWatchlist();
+  }, [inWatchlist]);
+
+  const handleWatchlist = async (id, media_type, title) => {
+    setLoading(true);
+    try {
+      await updateProfileWatchlist(userId, id, media_type);
+      setInWatchlist(true);
+
+      toast.success(`${title} Added to Your Watchlist`, {
+        ...settings,
+      });
+      setLoading(false);
+    } catch (error) {
+      toast.error('Something Went Wrong', {
+        ...settings,
+      });
+      setLoading(false);
+    }
   };
 
-  const handleDelete = async (id, media_type) => {
-    await deleteItemFromWatchlist(userId, id, media_type);
-
-    window.location.reload();
-    // alert('Removed from Your Watchlist')
+  const handleDelete = async (id, media_type, title) => {
+    setLoading(true);
+    try {
+      const userId = user?.uid;
+      await deleteItemFromWatchlist(userId, id, media_type);
+      setInWatchlist(false);
+      toast.warn(`${title} removed from Your Watchlist`, {
+        ...settings,
+      });
+      setLoading(false);
+    } catch (error) {
+      toast.error('Something Went Wrong', {
+        ...settings,
+      });
+      setLoading(false);
+    }
   };
 
   const LinkContent = () => (
@@ -87,9 +129,13 @@ const MovieSeries = ({
         className="poster"
       />
 
-      {showDeleteIcon && (
-        <DeleteIcon onClick={() => handleDelete(id, media_type)}>
-          <BsFillTrashFill />
+      {inWatchlist && (
+        <DeleteIcon
+          disabled={loading}
+          onClick={() => handleDelete(id, media_type, title)}
+          title="Remove From Watchlist"
+        >
+          {loading ? <ButtonLoading /> : <BsFillTrashFill size={16} />}
         </DeleteIcon>
       )}
 
@@ -107,20 +153,27 @@ const MovieSeries = ({
           {!showCredit && (
             <p className="text-[10px]">{truncate(description, 35)}</p>
           )}
-          {showWatch && !nohover && (
-            <Watch
-              onClick={() => {
-                if (user) {
-                  handleWatchlist(id, media_type);
-                } else {
-                  history.push(LOGIN);
-                }
-              }}
-              id="watchAdd"
-            >
-              <BiListPlus size="16px" />
-              Add to watchlist
-            </Watch>
+          {showWatch && (
+            <>
+              {inWatchlist === undefined && ''}
+              {!inWatchlist && (
+                <Watch
+                  onClick={() => {
+                    if (user) {
+                      handleWatchlist(id, media_type, title);
+                    } else {
+                      history.push(LOGIN);
+                    }
+                  }}
+                  disabled={loading}
+                  id="watchAdd"
+                >
+                  {loading && <ButtonLoading />}
+                  <BiListPlus size={22} />
+                  <p className="text-xs">Add to watchlist</p>
+                </Watch>
+              )}
+            </>
           )}
         </Expand>
       </Details>
@@ -139,19 +192,23 @@ const Expand = styled.div`
 
 const DeleteIcon = styled.button`
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 8px;
+  right: 8px;
   background-color: red;
   color: #fff;
   border-radius: 50%;
-  width: 25px;
-  height: 25px;
+  width: 26px;
+  height: 26px;
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
   outline: none;
   cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;
 
 const Content = styled.div`
@@ -216,6 +273,10 @@ const Watch = styled.button`
   outline: none;
   font-size: 10px;
   color: #fff;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;
 
 const Rating = styled.div`

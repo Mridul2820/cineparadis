@@ -15,7 +15,7 @@ const DetailCard = ({ creditData }) => {
   } = creditData;
 
   return (
-    <div className="w-80 rounded-md mx-auto md:mx-0 p-3">
+    <div className="w-full xs:w-80 rounded-md mx-auto md:mx-0 p-1 xs:p-3">
       <SocialLinks
         facebook={external_ids.facebook_id}
         instagram={external_ids.instagram_id}
