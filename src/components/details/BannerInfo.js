@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Chip } from '@mui/material';
 import { useHistory } from 'react-router-dom';
@@ -7,33 +7,55 @@ import { toast } from 'react-toastify';
 
 import { AiFillStar } from 'react-icons/ai';
 import { BiListPlus } from 'react-icons/bi';
+import { BsFillTrashFill } from 'react-icons/bs';
 
 import UserContext from '../../context/user';
-import { updateProfileWatchlist } from '../../services/firebase';
+import {
+  checkIfInWatchlist,
+  deleteItemFromWatchlist,
+  updateProfileWatchlist,
+} from '../../services/firebase';
 import { img300, img500, unavailable } from '../../helpers/config';
 import formatTime from '../../helpers/formatTime';
 import voteColor from '../../helpers/voteColor';
 import { LOGIN } from '../../constants/routes';
 import SocialLinks from '../widget/SocialLinks';
+import { settings } from '../../helpers/notification';
 
 const BannerInfo = ({ content, type, runtime }) => {
   const { user } = useContext(UserContext);
+
   const history = useHistory();
   const id = content?.id;
 
+  const [inWatchlist, setInWatchlist] = useState();
+
+  useEffect(() => {
+    const checkIfThisInWatchlist = async () => {
+      const userId = user?.uid;
+      const watchlist = await checkIfInWatchlist(userId, id, type);
+      setInWatchlist(watchlist);
+    };
+
+    checkIfThisInWatchlist();
+  }, [inWatchlist]);
+
+  const handleDelete = async (id, media_type, title) => {
+    const userId = user?.uid;
+    await deleteItemFromWatchlist(userId, id, media_type);
+    setInWatchlist(false);
+    toast.warn(`${title} removed from Your Watchlist`, {
+      ...settings,
+    });
+  };
+
   const handleWatchlist = async (id, type, title) => {
     const userId = user.uid;
-
     await updateProfileWatchlist(userId, id, type);
+    setInWatchlist(true);
 
     toast.success(`${title} Added to Your Watchlist`, {
-      position: 'top-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
+      ...settings,
     });
   };
 
@@ -108,18 +130,35 @@ const BannerInfo = ({ content, type, runtime }) => {
               imdb={content?.external_ids?.imdb_id}
             />
 
-            <Watch
-              onClick={() => {
-                if (user) {
-                  handleWatchlist(id, type, content.name || content.title);
-                } else {
-                  history.push(LOGIN);
+            {inWatchlist === undefined ? (
+              ''
+            ) : inWatchlist ? (
+              <button
+                className="flex justify-center items-center"
+                onClick={() =>
+                  handleDelete(id, type, content.name || content.title)
                 }
-              }}
-            >
-              <BiListPlus size={24} />
-              <p className="text-base ml-2 leading-4">Add to watchlist</p>
-            </Watch>
+              >
+                <BsFillTrashFill size={18} />
+                <p className="text-base ml-2 leading-4">
+                  Remove from watchlist
+                </p>
+              </button>
+            ) : (
+              <button
+                className="flex justify-center items-center"
+                onClick={() => {
+                  if (user) {
+                    handleWatchlist(id, type, content.name || content.title);
+                  } else {
+                    history.push(LOGIN);
+                  }
+                }}
+              >
+                <BiListPlus size={24} />
+                <p className="text-base ml-2 leading-4">Add to watchlist</p>
+              </button>
+            )}
           </Details>
         </section>
       )}
@@ -137,19 +176,6 @@ const Details = styled.div`
     flex-direction: column;
     padding: 20px 25px;
   }
-`;
-
-const Watch = styled.div`
-  margin-top: 5px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  outline: none;
-  font-size: 10px;
-  color: #fff;
-  margin-top: 5px;
 `;
 
 const Rating = styled.div`

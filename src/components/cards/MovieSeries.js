@@ -20,6 +20,7 @@ import {
 } from '../../services/firebase';
 import { useHistory } from 'react-router-dom';
 import { LOGIN } from '../../constants/routes';
+import { settings } from '../../helpers/notification';
 
 const MovieSeries = ({
   id,
@@ -45,13 +46,7 @@ const MovieSeries = ({
     await updateProfileWatchlist(userId, id, media_type);
 
     toast.success(`${title} Added to Your Watchlist`, {
-      position: 'top-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
+      ...settings,
     });
   };
 
