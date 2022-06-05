@@ -4,7 +4,6 @@ import { Chip } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { toast } from 'react-toastify';
-import { TailSpin } from 'react-loader-spinner';
 
 import { AiFillStar } from 'react-icons/ai';
 import { BiListPlus } from 'react-icons/bi';
@@ -16,21 +15,22 @@ import {
   deleteItemFromWatchlist,
   updateProfileWatchlist,
 } from '../../services/firebase';
+
 import { img300, img500, unavailable } from '../../helpers/config';
 import formatTime from '../../helpers/formatTime';
 import voteColor from '../../helpers/voteColor';
 import { LOGIN } from '../../constants/routes';
 import SocialLinks from '../widget/SocialLinks';
 import { settings } from '../../helpers/notification';
+import ButtonLoading from '../loaders/ButtonLoading';
 
 const BannerInfo = ({ content, type, runtime }) => {
   const [loading, setLoading] = useState(false);
-  const { user } = useContext(UserContext);
+  const [inWatchlist, setInWatchlist] = useState();
 
+  const { user } = useContext(UserContext);
   const history = useHistory();
   const id = content?.id;
-
-  const [inWatchlist, setInWatchlist] = useState();
 
   useEffect(() => {
     const checkIfThisInWatchlist = async () => {
@@ -77,17 +77,6 @@ const BannerInfo = ({ content, type, runtime }) => {
       });
       setLoading(false);
     }
-  };
-
-  const ButtonLoading = () => {
-    return (
-      <TailSpin
-        color="white"
-        height={20}
-        width={20}
-        ariaLabel="three-circles-rotating"
-      />
-    );
   };
 
   return (
