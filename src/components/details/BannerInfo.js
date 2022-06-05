@@ -4,6 +4,7 @@ import { Chip } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { toast } from 'react-toastify';
+import { TailSpin } from 'react-loader-spinner';
 
 import { AiFillStar } from 'react-icons/ai';
 import { BiListPlus } from 'react-icons/bi';
@@ -23,6 +24,7 @@ import SocialLinks from '../widget/SocialLinks';
 import { settings } from '../../helpers/notification';
 
 const BannerInfo = ({ content, type, runtime }) => {
+  const [loading, setLoading] = useState(false);
   const { user } = useContext(UserContext);
 
   const history = useHistory();
@@ -41,22 +43,51 @@ const BannerInfo = ({ content, type, runtime }) => {
   }, [inWatchlist]);
 
   const handleDelete = async (id, media_type, title) => {
-    const userId = user?.uid;
-    await deleteItemFromWatchlist(userId, id, media_type);
-    setInWatchlist(false);
-    toast.warn(`${title} removed from Your Watchlist`, {
-      ...settings,
-    });
+    setLoading(true);
+    try {
+      const userId = user?.uid;
+      await deleteItemFromWatchlist(userId, id, media_type);
+      setInWatchlist(false);
+      toast.warn(`${title} removed from Your Watchlist`, {
+        ...settings,
+      });
+      setLoading(false);
+    } catch (error) {
+      toast.error('Something Went Wrong', {
+        ...settings,
+      });
+      setLoading(false);
+    }
   };
 
   const handleWatchlist = async (id, type, title) => {
-    const userId = user.uid;
-    await updateProfileWatchlist(userId, id, type);
-    setInWatchlist(true);
+    setLoading(true);
+    try {
+      const userId = user.uid;
+      await updateProfileWatchlist(userId, id, type);
+      setInWatchlist(true);
 
-    toast.success(`${title} Added to Your Watchlist`, {
-      ...settings,
-    });
+      toast.success(`${title} Added to Your Watchlist`, {
+        ...settings,
+      });
+      setLoading(false);
+    } catch (error) {
+      toast.error('Something Went Wrong', {
+        ...settings,
+      });
+      setLoading(false);
+    }
+  };
+
+  const ButtonLoading = () => {
+    return (
+      <TailSpin
+        color="white"
+        height={20}
+        width={20}
+        ariaLabel="three-circles-rotating"
+      />
+    );
   };
 
   return (
@@ -134,11 +165,13 @@ const BannerInfo = ({ content, type, runtime }) => {
               ''
             ) : inWatchlist ? (
               <button
-                className="flex justify-center items-center"
+                className="flex justify-center items-center disabled:cursor-not-allowed"
                 onClick={() =>
                   handleDelete(id, type, content.name || content.title)
                 }
+                disabled={loading}
               >
+                {loading && <ButtonLoading />}
                 <BsFillTrashFill size={18} />
                 <p className="text-base ml-2 leading-4">
                   Remove from watchlist
@@ -146,7 +179,7 @@ const BannerInfo = ({ content, type, runtime }) => {
               </button>
             ) : (
               <button
-                className="flex justify-center items-center"
+                className="flex justify-center items-center disabled:cursor-not-allowed"
                 onClick={() => {
                   if (user) {
                     handleWatchlist(id, type, content.name || content.title);
@@ -154,7 +187,9 @@ const BannerInfo = ({ content, type, runtime }) => {
                     history.push(LOGIN);
                   }
                 }}
+                disabled={loading}
               >
+                {loading && <ButtonLoading />}
                 <BiListPlus size={24} />
                 <p className="text-base ml-2 leading-4">Add to watchlist</p>
               </button>
