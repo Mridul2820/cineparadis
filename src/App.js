@@ -9,7 +9,7 @@ import useAuthListner from './hooks/useAuthListner';
 import IsUserLoggedIn from './helpers/IsUserLoggedIn';
 
 import { ogDefault, ogImage, twitterData } from './constants/constant';
-import LoaderCustom from './components/widget/LoaderCustom';
+import LoaderCustom from './components/loaders/LoaderCustom';
 
 import Header from './components/nav/Header';
 import Navbar from './components/nav/Navbar';

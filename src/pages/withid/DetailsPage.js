@@ -15,7 +15,7 @@ import { API_URL, BASE_URL } from '../../constants/constant';
 import { img500 } from '../../helpers/config';
 
 import { Container } from '../../styles/Styles';
-import LoaderCustom from '../../components/widget/LoaderCustom';
+import LoaderCustom from '../../components/loaders/LoaderCustom';
 
 const detailURL = `${API_URL}/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;

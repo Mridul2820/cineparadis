@@ -4,7 +4,7 @@ import axios from 'axios';
 import { img300 } from '../../helpers/config';
 import { API_URL } from '../../constants/constant';
 import ContentGrid from '../widget/ContentGrid';
-import LoaderCustom from '../widget/LoaderCustom';
+import LoaderCustom from '../loaders/LoaderCustom';
 
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
