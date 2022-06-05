@@ -40,6 +40,7 @@ const BannerInfo = ({ content, type, runtime }) => {
     };
 
     checkIfThisInWatchlist();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inWatchlist]);
 
   const handleDelete = async (id, media_type, title) => {

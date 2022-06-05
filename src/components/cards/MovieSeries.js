@@ -55,6 +55,8 @@ const MovieSeries = ({
     };
 
     checkIfThisInWatchlist();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inWatchlist]);
 
   const handleWatchlist = async (id, media_type, title) => {

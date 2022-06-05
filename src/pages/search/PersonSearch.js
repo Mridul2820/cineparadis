@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DocumentMeta from 'react-document-meta';
-import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 
 import { Container, PageTitle } from '../../styles/Styles';
@@ -88,18 +87,5 @@ const PersonSearch = () => {
     </DocumentMeta>
   );
 };
-
-const Tab = styled.div`
-  width: 50%;
-  white-space: nowrap;
-  padding: 12px 18px;
-  line-height: 1;
-  border: ${(props) =>
-    props.active ? '2px solid rgb(96, 165, 250)' : '2px solid transparent'};
-  opacity: ${(props) => (props.active ? '1' : '.8')};
-  background-color: ${(props) =>
-    props.active ? 'white' : 'rgb(195, 221, 253)'};
-  transition: background-color 0.5s ease-in-out;
-`;
 
 export default PersonSearch;
