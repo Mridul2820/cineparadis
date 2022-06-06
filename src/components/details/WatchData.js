@@ -29,11 +29,15 @@ const WatchData = ({ type, id }) => {
   const CountryWatchData = watchData[country];
 
   return (
-    <div className="flex flex-wrap items-center gap-3 pt-2">
+    <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 pt-2">
       {CountryWatchData?.flatrate?.map((item) => (
-        <div
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href={item.url}
           key={uuidv4()}
-          className="p-2 shadow-2xl border-2 border-blue-200 rounded-md flex items-center gap-2"
+          className="p-2 shadow-2xl border-2 border-blue-200 rounded-md flex items-center gap-2 cursor-pointer"
+          title={`Watch now on ${item.provider_name}`}
         >
           <img
             src={item.logo_path ? `${img200}${item.logo_path}` : noPicture}
@@ -44,7 +48,7 @@ const WatchData = ({ type, id }) => {
             <span className="text-sm ">Watch now on</span>{' '}
             <p className="font-semibold">{item.provider_name}</p>
           </div>
-        </div>
+        </a>
       ))}
     </div>
   );

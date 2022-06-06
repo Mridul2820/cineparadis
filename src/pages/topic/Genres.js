@@ -49,7 +49,7 @@ const GenresPage = () => {
   };
 
   const GenreGrid = ({ title, genres, type }) => (
-    <>
+    <div id={`${type}-genre`}>
       <PageTitle>{title}</PageTitle>
       <div className="flex flex-wrap justify-center mb-2">
         {genres.length > 0 &&
@@ -62,7 +62,7 @@ const GenresPage = () => {
             </GenreItem>
           ))}
       </div>
-    </>
+    </div>
   );
 
   return (
