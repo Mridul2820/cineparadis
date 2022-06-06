@@ -16,7 +16,7 @@ import {
   updateProfileWatchlist,
 } from '../../services/firebase';
 
-import { img300, img500, unavailable } from '../../helpers/config';
+import { img300, img500, unavailable } from '../../config/imgConfig';
 import formatTime from '../../helpers/formatTime';
 import voteColor from '../../helpers/voteColor';
 import { LOGIN } from '../../constants/routes';

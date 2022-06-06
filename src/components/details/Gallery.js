@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
-import { img500, imgOriginal } from '../../helpers/config';
+import { img500, imgOriginal } from '../../config/imgConfig';
 import LightBoxPop from '../widget/LightBoxPop';
 
 const Gallery = ({ title, photos, backdrop_path, poster_path }) => {

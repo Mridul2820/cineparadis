@@ -12,7 +12,7 @@ import Recommended from '../../components/details/Recomamded';
 import Gallery from '../../components/details/Gallery';
 
 import { API_URL, BASE_URL } from '../../constants/constant';
-import { img500 } from '../../helpers/config';
+import { img500 } from '../../config/imgConfig';
 
 import { Container } from '../../styles/Styles';
 import LoaderCustom from '../../components/loaders/LoaderCustom';

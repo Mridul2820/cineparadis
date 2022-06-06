@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import { img300 } from '../../helpers/config';
+import { img300 } from '../../config/imgConfig';
 import { API_URL } from '../../constants/constant';
 import ContentGrid from '../widget/ContentGrid';
 import LoaderCustom from '../loaders/LoaderCustom';

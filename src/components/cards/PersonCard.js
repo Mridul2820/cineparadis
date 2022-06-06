@@ -1,5 +1,5 @@
 import React from 'react';
-import { img300, noUserImg } from '../../helpers/config';
+import { img300, noUserImg } from '../../config/imgConfig';
 
 const PersonCard = ({ person }) => {
   return (

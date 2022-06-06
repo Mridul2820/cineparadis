@@ -6,7 +6,6 @@ import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { img300, unavailableLandscape } from '../../helpers/config';
 import { BiListPlus } from 'react-icons/bi';
 import { AiFillStar } from 'react-icons/ai';
 import { BsFillTrashFill } from 'react-icons/bs';
@@ -20,6 +19,8 @@ import {
   deleteItemFromWatchlist,
   updateProfileWatchlist,
 } from '../../services/firebase';
+
+import { img300, unavailableLandscape } from '../../config/imgConfig';
 
 import { LOGIN } from '../../constants/routes';
 import { settings } from '../../helpers/notification';

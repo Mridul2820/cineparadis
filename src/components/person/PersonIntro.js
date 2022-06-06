@@ -3,7 +3,7 @@ import rehypeRaw from 'rehype-raw';
 import ReactMarkdown from 'react-markdown';
 
 import LightBoxPop from '../widget/LightBoxPop';
-import { img500, imgOriginal } from '../../helpers/config';
+import { img500, imgOriginal } from '../../config/imgConfig';
 
 const PersonIntro = ({ creditData }) => {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { img200, noPicture } from '../../helpers/config';
+import { img200, noPicture } from '../../config/imgConfig';
 import formatTime from '../../helpers/formatTime';
 import { getDirector, getProducer } from '../../helpers/getCrew';
 import { getLangDetail } from '../../helpers/getLangDetail';

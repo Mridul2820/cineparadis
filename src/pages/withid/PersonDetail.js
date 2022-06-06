@@ -8,7 +8,7 @@ import PresonTabs from '../../components/person/PresonTabs';
 import { API_URL, BASE_URL } from '../../constants/constant';
 
 import { Container } from '../../styles/Styles';
-import { img500 } from '../../helpers/config';
+import { img500 } from '../../config/imgConfig';
 import LoaderCustom from '../../components/loaders/LoaderCustom';
 
 const detailURL = `${API_URL}/`;
