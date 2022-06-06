@@ -23,6 +23,7 @@ import { LOGIN } from '../../constants/routes';
 import SocialLinks from '../widget/SocialLinks';
 import { settings } from '../../helpers/notification';
 import ButtonLoading from '../loaders/ButtonLoading';
+import WatchData from './WatchData';
 
 const BannerInfo = ({ content, type, runtime }) => {
   const [loading, setLoading] = useState(false);
@@ -101,7 +102,7 @@ const BannerInfo = ({ content, type, runtime }) => {
             />
           </div>
           <Details className="space-y-3">
-            <p className="mb-4 text-white text-xl md:text-2xl lg:text-3xl font-bold text-center sm:text-left">
+            <p className="text-white text-xl md:text-2xl lg:text-3xl font-bold text-center sm:text-left">
               {content.name || content.title}{' '}
               {content.first_air_date || content.release_date
                 ? `(${(
@@ -117,6 +118,8 @@ const BannerInfo = ({ content, type, runtime }) => {
               </Rating>
               {runtime ? <span>• {formatTime(runtime)}</span> : ' '}
             </div>
+
+            <WatchData type={type} id={content.id} />
 
             {content.tagline && (
               <i className="block text-center sm:text-left">

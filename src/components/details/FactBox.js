@@ -4,7 +4,6 @@ import formatTime from '../../helpers/formatTime';
 import { getDirector, getProducer } from '../../helpers/getCrew';
 import { getLangDetail } from '../../helpers/getLangDetail';
 import CollectionData from './CollectionData';
-// import WatchData from './WatchData';
 import { v4 as uuidv4 } from 'uuid';
 import { dateData } from '../../helpers/dateData';
 
@@ -32,8 +31,6 @@ const FactBox = ({ content, type }) => {
       <h2 className="detail-tab-title">Facts About {title}</h2>
 
       <div className="max-w-2xl mx-auto">
-        {/* <WatchData type={type} id={id} /> */}
-
         {original_title && (
           <div className="fact-wrap">
             <p className="fact-item">

@@ -126,7 +126,7 @@ const MovieTVSearch = () => {
             )}
           </>
         )}
-        {numOfPages > 1 && contents.length > 0 && (
+        {numOfPages > 1 && contents.results.length > 0 && (
           <Paginate setPage={setPage} numOfPages={numOfPages} />
         )}
       </Container>
