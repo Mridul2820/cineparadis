@@ -21,7 +21,7 @@ import formatTime from '../../helpers/formatTime';
 import voteColor from '../../helpers/voteColor';
 import { LOGIN } from '../../constants/routes';
 import SocialLinks from '../widget/SocialLinks';
-import { settings } from '../../helpers/notification';
+import { notificationSettings } from '../../helpers/notificationSettings';
 import ButtonLoading from '../loaders/ButtonLoading';
 import WatchData from './WatchData';
 
@@ -51,12 +51,12 @@ const BannerInfo = ({ content, type, runtime }) => {
       await deleteItemFromWatchlist(userId, id, media_type);
       setInWatchlist(false);
       toast.warn(`${title} removed from Your Watchlist`, {
-        ...settings,
+        ...notificationSettings,
       });
       setLoading(false);
     } catch (error) {
       toast.error('Something Went Wrong', {
-        ...settings,
+        ...notificationSettings,
       });
       setLoading(false);
     }
@@ -70,12 +70,12 @@ const BannerInfo = ({ content, type, runtime }) => {
       setInWatchlist(true);
 
       toast.success(`${title} Added to Your Watchlist`, {
-        ...settings,
+        ...notificationSettings,
       });
       setLoading(false);
     } catch (error) {
       toast.error('Something Went Wrong', {
-        ...settings,
+        ...notificationSettings,
       });
       setLoading(false);
     }

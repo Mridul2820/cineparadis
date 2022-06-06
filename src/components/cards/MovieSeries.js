@@ -23,7 +23,7 @@ import {
 import { img300, unavailableLandscape } from '../../config/imgConfig';
 
 import { LOGIN } from '../../constants/routes';
-import { settings } from '../../helpers/notification';
+import { notificationSettings } from '../../helpers/notificationSettings';
 import ButtonLoading from '../loaders/ButtonLoading';
 
 const MovieSeries = ({
@@ -67,12 +67,12 @@ const MovieSeries = ({
       setInWatchlist(true);
 
       toast.success(`${title} Added to Your Watchlist`, {
-        ...settings,
+        ...notificationSettings,
       });
       setLoading(false);
     } catch (error) {
       toast.error('Something Went Wrong', {
-        ...settings,
+        ...notificationSettings,
       });
       setLoading(false);
     }
@@ -85,12 +85,12 @@ const MovieSeries = ({
       await deleteItemFromWatchlist(userId, id, media_type);
       setInWatchlist(false);
       toast.warn(`${title} removed from Your Watchlist`, {
-        ...settings,
+        ...notificationSettings,
       });
       setLoading(false);
     } catch (error) {
       toast.error('Something Went Wrong', {
-        ...settings,
+        ...notificationSettings,
       });
       setLoading(false);
     }

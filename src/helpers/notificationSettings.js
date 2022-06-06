@@ -1,4 +1,4 @@
-export const settings = {
+export const notificationSettings = {
   position: 'top-right',
   autoClose: 5000,
   hideProgressBar: false,
