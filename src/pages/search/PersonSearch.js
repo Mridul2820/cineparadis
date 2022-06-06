@@ -16,15 +16,15 @@ const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 const PersonSearch = () => {
   const [page, setPage] = useState(1);
   const [searchText, setSearchText] = useState('');
-  const [persons, setPersons] = useState([]);
+  const [persons, setPersons] = useState();
   const [numOfPages, setNumOfPages] = useState();
 
   const fetchSearch = async () => {
     const { data } = await axios.get(
-      `${searchURL}?${apiKey}&language=en-US&query=${searchText}&page=${page}$`
+      `${searchURL}?${apiKey}&language=en-US&query=${searchText}&page=${page}`
     );
 
-    setPersons(data.results);
+    setPersons(data);
     setNumOfPages(data.total_pages);
   };
 
@@ -72,15 +72,32 @@ const PersonSearch = () => {
           />
         </div>
 
-        <div className="flex justify-center items-start flex-wrap mb-6 gap-4 mt-5">
-          {persons.map((person) => (
-            <PersonCard key={uuidv4()} person={person} />
-          ))}
-        </div>
+        {persons === undefined ? (
+          ''
+        ) : (
+          <>
+            {searchText && persons.results.length > 0 ? (
+              <>
+                <p className="text-center text-slate-500 mt-3">
+                  Found <b>{persons.total_results} Result(s)</b>
+                </p>
+                <div className="flex justify-center items-start flex-wrap mb-6 gap-4 mt-5">
+                  {persons?.results.map((person) => (
+                    <PersonCard key={uuidv4()} person={person} />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <p className="text-center text-slate-500 mt-3">
+                Oops, No Results Found
+                <br />
+                Try searching something else
+              </p>
+            )}
+          </>
+        )}
 
-        {searchText && !persons && <h2>Try searching something else</h2>}
-
-        {numOfPages > 1 && persons.length > 0 && (
+        {numOfPages > 1 && persons.results.length > 0 && (
           <Paginate setPage={setPage} numOfPages={numOfPages} />
         )}
       </Container>
