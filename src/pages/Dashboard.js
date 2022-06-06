@@ -52,7 +52,9 @@ const Dashboard = () => {
             </p>
           )
         ) : (
-          <p className="text-center font-semibold">Fetching Your list...</p>
+          <p className="text-center font-semibold">
+            Fetching Your Watchlist...
+          </p>
         )}
       </Container>
     </DocumentMeta>
