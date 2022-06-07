@@ -20,6 +20,7 @@ const PersonCredits = ({ credits, media_type }) => {
 
   useEffect(() => {
     setItems(filtered.slice((page - 1) * itemPerPage, itemPerPage * page));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, search]);
 
   const handleChange = (e) => {

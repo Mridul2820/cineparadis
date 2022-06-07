@@ -45,7 +45,7 @@ const Options = ({ options, colored }) => {
   );
 };
 
-const Navmain = styled.nav`
+const Navmain = styled.div`
   padding: 0px 20px;
   display: flex;
   justify-content: center;

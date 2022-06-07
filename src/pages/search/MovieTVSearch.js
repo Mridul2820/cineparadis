@@ -20,7 +20,7 @@ const MovieTVSearch = () => {
   const [type, setType] = useState('movie');
   const [page, setPage] = useState(1);
   const [searchText, setSearchText] = useState('');
-  const [contents, setContents] = useState([]);
+  const [contents, setContents] = useState();
   const [numOfPages, setNumOfPages] = useState();
 
   // Tabs
@@ -40,7 +40,7 @@ const MovieTVSearch = () => {
       `${searchURL}${type}?${apiKey}&language=en-US&query=${searchText}&page=${page}`
     );
 
-    setContents(data.results);
+    setContents(data);
     setNumOfPages(data.total_pages);
   };
 
@@ -106,11 +106,27 @@ const MovieTVSearch = () => {
           </div>
         </div>
 
-        <ContentGrid items={contents} media_type={type} />
-
-        {searchText && !contents && <h2>Try searching something else</h2>}
-
-        {numOfPages > 1 && contents.length > 0 && (
+        {contents === undefined ? (
+          ''
+        ) : (
+          <>
+            {searchText && contents.results.length > 0 ? (
+              <>
+                <p className="text-center text-slate-500 mt-3">
+                  Found <b>{contents.total_results} Result(s)</b> with{' '}
+                </p>
+                <ContentGrid items={contents.results} media_type={type} />
+              </>
+            ) : (
+              <p className="text-center text-slate-500 mt-3">
+                Oops, No Results Found
+                <br />
+                Try searching something else
+              </p>
+            )}
+          </>
+        )}
+        {numOfPages > 1 && contents.results.length > 0 && (
           <Paginate setPage={setPage} numOfPages={numOfPages} />
         )}
       </Container>

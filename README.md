@@ -36,10 +36,15 @@
 - Dashborad 
 - Trending Movies and TV Series
 - Discover Movies and TV Series in different genres
+- Latest, Pupoular , Upcoming Movies and TV Series
 - Search Movies and TV Series
 - Movie and TV Series Details(Cast, Crew, Trivia, Photos, Videos etc.)
 - Recommendations for Each Movie and TV Series
-- Add to Watchlist
+- Add and Remove from Watchlist
+- Trending Persons
+- Search Persons
+- Person Detail Page with Biography, Movies, TV Series and Gallery etc.
+- Image Carousel with Zoom
 - and More...
 
 ## Tech Stack 👾

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
-import { img200, noUserImg } from '../../helpers/config';
+import { img200, noUserImg } from '../../config/imgConfig';
 import SearchBar from '../search/SearchBar';
 
 const CastnCrew = ({ credits, title }) => {

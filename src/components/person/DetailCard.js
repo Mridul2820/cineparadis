@@ -2,7 +2,7 @@ import React from 'react';
 import { getAge } from '../../helpers/getAge';
 import SocialLinks from '../widget/SocialLinks';
 import { v4 as uuidv4 } from 'uuid';
-import { dateData } from '../../helpers/dateData';
+import { dateSettings } from '../../helpers/dateSettings';
 
 const DetailCard = ({ creditData }) => {
   const {
@@ -38,7 +38,7 @@ const DetailCard = ({ creditData }) => {
             <p className="fact-item">
               <span className="fact-type">Born : </span>
               <span className="fact-detail">
-                {new Date(birthday).toLocaleDateString('en-US', dateData)}
+                {new Date(birthday).toLocaleDateString('en-US', dateSettings)}
               </span>
             </p>
           </div>
@@ -48,7 +48,7 @@ const DetailCard = ({ creditData }) => {
             <p className="fact-item">
               <span className="fact-type">Died : </span>
               <span className="fact-detail">
-                {new Date(deathday).toLocaleDateString('en-US', dateData)}
+                {new Date(deathday).toLocaleDateString('en-US', dateSettings)}
               </span>
             </p>
           </div>

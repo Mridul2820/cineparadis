@@ -7,6 +7,7 @@ import { API_URL, BASE_URL } from '../../constants/constant';
 
 import { PageTitle, Container } from '../../styles/Styles';
 import ContentGrid from '../../components/widget/ContentGrid';
+import Paginate from '../../components/widget/Paginate';
 
 const GenreDetail = () => {
   const { gid } = useParams();
@@ -17,18 +18,20 @@ const GenreDetail = () => {
   const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
   const [contentGens, setContentGens] = useState();
+  const [page, setPage] = useState(1);
 
   const fetchDataGen = async () => {
     const { data } = await axios.get(
-      `${genresURL}${apiKey}&with_genres=${gid}`
+      `${genresURL}${apiKey}&with_genres=${gid}&page=${page}`
     );
+
     setContentGens(data.results);
   };
 
   useEffect(() => {
     fetchDataGen();
     // eslint-disable-next-line
-  }, []);
+  }, [page]);
 
   const getType = type === 'movie' ? 'Movies' : 'TV Series';
   const getSlug = `/genre/${type}/${name}/${gid}`;
@@ -54,6 +57,7 @@ const GenreDetail = () => {
         </PageTitle>
 
         <ContentGrid items={contentGens} media_type={type} />
+        {contentGens?.length > 0 && <Paginate setPage={setPage} />}
       </Container>
     </DocumentMeta>
   );

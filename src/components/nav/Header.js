@@ -18,7 +18,7 @@ const Header = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <Container>
+    <NavWrap>
       <Link
         to={user ? ROUTES.DASHBOARD : ROUTES.ROOT}
         className="flex items-center gap-1"
@@ -75,11 +75,11 @@ const Header = () => {
           )}
         </Logout>
       </HeaderRight>
-    </Container>
+    </NavWrap>
   );
 };
 
-const Container = styled.div`
+const NavWrap = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -90,6 +90,10 @@ const Container = styled.div`
   top: 0;
   left: 0;
   z-index: 100;
+
+  @media only screen and (max-width: 480px) {
+    padding: 10px;
+  }
 `;
 
 const HeaderRight = styled.div`

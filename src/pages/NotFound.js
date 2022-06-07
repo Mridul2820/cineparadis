@@ -1,23 +1,8 @@
-import React, { useEffect } from 'react';
-import styled from 'styled-components';
+import React from 'react';
+import NotFound from '../404/NotFound';
 
-const NotFound = () => {
-  useEffect(() => {
-    document.title = 'Page not found';
-  }, []);
-
-  return (
-    <NotFoundWrap>
-      <h1>Not Found</h1>
-    </NotFoundWrap>
-  );
+const NotFoundPage = () => {
+  return <NotFound />;
 };
 
-const NotFoundWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-`;
-
-export default NotFound;
+export default NotFoundPage;

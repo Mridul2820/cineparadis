@@ -16,13 +16,14 @@ import {
   updateProfileWatchlist,
 } from '../../services/firebase';
 
-import { img300, img500, unavailable } from '../../helpers/config';
+import { img300, img500, unavailable } from '../../config/imgConfig';
 import formatTime from '../../helpers/formatTime';
 import voteColor from '../../helpers/voteColor';
 import { LOGIN } from '../../constants/routes';
 import SocialLinks from '../widget/SocialLinks';
-import { settings } from '../../helpers/notification';
+import { notificationSettings } from '../../helpers/notificationSettings';
 import ButtonLoading from '../loaders/ButtonLoading';
+import WatchData from './WatchData';
 
 const BannerInfo = ({ content, type, runtime }) => {
   const [loading, setLoading] = useState(false);
@@ -40,6 +41,7 @@ const BannerInfo = ({ content, type, runtime }) => {
     };
 
     checkIfThisInWatchlist();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inWatchlist]);
 
   const handleDelete = async (id, media_type, title) => {
@@ -49,12 +51,12 @@ const BannerInfo = ({ content, type, runtime }) => {
       await deleteItemFromWatchlist(userId, id, media_type);
       setInWatchlist(false);
       toast.warn(`${title} removed from Your Watchlist`, {
-        ...settings,
+        ...notificationSettings,
       });
       setLoading(false);
     } catch (error) {
       toast.error('Something Went Wrong', {
-        ...settings,
+        ...notificationSettings,
       });
       setLoading(false);
     }
@@ -68,12 +70,12 @@ const BannerInfo = ({ content, type, runtime }) => {
       setInWatchlist(true);
 
       toast.success(`${title} Added to Your Watchlist`, {
-        ...settings,
+        ...notificationSettings,
       });
       setLoading(false);
     } catch (error) {
       toast.error('Something Went Wrong', {
-        ...settings,
+        ...notificationSettings,
       });
       setLoading(false);
     }
@@ -86,21 +88,19 @@ const BannerInfo = ({ content, type, runtime }) => {
           style={{
             backgroundImage: `radial-gradient(circle at 20% 50%, rgba(30, 39, 44, 0.9) 0%, rgba(30, 39, 44, 0.8) 100%), url(${img500}${content.backdrop_path})`,
           }}
-          className="flex flex-col justify-start items-start sm:flex-row gap-4 bg-cover bg-center"
+          className="flex flex-col justify-start items-start sm:flex-row bg-cover bg-center shadow-lg"
         >
-          <div className="w-full xs:max-w-[280px] mx-auto sm:mx-0 flex justify-center sm:justify-start">
-            <img
-              className="max-w-[250px] xs:max-w-[280px] w-full object-cover align-middle"
-              src={
-                content.poster_path
-                  ? `${img300}${content.poster_path}`
-                  : unavailable
-              }
-              alt={content.title}
-            />
-          </div>
+          <img
+            className="max-w-[300px] xs:max-w-[320px] mx-auto sm:mx-0 w-full object-cover align-middle rounded-sm shadow-lg p-3 sm:p-5"
+            src={
+              content.poster_path
+                ? `${img300}${content.poster_path}`
+                : unavailable
+            }
+            alt={content.title}
+          />
           <Details className="space-y-3">
-            <p className="mb-4 text-white text-xl md:text-2xl lg:text-3xl font-bold text-center sm:text-left">
+            <p className="text-white text-xl md:text-2xl lg:text-3xl font-bold text-center sm:text-left">
               {content.name || content.title}{' '}
               {content.first_air_date || content.release_date
                 ? `(${(
@@ -116,6 +116,8 @@ const BannerInfo = ({ content, type, runtime }) => {
               </Rating>
               {runtime ? <span>• {formatTime(runtime)}</span> : ' '}
             </div>
+
+            <WatchData type={type} id={content.id} />
 
             {content.tagline && (
               <i className="block text-center sm:text-left">

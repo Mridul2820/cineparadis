@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { img500, imgOriginal } from '../../helpers/config';
+import { img500, imgOriginal } from '../../config/imgConfig';
 import { v4 as uuidv4 } from 'uuid';
 import LightBoxPop from '../widget/LightBoxPop';
 

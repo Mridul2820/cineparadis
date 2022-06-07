@@ -1,12 +1,11 @@
 import React from 'react';
-import { img200, noPicture } from '../../helpers/config';
+import { img200, noPicture } from '../../config/imgConfig';
 import formatTime from '../../helpers/formatTime';
 import { getDirector, getProducer } from '../../helpers/getCrew';
 import { getLangDetail } from '../../helpers/getLangDetail';
 import CollectionData from './CollectionData';
-// import WatchData from './WatchData';
 import { v4 as uuidv4 } from 'uuid';
-import { dateData } from '../../helpers/dateData';
+import { dateSettings } from '../../helpers/dateSettings';
 
 const FactBox = ({ content, type }) => {
   const {
@@ -32,8 +31,6 @@ const FactBox = ({ content, type }) => {
       <h2 className="detail-tab-title">Facts About {title}</h2>
 
       <div className="max-w-2xl mx-auto">
-        {/* <WatchData type={type} id={id} /> */}
-
         {original_title && (
           <div className="fact-wrap">
             <p className="fact-item">
@@ -109,7 +106,10 @@ const FactBox = ({ content, type }) => {
             <p className="fact-item">
               <span className="fact-type">Release Date : </span>
               <span className="fact-detail">
-                {new Date(release_date).toLocaleDateString('en-US', dateData)}
+                {new Date(release_date).toLocaleDateString(
+                  'en-US',
+                  dateSettings
+                )}
               </span>
             </p>
           </div>
@@ -120,7 +120,7 @@ const FactBox = ({ content, type }) => {
             <p className="fact-item">
               <span className="fact-type">Release Date : </span>
               <span className="fact-detail">
-                {new Date(release).toLocaleDateString('en-US', dateData)}
+                {new Date(release).toLocaleDateString('en-US', dateSettings)}
               </span>
             </p>
           </div>
@@ -131,7 +131,10 @@ const FactBox = ({ content, type }) => {
             <p className="fact-item">
               <span className="fact-type">First Air Date : </span>
               <span className="fact-detail">
-                {new Date(first_air_date).toLocaleDateString('en-US', dateData)}
+                {new Date(first_air_date).toLocaleDateString(
+                  'en-US',
+                  dateSettings
+                )}
               </span>
             </p>
           </div>
@@ -142,7 +145,10 @@ const FactBox = ({ content, type }) => {
             <p className="fact-item">
               <span className="fact-type">Last Air Date : </span>
               <span className="fact-detail">
-                {new Date(last_air_date).toLocaleDateString('en-US', dateData)}
+                {new Date(last_air_date).toLocaleDateString(
+                  'en-US',
+                  dateSettings
+                )}
               </span>
             </p>
           </div>

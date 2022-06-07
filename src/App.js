@@ -154,12 +154,12 @@ const App = () => {
                   <Route path={ROUTES.Perosn_Search} component={PersonSearch} />
 
                   <Route path={ROUTES.Chats} component={ChatPage} />
+
+                  <Route component={NotFound} />
                 </Switch>
                 <ScrollTop />
                 <Footer />
               </>
-
-              <Route component={NotFound} />
             </Switch>
           </Suspense>
         </Router>

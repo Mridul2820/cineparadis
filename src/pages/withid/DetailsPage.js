@@ -12,7 +12,7 @@ import Recommended from '../../components/details/Recomamded';
 import Gallery from '../../components/details/Gallery';
 
 import { API_URL, BASE_URL } from '../../constants/constant';
-import { img500 } from '../../helpers/config';
+import { img500 } from '../../config/imgConfig';
 
 import { Container } from '../../styles/Styles';
 import LoaderCustom from '../../components/loaders/LoaderCustom';
@@ -99,11 +99,11 @@ const DetailsPage = () => {
 
   return (
     <DocumentMeta {...meta} extend>
+      {content && (
+        <BannerInfo content={content} type={type} runtime={content.runtime} />
+      )}
       <Container>
-        {content && (
-          <BannerInfo content={content} type={type} runtime={content.runtime} />
-        )}
-        <div className="flex flex-col justify-center mt-6 md:mt-8">
+        <div className="flex flex-col justify-center mt-2">
           <div className="mb-3 sm:mb-4 flex justify-center gap-3 px-2 md:px-4">
             <Tab
               className="tab-item"
