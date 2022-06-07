@@ -2,14 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import DocumentMeta from 'react-document-meta';
 import { useParams } from 'react-router-dom';
+
 import DetailCard from '../../components/person/DetailCard';
 import PersonIntro from '../../components/person/PersonIntro';
 import PresonTabs from '../../components/person/PresonTabs';
-import { API_URL, BASE_URL } from '../../constants/constant';
-
 import { Container } from '../../styles/Styles';
 import { img500 } from '../../config/imgConfig';
 import LoaderCustom from '../../components/loaders/LoaderCustom';
+import { API_URL, BASE_URL } from '../../constants/constant';
 
 const detailURL = `${API_URL}/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
@@ -26,12 +26,16 @@ const PersonDetail = () => {
       `${detailURL}person/${id}?${apiKey}&language=en&append_to_response=external_ids,movie_credits,tv_credits,images`
     );
 
+    console.log(data);
+
     setCreditData(data);
     setLoading(false);
   };
 
   useEffect(() => {
     fetchData();
+
+    return () => {};
     // eslint-disable-next-line
   }, []);
 
