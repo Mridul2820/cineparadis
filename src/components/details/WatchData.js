@@ -34,7 +34,7 @@ const WatchData = ({ type, id }) => {
         <a
           target="_blank"
           rel="noreferrer"
-          href={item.url}
+          href={CountryWatchData?.link}
           key={uuidv4()}
           className="p-2 shadow-2xl border-2 border-blue-200 rounded-md flex items-center gap-2 cursor-pointer"
           title={`Watch now on ${item.provider_name}`}
