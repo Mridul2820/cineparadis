@@ -88,19 +88,17 @@ const BannerInfo = ({ content, type, runtime }) => {
           style={{
             backgroundImage: `radial-gradient(circle at 20% 50%, rgba(30, 39, 44, 0.9) 0%, rgba(30, 39, 44, 0.8) 100%), url(${img500}${content.backdrop_path})`,
           }}
-          className="flex flex-col justify-start items-start sm:flex-row gap-4 bg-cover bg-center"
+          className="flex flex-col justify-start items-start sm:flex-row bg-cover bg-center shadow-lg"
         >
-          <div className="w-full xs:max-w-[280px] mx-auto sm:mx-0 flex justify-center sm:justify-start">
-            <img
-              className="max-w-[250px] xs:max-w-[280px] w-full object-cover align-middle"
-              src={
-                content.poster_path
-                  ? `${img300}${content.poster_path}`
-                  : unavailable
-              }
-              alt={content.title}
-            />
-          </div>
+          <img
+            className="max-w-[300px] xs:max-w-[320px] mx-auto sm:mx-0 w-full object-cover align-middle rounded-sm shadow-lg p-3 sm:p-5"
+            src={
+              content.poster_path
+                ? `${img300}${content.poster_path}`
+                : unavailable
+            }
+            alt={content.title}
+          />
           <Details className="space-y-3">
             <p className="text-white text-xl md:text-2xl lg:text-3xl font-bold text-center sm:text-left">
               {content.name || content.title}{' '}
