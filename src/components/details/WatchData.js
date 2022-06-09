@@ -11,6 +11,8 @@ const WatchData = ({ type, id }) => {
   const [watchData, setCatchData] = useState([]);
   const [country, setCountry] = useState();
 
+  console.log(country);
+
   const fetchWatchData = async () => {
     try {
       const country = await axios.get('http://ip-api.com/json');
