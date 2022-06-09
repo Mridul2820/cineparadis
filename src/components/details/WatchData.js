@@ -12,7 +12,7 @@ const WatchData = ({ type, id }) => {
   const [country, setCountry] = useState();
 
   const fetchWatchData = async () => {
-    const country = await axios.get('https://ip-api.com/json');
+    const country = await axios.get('http://ip-api.com/json');
     setCountry(country.data.countryCode);
 
     const { data } = await axios(
