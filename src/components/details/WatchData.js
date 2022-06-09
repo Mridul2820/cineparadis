@@ -12,8 +12,16 @@ const WatchData = ({ type, id }) => {
   const [country, setCountry] = useState();
 
   const fetchWatchData = async () => {
-    const country = await axios.get('http://ip-api.com/json');
-    setCountry(country.data.countryCode);
+    try {
+      const country = await axios.get('http://ip-api.com/json');
+      if (country.data.countryCode) {
+        setCountry(country.data.countryCode);
+      } else {
+        setCountry('IN');
+      }
+    } catch (error) {
+      setCountry('IN');
+    }
 
     const { data } = await axios(
       `${API_URL}/${type}/${id}//watch/providers?${apiKey}`
@@ -26,7 +34,7 @@ const WatchData = ({ type, id }) => {
     // eslint-disable-next-line
   }, []);
 
-  const CountryWatchData = watchData[country || 'IN'];
+  const CountryWatchData = watchData[country];
 
   return (
     <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 pt-2">
