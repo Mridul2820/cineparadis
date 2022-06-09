@@ -26,7 +26,7 @@ const WatchData = ({ type, id }) => {
     // eslint-disable-next-line
   }, []);
 
-  const CountryWatchData = watchData[country];
+  const CountryWatchData = watchData[country || 'IN'];
 
   return (
     <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 pt-2">
