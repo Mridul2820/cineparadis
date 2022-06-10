@@ -11,7 +11,7 @@ import { API_URL, BASE_URL } from '../../constants/constant';
 
 import { Search } from '../../constants/routes';
 import ContentGrid from '../../components/widget/ContentGrid';
-import SearchbarButton from '../../components/search/SearchbarButton';
+import SearchWithButton from '../../components/search/SearchWithButton';
 
 const searchURL = `${API_URL}/search/`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
@@ -79,7 +79,7 @@ const MovieTVSearch = () => {
     <DocumentMeta {...meta} extend>
       <Container>
         <div className="mx-auto mb-5 flex gap-x-6 gap-y-8 flex-col sm:flex-row justify-center items-center w-full">
-          <SearchbarButton
+          <SearchWithButton
             onChange={onChange}
             onSubmit={searchSubmit}
             placeHolder="Search for Movies and TV Series"

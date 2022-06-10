@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { IoMdArrowDropdownCircle } from 'react-icons/io';
 import { AiFillCloseCircle } from 'react-icons/ai';
 
-import SearchbarIcon from '../search/SearchbarIcon';
+import SearchWithIcon from '../search/SearchWithIcon';
 import { API_URL } from '../../constants/constant';
 import { img200, noPicture } from '../../config/imgConfig';
 import { countryFullName } from '../../helpers/countryFull';
@@ -108,7 +108,7 @@ const WatchData = ({ type, id }) => {
               ref={dropdownRef}
               className="bg-white shadow-lg rounded-sm max-h-60 w-48 overflow-y-scroll p-2 block select-none"
             >
-              <SearchbarIcon
+              <SearchWithIcon
                 search={search}
                 handleChange={handleChange}
                 placeHolder={`Search Country`}

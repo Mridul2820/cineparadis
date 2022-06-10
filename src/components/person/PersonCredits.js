@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import SearchbarIcon from '../search/SearchbarIcon';
+import SearchWithIcon from '../search/SearchWithIcon';
 import ContentGrid from '../widget/ContentGrid';
 import Paginate from '../widget/Paginate';
 
@@ -30,7 +30,7 @@ const PersonCredits = ({ credits, media_type }) => {
   return (
     <div className="mb-2">
       <div className="mt-8">
-        <SearchbarIcon
+        <SearchWithIcon
           search={search}
           handleChange={handleChange}
           placeHolder={`Search in ${media_type}`}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchbarIcon = ({
+const SearchWithIcon = ({
   search,
   handleChange,
   placeHolder,
@@ -46,4 +46,4 @@ const SearchbarIcon = ({
   );
 };
 
-export default SearchbarIcon;
+export default SearchWithIcon;
