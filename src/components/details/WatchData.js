@@ -39,8 +39,6 @@ const WatchData = ({ type, id }) => {
       countryFullName(code).toLowerCase().includes(search.toLowerCase())
   );
 
-  console.log(FilteredCodes);
-
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
