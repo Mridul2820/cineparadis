@@ -2,64 +2,91 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
+import { MdArrowDropDown } from 'react-icons/md';
 import { API_URL } from '../../constants/constant';
 import { img200, noPicture } from '../../config/imgConfig';
+import { allCountry } from '../../data/countryData';
+
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
 const WatchData = ({ type, id }) => {
   // eslint-disable-next-line
-  const [watchData, setCatchData] = useState([]);
-  const [country, setCountry] = useState();
-
-  console.log(country);
+  const [watchData, setWatchData] = useState([]);
+  const [dropdown, setDropdown] = useState(false);
+  const [country, setCountry] = useState(
+    localStorage.getItem('country') || 'IN'
+  );
 
   const fetchWatchData = async () => {
-    try {
-      const country = await axios.get('http://ip-api.com/json');
-      if (country.data.countryCode) {
-        setCountry(country.data.countryCode);
-      } else {
-        setCountry('IN');
-      }
-    } catch (error) {
-      setCountry('IN');
-    }
-
     const { data } = await axios(
       `${API_URL}/${type}/${id}//watch/providers?${apiKey}`
     );
-    setCatchData(data.results);
+    setWatchData(data.results);
   };
 
   useEffect(() => {
     fetchWatchData();
     // eslint-disable-next-line
-  }, []);
+  }, [country]);
 
   const CountryWatchData = watchData[country];
+  const CountryCodes = Object.keys(watchData);
 
   return (
-    <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 pt-2">
-      {CountryWatchData?.flatrate?.map((item) => (
-        <a
-          target="_blank"
-          rel="noreferrer"
-          href={CountryWatchData?.link}
-          key={uuidv4()}
-          className="p-2 shadow-2xl border-2 border-blue-200 rounded-md flex items-center gap-2 cursor-pointer"
-          title={`Watch now on ${item.provider_name}`}
+    <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start">
+      <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 pt-2">
+        {CountryWatchData?.flatrate?.map((item) => (
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href={CountryWatchData?.link}
+            key={uuidv4()}
+            className="p-2 shadow-2xl border-2 border-blue-200 rounded-md flex items-center gap-2 cursor-pointer"
+            title={`Watch now on ${item.provider_name}`}
+          >
+            <img
+              src={item.logo_path ? `${img200}${item.logo_path}` : noPicture}
+              alt={item.provider_name}
+              className="w-10 h-10 rounded-full"
+            />
+            <div className="leading-4 -mt-1">
+              <span className="text-sm ">Watch now on</span>{' '}
+              <p className="font-semibold">{item.provider_name}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div className="relative">
+        <div
+          className="flex items-center p-2 cursor-pointer w-16"
+          onClick={() => setDropdown(!dropdown)}
         >
-          <img
-            src={item.logo_path ? `${img200}${item.logo_path}` : noPicture}
-            alt={item.provider_name}
-            className="w-10 h-10 rounded-full"
-          />
-          <div className="leading-4 -mt-1">
-            <span className="text-sm ">Watch now on</span>{' '}
-            <p className="font-semibold">{item.provider_name}</p>
-          </div>
-        </a>
-      ))}
+          <span className="font-semibold">{country}</span>
+          <MdArrowDropDown size={24} />
+        </div>
+        <div className="absolute -left-16">
+          {dropdown && (
+            <div className="bg-white shadow-lg rounded-sm max-h-60 w-48 overflow-y-scroll p-2 flex flex-wrap justify-center">
+              {CountryCodes.map((item) => (
+                <div
+                  key={uuidv4()}
+                  className={`${
+                    country === item && 'bg-gray-300'
+                  } text-black font-medium cursor-pointer px-2 py-1`}
+                  onClick={() => {
+                    setCountry(item);
+                    localStorage.setItem('country', item);
+                    setDropdown(false);
+                  }}
+                >
+                  <p className="text-sm">{item}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
