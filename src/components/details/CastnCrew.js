@@ -21,7 +21,6 @@ const CastnCrew = ({ credits, title }) => {
   return (
     <section className="tab-section">
       <h2 className="detail-tab-title">Cast of {title}</h2>
-
       <SearchbarIcon
         search={search}
         handleChange={handleChange}

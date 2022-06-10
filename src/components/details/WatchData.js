@@ -5,10 +5,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { IoMdArrowDropdownCircle } from 'react-icons/io';
 import { AiFillCloseCircle } from 'react-icons/ai';
 
+import SearchbarIcon from '../search/SearchbarIcon';
 import { API_URL } from '../../constants/constant';
 import { img200, noPicture } from '../../config/imgConfig';
 import { countryFullName } from '../../helpers/countryFull';
-import SearchbarIcon from '../search/SearchbarIcon';
 
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
