@@ -5,12 +5,13 @@ import { v4 as uuidv4 } from 'uuid';
 import { MdArrowDropDown } from 'react-icons/md';
 import { API_URL } from '../../constants/constant';
 import { img200, noPicture } from '../../config/imgConfig';
-import { allCountry } from '../../data/countryData';
+import { countryFullName } from '../../helpers/countryFull';
+import SearchBar from '../search/SearchBar';
 
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
 const WatchData = ({ type, id }) => {
-  // eslint-disable-next-line
+  const [search, setSearch] = useState('');
   const [watchData, setWatchData] = useState([]);
   const [dropdown, setDropdown] = useState(false);
   const [country, setCountry] = useState(
@@ -31,6 +32,14 @@ const WatchData = ({ type, id }) => {
 
   const CountryWatchData = watchData[country];
   const CountryCodes = Object.keys(watchData);
+
+  const FilteredCodes = CountryCodes.filter;
+
+  console.log(FilteredCodes);
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start">
@@ -61,26 +70,35 @@ const WatchData = ({ type, id }) => {
         <div
           className="flex items-center p-2 cursor-pointer w-16"
           onClick={() => setDropdown(!dropdown)}
+          title={countryFullName(country)}
         >
           <span className="font-semibold">{country}</span>
           <MdArrowDropDown size={24} />
         </div>
         <div className="absolute -left-16">
           {dropdown && (
-            <div className="bg-white shadow-lg rounded-sm max-h-60 w-48 overflow-y-scroll p-2 flex flex-wrap justify-center">
+            <div className="bg-white shadow-lg rounded-sm max-h-60 w-48 overflow-y-scroll p-2 block">
+              <SearchBar
+                search={search}
+                handleChange={handleChange}
+                placeHolder={`Search Country`}
+                searchId={`search-country`}
+                small
+              />
               {CountryCodes.map((item) => (
                 <div
                   key={uuidv4()}
                   className={`${
                     country === item && 'bg-gray-300'
-                  } text-black font-medium cursor-pointer px-2 py-1`}
+                  } text-black text-sm cursor-pointer px-2 py-1 flex gap-2`}
                   onClick={() => {
                     setCountry(item);
                     localStorage.setItem('country', item);
                     setDropdown(false);
                   }}
                 >
-                  <p className="text-sm">{item}</p>
+                  <span className="font-semibold">{item}</span>
+                  <span className="font-medium">{countryFullName(item)}</span>
                 </div>
               ))}
             </div>
