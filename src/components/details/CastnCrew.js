@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import { img200, noUserImg } from '../../config/imgConfig';
-import SearchBar from '../search/SearchBar';
+import SearchbarIcon from '../search/SearchbarIcon';
 
 const CastnCrew = ({ credits, title }) => {
   const [search, setSearch] = useState('');
@@ -22,7 +22,7 @@ const CastnCrew = ({ credits, title }) => {
     <section className="tab-section">
       <h2 className="detail-tab-title">Cast of {title}</h2>
 
-      <SearchBar
+      <SearchbarIcon
         search={search}
         handleChange={handleChange}
         placeHolder="Search in Cast"

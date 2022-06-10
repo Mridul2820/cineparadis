@@ -6,7 +6,7 @@ import { MdArrowDropDown } from 'react-icons/md';
 import { API_URL } from '../../constants/constant';
 import { img200, noPicture } from '../../config/imgConfig';
 import { countryFullName } from '../../helpers/countryFull';
-import SearchBar from '../search/SearchBar';
+import SearchbarIcon from '../search/SearchbarIcon';
 
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
@@ -80,7 +80,7 @@ const WatchData = ({ type, id }) => {
         <div className="absolute -left-16">
           {dropdown && (
             <div className="bg-white shadow-lg rounded-sm max-h-60 w-48 overflow-y-scroll p-2 block">
-              <SearchBar
+              <SearchbarIcon
                 search={search}
                 handleChange={handleChange}
                 placeHolder={`Search Country`}
