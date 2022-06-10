@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
-import { MdArrowDropDown } from 'react-icons/md';
+import { IoMdArrowDropdownCircle } from 'react-icons/io';
+import { AiFillCloseCircle } from 'react-icons/ai';
+
 import { API_URL } from '../../constants/constant';
 import { img200, noPicture } from '../../config/imgConfig';
 import { countryFullName } from '../../helpers/countryFull';
@@ -11,6 +13,7 @@ import SearchbarIcon from '../search/SearchbarIcon';
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
 
 const WatchData = ({ type, id }) => {
+  const dropdownRef = useRef();
   const [search, setSearch] = useState('');
   const [watchData, setWatchData] = useState([]);
   const [dropdown, setDropdown] = useState(false);
@@ -29,6 +32,24 @@ const WatchData = ({ type, id }) => {
     fetchWatchData();
     // eslint-disable-next-line
   }, [country]);
+
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      if (
+        dropdown &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target)
+      ) {
+        setDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', checkIfClickedOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', checkIfClickedOutside);
+    };
+  }, [dropdown]);
 
   const CountryWatchData = watchData[country];
   const CountryCodes = Object.keys(watchData);
@@ -70,16 +91,23 @@ const WatchData = ({ type, id }) => {
 
       <div className="relative">
         <div
-          className="flex items-center p-2 cursor-pointer w-16"
+          className="flex gap-1 items-center p-2 cursor-pointer w-16"
           onClick={() => setDropdown(!dropdown)}
           title={countryFullName(country)}
         >
           <span className="font-semibold">{country}</span>
-          <MdArrowDropDown size={24} />
+          {dropdown ? (
+            <AiFillCloseCircle size={24} />
+          ) : (
+            <IoMdArrowDropdownCircle size={27} />
+          )}
         </div>
-        <div className="absolute -left-16">
+        <div className="absolute -left-16 dropdown">
           {dropdown && (
-            <div className="bg-white shadow-lg rounded-sm max-h-60 w-48 overflow-y-scroll p-2 block">
+            <div
+              ref={dropdownRef}
+              className="bg-white shadow-lg rounded-sm max-h-60 w-48 overflow-y-scroll p-2 block"
+            >
               <SearchbarIcon
                 search={search}
                 handleChange={handleChange}
