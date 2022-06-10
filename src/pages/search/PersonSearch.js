@@ -8,7 +8,7 @@ import Paginate from '../../components/widget/Paginate';
 import { API_URL, BASE_URL } from '../../constants/constant';
 import { Perosn_Search } from '../../constants/routes';
 import PersonCard from '../../components/cards/PersonCard';
-import SearchBarIcon from '../../components/search/SearchBarIcon';
+import SearchWithButton from '../../components/search/SearchWithButton';
 
 const searchURL = `${API_URL}/search/person`;
 const apiKey = `api_key=${process.env.REACT_APP_TMDB}`;
@@ -64,7 +64,7 @@ const PersonSearch = () => {
         <PageTitle>Search People</PageTitle>
 
         <div className="mx-auto my-5 flex gap-x-6 gap-y-8 flex-col sm:flex-row justify-center items-center w-full">
-          <SearchBarIcon
+          <SearchWithButton
             onChange={onChange}
             onSubmit={searchSubmit}
             placeHolder="Search for People"

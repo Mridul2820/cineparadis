@@ -1,10 +1,11 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 import { img200, noPicture } from '../../config/imgConfig';
-import formatTime from '../../helpers/formatTime';
+import { formatTime } from '../../helpers/formatTime';
 import { getDirector, getProducer } from '../../helpers/getCrew';
 import { getLangDetail } from '../../helpers/getLangDetail';
 import CollectionData from './CollectionData';
-import { v4 as uuidv4 } from 'uuid';
 import { dateSettings } from '../../helpers/dateSettings';
 
 const FactBox = ({ content, type }) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchBarIcon = ({ onSubmit, onChange, placeHolder, searchId }) => {
+const SearchWithButton = ({ onSubmit, onChange, placeHolder, searchId }) => {
   return (
     <form onSubmit={onSubmit} className="min-w-[300px]">
       <div className="relative w-full">
@@ -36,4 +36,4 @@ const SearchBarIcon = ({ onSubmit, onChange, placeHolder, searchId }) => {
   );
 };
 
-export default SearchBarIcon;
+export default SearchWithButton;
