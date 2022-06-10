@@ -33,7 +33,11 @@ const WatchData = ({ type, id }) => {
   const CountryWatchData = watchData[country];
   const CountryCodes = Object.keys(watchData);
 
-  const FilteredCodes = CountryCodes.filter;
+  const FilteredCodes = CountryCodes.filter(
+    (code) =>
+      code.toLowerCase().includes(search.toLowerCase()) ||
+      countryFullName(code).toLowerCase().includes(search.toLowerCase())
+  );
 
   console.log(FilteredCodes);
 
@@ -85,20 +89,20 @@ const WatchData = ({ type, id }) => {
                 searchId={`search-country`}
                 small
               />
-              {CountryCodes.map((item) => (
+              {FilteredCodes.map((code) => (
                 <div
                   key={uuidv4()}
                   className={`${
-                    country === item && 'bg-gray-300'
+                    country === code && 'bg-gray-300'
                   } text-black text-sm cursor-pointer px-2 py-1 flex gap-2`}
                   onClick={() => {
-                    setCountry(item);
-                    localStorage.setItem('country', item);
+                    setCountry(code);
+                    localStorage.setItem('country', code);
                     setDropdown(false);
                   }}
                 >
-                  <span className="font-semibold">{item}</span>
-                  <span className="font-medium">{countryFullName(item)}</span>
+                  <span className="font-semibold">{code}</span>
+                  <span className="font-medium">{countryFullName(code)}</span>
                 </div>
               ))}
             </div>
