@@ -106,7 +106,7 @@ const WatchData = ({ type, id }) => {
           {dropdown && (
             <div
               ref={dropdownRef}
-              className="bg-white shadow-lg rounded-sm max-h-60 w-48 overflow-y-scroll p-2 block"
+              className="bg-white shadow-lg rounded-sm max-h-60 w-48 overflow-y-scroll p-2 block select-none"
             >
               <SearchbarIcon
                 search={search}
