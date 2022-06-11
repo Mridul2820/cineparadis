@@ -113,7 +113,7 @@ const MovieTVSearch = () => {
             {searchText && contents.results.length > 0 ? (
               <>
                 <p className="text-center text-slate-500 mt-3">
-                  Found <b>{contents.total_results} Result(s)</b> with{' '}
+                  Found <b>{contents.total_results} Result(s)</b>
                 </p>
                 <ContentGrid items={contents.results} media_type={type} />
               </>

@@ -71,18 +71,6 @@ Required to install and run the software:
 * [NPM](https://www.npmjs.com/get-npm)
 * [Firebase](https://firebase.google.com/)
 
-## SnapShots 💻
-### Login Page
-<img src="/public/screenshots/login-page.jpg" align="center"/>
-
-### Trending Page
-<img src="/public/screenshots/trending-page.jpg" align="center"/>
-
-### Search Page
-<img src="/public/screenshots/search-page.jpg" align="center"/>
-
-<br />
-
 ## Run Locally 🚀
 1. Clone the respository locally
 ```
@@ -112,4 +100,28 @@ npm start
 ## How to contribute? 💻
 <a href="CONTRIBUTING.md">Contributing Guide</a>
 
-## All the best! 🥇
+## SnapShots 💻
+### Login Page
+<img src="/public/screenshots/login-page.jpg" align="center"/>
+
+### Trending Page
+<img src="/public/screenshots/trending-page.jpg" align="center"/>
+
+### Movie Discover
+<img src="/public/screenshots/movie-discover.jpg" align="center"/>
+
+### Series Discover
+<img src="/public/screenshots/series-discover.jpg" align="center"/>
+
+### Detail Page
+<img src="/public/screenshots/detail-page.jpg" align="center"/>
+
+### Search Page
+<img src="/public/screenshots/search-page.jpg" align="center"/>
+
+
+### Trending Persons
+<img src="/public/screenshots/trending-persons.jpg" align="center"/>
+
+### Person Detail
+<img src="/public/screenshots/person-detail.jpg" align="center"/>
