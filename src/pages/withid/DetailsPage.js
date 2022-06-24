@@ -5,7 +5,8 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import BannerInfo from '../../components/details/BannerInfo';
-import CastnCrew from '../../components/details/CastnCrew';
+import CastMovie from '../../components/details/CastMovie';
+import CastTV from '../../components/details/CastTV';
 import Trailers from '../../components/details/Trailers';
 import FactBox from '../../components/details/FactBox';
 import Recommended from '../../components/details/Recomamded';
@@ -29,19 +30,21 @@ const DetailsPage = () => {
   const [photos, setPhotos] = useState();
   const [recommended, setRecommended] = useState();
   const [credits, setCredits] = useState();
+  const [creditsAll, setCreditsAll] = useState();
   const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
     setLoading(true);
     const { data } = await axios.get(
-      `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids,videos,images,recommendations,credits,collection,keywords`
+      `${detailURL}${type}/${id}?${apiKey}&language=en&append_to_response=external_ids,videos,images,recommendations,aggregate_credits,credits,collection,keywords`
     );
 
     setContent(data);
     setVideos(data.videos.results);
     setPhotos(data.images);
     setRecommended(data.recommendations.results);
-    setCredits(data.credits.cast);
+    setCredits(data.credits?.cast);
+    setCreditsAll(data.aggregate_credits?.cast);
     setLoading(false);
   };
 
@@ -49,12 +52,6 @@ const DetailsPage = () => {
     fetchData();
     // eslint-disable-next-line
   }, []);
-
-  useEffect(() => {
-    document.title = content
-      ? `${content.name || content.title} - CineParadis`
-      : 'CineParadis';
-  }, [content]);
 
   const getSlug = `${type}/${id}`;
   const getBackdrop = content?.backdrop_path
@@ -149,10 +146,20 @@ const DetailsPage = () => {
           </div>
           <>
             {active === 0 && content && (
-              <CastnCrew
-                credits={credits}
-                title={content?.name || content?.title}
-              />
+              <>
+                {type === 'movie' && (
+                  <CastMovie
+                    credits={credits}
+                    title={content?.name || content?.title}
+                  />
+                )}
+                {type === 'tv' && (
+                  <CastTV
+                    credits={creditsAll}
+                    title={content?.name || content?.title}
+                  />
+                )}
+              </>
             )}
             {active === 1 && content && (
               <FactBox content={content} type={type} />
