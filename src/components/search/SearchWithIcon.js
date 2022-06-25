@@ -13,7 +13,7 @@ const SearchWithIcon = ({
         <input
           type="search"
           id={searchId}
-          className={`block pl-7 w-full z-20 text-sm text-gray-900 bg-gray-50 border border-blue-300 focus:ring-blue-500 focus:border-blue-500 rounded-md shadow-bs5 ${
+          className={`block pl-9 w-full z-20 text-sm text-gray-900 bg-gray-50 border border-blue-300 focus:ring-blue-500 focus:border-blue-500 rounded-md shadow-bs5 ${
             small ? 'py-1' : 'py-3'
           }`}
           placeholder={placeHolder}
@@ -22,7 +22,7 @@ const SearchWithIcon = ({
         />
 
         <div
-          className={`absolute left-1.5 top-0 opacity-90 text-black ${
+          className={`absolute left-3 top-0 opacity-90 text-black ${
             small ? 'mt-2' : 'mt-3'
           }`}
         >

@@ -62,7 +62,7 @@ const Navmain = styled.div`
 `;
 
 const NavItem = styled(NavLink)`
-  padding: 10px;
+  padding: 2px 10px;
   border-radius: 5px;
   display: flex;
   align-items: center;
