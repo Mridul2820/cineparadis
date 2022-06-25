@@ -138,7 +138,7 @@ const MovieSeries = ({
           onClick={() => handleDelete(id, media_type, title)}
           title="Remove From Watchlist"
         >
-          {loading ? <ButtonLoading /> : <BsFillTrashFill size={16} />}
+          {loading ? <ButtonLoading /> : <BsFillTrashFill size={15} />}
         </DeleteIcon>
       )}
 
